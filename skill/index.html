@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03 · Skill — Donna’s Playbook · Build Your Own Donna</title>
+<meta name="description" content="Step 3 of Build Your Own Donna: install donna-replies, a reusable skill that drafts VIP replies straight into your drafts folder. It never sends.">
+<meta name="theme-color" content="#14213D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314213D'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-style='italic' fill='%23C9A227' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/donna.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <a class="brand" href="../">
+      <svg class="monogram" width="36" height="36" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+        <circle cx="48" cy="48" r="46" stroke="#C9A227" stroke-width="1.5"/>
+        <circle cx="48" cy="48" r="40.5" stroke="#C9A227" stroke-width="0.75" opacity="0.55"/>
+        <g stroke="#A31621" stroke-width="2.5" stroke-linecap="square">
+          <path d="M37 30v36"/>
+          <path d="M31 30h12M31 66h12"/>
+          <path d="M43 30a18 18 0 0 1 0 36"/>
+        </g>
+      </svg>
+      <span class="wordmark">Build Your Own Donna</span>
+    </a>
+    <a class="backlink" href="../">All case files</a>
+  </header>
+  <hr class="hairline">
+
+  <main>
+
+    <header class="case-header">
+      <p class="file-meta">Case file 03 &middot; ~30 min</p>
+      <div class="file-line">
+        <span class="file-no" aria-hidden="true">03</span>
+        <h1>Skill &mdash; Donna&rsquo;s&nbsp;Playbook</h1>
+      </div>
+      <blockquote class="epigraph">
+        <p>&ldquo;Oh, you have no idea how Donna I am.&rdquo;</p>
+        <cite>&mdash; Donna Paulsen, <em>Suits</em></cite>
+      </blockquote>
+    </header>
+
+    <div class="goal">
+      <span class="eyebrow">Goal</span>
+      <p>Install <strong>donna-replies</strong> &mdash; a reusable skill that drafts replies to your VIPs and saves them as drafts in your inbox.</p>
+    </div>
+
+    <div class="callout-red">
+      <p class="callout-title">She never sends. Ever.</p>
+      <p>Every reply donna-replies writes lands in your <strong>drafts folder</strong> and waits for you. Nothing leaves your outbox without your say-so. That rule is written into the skill itself.</p>
+    </div>
+
+    <section class="section">
+      <span class="eyebrow">The steps</span>
+      <ol class="steps">
+
+        <li>
+          <h3>One paste installs it</h3>
+          <p>Claude does the builder work &mdash; fetching, installing, and then interviewing <em>you</em>. Paste this into a new chat:</p>
+          <div class="prompt">
+            <div class="prompt-bar">
+              <span class="prompt-label">The installer</span>
+              <button class="copy-btn" type="button">Copy</button>
+            </div>
+            <pre>Fetch https://denisekgosnell.github.io/Donna/skills/donna-replies/SKILL.md
+and install it for me as a skill named donna-replies.
+Then interview me, one question at a time, to replace every {{PLACEHOLDER}}:
+my VIP list, my voice, my reply rules.
+When it&rsquo;s active, tell me the one sentence I say to use it.</pre>
+          </div>
+        </li>
+
+        <li>
+          <h3>Answer her questions</h3>
+          <p>Claude will ask, one at a time, for your <strong>VIP list</strong>, your <strong>voice</strong>, your <strong>sign-off</strong>, the phrases you <strong>never</strong> use, and any reply rules of your own. Answer like you&rsquo;re briefing a new chief of staff on day one &mdash; because you are.</p>
+        </li>
+
+        <li>
+          <h3>Take it for a spin</h3>
+          <div class="prompt">
+            <div class="prompt-bar">
+              <span class="prompt-label">Test drive</span>
+              <button class="copy-btn" type="button">Copy</button>
+            </div>
+            <pre>Use donna-replies on my inbox.</pre>
+          </div>
+          <p class="fine">Then open your email and look in Drafts. Go on.</p>
+        </li>
+
+      </ol>
+
+      <details class="smallprint">
+        <summary>If the installer balks &mdash; two fallbacks</summary>
+        <div class="smallprint-body">
+          <p><strong>Plan B &mdash; upload the zip.</strong></p>
+          <ol>
+            <li>Download <a href="../skills/donna-replies.zip" download>donna-replies.zip</a>.</li>
+            <li>In Claude: your initials &rarr; <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Capabilities</kbd> &rarr; upload the zip as a new skill.</li>
+            <li>Back in chat, ask Claude to interview you for the <kbd class="ui">{{PLACEHOLDER}}</kbd> values, same as above.</li>
+          </ol>
+          <p><strong>Plan C &mdash; for the rare exec who lives in a terminal</strong> (Claude Code):</p>
+          <ol>
+            <li><code>git clone https://github.com/denisekgosnell/Donna.git &amp;&amp; cp -r Donna/skills/donna-replies ~/.claude/skills/</code></li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <div class="checkpoint">
+      <span class="eyebrow">You did it when&hellip;</span>
+      <p>Your drafts folder has replies you didn&rsquo;t write.</p>
+    </div>
+
+    <p class="why"><span class="why-label">Why this matters</span>A project lives in one place; a skill goes wherever you go &mdash; including into Step&nbsp;4&rsquo;s agent.</p>
+
+    <nav class="stepnav" aria-label="Case file navigation">
+      <a class="prev" href="../project/">
+        <span class="stepnav-dir">&larr; Previous</span>
+        <span class="stepnav-title">02 &middot; Project &mdash; The Triage Desk</span>
+      </a>
+      <a class="next" href="../agent/">
+        <span class="stepnav-dir">Next &rarr;</span>
+        <span class="stepnav-title">04 &middot; Agent &mdash; Donna, Full Time</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <svg class="skyline" viewBox="0 0 720 64" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMax meet">
+    <path stroke="#C9A227" stroke-width="1" opacity="0.6" d="M0 60H40V38H58V60H80V24H92V16H104V24H116V60H150V44H170V60H200V30H206V12L212 4L218 12V30H224V60H260V40H290V60H320V20H326V8H340V20H346V60H380V34H400V60H430V26H436V14L446 6L456 14V26H462V60H500V42H520V60H560V28H572V18H584V28H596V60H640V44H660V60H720"/>
+  </svg>
+  <hr class="hairline">
+  <footer class="footer">
+    <p class="footer-contact">Questions &rarr; <a href="mailto:denise@denisegosnell.ai">denise@denisegosnell.ai</a></p>
+  </footer>
+
+</div>
+<script src="../assets/donna.js"></script>
+</body>
+</html>
