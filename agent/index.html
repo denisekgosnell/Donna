@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>04 · Agent — Donna, Full Time · Build Your Own Donna</title>
-<meta name="description" content="Step 4 of Build Your Own Donna: put Donna on the evening shift — VIP replies drafted, a daily briefing written, and delivered through your calendar at 4:54 PM.">
+<title>04 · Agent: Donna, Full Time · Build Your Own Donna</title>
+<meta name="description" content="Step 4 of Build Your Own Donna: put Donna on the evening shift: VIP replies drafted, a daily briefing written, and delivered through your calendar at 4:54 PM.">
 <meta name="theme-color" content="#14213D">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314213D'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-style='italic' fill='%23C9A227' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,17 +38,17 @@
       <p class="file-meta">Case file 04 &middot; ~40 min &middot; the finale</p>
       <div class="file-line">
         <span class="file-no" aria-hidden="true">04</span>
-        <h1>Agent &mdash; Donna,&nbsp;Full&nbsp;Time</h1>
+        <h1>Agent: Donna,&nbsp;Full&nbsp;Time</h1>
       </div>
       <blockquote class="epigraph">
         <p>&ldquo;If you were ever lucky enough to have me, you wouldn&rsquo;t want to share.&rdquo;</p>
-        <cite>&mdash; Donna Paulsen, <em>Suits</em></cite>
+        <cite>Donna Paulsen, <em>Suits</em></cite>
       </blockquote>
     </header>
 
     <div class="goal">
       <span class="eyebrow">Goal</span>
-      <p>Donna works the evening shift: every weekday she clears your VIP replies, writes your briefing, and gets it onto your calendar &mdash; the notification arrives one minute before, with the doc link. That notification is the only email you now need.</p>
+      <p>Donna works the evening shift: every weekday she clears your VIP replies, writes your briefing, and gets it onto your calendar. The notification arrives one minute before, with the doc link. That notification is the only email you now need.</p>
     </div>
 
     <section class="section">
@@ -58,7 +58,7 @@
         <li>
           <h3>Open scheduled tasks</h3>
           <p>In the Claude desktop app, click your initials &rarr; <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Scheduled tasks</kbd> &rarr; <kbd class="ui">New task</kbd>.</p>
-          <p class="fine">Don&rsquo;t see it? Wave Denise over &mdash; it&rsquo;s switched on for the whole workspace.</p>
+          <p class="fine">Don&rsquo;t see it? Wave Denise over; it&rsquo;s switched on for the whole workspace.</p>
         </li>
 
         <li>
@@ -77,7 +77,7 @@
                 </div>
                 <pre>Every weekday at 4:30 PM:
 1. Run my donna-replies skill on today&rsquo;s inbox.
-2. Write my Daily Briefing as a document titled "Daily Briefing &mdash; [today&rsquo;s date]":
+2. Write my Daily Briefing as a document titled "Daily Briefing: [today&rsquo;s date]":
    &bull; the 5 things in my inbox that need ME (one line + recommended action each)
    &bull; the replies you drafted today
    &bull; what you ignored and why, in one short paragraph
@@ -88,7 +88,7 @@
    before the event.
 Also: do a dry run for today RIGHT NOW so I can check your work.</pre>
               </div>
-              <p class="fine">Google Calendar sends email reminders natively &mdash; Donna sets one on the event, and at 4:54&nbsp;PM the email lands with your briefing link inside.</p>
+              <p class="fine">Google Calendar sends email reminders natively. Donna sets one on the event, and at 4:54&nbsp;PM the email lands with your briefing link inside.</p>
             </div>
             <div class="tab-panel" role="tabpanel" id="panel-outlook-schedule" aria-labelledby="tab-outlook-schedule" data-panel="outlook" hidden>
               <p>Paste this as the task:</p>
@@ -99,7 +99,7 @@ Also: do a dry run for today RIGHT NOW so I can check your work.</pre>
                 </div>
                 <pre>Every weekday at 4:30 PM:
 1. Run my donna-replies skill on today&rsquo;s inbox.
-2. Write my Daily Briefing as a document titled "Daily Briefing &mdash; [today&rsquo;s date]":
+2. Write my Daily Briefing as a document titled "Daily Briefing: [today&rsquo;s date]":
    &bull; the 5 things in my inbox that need ME (one line + recommended action each)
    &bull; the replies you drafted today
    &bull; what you ignored and why, in one short paragraph
@@ -110,12 +110,12 @@ Also: do a dry run for today RIGHT NOW so I can check your work.</pre>
    the event.
 Also: do a dry run for today RIGHT NOW so I can check your work.</pre>
               </div>
-              <p class="fine">On Outlook, the 4:54&nbsp;PM nudge arrives as a <strong>calendar notification</strong> on your laptop and phone, with the briefing link one tap away. Microsoft&rsquo;s calendar API doesn&rsquo;t yet let apps attach <em>email</em> reminders to events &mdash; Outlook keeps that switch inside its own interface.</p>
+              <p class="fine">On Outlook, the 4:54&nbsp;PM nudge arrives as a <strong>calendar notification</strong> on your laptop and phone, with the briefing link one tap away. Microsoft&rsquo;s calendar API doesn&rsquo;t yet let apps attach <em>email</em> reminders to events; Outlook keeps that switch inside its own interface.</p>
               <details class="smallprint">
                 <summary>Want a true email at 4:54 in Outlook too?</summary>
                 <div class="smallprint-body">
                   <p><strong>Per event, by hand:</strong> open the event in Outlook on the web &rarr; <kbd class="ui">Edit</kbd> &rarr; <kbd class="ui">More options</kbd> &rarr; the <kbd class="ui">Remind me</kbd> dropdown &rarr; <kbd class="ui">+ Add email reminder</kbd>. Works on your own calendar in Outlook on the web and the new Outlook (not classic desktop).</p>
-                  <p><strong>Once, forever:</strong> a five-minute Power Automate flow &mdash; trigger <em>&ldquo;When an upcoming event is starting soon&rdquo;</em> &rarr; action <em>&ldquo;Send an email.&rdquo;</em> Set it once and every &ldquo;Briefing with Donna&rdquo; event emails you automatically. Grab Denise after the workshop and she&rsquo;ll set it up with you.</p>
+                  <p><strong>Once, forever:</strong> a five-minute Power Automate flow: trigger <em>&ldquo;When an upcoming event is starting soon&rdquo;</em> &rarr; action <em>&ldquo;Send an email.&rdquo;</em> Set it once and every &ldquo;Briefing with Donna&rdquo; event emails you automatically. Grab Denise after the workshop and she&rsquo;ll set it up with you.</p>
                 </div>
               </details>
             </div>
@@ -124,21 +124,21 @@ Also: do a dry run for today RIGHT NOW so I can check your work.</pre>
 
         <li>
           <h3>Watch the dry run</h3>
-          <p>That last line is the whole show: Donna does today&rsquo;s run <em>right now</em>. Give her a minute, then check &mdash; the briefing doc is in <kbd class="ui">Donna Briefings</kbd>, the <kbd class="ui">&#128203; Briefing with Donna</kbd> event is on today&rsquo;s calendar, and the drafts from Step&nbsp;3 are waiting in your email.</p>
+          <p>That last line is the whole show: Donna does today&rsquo;s run <em>right now</em>. Give her a minute, then check: the briefing doc is in <kbd class="ui">Donna Briefings</kbd>, the <kbd class="ui">&#128203; Briefing with Donna</kbd> event is on today&rsquo;s calendar, and the drafts from Step&nbsp;3 are waiting in your email.</p>
         </li>
 
       </ol>
 
       <div class="aside">
         <span class="eyebrow">The trick</span>
-        <p>Claude never emails you &mdash; <strong>your calendar does</strong>. The briefing lands at 4:54&nbsp;PM from a sender you already trust. No new app to check, no new noise: just one appointment, every day, with everything that matters attached.</p>
+        <p>Claude never emails you. <strong>Your calendar does.</strong> The briefing lands at 4:54&nbsp;PM from a sender you already trust. No new app to check, no new noise: just one appointment, every day, with everything that matters attached.</p>
       </div>
 
       <details class="smallprint">
-        <summary>Advanced &mdash; Donna runs both calendars</summary>
+        <summary>Advanced: Donna runs both calendars</summary>
         <div class="smallprint-body">
-          <p>Juggling a work Microsoft&nbsp;365 calendar, a personal Google one, and a board calendar or two? Connect <strong>both</strong> calendar connectors (Step&nbsp;1 showed you how), then add a <strong>morning</strong> scheduled task: Donna reads every calendar, folds the unified day &mdash; conflicts included &mdash; into your briefing, and, if you like, writes &ldquo;busy&rdquo; holds onto your primary calendar mirroring the others.</p>
-          <p>The insight: no calendar ever needs access to another. <strong>Donna is the only one who sees them all</strong> &mdash; and she writes into one.</p>
+          <p>Juggling a work Microsoft&nbsp;365 calendar, a personal Google one, and a board calendar or two? Connect <strong>both</strong> calendar connectors (Step&nbsp;1 showed you how), then add a <strong>morning</strong> scheduled task: Donna reads every calendar, folds the unified day, conflicts included, into your briefing, and, if you like, writes &ldquo;busy&rdquo; holds onto your primary calendar mirroring the others.</p>
+          <p>The insight: no calendar ever needs access to another. <strong>Donna is the only one who sees them all</strong>, and she writes into one.</p>
         </div>
       </details>
     </section>
@@ -153,7 +153,7 @@ Also: do a dry run for today RIGHT NOW so I can check your work.</pre>
     <nav class="stepnav" aria-label="Case file navigation">
       <a class="prev" href="../skill/">
         <span class="stepnav-dir">&larr; Previous</span>
-        <span class="stepnav-title">03 &middot; Skill &mdash; Donna&rsquo;s Playbook</span>
+        <span class="stepnav-title">03 &middot; Skill: Donna&rsquo;s Playbook</span>
       </a>
       <a class="next" href="../">
         <span class="stepnav-dir">Done &#10003;</span>

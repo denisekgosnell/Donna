@@ -115,7 +115,7 @@ h1, h2, h3 { font-family: var(--serif); color: var(--cream); font-weight: 600; }
 }
 .masthead .backlink:hover { color: var(--gold-bright); }
 
-/* ---------- epigraph — Donna's voice, red on cream ---------- */
+/* ---------- epigraph: Donna's voice, red on cream ---------- */
 
 .epigraph {
   background: var(--cream);
@@ -529,7 +529,7 @@ kbd.ui {
   color: var(--cream);
 }
 
-/* ---------- red callout — Donna's voice, loud ---------- */
+/* ---------- red callout: Donna's voice, loud ---------- */
 
 .callout-red {
   margin: 26px 0 6px;
