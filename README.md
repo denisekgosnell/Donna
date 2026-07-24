@@ -2,7 +2,7 @@
 
 The complete workshop asset for **Build Your Own Donna** — a two-hour, hands-on workshop
 (Wednesday, July 29 · 1:00–3:00 PM · hosted by Denise Gosnell) where executives leave with a
-working AI chief of staff: inbox triage, replies drafted in their voice (never sent without
+working AI executive assistant: inbox triage, replies drafted in their voice (never sent without
 them), and a daily briefing delivered through their calendar.
 
 **Live site:** https://denisekgosnell.github.io/Donna/
