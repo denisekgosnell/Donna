@@ -35,7 +35,7 @@
   <main>
 
     <header class="case-header">
-      <p class="file-meta">Case file 01 &middot; ~15 min</p>
+      <p class="file-meta">Case file 01 &middot; ~10 min</p>
       <div class="file-line">
         <span class="file-no" aria-hidden="true">01</span>
         <h1>Chat: First&nbsp;Impressions</h1>
@@ -63,6 +63,16 @@
 
         <li>
           <h3>Connect your email</h3>
+          <p>Start a new chat and paste this. Claude checks the current help docs and walks you through connecting, step by step, matched to your exact setup:</p>
+          <div class="prompt">
+            <div class="prompt-bar">
+              <span class="prompt-label">Prompt 1: The Setup</span>
+              <button class="copy-btn" type="button">Copy</button>
+            </div>
+            <pre>Walk me through connecting my work email and calendar to Claude &mdash; first ask whether I&rsquo;m on Gmail or Outlook, Mac or Windows, and whether IT manages my account, and check Anthropic&rsquo;s current help docs before answering so the steps match what&rsquo;s actually on my screen today.
+Then give me numbered steps naming the exact buttons to click, a way to verify it worked, and what to do if the connector isn&rsquo;t listed or I hit an &ldquo;administrator hasn&rsquo;t approved this&rdquo; error.</pre>
+          </div>
+          <p class="fine">Prefer the steps written out? Here&rsquo;s the same trip by hand:</p>
           <div class="tabs">
             <div class="tab-list" role="tablist" aria-label="Email provider">
               <button class="tab" role="tab" id="tab-gmail-connect" aria-controls="panel-gmail-connect" data-tab="gmail" aria-selected="true">Gmail</button>
@@ -94,7 +104,7 @@
           <p>Start a new chat and paste:</p>
           <div class="prompt">
             <div class="prompt-bar">
-              <span class="prompt-label">Prompt</span>
+              <span class="prompt-label">Prompt 2: The Question</span>
               <button class="copy-btn" type="button">Copy</button>
             </div>
             <pre>What landed in my inbox in the last 24 hours that actually needs ME?
@@ -107,11 +117,11 @@ Top 5, one line each.</pre>
           <h3>Get your first draft</h3>
           <div class="prompt">
             <div class="prompt-bar">
-              <span class="prompt-label">Prompt</span>
+              <span class="prompt-label">Prompt 3: The First Draft</span>
               <button class="copy-btn" type="button">Copy</button>
             </div>
             <pre>Draft a reply to #1. Under 100 words, warm but decisive.
-Don&rsquo;t send it. Just show me.</pre>
+Don&rsquo;t send it &mdash; just show me.</pre>
           </div>
         </li>
 
