@@ -253,7 +253,7 @@ h1, h2, h3 { font-family: var(--serif); color: var(--cream); font-weight: 600; }
 
 /* ---------- agenda case-file cards ---------- */
 
-.cases { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 6px; }
+.cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 6px; }
 
 .case-card {
   position: relative;
@@ -529,6 +529,92 @@ kbd.ui {
   color: var(--cream);
 }
 
+/* ---------- confirmation box: "you should see" ---------- */
+
+.confirm {
+  position: relative;
+  margin: 12px 0 6px;
+  border: 1px dashed rgba(201, 162, 39, 0.5);
+  border-radius: 4px;
+  padding: 12px 18px 13px 46px;
+  background: rgba(201, 162, 39, 0.06);
+  font-size: 16px;
+  color: var(--text);
+}
+
+.confirm::before {
+  content: "✓";
+  position: absolute;
+  left: 18px;
+  top: 13px;
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
+.confirm .confirm-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 3px;
+}
+
+/* ---------- stop gate: hands off, we regroup ---------- */
+
+.stop {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 34px 0 0;
+  border: 1.5px solid var(--red);
+  border-radius: 4px;
+  padding: 18px 22px;
+  background: rgba(163, 22, 33, 0.14);
+}
+
+.stop .stop-sign {
+  flex: none;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: var(--red);
+  border-radius: 3px;
+  padding: 4px 10px;
+  margin-top: 2px;
+}
+
+.stop p { font-size: 16.5px; color: var(--text); }
+.stop p strong { color: var(--cream); }
+
+/* ---------- run sheet (front-page arc) ---------- */
+
+.runsheet { list-style: none; margin-top: 6px; }
+
+.runsheet li {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.18);
+}
+.runsheet li:last-child { border-bottom: 0; }
+
+.runsheet .rs-time {
+  flex: none;
+  width: 64px;
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--gold-bright);
+}
+
+.runsheet .rs-what { font-size: 16.5px; color: var(--text); }
+.runsheet .rs-what strong { color: var(--cream); font-weight: 600; }
+
 /* ---------- red callout: Donna's voice, loud ---------- */
 
 .callout-red {
@@ -712,6 +798,8 @@ details.smallprint .smallprint-body ol li { margin-bottom: 6px; }
   .prompt pre { font-size: 14.5px; padding: 16px 16px 18px; }
   .checkpoint { padding: 18px 20px; }
   .callout-red { padding: 20px 22px; }
+  .stop { padding: 16px 18px; flex-direction: column; gap: 8px; }
+  .runsheet .rs-time { width: 56px; font-size: 17px; }
   .stepnav a { max-width: 48%; }
   .tab { padding: 7px 16px; }
 }

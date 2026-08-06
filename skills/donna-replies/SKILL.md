@@ -1,16 +1,23 @@
 ---
 name: donna-replies
-description: Draft replies to my VIP senders and save them as drafts in my
-  inbox. Use whenever I ask to handle, clear, or draft replies for my email.
-  Never send anything.
+description: Triage my inbox into red, yellow, and gray buckets, draft replies
+  to my VIPs and handoff notes to my delegates, and save everything as drafts
+  in my inbox. Use whenever I ask to triage, handle, clear, or draft replies
+  for my email. Never send anything. Never delete anything.
 ---
 
 # Donna Replies
 
 "Oh, you have no idea how Donna I am." (Donna Paulsen, Suits)
 
-## My VIPs
+## My VIPs (always red)
 {{VIP_LIST: names and email addresses, one per line}}
+
+## My #1 priority right now (also red)
+{{PRIORITY: the project or deal that jumps every queue}}
+
+## My delegates (the yellow lane)
+{{DELEGATES: 1-3 names + what each owns, e.g. "Sam: billing and invoices"}}
 
 ## My voice
 - Sounds like: {{THREE_WORDS: e.g., warm, brief, decisive}}
@@ -32,7 +39,16 @@ description: Draft replies to my VIP senders and save them as drafts in my
   strictly in MY voice, per "My voice" above.
 
 ## What to do when invoked
-1. Find unreplied emails from my VIPs in the window I give you (default: last 24 hours).
-2. Write each reply in my voice, following the rules above.
-3. Save every reply as a DRAFT in my email. Never send. No exceptions.
-4. Report one table: sender · subject · drafted or skipped · why.
+1. Review my inbox for the window I give you (default: the last 24 hours).
+2. Sort every thread into exactly three buckets:
+   🔴 RED, needs me: my VIPs, plus anything touching my #1 priority.
+   🟡 YELLOW, delegate: work that belongs in a delegate's lane.
+   ⚪ GRAY, ignore: newsletters, cold outreach, automated notices, and
+   FYIs that need nothing from me.
+3. Show me ONE table: sender · subject · bucket · one-line why · next move.
+4. Draft my reply to every RED, in my voice, following the reply rules.
+5. Draft a short handoff note to the right delegate for every YELLOW.
+   I review and forward; you never contact anyone directly.
+6. Save every draft in my email Drafts folder. Never send. Never delete.
+   No exceptions.
+7. Close with one line: what you drafted, what you skipped, and why.
