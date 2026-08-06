@@ -1,7 +1,7 @@
 # Build Your Own Donna
 
-The complete workshop asset for **Build Your Own Donna**: a two-hour, hands-on workshop
-(Wednesday, July 29 · 1:00–3:00 PM · hosted by Denise Gosnell) where executives leave with a
+The complete workshop asset for **Build Your Own Donna**: a 90-minute, hands-on workshop
+(Thursday, August 13 · 2:30 to 4:00 PM ET · hosted by Denise Gosnell) where executives leave with a
 working AI executive assistant: inbox triage, replies drafted in their voice (never sent without
 them), and a daily briefing delivered through their calendar.
 
@@ -43,8 +43,8 @@ skill installer.
 - [ ] Enterprise admin: enable connectors **Gmail, Google Calendar, Google Drive,
       Microsoft 365**; confirm **skills/capabilities** and **scheduled tasks** are on for
       all members.
-- [ ] Email each attendee: personal workspace key + the site link + **the full street
-      address** (it is deliberately not on the public site).
+- [ ] Email each attendee: personal workspace key + the site link + **the venue details**
+      (they are deliberately not on the public site).
 - [ ] Full dry run with a fresh test account: connect Gmail, connect Outlook, install the
       skill from the live URL, schedule the task, receive the 4:54 email, and **capture
       screenshots of every step as you go**. The deck's dead-network fallback (slide 13)
