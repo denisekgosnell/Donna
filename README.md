@@ -22,10 +22,14 @@ skills/donna-replies.zip           # ready-made fallback for the Cowork skill up
 .nojekyll                          # disable Jekyll so Pages serves files as-is
 ```
 
-The workshop runs in three steps with a 20/45/25 arc: big-picture context up front,
-three ~15-minute case files in the middle (each code block has a "you should see"
-confirmation box, and each case file ends at a red stop sign so the room regroups
-together), and an open discussion at the end on where else these AI workflows apply.
+The workshop runs in three steps with a 20/45/25 arc. The first twenty minutes are
+framing: how executive judgment actually scales (Amazon's PR/FAQ, six-pager and Weekly
+Business Review flywheel), why the skill file is the same artifact with a new reader,
+why AI only scales the process you already have, and a four-quadrant read on what kind
+of executive is holding the pen. Then three ~15-minute case files, each mapped to nodes
+of that flywheel, each code block carrying a "you should see" confirmation box, each
+ending at a red stop sign so the room regroups together. Then an open discussion on
+where else these workflows apply.
 
 Static HTML only: no build step, no frameworks, relative links throughout, so the site
 works as-is under the `/Donna/` path.
