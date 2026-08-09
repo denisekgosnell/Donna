@@ -364,7 +364,8 @@ function caption(slide, text, mode, opts = {}) {
     valign: "top",
     lineSpacingMultiple: 1.16,
   });
-  assertFits("caption", x, y, w, h, G.SAFE_BOT);
+  // A caption may never touch the footer rule at RULE_Y (6.32).
+  assertFits("caption", x, y, w, h, opts.bottom || G.RULE_Y - 0.06);
   return y + h;
 }
 
@@ -933,7 +934,17 @@ function flywheel(slide, opts) {
     // average made the box too narrow and "OPERATE" broke as "OPERAT / E".
     const textW = st.name.length * ((nameSize * 0.72) / 72 + 1.2 / 72) + 0.12;
     const side = i === 1 || i === 3;
-    const nw = side ? Math.min(nameW, Math.max(0.7, textW)) : Math.max(nameW, textW);
+    let nw = side ? Math.min(nameW, Math.max(0.7, textW)) : Math.max(nameW, textW);
+    // Side names may not push past the slide margins; clamp the box and let
+    // the name wrap to two lines instead.
+    if (i === 3) {
+      const maxW = px - nodeD / 2 - 0.14 - 0.55;
+      nw = Math.min(nw, Math.max(0.8, maxW));
+    }
+    if (i === 1) {
+      const maxW = (opts.rightLimit != null ? opts.rightLimit : G.SLIDE_W - 0.55) - (px + nodeD / 2 + 0.14);
+      nw = Math.min(nw, Math.max(0.8, maxW));
+    }
     const nh = boxH(st.name, nw, nameSize, "arialBold");
     let nx;
     let ny;
@@ -1031,9 +1042,9 @@ function quadrant(slide, opts) {
 
   slide.addShape("line", {
     x: CX,
-    y: 1.98,
+    y: 2.06,
     w: 0,
-    h: 3.68,
+    h: 3.56,
     line: { ...lineOpt, beginArrowType: "triangle", endArrowType: "triangle" },
   });
   slide.addShape("line", {
@@ -1048,8 +1059,11 @@ function quadrant(slide, opts) {
   const ends = [
     { t: opts.axes.top, s: opts.axes.topSub, x: CX - 1.6, y: 1.6, w: 3.2, al: "center" },
     { t: opts.axes.bottom, s: opts.axes.bottomSub, x: CX - 1.6, y: 5.7, w: 3.2, al: "center" },
-    { t: opts.axes.left, s: opts.axes.leftSub, x: 0.89, y: CY - 0.3, w: 1.56, al: "right" },
-    { t: opts.axes.right, s: opts.axes.rightSub, x: 10.89, y: CY - 0.3, w: 1.56, al: "left" },
+    // In recede mode the side labels sit ON the axis line, just outside its
+    // endpoints (the line runs 2.55 to 10.79, the labels end at 2.45 / start
+    // at 10.89), so they can never collide with quadrant cell text above.
+    { t: opts.axes.left, s: opts.axes.leftSub, x: 0.89, y: recede ? CY - 0.11 : CY - 0.3, w: 1.56, al: "right" },
+    { t: opts.axes.right, s: opts.axes.rightSub, x: 10.89, y: recede ? CY - 0.11 : CY - 0.3, w: 1.56, al: "left" },
   ];
   ends.forEach((e) => {
     slide.addText(e.t, {

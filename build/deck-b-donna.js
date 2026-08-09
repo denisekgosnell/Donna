@@ -87,9 +87,9 @@ const EXEC = [
     legend: null,
     bottom: 5.56,
   });
-  s.addText("MORE BOOKINGS  ·  MORE DATA  ·  MORE PERSONAL", {
-    x: 0.89, y: RB2.bottom + 0.14, w: 4.9, h: 0.24, margin: 0,
-    fontFace: F.BODY, fontSize: 9, bold: true, charSpacing: 0.8,
+  s.addText("MORE BOOKINGS · MORE DATA · MORE PERSONAL TRIPS", {
+    x: 0.64, y: RB2.bottom + 0.14, w: 5.4, h: 0.24, margin: 0,
+    fontFace: F.BODY, fontSize: 8, bold: true, charSpacing: 0.4,
     color: C.MUTE, align: "center", valign: "middle",
   });
   s.addText("DOCUMENT  ·  TEST  ·  REVISE  ·  OPERATE", {
@@ -194,7 +194,7 @@ const EXEC = [
   B.flywheel(s, {
     cx: 4.1, band: { top: y, bottom: CAP4 - 0.14 }, nodeD: 0.62, mode: "dark",
     bottom: CAP4,
-    hub: { label: ["THE", "DOCUMENT"], fill: C.PANEL, textColor: C.GOLD_L },
+    hub: { label: ["THE", "DOCUMENT"], fill: C.PAPER, textColor: C.INK },
     stations: [
       { n: "01", name: "DOCUMENT", legend: "One person writes down what they know. Prose, not slides." },
       { n: "02", name: "TEST", legend: "The room reads in silence and attacks the document, not the person." },
@@ -794,8 +794,8 @@ const PIP3 = ["OPERATE"];
 {
   const { s } = slide(C.RED, { chrome: false });
   B.progressPip(s, PIP3, C.RED, "OPERATE");
-  B.diamond(s, 6.617, 2.02, 0.12, C.WHITE);
-  const nvr = B.statement(s, "She never sends. Ever.", C.RED, { size: 62, w: 11.0, y: 2.6 });
+  B.diamond(s, 6.617, 2.36, 0.12, C.WHITE);
+  const nvr = B.statement(s, "She never sends. Ever.", C.RED, { size: 62, w: 11.0, y: 2.94 });
   s.addText(
     "Every reply and every handoff note lands in your drafts and waits for your say-so. She never deletes anything either.",
     {
@@ -987,7 +987,7 @@ const PIP3 = ["OPERATE"];
   const y = B.title(s, "Where does this flywheel turn next?", "light");
 
   B.flywheel(s, {
-    cx: 3.02, band: { top: y + 0.06, bottom: 5.5 }, mode: "light", nodeD: 0.48,
+    cx: 3.16, band: { top: y + 0.06, bottom: 5.5 }, mode: "light", nodeD: 0.48,
     hub: { label: ["THE", "DOCUMENT"], fill: C.RED, textColor: C.WHITE },
     stations: EXEC,
     legend: null,
@@ -1032,11 +1032,11 @@ const PIP3 = ["OPERATE"];
     ["VISION", "open · tell", "Draw the flywheels.", "Three to five years out: how is the business run, what is automated, what reaches the S-team, the O-team, directors, managers?"],
   ];
   const cw = (G.W - 0.4) / 2;
-  const chh = 1.58;
+  const chh = 1.5;
   ctas.forEach(([name, axis, imp, detail], i) => {
     const x = G.ML + (i % 2) * (cw + 0.4);
-    const cy = y + 0.06 + Math.floor(i / 2) * (chh + 0.24);
-    B.card(s, { x, y: cy, w: cw, h: chh, mode: "light", tag: "s25 card", bottom: 5.44 });
+    const cy = y + 0.04 + Math.floor(i / 2) * (chh + 0.22);
+    B.card(s, { x, y: cy, w: cw, h: chh, mode: "light", tag: "s25 card", bottom: 5.36 });
     s.addText(
       [
         { text: name + "  ", options: { fontFace: F.BODY, fontSize: 14, bold: true, charSpacing: 1.4, color: C.GOLD_D } },
@@ -1059,8 +1059,8 @@ const PIP3 = ["OPERATE"];
   s.addShape("rect", { ...band, fill: { color: C.INK }, line: { type: "none" } });
   s.addText(
     [
-      { text: "AND HERE IS THE USEFUL PART:  ", options: { fontFace: F.BODY, fontSize: 13, bold: true, charSpacing: 1.2, color: C.GOLD_L } },
-      { text: "each of these four creates tension for the other three. That tension is your requirement set, your governance, and your strategic direction. You need all four in the room.", options: { fontFace: F.BODY, fontSize: 13, color: C.PAPER } },
+      { text: "AND HERE IS THE USEFUL PART:  ", options: { fontFace: F.BODY, fontSize: 12, bold: true, charSpacing: 1.0, color: C.GOLD_L } },
+      { text: "each of these four creates tension for the other three. That tension is your requirement set, your governance, and your strategic direction. You need all four in the room.", options: { fontFace: F.BODY, fontSize: 12, color: C.PAPER } },
     ],
     { x: band.x + 0.32, y: band.y, w: band.w - 0.64, h: band.h, margin: 0, valign: "middle" }
   );

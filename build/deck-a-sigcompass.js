@@ -122,9 +122,9 @@ function slide(mode, { chrome = true, page = true } = {}) {
   );
   B.caption(
     s,
-    "The art of a data strategy is not collecting more data. It is choosing which decisions we support first, and staying relentless about whether those decisions move revenue.",
+    "The art of a data strategy is choosing which decisions we support first, and whether they move revenue.",
     "dark",
-    { bold: true, color: C.GOLD_L, align: "center", x: (G.SLIDE_W - w) / 2, w, y: s3bot + 0.4 }
+    { bold: true, color: C.GOLD_L, align: "center", x: (G.SLIDE_W - 11.0) / 2, w: 11.0, y: Math.min(s3bot + 0.4, 5.7) }
   );
   s.addNotes(
     "[TIMING] 2 min.\n" +
@@ -247,7 +247,7 @@ function slide(mode, { chrome = true, page = true } = {}) {
 // ===========================  6. THE STRATEGY FLYWHEEL  (dark)  CENTREPIECE
 {
   const { s } = slide("dark");
-  B.eyebrow(s, "Signature's executive data strategy · the strategy flywheel", "dark");
+  B.eyebrow(s, "Signature's executive data strategy", "dark");
   const y = B.title(s, "The strategy flywheel.", "dark");
 
   const CAP6 = 5.5; // caption band starts here
@@ -257,7 +257,7 @@ function slide(mode, { chrome = true, page = true } = {}) {
     stations: [
       { n: "01", name: "MORE BOOKINGS", legend: "Every booking is revenue today, and a record tomorrow." },
       { n: "02", name: "MORE DATA", legend: "Every booking and session enriches the shared asset." },
-      { n: "03", name: "MORE PERSONAL", legend: "Advisors meet every client with full context." },
+      { n: "03", name: "MORE PERSONAL TRIPS", legend: "Advisors meet every client with full context." },
       { n: "04", name: "MORE BOOKINGS", legend: "Personal experiences convert. The loop widens." },
     ],
     legend: { x: 7.55, y: y + 0.06, w: 4.9 },
@@ -387,7 +387,7 @@ function slide(mode, { chrome = true, page = true } = {}) {
 
   B.caption(
     s,
-    "The strategy is agreed. What we build now is the weekly rhythm that makes the flywheel turn, and the shared awareness that keeps it turning.",
+    "The strategy is agreed. Now we build the weekly rhythm that makes the flywheel turn.",
     "light",
     { bold: true, color: C.TEAL_D, y: 5.3 }
   );
@@ -449,18 +449,39 @@ function slide(mode, { chrome = true, page = true } = {}) {
   B.eyebrow(s, "The work ahead", "light");
   const y = B.title(s, "Same flywheel, now with numbers.", "light");
 
-  const CAP11 = 5.34;
+  const CAP11 = 5.4;
   B.flywheel(s, {
-    cx: 4.2, band: { top: y, bottom: CAP11 - 0.16 }, nodeD: 0.58, mode: "light", gates: true,
+    cx: 3.12, band: { top: y, bottom: CAP11 - 0.2 }, nodeD: 0.5, mode: "light", rightLimit: 5.24,
     hub: { label: ["REVENUE", "GROWTH"], fill: C.TEAL, textColor: C.WHITE },
     stations: [
       { n: "01", name: "MORE BOOKINGS" },
       { n: "02", name: "MORE DATA" },
-      { n: "03", name: "MORE PERSONAL" },
+      { n: "03", name: "MORE PERSONAL TRIPS" },
       { n: "04", name: "MORE BOOKINGS" },
     ],
     legend: null,
     bottom: CAP11,
+  });
+  // The four confidence gates, one per handoff, in their own column so the
+  // wheel stays readable and each gate has room for its label.
+  const gates = ["01 → 02", "02 → 03", "03 → 04", "04 → 01"];
+  gates.forEach((g, i) => {
+    const gy = y + 0.1 + i * 0.88;
+    s.addShape("roundRect", {
+      x: 5.32, y: gy, w: 1.62, h: 0.72, rectRadius: 0.05,
+      fill: { color: C.PAPER2 }, line: { color: C.GOLD, width: 0.75 },
+    });
+    s.addText(g + "  ·  CONVERSION", {
+      x: 5.32, y: gy + 0.1, w: 1.62, h: 0.18, margin: 0,
+      fontFace: F.BODY, fontSize: 8, bold: true, charSpacing: 0.6,
+      color: C.GOLD_D, align: "center", valign: "middle",
+    });
+    s.addText("___%", {
+      x: 5.32, y: gy + 0.3, w: 1.62, h: 0.3, margin: 0,
+      fontFace: F.DISPLAY, fontSize: 17, bold: true, color: C.MUTE,
+      align: "center", valign: "middle",
+    });
+    B.assertFits("s11 gate", 5.32, gy, 1.62, 0.72, CAP11);
   });
 
   B.label(s, "Where we point the work", "light", {
@@ -477,16 +498,16 @@ function slide(mode, { chrome = true, page = true } = {}) {
   });
 
   s.addText("These four numbers are what we fill in together.", {
-    x: G.ML, y: CAP11, w: 6.6, h: 0.3, margin: 0,
+    x: G.ML, y: CAP11 + 0.06, w: 6.6, h: 0.3, margin: 0,
     fontFace: F.BODY, fontSize: 14, bold: true, color: C.TEAL_D,
     align: "center", valign: "middle",
   });
 
   B.caption(
     s,
-    "Starting from what is broken means guessing which of many fixes to try. Starting from what is working leaves one or two obvious moves.",
+    "Starting from a loss means guessing among many fixes. Starting from a win leaves one or two obvious moves.",
     "light",
-    { y: 5.76 }
+    { y: 5.86, size: 12 }
   );
   s.addNotes(
     "[TIMING] 3 min.\n" +
@@ -532,7 +553,7 @@ function slide(mode, { chrome = true, page = true } = {}) {
     s,
     "This is why SigCompass leads with what is working. Wins narrow your choices. Losses multiply them.",
     "dark",
-    { bold: true, color: C.GOLD_L, y: 4.94 }
+    { bold: true, color: C.GOLD_L, y: 5.4 }
   );
   s.addNotes(
     "[TIMING] 2 min.\n" +
@@ -798,7 +819,7 @@ function slide(mode, { chrome = true, page = true } = {}) {
     stations: [
       { n: "01", name: "MORE BOOKINGS" },
       { n: "02", name: "MORE DATA" },
-      { n: "03", name: "MORE PERSONAL" },
+      { n: "03", name: "MORE PERSONAL TRIPS" },
       { n: "04", name: "MORE BOOKINGS" },
     ],
     legend: null,
@@ -850,7 +871,7 @@ function slide(mode, { chrome = true, page = true } = {}) {
     ],
     { through: 3, text: "Through Sep 29 · internal testing window · your window" },
     "light",
-    { spineY: 3.52 }
+    { spineY: 3.24 }
   );
 
   B.caption(
@@ -873,23 +894,24 @@ function slide(mode, { chrome = true, page = true } = {}) {
   const { s } = slide("dark", { chrome: false });
   B.ring(s, { cx: 6.667, cy: 1.08, d: 1.04, mark: "compass" });
   const brkY = B.statement(s, "15 minutes.", "dark", { size: 56, w: 10.2, y: 1.78 });
+  const brkSubY = brkY;
   s.addText("Coffee. Then bring your laptop back.", {
-    x: G.ML, y: brkY, w: G.W, h: 0.34, margin: 0,
+    x: G.ML, y: brkSubY, w: G.W, h: 0.34, margin: 0,
     fontFace: F.BODY, fontSize: 17, color: C.GOLD_L, align: "center", valign: "middle",
   });
 
   const cw = 8.6;
   const cx = (G.SLIDE_W - cw) / 2;
   B.panelList(s, {
-    x: cx, y: 3.46, w: cw, mode: "dark", size: 13, gap: 0.1, pad: 0.26,
+    x: cx, y: brkSubY + 0.5, w: cw, mode: "dark", size: 13, gap: 0.08, pad: 0.22,
     label: "Before 2:40", labelSize: 13, labelColor: C.GOLD_L,
     items: [
       "Laptop open, plugged in, on the venue network.",
       "Claude desktop installed and signed in.",
-      "Your workspace invite accepted. Check your email now if you are unsure.",
+      "Your workspace invite accepted.",
       "Your work email login handy. You will connect it live.",
     ],
-    tag: "s21 panel", bottom: 6.06,
+    tag: "s21 panel", bottom: 6.1,
   });
 
   s.addText("NEXT: BUILD YOUR OWN DONNA   ◆   2:40 TO 4:10   ◆   THE EXECUTION SIDE OF THE SAME FLYWHEEL", {
