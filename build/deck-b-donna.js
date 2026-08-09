@@ -522,8 +522,8 @@ const PIP1 = ["DOCUMENT", "TEST"];
   B.eyebrow(s, "Step one  ·  first impressions", "light", { narrow: true });
   const y = B.title(s, "Create her project, then connect.", "light");
 
-  B.panelList(s, {
-    x: G.COL_L.x, y: y + 0.02, w: G.COL_L.w, mode: "light", size: 14, gap: 0.16,
+  const setupBot = B.panelList(s, {
+    x: G.COL_L.x, y: y + 0.02, w: G.COL_L.w, mode: "light", size: 13, gap: 0.14, pad: 0.26,
     label: "The setup", labelSize: 13, labelColor: C.GOLD_D,
     items: [
       "Projects, then New project. Name it Donna.",
@@ -533,26 +533,33 @@ const PIP1 = ["DOCUMENT", "TEST"];
     tag: "s12 panel",
   });
   s.addText("Outlook: Microsoft 365 covers mail, calendar, and files in one.", {
-    x: G.COL_L.x, y: y + 2.06, w: G.COL_L.w, h: 0.3, margin: 0,
+    x: G.COL_L.x, y: setupBot + 0.14, w: G.COL_L.w, h: 0.26, margin: 0,
     fontFace: F.BODY, fontSize: 12, italic: true, color: C.MUTE, valign: "top",
+  });
+  B.promptBlock(s, {
+    x: G.COL_L.x, y: setupBot + 0.56, w: G.COL_L.w, mode: "light",
+    label: "Stuck connecting? paste this",
+    lines:
+      "Walk me through connecting my work email and calendar to " +
+      "Claude, step by step, naming the exact buttons on my screen.",
+    tag: "s12 fallback",
   });
 
   let py = B.promptBlock(s, {
     x: G.COL_R.x, y: y + 0.02, w: G.COL_R.w, mode: "light",
     label: "Prompt 1 · the question",
-    lines: B.wrapMono(
-      "What landed in my inbox in the last 24 hours that actually needs ME? Top 5, one line each.",
-      44
-    ),
+    lines:
+      "What landed in my inbox in the last 24 hours that actually " +
+      "needs ME? Top 5, one line each.",
     tag: "s12 p1",
   });
   B.promptBlock(s, {
     x: G.COL_R.x, y: py + 0.24, w: G.COL_R.w, mode: "light",
     label: "Prompt 2 · the first draft",
-    lines: B.wrapMono(
-      "Draft a reply to #1. Under 100 words, warm but decisive. Save it as a draft in my email so I can review it there. Do not send it.",
-      44
-    ),
+    lines:
+      "Draft a reply to #1. Under 100 words, warm but decisive. " +
+      "Save it as a draft in my email so I can review it there. " +
+      "Do not send it.",
     tag: "s12 p2",
   });
   s.addNotes(
@@ -735,15 +742,13 @@ const PIP3 = ["OPERATE"];
   B.promptBlock(s, {
     x: G.ML, y: y + 0.02, w: pw, mode: "light",
     label: "Paste inside your Donna project",
-    lines: B.wrapMono(
+    lines:
       "Turn this project's triage instructions into a reusable " +
-        "skill file called donna-replies. Use everything you " +
-        'already know from this project: my VIPs, my delegates, ' +
-        'my voice, my rules. Include the line "Never send. ' +
-        'Never delete. No exceptions." Then give me the finished ' +
-        "SKILL.md as a file I can download.",
-      44
-    ),
+      "skill file called donna-replies. Use everything you " +
+      "already know from this project: my VIPs, my delegates, " +
+      'my voice, my rules. Include the line "Never send. ' +
+      'Never delete. No exceptions." Then give me the finished ' +
+      "SKILL.md as a file I can download.",
     tag: "s18 prompt",
   });
 

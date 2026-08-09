@@ -372,7 +372,7 @@ function citation(slide, text, mode, opts = {}) {
   const p = palette(mode);
   slide.addText(text, {
     x: G.ML,
-    y: opts.y != null ? opts.y : 6.12,
+    y: opts.y != null ? opts.y : 6.0,
     w: G.W,
     h: 0.18,
     margin: 0,
@@ -675,7 +675,19 @@ function wrapMono(text, cap = MONO_CAP) {
 
 function promptBlock(slide, opts) {
   const p = palette(opts.mode);
-  const rows = opts.lines;
+  // Courier New at 12pt advances exactly 0.1in per glyph, so the usable line
+  // length is arithmetic. Re-wrap whatever came in, and fail loudly if a
+  // hand-formatted line is too long, rather than letting it spill out of the
+  // dark block the way the source deck did.
+  const cap = Math.floor((opts.w - 0.56) / 0.1) - 1;
+  const rows = Array.isArray(opts.lines)
+    ? opts.lines.flatMap((l) => (l.length > cap ? wrapMono(l, cap) : [l]))
+    : wrapMono(opts.lines, cap);
+  rows.forEach((l) => {
+    if (l.length > cap) {
+      VIOLATIONS.push(`prompt line ${l.length} > ${cap} chars: "${l.slice(0, 30)}..."`);
+    }
+  });
   const h = 0.52 + rows.length * 0.205 + 0.22;
   slide.addShape("rect", {
     x: opts.x,
@@ -1180,10 +1192,12 @@ function progressPip(slide, active, mode, captionText) {
     });
   });
   const txt = captionText || active.join(" · ");
+  // right edge must land on the grid (G.ML + G.W = 12.45), not run to 13.10
+  const capW = 2.4;
   slide.addText(txt.toUpperCase(), {
-    x: 11.3,
+    x: G.ML + G.W - capW,
     y: 0.92,
-    w: 1.8,
+    w: capW,
     h: 0.18,
     margin: 0,
     fontFace: F.BODY,
@@ -1194,6 +1208,7 @@ function progressPip(slide, active, mode, captionText) {
     align: "right",
     valign: "middle",
   });
+  assertFits("pip caption", G.ML + G.W - capW, 0.92, capW, 0.18, G.SAFE_BOT);
 }
 
 // ---------------------------------------------------------- timeline (6.5)
