@@ -87,20 +87,20 @@ const EXEC = [
     legend: null,
     bottom: 5.56,
   });
-  s.addText("MORE BOOKINGS · MORE DATA · MORE PERSONAL TRIPS", {
+  s.addText("BOOKINGS · DATA · PERSONAL TRIPS · BOOKINGS", {
     x: 0.64, y: RB2.bottom + 0.14, w: 5.4, h: 0.24, margin: 0,
-    fontFace: F.BODY, fontSize: 8, bold: true, charSpacing: 0.4,
+    fontFace: F.BODY, fontSize: 9, bold: true, charSpacing: 0.6,
     color: C.MUTE, align: "center", valign: "middle",
   });
-  s.addText("DOCUMENT  ·  TEST  ·  REVISE  ·  OPERATE", {
-    x: 7.55, y: RB2.bottom + 0.14, w: 4.9, h: 0.24, margin: 0,
-    fontFace: F.BODY, fontSize: 9, bold: true, charSpacing: 0.8,
-    color: C.GOLD_D, align: "center", valign: "middle",
+  s.addText("DOCUMENT · TEST · REVISE · OPERATE", {
+    x: 7.3, y: RB2.bottom + 0.14, w: 5.4, h: 0.24, margin: 0,
+    fontFace: F.BODY, fontSize: 9, bold: true, charSpacing: 0.6,
+    color: C.MUTE, align: "center", valign: "middle",
   });
   s.addText("1:30   ·   THE STRATEGY FLYWHEEL", {
     x: 0.89, y: y + 0.02, w: 4.9, h: 0.28, margin: 0,
     fontFace: F.BODY, fontSize: 12, bold: true, charSpacing: 1.6,
-    color: C.MUTE, align: "center", valign: "middle",
+    color: C.GOLD_D, align: "center", valign: "middle",
   });
 
   B.flywheel(s, {
@@ -497,7 +497,7 @@ const EXEC = [
 // =====================  11 to 13. STEP 1  (pip: DOCUMENT, TEST)
 const PIP1 = ["DOCUMENT", "TEST"];
 {
-  const { s } = slide("dark", { page: false });
+  const { s } = slide("dark");
   B.progressPip(s, PIP1, "dark", "DOCUMENT · TEST");
   s.addText("STEP ONE", {
     x: G.ML, y: 2.68, w: G.W, h: 0.3, margin: 0,
@@ -595,7 +595,7 @@ const PIP1 = ["DOCUMENT", "TEST"];
 // ======================  14 to 16. STEP 2  (pip: REVISE)
 const PIP2 = ["REVISE"];
 {
-  const { s } = slide("dark", { page: false });
+  const { s } = slide("dark");
   B.progressPip(s, PIP2, "dark", "REVISE");
   s.addText("STEP TWO", {
     x: G.ML, y: 2.68, w: G.W, h: 0.3, margin: 0,
@@ -713,7 +713,7 @@ const PIP2 = ["REVISE"];
 // ==================  17 to 21. STEP 3  (pip: OPERATE, then all four)
 const PIP3 = ["OPERATE"];
 {
-  const { s } = slide("dark", { page: false });
+  const { s } = slide("dark");
   B.progressPip(s, PIP3, "dark", "OPERATE");
   s.addText("STEP THREE", {
     x: G.ML, y: 2.68, w: G.W, h: 0.3, margin: 0,
@@ -1076,9 +1076,9 @@ const PIP3 = ["OPERATE"];
 // ==============================================  26. CLOSE  (dark)
 {
   const { s } = slide("dark", { chrome: false });
-  B.ring(s, { cx: 6.667, cy: 1.52, d: 1.3, mark: "D" });
+  B.ring(s, { cx: 6.667, cy: 1.56, d: 1.54, mark: "D" });
   const closeBot = B.quoteCard(s, {
-    y: 2.44,
+    y: 2.52,
     w: 9.6,
     quote: "“If you were ever lucky enough to have me, you wouldn’t want to share.”",
     attribution: "— DONNA PAULSEN, SUITS",

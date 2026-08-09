@@ -339,7 +339,7 @@ function slide(mode, { chrome = true, page = true } = {}) {
 
 // =============================================  8. DIVIDER  (dark)
 {
-  const { s } = slide("dark", { page: false });
+  const { s } = slide("dark");
   B.diamond(s, 6.612, 2.44, 0.11, C.GOLD);
   const divY = B.statement(s, "A flywheel is a picture until somebody turns it.", "dark", {
     size: 42, w: 10.2, y: 2.9,
@@ -656,7 +656,7 @@ function slide(mode, { chrome = true, page = true } = {}) {
 
 // =============================================  15. DIVIDER, TOUR  (dark)
 {
-  const { s } = slide("dark", { page: false });
+  const { s } = slide("dark");
   B.diamond(s, 6.612, 2.5, 0.11, C.GOLD);
   const tourY = B.statement(s, "Let's take the tour.", "dark", { size: 46, w: 10.2, y: 2.96 });
   s.addText("PART THREE   ·   SIGCOMPASS, LIVE", {
