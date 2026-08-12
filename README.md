@@ -1,10 +1,11 @@
 # Build Your Own Donna
 
 The complete workshop asset for **Build Your Own Donna**: a 90-minute, hands-on workshop
-(August 2026, hosted by Denise Gosnell) where executives leave with a working AI executive
-assistant: an inbox triaged around **which executive they are**, replies drafted in their
-voice (never sent without them), and the day's triage delivered as a calendar invite that
-emails them one minute before.
+(Thursday, August 13 · 2:30 to 4:00 PM ET · Signature's Board Offsite · hosted by
+Denise Gosnell) where executives leave with a working AI executive assistant: an inbox
+triaged around **which executive they are**, replies drafted in their voice (never sent
+without them), and the day's triage delivered as a calendar invite that emails them one
+minute before.
 
 **Live site:** https://denisekgosnell.github.io/Donna/
 
@@ -29,21 +30,26 @@ set **Source** to **GitHub Actions**, then re-run the workflow.
 ## What's in here
 
 ```
-index.html                       # front page: the three-step agenda
+index.html                       # front page: runsheet, quadrant, the three-step agenda
 chat/index.html                  # 01 · First Impressions (project + connectors + first draft)
 project/index.html               # 02 · The Triage Desk (five questions, the playbook paste)
 agent/index.html                 # 03 · Donna, Full Time (skill file + the 4:30 shift)
-skill/index.html                 # redirect → agent/ (old step 3 folded into the finale)
+skill/index.html                 # redirect → agent/  (old URLs stay alive)
+triage/index.html                # redirect → project/ (old URLs stay alive)
 assets/donna.css                 # single shared stylesheet
 assets/donna.js                  # copy buttons + Gmail/Outlook tab toggle
+assets/build-your-own-donna.pptx # the 28-slide deck (older step 2/3 content; see decks/)
 skills/donna-triage/SKILL.md     # the triage playbook template (interview + tiers + guardrails)
 skills/donna-triage.zip          # zip fallback for Settings → Capabilities upload
 build/deck-b-donna.js            # deck source (pptxgenjs); node build/deck-b-donna.js
 build/deck-a-sigcompass.js       # companion deck source
 build/sync-triage-template.py    # re-injects SKILL.md into project/index.html's paste block
-decks/                           # built decks (pptx + pdf)
+decks/                           # built decks (pptx + pdf), current with this flow
 .nojekyll                        # disable Jekyll so Pages serves files as-is
 ```
+
+The 90 minutes run 2:30 framing → 2:50 build (the three steps) → 3:30 discussion →
+4:00 done.
 
 Static HTML only: no build step for the site itself, relative links throughout, so it
 works as-is under the `/Donna/` path.
@@ -78,17 +84,23 @@ ACCURACY → closing loops (stall rule), TRUST → time (send-by hour), VISION �
 - [ ] Enterprise admin: enable connectors **Gmail, Google Calendar, Google Drive,
       Microsoft 365**; confirm **skills/capabilities** and **scheduled tasks** are on
       for all members (Cowork).
-- [ ] Email each attendee: personal workspace key + the site link + session details
+- [ ] Email each attendee: personal workspace key + the site link + **the venue details**
       (they are deliberately not on the public site).
-- [ ] Full dry run with a fresh test account: connect Gmail, run Step 2 end to end
-      (paste template → five questions → 🏁 final question → ✅ banner → "Triage my
-      inbox."), Step 3 end to end (skill file download → Cowork upload → scheduled task
-      dry run → calendar event with the triage in the description → the reminder email).
-      **Capture screenshots of every step** for the dead-network fallback folder.
-- [ ] Print/re-export the deck from `decks/build-your-own-donna-v2.pptx` (rebuilt to
-      match this flow; slides 15–20 changed). Install **Playfair Display** and **Inter**
-      on the presenting laptop; PowerPoint silently substitutes fonts if they're missing.
-- [ ] Wi-Fi cards printed; phone hotspot backup; dry-run screenshots as demo fallback.
+- [ ] Full dry run with a fresh test account, in workshop order: create the Donna project,
+      connect Gmail + Calendar + Drive, run Step 2 end to end (paste template → five
+      questions → 🏁 final question → ✅ banner → "Triage my inbox."), then Step 3 end to
+      end (skill file download → Cowork upload → scheduled task dry run → calendar event
+      with the triage in its description → the reminder email). **Capture screenshots of
+      every step as you go**, especially the Cowork Skills and Scheduled tasks screens
+      (those menus move, and the site tells attendees to ask Claude if they do). Keep
+      them in your presenter folder as the dead-network fallback.
+- [ ] Present from `decks/build-your-own-donna-v2.pptx` (rebuilt to match this flow;
+      step 2/3 slides changed). Install **Playfair Display** and **Inter** (both free on
+      Google Fonts) on the presenting laptop; PowerPoint silently substitutes fonts if
+      they're missing.
+- [ ] Confirm the venue Wi-Fi network + password (read them out loud at the open; they
+      are deliberately not on a slide); phone hotspot backup; the dry-run screenshots as
+      demo fallback if the network dies.
 
 ## Build-time note on Outlook email reminders
 

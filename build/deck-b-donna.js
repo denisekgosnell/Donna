@@ -1,5 +1,5 @@
 // Deck B: Build Your Own Donna
-// 26 slides, 90 minutes (2:40 to 4:10). Reserved accent: RED. Full Suits.
+// 26 slides, 90 minutes (2:30 to 4:00). Reserved accent: RED. Full Suits.
 // Spec: FABLE-DECK-INSTRUCTIONS.md section 5.
 
 const pptxgen = require("pptxgenjs");
@@ -52,7 +52,7 @@ const EXEC = [
     x: G.ML, y: cardBot + 0.9, w: G.W, h: 0.3, margin: 0,
     fontFace: F.BODY, fontSize: 15, color: C.WARM, align: "center", valign: "middle",
   });
-  s.addText("DENISE GOSNELL, PH.D.   ·   2:40 TO 4:10", {
+  s.addText("DENISE GOSNELL, PH.D.   ·   2:30 TO 4:00", {
     x: G.ML, y: cardBot + 1.3, w: G.W, h: 0.24, margin: 0,
     fontFace: F.BODY, fontSize: 10, charSpacing: 1.6, color: C.WARM,
     align: "center", valign: "middle",
@@ -60,7 +60,7 @@ const EXEC = [
   B.skyline(s, 7.1);
   s.addNotes(
     "[TIMING] 2 min.\n" +
-      "[SAY] She ran the best closer in New York City. Today she comes to work for you. By 4:10 every one of you owns a working Donna. Not a demo. Yours, on your own inbox.\n" +
+      "[SAY] She ran the best closer in New York City. Today she comes to work for you. By 4:00 every one of you owns a working Donna. Not a demo. Yours, on your own inbox.\n" +
       "[DO] Housekeeping in one breath: laptops out, Claude desktop open, workspace invite accepted. Anyone missing a piece, flag me now and we fix it while we talk. Read the venue wifi network and password out loud; they are deliberately not on the slide.\n" +
       "[WATCH] Do not start until every laptop is open. The people who fall behind fall behind here, not later.\n" +
       "[NEXT] One slide to connect this to the hour you just spent."
@@ -110,7 +110,7 @@ const EXEC = [
     legend: null,
     bottom: 5.56,
   });
-  s.addText("2:40   ·   THE EXECUTION FLYWHEEL", {
+  s.addText("2:30   ·   THE EXECUTION FLYWHEEL", {
     x: 7.55, y: y + 0.02, w: 4.9, h: 0.28, margin: 0,
     fontFace: F.BODY, fontSize: 12, bold: true, charSpacing: 1.6,
     color: C.GOLD_D, align: "center", valign: "middle",
@@ -447,7 +447,7 @@ const EXEC = [
 // ================================================  10. THE PLAN  (light)
 {
   const { s } = slide("light");
-  B.eyebrow(s, "The plan  ·  2:40 context  ·  3:00 build  ·  3:45 discussion  ·  4:10 done", "light");
+  B.eyebrow(s, "The plan  ·  2:30 context  ·  2:50 build  ·  3:30 discussion  ·  4:00 done", "light");
   const y = B.title(s, "Three steps. Forty-five minutes.", "light");
 
   const steps = [
@@ -487,7 +487,7 @@ const EXEC = [
   );
   s.addNotes(
     "[TIMING] 3 min.\n" +
-      "[SAY] Three steps, one per stretch of the flywheel you just saw. Context until 3:00, build until 3:45, discussion until 4:10.\n" +
+      "[SAY] Three steps, one per stretch of the flywheel you just saw. Context until 2:50, build until 3:30, discussion until 4:00.\n" +
       "[DO] Say the arc out loud, then point at the station line on each card so the mapping is explicit.\n" +
       "[WATCH] Nobody types anything longer than one sentence today. Say that; it lowers the temperature.\n" +
       "[NEXT] Step one."
