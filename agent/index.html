@@ -90,18 +90,12 @@ Then give me the finished SKILL.md as a file I can download.</pre>
         <li>
           <h3>Give her the 4:30 shift (the automation)</h3>
           <p>In Cowork: <kbd class="ui">Scheduled tasks</kbd> &rarr; <kbd class="ui">New task</kbd>. Paste the standing order:</p>
-          <div class="tabs">
-            <div class="tab-list" role="tablist" aria-label="Email provider">
-              <button class="tab" role="tab" id="tab-gmail-schedule" aria-controls="panel-gmail-schedule" data-tab="gmail" aria-selected="true">Gmail</button>
-              <button class="tab" role="tab" id="tab-outlook-schedule" aria-controls="panel-outlook-schedule" data-tab="outlook" aria-selected="false">Outlook</button>
+          <div class="prompt">
+            <div class="prompt-bar">
+              <span class="prompt-label">The standing order</span>
+              <button class="copy-btn" type="button">Copy</button>
             </div>
-            <div class="tab-panel" role="tabpanel" id="panel-gmail-schedule" aria-labelledby="tab-gmail-schedule" data-panel="gmail">
-              <div class="prompt">
-                <div class="prompt-bar">
-                  <span class="prompt-label">The standing order</span>
-                  <button class="copy-btn" type="button">Copy</button>
-                </div>
-                <pre>Every weekday at 4:30 PM, use my donna-triage skill:
+            <pre>Every weekday at 4:30 PM, use my donna-triage skill:
 1. Triage today&rsquo;s inbox. Save the &#128308; Reply-Now drafts to my email Drafts.
 2. Create a Google Calendar event today, 4:55&ndash;5:00 PM, titled
    &ldquo;&#128203; Inbox Triage: Donna&rdquo;.
@@ -111,36 +105,8 @@ Then give me the finished SKILL.md as a file I can download.</pre>
 4. Set an EMAIL reminder on the event, 1 minute before.
 Also: dry run RIGHT NOW. Run today&rsquo;s triage and make today&rsquo;s event
 start 10 minutes from now, so I watch the email arrive in the room.</pre>
-              </div>
-              <p class="fine">Google Calendar sends email reminders natively. At 4:54&nbsp;PM every weekday, the triage lands on top of the very inbox it triaged, from a sender you already trust: your own calendar.</p>
-            </div>
-            <div class="tab-panel" role="tabpanel" id="panel-outlook-schedule" aria-labelledby="tab-outlook-schedule" data-panel="outlook" hidden>
-              <div class="prompt">
-                <div class="prompt-bar">
-                  <span class="prompt-label">The standing order</span>
-                  <button class="copy-btn" type="button">Copy</button>
-                </div>
-                <pre>Every weekday at 4:30 PM, use my donna-triage skill:
-1. Triage today&rsquo;s inbox. Save the &#128308; Reply-Now drafts to my email Drafts.
-2. Create an Outlook calendar event today, 4:55&ndash;5:00 PM, titled
-   &ldquo;&#128203; Inbox Triage: Donna&rdquo;.
-3. Write the whole triage report INTO the event description.
-   Short lines, tier emoji headers, one line per thread:
-   sender, subject, next move. No tables. Easy to read on a phone.
-4. Set a reminder on the event, 1 minute before.
-Also: dry run RIGHT NOW. Run today&rsquo;s triage and make today&rsquo;s event
-start 10 minutes from now, so I watch the reminder arrive in the room.</pre>
-              </div>
-              <p class="fine">On Outlook the 4:54&nbsp;PM nudge arrives as a <strong>calendar notification</strong> on laptop and phone, one tap from the full triage. Microsoft&rsquo;s calendar API doesn&rsquo;t let apps attach <em>email</em> reminders to events; Outlook keeps that switch inside its own interface.</p>
-              <details class="smallprint">
-                <summary>Want a true email at 4:54 in Outlook too?</summary>
-                <div class="smallprint-body">
-                  <p><strong>Per event, by hand:</strong> open the event in Outlook on the web &rarr; <kbd class="ui">Edit</kbd> &rarr; <kbd class="ui">More options</kbd> &rarr; the <kbd class="ui">Remind me</kbd> dropdown &rarr; <kbd class="ui">+ Add email reminder</kbd>. Works on your own calendar in Outlook on the web and the new Outlook (not classic desktop).</p>
-                  <p><strong>Once, forever:</strong> a five-minute Power Automate flow: trigger <em>&ldquo;When an upcoming event is starting soon&rdquo;</em> &rarr; action <em>&ldquo;Send an email.&rdquo;</em> Set it once and every &ldquo;Inbox Triage: Donna&rdquo; event emails you automatically. Grab Denise after the workshop and she&rsquo;ll set it up with you.</p>
-                </div>
-              </details>
-            </div>
           </div>
+          <p class="fine">Google Calendar sends email reminders natively. At 4:54&nbsp;PM every weekday, the triage lands on top of the very inbox it triaged, from a sender you already trust: your own calendar.</p>
         </li>
 
         <li>
@@ -149,7 +115,7 @@ start 10 minutes from now, so I watch the reminder arrive in the room.</pre>
           <ul>
             <li>&#128203; <strong>Inbox Triage: Donna</strong> sits on today&rsquo;s calendar, about ten minutes out.</li>
             <li>Open the event: <strong>your whole triage is in the description</strong>, tier by tier.</li>
-            <li>One minute before it starts, the <strong>email arrives</strong> (Gmail) or the notification pops (Outlook). Read your inbox&rsquo;s summary, in your inbox, without opening a single thread.</li>
+            <li>One minute before it starts, the <strong>email arrives</strong>. Read your inbox&rsquo;s summary, in your inbox, without opening a single thread.</li>
           </ul>
           <p class="fine">While you wait: check your Drafts folder. The &#128308; replies from the dry run are already sitting there.</p>
         </li>

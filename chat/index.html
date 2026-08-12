@@ -64,30 +64,14 @@
         <li>
           <h3>Connect your email, calendar, and files</h3>
           <p>Click your initials in the <kbd class="ui">bottom-left corner</kbd>, then <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Connectors</kbd>. Denise switched these on for the whole workspace; all you do is click <kbd class="ui">Connect</kbd>.</p>
-          <div class="tabs">
-            <div class="tab-list" role="tablist" aria-label="Email provider">
-              <button class="tab" role="tab" id="tab-gmail-connect" aria-controls="panel-gmail-connect" data-tab="gmail" aria-selected="true">Gmail</button>
-              <button class="tab" role="tab" id="tab-outlook-connect" aria-controls="panel-outlook-connect" data-tab="outlook" aria-selected="false">Outlook</button>
-            </div>
-            <div class="tab-panel" role="tabpanel" id="panel-gmail-connect" aria-labelledby="tab-gmail-connect" data-panel="gmail">
-              <ul>
-                <li>In the connectors list, find <kbd class="ui">Gmail</kbd> and click <kbd class="ui">Connect</kbd>.</li>
-                <li>Your browser opens a Google sign-in page. Choose your <strong>work account</strong>.</li>
-                <li>Google lists what Claude will be able to see. Click <kbd class="ui">Continue</kbd> (some screens say <kbd class="ui">Allow</kbd>).</li>
-                <li>Do the exact same for <kbd class="ui">Google Calendar</kbd> and <kbd class="ui">Google Drive</kbd>. All three, now: Donna needs the calendar for Step&nbsp;3&rsquo;s finale.</li>
-                <li>Back in Claude, each one reads <kbd class="ui">Connected</kbd>. That&rsquo;s it.</li>
-              </ul>
-            </div>
-            <div class="tab-panel" role="tabpanel" id="panel-outlook-connect" aria-labelledby="tab-outlook-connect" data-panel="outlook" hidden>
-              <ul>
-                <li>In the connectors list, find <kbd class="ui">Microsoft 365</kbd> and click <kbd class="ui">Connect</kbd>.</li>
-                <li>Your browser opens a Microsoft sign-in page. Enter your <strong>work email</strong>, then your password (and the usual MFA tap, if your company uses one).</li>
-                <li>Microsoft lists the permissions. Click <kbd class="ui">Accept</kbd>.</li>
-                <li>Good news: one connection covers Outlook mail, your calendar, <em>and</em> OneDrive. Everything Donna needs today, including Step&nbsp;3&rsquo;s finale.</li>
-                <li>Back in Claude, it reads <kbd class="ui">Connected</kbd>. That&rsquo;s it.</li>
-              </ul>
-            </div>
-          </div>
+          <ul>
+            <li>In the connectors list, find <kbd class="ui">Gmail</kbd> and click <kbd class="ui">Connect</kbd>.</li>
+            <li>Your browser opens a Google sign-in page. Choose your <strong>work account</strong>.</li>
+            <li>Google lists what Claude will be able to see. Click <kbd class="ui">Continue</kbd> (some screens say <kbd class="ui">Allow</kbd>).</li>
+            <li>Do the exact same for <kbd class="ui">Google Calendar</kbd> and <kbd class="ui">Google Drive</kbd>. All three, now: Donna needs the calendar for Step&nbsp;3&rsquo;s finale.</li>
+            <li>Back in Claude, each one reads <kbd class="ui">Connected</kbd>. That&rsquo;s it.</li>
+          </ul>
+          <p class="fine">Connected, but she still can&rsquo;t see your inbox? Quit Claude completely and reopen it. That clears it up nine times out of ten.</p>
           <details class="smallprint">
             <summary>Stuck connecting? Paste this</summary>
             <div class="smallprint-body">
@@ -96,7 +80,7 @@
                   <span class="prompt-label">The rescue prompt</span>
                   <button class="copy-btn" type="button">Copy</button>
                 </div>
-                <pre>Walk me through connecting my work email and calendar to Claude. First ask whether I&rsquo;m on Gmail or Outlook, Mac or Windows, and whether IT manages my account, and check Anthropic&rsquo;s current help docs before answering so the steps match what&rsquo;s actually on my screen today.
+                <pre>Walk me through connecting my Gmail, Google Calendar, and Google Drive to Claude. First ask whether I&rsquo;m on Mac or Windows and whether IT manages my Google account, and check Anthropic&rsquo;s current help docs before answering so the steps match what&rsquo;s actually on my screen today.
 Then give me numbered steps naming the exact buttons to click, a way to verify it worked, and what to do if the connector isn&rsquo;t listed or I hit an &ldquo;administrator hasn&rsquo;t approved this&rdquo; error.</pre>
               </div>
             </div>

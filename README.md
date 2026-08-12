@@ -30,14 +30,14 @@ set **Source** to **GitHub Actions**, then re-run the workflow.
 ## What's in here
 
 ```
-index.html                       # front page: runsheet, quadrant, the three-step agenda
+index.html                       # front page: hero + the three-step agenda
 chat/index.html                  # 01 · First Impressions (project + connectors + first draft)
 project/index.html               # 02 · The Triage Desk (five questions, the playbook paste)
 agent/index.html                 # 03 · Donna, Full Time (skill file + the 4:30 shift)
 skill/index.html                 # redirect → agent/  (old URLs stay alive)
 triage/index.html                # redirect → project/ (old URLs stay alive)
 assets/donna.css                 # single shared stylesheet
-assets/donna.js                  # copy buttons + Gmail/Outlook tab toggle
+assets/donna.js                  # copy buttons
 assets/build-your-own-donna.pptx # the 28-slide deck (older step 2/3 content; see decks/)
 skills/donna-triage/SKILL.md     # the triage playbook template (interview + tiers + guardrails)
 skills/donna-triage.zip          # zip fallback for Settings → Capabilities upload
@@ -81,9 +81,9 @@ ACCURACY → closing loops (stall rule), TRUST → time (send-by hour), VISION �
 
 - [ ] Merge to `main`, flip the repo public, enable Pages (steps above), confirm the
       live URL loads on a phone and a laptop.
-- [ ] Enterprise admin: enable connectors **Gmail, Google Calendar, Google Drive,
-      Microsoft 365**; confirm **skills/capabilities** and **scheduled tasks** are on
-      for all members (Cowork).
+- [ ] Enterprise admin: enable connectors **Gmail, Google Calendar, Google Drive**;
+      confirm **skills/capabilities** and **scheduled tasks** are on for all members
+      (Cowork). The workshop is Google-only; there is no Outlook path anywhere.
 - [ ] Email each attendee: personal workspace key + the site link + **the venue details**
       (they are deliberately not on the public site).
 - [ ] Full dry run with a fresh test account, in workshop order: create the Donna project,
@@ -101,13 +101,3 @@ ACCURACY → closing loops (stall rule), TRUST → time (send-by hour), VISION �
 - [ ] Confirm the venue Wi-Fi network + password (read them out loud at the open; they
       are deliberately not on a slide); phone hotspot backup; the dry-run screenshots as
       demo fallback if the network dies.
-
-## Build-time note on Outlook email reminders
-
-Google Calendar supports email reminders on events natively (and via API), so the Gmail
-path in Step 3 works end to end. Outlook on the web / new Outlook **does** offer "+ Add
-email reminder" on events (own calendar, full event form only), but Microsoft Graph,
-which connectors use, only supports pop-up reminders, so Donna can't set an email
-reminder programmatically on Outlook. The Step 3 Outlook tab therefore uses the calendar
-notification as the nudge and documents the manual per-event email reminder plus a
-one-time Power Automate flow as upgrades.

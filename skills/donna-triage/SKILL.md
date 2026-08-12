@@ -95,9 +95,8 @@ If I'm invoked by a scheduled task rather than a live chat:
    screen: tier emoji headers, then one short line per thread, like
    "Sender: subject. Next move." No tables, nothing wide.
 4. Set an EMAIL reminder on the event, 1 minute before. (Google Calendar
-   supports email reminders; on Outlook use the standard event reminder.)
-   The calendar sends the email, so the triage lands on top of the very
-   inbox it triaged.
+   supports email reminders natively.) The calendar sends the email, so the
+   triage lands on top of the very inbox it triaged.
 
 ## Setup Interview
 

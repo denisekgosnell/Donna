@@ -253,9 +253,9 @@ h1, h2, h3 { font-family: var(--serif); color: var(--cream); font-weight: 600; }
 
 /* ---------- agenda case-file cards ---------- */
 
-.cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 6px; }
-
-.case-card.finale { grid-column: 1 / -1; }
+/* Three equal columns so all three steps are the same size, side by side.
+   align-items: stretch (the grid default) keeps them the same height. */
+.cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 6px; }
 
 .case-card {
   position: relative;
@@ -478,38 +478,6 @@ kbd.ui {
   white-space: pre-wrap;
   word-break: break-word;
 }
-
-/* ---------- Gmail / Outlook tab toggle ---------- */
-
-.tabs { margin: 16px 0 4px; }
-
-.tab-list {
-  display: inline-flex;
-  border: 1px solid var(--hairline);
-  border-radius: 99px;
-  padding: 3px;
-  gap: 3px;
-  background: rgba(16, 24, 32, 0.4);
-}
-
-.tab {
-  font-family: var(--sans);
-  font-size: 14.5px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--muted);
-  background: transparent;
-  border: 0;
-  border-radius: 99px;
-  padding: 7px 22px;
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-.tab:hover { color: var(--cream); }
-.tab[aria-selected="true"] { background: var(--gold); color: var(--charcoal); }
-
-.tab-panel { padding-top: 14px; }
-.tab-panel[hidden] { display: none; }
 
 /* ---------- checkpoint (gold) ---------- */
 
@@ -963,7 +931,6 @@ details.smallprint .smallprint-body ol li { margin-bottom: 6px; }
   .stop { padding: 16px 18px; flex-direction: column; gap: 8px; }
   .runsheet .rs-time { width: 56px; font-size: 17px; }
   .stepnav a { max-width: 48%; }
-  .tab { padding: 7px 16px; }
   .donna-says .donna-says-body { padding: 14px 16px 16px; }
   .donna-says .mock-h { font-size: 20px; }
   .quad { padding: 12px 10px 12px; }

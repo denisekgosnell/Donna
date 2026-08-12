@@ -1,4 +1,4 @@
-/* BUILD YOUR OWN DONNA · copy buttons + Gmail/Outlook tab toggle */
+/* BUILD YOUR OWN DONNA · copy buttons */
 (function () {
   "use strict";
 
@@ -56,58 +56,4 @@
     });
   });
 
-  /* ---------- Gmail / Outlook tab toggle ---------- */
-
-  var STORE_KEY = "donna-mail-tab";
-
-  function selectTab(group, name) {
-    group.querySelectorAll(".tab").forEach(function (tab) {
-      var on = tab.dataset.tab === name;
-      tab.setAttribute("aria-selected", on ? "true" : "false");
-      tab.tabIndex = on ? 0 : -1;
-    });
-    group.querySelectorAll(".tab-panel").forEach(function (panel) {
-      panel.hidden = panel.dataset.panel !== name;
-    });
-  }
-
-  var groups = document.querySelectorAll(".tabs");
-
-  function choose(name) {
-    // Remember the choice so every toggle on every page follows it
-    try { window.localStorage.setItem(STORE_KEY, name); } catch (e) { /* private mode */ }
-    groups.forEach(function (g) { selectTab(g, name); });
-  }
-
-  groups.forEach(function (group) {
-    var tabs = Array.prototype.slice.call(group.querySelectorAll(".tab"));
-    tabs.forEach(function (tab) {
-      tab.addEventListener("click", function () { choose(tab.dataset.tab); });
-    });
-    var list = group.querySelector(".tab-list");
-    if (list) {
-      // WAI-ARIA tabs pattern: arrow keys move focus and selection between tabs
-      list.addEventListener("keydown", function (e) {
-        var i = tabs.indexOf(document.activeElement);
-        if (i === -1) return;
-        var next = null;
-        if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (i + 1) % tabs.length;
-        else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (i - 1 + tabs.length) % tabs.length;
-        else if (e.key === "Home") next = 0;
-        else if (e.key === "End") next = tabs.length - 1;
-        if (next === null) return;
-        e.preventDefault();
-        choose(tabs[next].dataset.tab);
-        tabs[next].focus();
-      });
-    }
-  });
-
-  var saved = null;
-  try { saved = window.localStorage.getItem(STORE_KEY); } catch (e) { /* private mode */ }
-  if (saved) {
-    groups.forEach(function (g) {
-      if (g.querySelector('.tab[data-tab="' + saved + '"]')) selectTab(g, saved);
-    });
-  }
 })();
