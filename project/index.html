@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>02 · Project: The Triage Desk · Build Your Own Donna</title>
-<meta name="description" content="Step 2 of Build Your Own Donna: teach Claude your triage rules once, in a project. Then triage becomes one sentence a day.">
+<title>01 · Project: First Impressions · Build Your Own Donna</title>
+<meta name="description" content="Step 1 of Build Your Own Donna: create Donna's project, connect Gmail and Google Calendar, and get your first drafted reply.">
 <meta name="theme-color" content="#14213D">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314213D'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-style='italic' fill='%23C9A227' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,20 +35,20 @@
   <main>
 
     <header class="case-header">
-      <p class="file-meta">Case file 02 &middot; ~15 min</p>
+      <p class="file-meta">Case file 01 &middot; ~15 min &middot; Flywheel: write and read</p>
       <div class="file-line">
-        <span class="file-no" aria-hidden="true">02</span>
-        <h1>Project: The&nbsp;Triage&nbsp;Desk</h1>
+        <span class="file-no" aria-hidden="true">01</span>
+        <h1>Project: First&nbsp;Impressions</h1>
       </div>
       <blockquote class="epigraph">
-        <p>&ldquo;You&rsquo;re never going to win big if you&rsquo;re only thinking about not losing.&rdquo;</p>
+        <p>&ldquo;Today&rsquo;s your lucky day. &hellip; Because it&rsquo;s the day you get to meet Donna.&rdquo;</p>
         <cite>Donna Paulsen, <em>Suits</em></cite>
       </blockquote>
     </header>
 
     <div class="goal">
       <span class="eyebrow">Goal</span>
-      <p>Stop re-explaining your rules. A project remembers them.</p>
+      <p>One desk for everything: create Donna&rsquo;s project, connect Gmail and Google Calendar, and get your first drafted reply.</p>
     </div>
 
     <section class="section">
@@ -57,49 +57,69 @@
 
         <li>
           <h3>Create the project</h3>
-          <p>In Claude&rsquo;s sidebar, click <kbd class="ui">Projects</kbd> &rarr; <kbd class="ui">New project</kbd>. Name it <kbd class="ui">Inbox Triage</kbd>.</p>
-        </li>
-
-        <li>
-          <h3>Paste the standing instructions</h3>
-          <p>Open the project and click <kbd class="ui">Set project instructions</kbd> (right-hand panel). Paste this in:</p>
-          <div class="prompt">
-            <div class="prompt-bar">
-              <span class="prompt-label">Project instructions</span>
-              <button class="copy-btn" type="button">Copy</button>
-            </div>
-            <pre>You are my inbox triage assistant. Whenever I ask you to triage:
-1. Review my inbox for the period I mention (default: last 24 hours).
-2. Sort every thread into: &#128308; NEEDS ME TODAY &middot; &#128993; DELEGATE &middot; &#128309; FYI &middot; &#9898; IGNORE
-   - These people are ALWAYS &#128308; unless pure FYI: [ADD 3&ndash;5 NAMES + EMAILS]
-   - Newsletters, cold outreach, automated notices &rarr; &#9898;
-   - Anything about [ADD YOUR #1 PROJECT OR DEAL] &rarr; &#128308;
-3. Give me ONE table: sender &middot; subject &middot; category &middot; one-line why &middot; suggested action.
-4. Offer to draft replies for the &#128308; rows. My voice: [ADD 3 WORDS, e.g. warm, brief, decisive].
-Never send anything.</pre>
+          <p>In the Claude desktop app&rsquo;s sidebar, click <kbd class="ui">Projects</kbd> &rarr; <kbd class="ui">New project</kbd>. Name it <kbd class="ui">Donna</kbd>.</p>
+          <p class="fine">Everything we do today happens inside this project. One desk, one drawer, all the paperwork in it.</p>
+          <div class="confirm">
+            <span class="confirm-label">You should see</span>
+            An empty project called <strong>Donna</strong>, with a <kbd class="ui">Set project instructions</kbd> option in the side panel. Leave the instructions alone for now. That&rsquo;s Case File 02.
           </div>
         </li>
 
         <li>
-          <h3>Fill in the three blanks</h3>
-          <p>The three <kbd class="ui">[ADD &hellip;]</kbd> blanks are the only editing you&rsquo;ll do all day:</p>
+          <h3>Connect Gmail, Calendar, and Drive</h3>
+          <p>Click your initials in the <kbd class="ui">bottom-left corner</kbd> &rarr; <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Connectors</kbd>. Then, one at a time:</p>
           <ul>
-            <li><strong>Your always-red list:</strong> the 3&ndash;5 people whose email always needs you. Names and addresses.</li>
-            <li><strong>Your #1 project or deal:</strong> the thing that jumps every queue right now.</li>
-            <li><strong>Your voice, in 3 words:</strong> how your replies should sound. <em>Warm, brief, decisive</em> is a fine start.</li>
+            <li>Find <kbd class="ui">Gmail</kbd> and click <kbd class="ui">Connect</kbd>. Your browser opens a Google sign-in page. Choose your <strong>work account</strong>, then click <kbd class="ui">Continue</kbd> (some screens say <kbd class="ui">Allow</kbd>).</li>
+            <li>Do the exact same for <kbd class="ui">Google Calendar</kbd>.</li>
+            <li>And once more for <kbd class="ui">Google Drive</kbd>. Donna files her briefings there in Case File 03.</li>
           </ul>
-          <p>Save the instructions.</p>
+          <p class="fine">Denise pre-enabled these for the whole workspace. All you ever click is Connect.</p>
+          <div class="confirm">
+            <span class="confirm-label">You should see</span>
+            Back in <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Connectors</kbd>: Gmail, Google Calendar, and Google Drive all read <strong>Connected</strong>.
+          </div>
+          <p class="fine">Connected, but Claude says it can&rsquo;t see your inbox? Quit Claude completely and reopen it (Mac: <kbd class="ui">&#8984;Q</kbd> &middot; Windows: right-click the tray icon &rarr; <kbd class="ui">Quit</kbd>). That clears it up nine times out of ten.</p>
+          <details class="smallprint">
+            <summary>On Outlook instead of Gmail?</summary>
+            <div class="smallprint-body">
+              <p>Connect <kbd class="ui">Microsoft 365</kbd> instead: one connection covers Outlook mail, your calendar, and OneDrive. Sign in with your work email, approve the usual MFA tap, click <kbd class="ui">Accept</kbd>. Everywhere this workshop says Gmail, Calendar, or Drive, read Outlook, Calendar, or OneDrive.</p>
+              <p>Prefer a guide matched to your exact screen? Paste this into the project:</p>
+              <p><code>Walk me through connecting my work email and calendar to Claude. First ask whether I&rsquo;m on Gmail or Outlook, Mac or Windows, and whether IT manages my account. Check Anthropic&rsquo;s current help docs before answering, then give me numbered steps naming the exact buttons, a way to verify it worked, and what to do if I hit an &ldquo;administrator hasn&rsquo;t approved this&rdquo; error.</code></p>
+            </div>
+          </details>
         </li>
 
         <li>
-          <h3>Start the daily ritual</h3>
-          <p>From now on, triage is one sentence, typed inside this project:</p>
+          <h3>Ask the question you&rsquo;d ask your assistant</h3>
+          <p>Click into your <kbd class="ui">Donna</kbd> project and paste:</p>
           <div class="prompt">
             <div class="prompt-bar">
-              <span class="prompt-label">The daily ritual</span>
+              <span class="prompt-label">Prompt 1: The Question</span>
               <button class="copy-btn" type="button">Copy</button>
             </div>
-            <pre>Triage my inbox.</pre>
+            <pre>What landed in my inbox in the last 24 hours that actually needs ME?
+Top 5, one line each.</pre>
+          </div>
+          <div class="confirm">
+            <span class="confirm-label">You should see</span>
+            Claude reading your <strong>actual inbox</strong> and coming back with five one-line items. This is the moment most people go quiet.
+          </div>
+        </li>
+
+        <li>
+          <h3>Get your first draft, delivered where you live</h3>
+          <div class="prompt">
+            <div class="prompt-bar">
+              <span class="prompt-label">Prompt 2: The First Draft</span>
+              <button class="copy-btn" type="button">Copy</button>
+            </div>
+            <pre>Draft a reply to #1. Under 100 words, warm but decisive.
+Save it as a draft in my Gmail so I can review it there.
+Do not send it.</pre>
+          </div>
+          <div class="confirm">
+            <span class="confirm-label">You should see</span>
+            Open Gmail in a browser tab (or on your phone) and click <kbd class="ui">Drafts</kbd>. There&rsquo;s a reply sitting there <strong>that you didn&rsquo;t type</strong>.
           </div>
         </li>
 
@@ -108,19 +128,24 @@ Never send anything.</pre>
 
     <div class="checkpoint">
       <span class="eyebrow">You did it when&hellip;</span>
-      <p>You get one table instead of an inbox.</p>
+      <p>A draft you didn&rsquo;t write is waiting in your Gmail Drafts.</p>
     </div>
 
-    <p class="why"><span class="why-label">Why this matters</span>Chat is a conversation; a project is a <em>standing arrangement</em>.</p>
+    <div class="stop">
+      <span class="stop-sign">Stop</span>
+      <p><strong>Hands off the keyboard here.</strong> We regroup as a room, then open Case File 02 together. Ahead of the group? Help a neighbor. It counts double.</p>
+    </div>
+
+    <p class="why"><span class="why-label">Why this matters</span>A chat forgets when it ends. A project remembers: one desk, every conversation, all your context in the drawer.</p>
 
     <nav class="stepnav" aria-label="Case file navigation">
-      <a class="prev" href="../chat/">
-        <span class="stepnav-dir">&larr; Previous</span>
-        <span class="stepnav-title">01 &middot; Chat: First Impressions</span>
+      <a class="prev" href="../">
+        <span class="stepnav-dir">&larr; Back</span>
+        <span class="stepnav-title">The agenda</span>
       </a>
-      <a class="next" href="../skill/">
+      <a class="next" href="../triage/">
         <span class="stepnav-dir">Next &rarr;</span>
-        <span class="stepnav-title">03 &middot; Skill: Donna&rsquo;s Playbook</span>
+        <span class="stepnav-title">02 &middot; Instructions: The Triage Desk</span>
       </a>
     </nav>
 

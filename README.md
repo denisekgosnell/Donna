@@ -1,7 +1,7 @@
 # Build Your Own Donna
 
-The complete workshop asset for **Build Your Own Donna**: a two-hour, hands-on workshop
-(Wednesday, July 29 · 1:00–3:00 PM · hosted by Denise Gosnell) where executives leave with a
+The complete workshop asset for **Build Your Own Donna**: a 90-minute, hands-on workshop
+(Thursday, August 13 · 2:30 to 4:00 PM ET · hosted by Denise Gosnell) where executives leave with a
 working AI executive assistant: inbox triage, replies drafted in their voice (never sent without
 them), and a daily briefing delivered through their calendar.
 
@@ -11,17 +11,25 @@ them), and a daily briefing delivered through their calendar.
 
 ```
 index.html                         # front page; doubles as the prep-email link
-chat/index.html                    # 01 · Chat: First Impressions
-project/index.html                 # 02 · Project: The Triage Desk
-skill/index.html                   # 03 · Skill: Donna's Playbook
-agent/index.html                   # 04 · Agent: Donna, Full Time
+project/index.html                 # 01 · Project: First Impressions
+triage/index.html                  # 02 · Instructions: The Triage Desk
+skill/index.html                   # 03 · Skill + Schedule: Donna, Full Time
 assets/donna.css                   # single shared stylesheet
-assets/donna.js                    # copy buttons + Gmail/Outlook tab toggle
+assets/donna.js                    # copy buttons + tab toggle
 assets/build-your-own-donna.pptx   # the workshop deck (speaker notes included)
 skills/donna-replies/SKILL.md      # fill-in-the-blanks skill template
-skills/donna-replies.zip           # zip fallback for Settings → Capabilities upload
+skills/donna-replies.zip           # ready-made fallback for the Cowork skill upload
 .nojekyll                          # disable Jekyll so Pages serves files as-is
 ```
+
+The workshop runs in three steps with a 20/45/25 arc. The first twenty minutes are
+framing: how executive judgment actually scales (Amazon's PR/FAQ, six-pager and Weekly
+Business Review flywheel), why the skill file is the same artifact with a new reader,
+why AI only scales the process you already have, and a four-quadrant read on what kind
+of executive is holding the pen. Then three ~15-minute case files, each mapped to nodes
+of that flywheel, each code block carrying a "you should see" confirmation box, each
+ending at a red stop sign so the room regroups together. Then an open discussion on
+where else these workflows apply.
 
 Static HTML only: no build step, no frameworks, relative links throughout, so the site
 works as-is under the `/Donna/` path.
@@ -35,7 +43,7 @@ works as-is under the `/Donna/` path.
 
 Until Pages is live, files are reachable at
 `https://raw.githubusercontent.com/denisekgosnell/Donna/main/...` for dry-run testing of the
-skill installer.
+skill-template fetch in Case File 03.
 
 ## Denise's pre-workshop checklist
 
@@ -43,25 +51,29 @@ skill installer.
 - [ ] Enterprise admin: enable connectors **Gmail, Google Calendar, Google Drive,
       Microsoft 365**; confirm **skills/capabilities** and **scheduled tasks** are on for
       all members.
-- [ ] Email each attendee: personal workspace key + the site link + **the full street
-      address** (it is deliberately not on the public site).
-- [ ] Full dry run with a fresh test account: connect Gmail, connect Outlook, install the
-      skill from the live URL, schedule the task, receive the 4:54 email, and **capture
-      screenshots of every step as you go**. The deck's dead-network fallback (slide 13)
-      promises "pre-made screenshots of every step"; this dry run is where they come from.
-      Keep them in your presenter folder.
+- [ ] Email each attendee: personal workspace key + the site link + **the venue details**
+      (they are deliberately not on the public site).
+- [ ] Full dry run with a fresh test account, in workshop order: create the Donna project,
+      connect Gmail + Calendar + Drive, paste the triage instructions and run them, have
+      Claude write SKILL.md and download it, upload it in Cowork → Skills, create the
+      scheduled task, watch the dry run, receive the 4:54 email. **Capture screenshots of
+      every step as you go**, especially the Cowork Skills and Scheduled tasks screens
+      (those menus move, and the site tells attendees to ask Claude if they do). The deck's
+      dead-network fallback slide promises "pre-made screenshots of every step"; this dry
+      run is where they come from. Keep them in your presenter folder.
 - [ ] Install **Playfair Display** and **Inter** (both free on Google Fonts) on the laptop
       that will present the deck; the deck declares them, and PowerPoint silently
       substitutes system fonts if they're missing.
-- [ ] Wi-Fi cards printed; phone hotspot backup; the dry-run screenshots as demo fallback
-      if the network dies.
+- [ ] Confirm the venue Wi-Fi network + password and put them on the deck's opening slide
+      (it ships with [VENUE WIFI] placeholders); phone hotspot backup; the dry-run
+      screenshots as demo fallback if the network dies.
 
 ## Build-time note on Outlook email reminders
 
 Google Calendar supports email reminders on events natively (and via API), so the Gmail path
-in Step 4 works end to end. Outlook on the web / new Outlook **does** offer "+ Add email
+in Case File 03 works end to end. Outlook on the web / new Outlook **does** offer "+ Add email
 reminder" on events (own calendar, full event form only), but Microsoft Graph, which
 connectors use, only supports pop-up reminders, so Donna can't set an email reminder
-programmatically on Outlook. The Step 4 Outlook tab therefore uses the calendar notification
-as the 4:54 nudge and documents the manual per-event email reminder plus a one-time Power
-Automate flow as upgrades.
+programmatically on Outlook. Case File 03's Outlook small print therefore uses the calendar
+notification as the 4:54 nudge and documents the manual per-event email reminder plus a
+one-time Power Automate flow as upgrades.
