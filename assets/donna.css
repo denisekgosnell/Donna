@@ -255,6 +255,8 @@ h1, h2, h3 { font-family: var(--serif); color: var(--cream); font-weight: 600; }
 
 .cases { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 6px; }
 
+.case-card.finale { grid-column: 1 / -1; }
+
 .case-card {
   position: relative;
   display: block;
@@ -614,6 +616,122 @@ details.smallprint .smallprint-body p + p { margin-top: 10px; }
 details.smallprint .smallprint-body ol { margin: 8px 0 8px 20px; }
 details.smallprint .smallprint-body ol li { margin-bottom: 6px; }
 
+/* ---------- "what Donna says" mock chat message ---------- */
+
+.donna-says {
+  margin: 14px 0 6px;
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--red);
+  border-radius: 4px;
+  background: rgba(16, 24, 32, 0.55);
+  overflow: hidden;
+}
+
+.donna-says .donna-says-bar {
+  padding: 9px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.18);
+}
+
+.donna-says .donna-says-body {
+  padding: 16px 20px 18px;
+  font-size: 16.5px;
+  color: var(--text);
+}
+.donna-says .donna-says-body p + p { margin-top: 10px; }
+
+.donna-says .mock-h {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--cream);
+}
+
+.donna-says .mock-sub {
+  font-size: 14.5px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.donna-says .mock-rule {
+  border: 0;
+  border-top: 1px solid rgba(201, 162, 39, 0.25);
+  margin: 12px 0;
+}
+
+/* ---------- the executive quadrant (from the deck) ---------- */
+
+.quad {
+  margin: 16px 0 6px;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  background: rgba(247, 243, 233, 0.03);
+  padding: 14px 16px 16px;
+}
+
+.quad .quad-axis {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  padding: 4px 0;
+}
+
+.quad .quad-cols {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 2px 6px 8px;
+}
+
+.quad .quad-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.quad .quad-cell {
+  border: 1px solid rgba(201, 162, 39, 0.25);
+  border-radius: 4px;
+  padding: 12px 14px;
+}
+
+.quad .quad-cell strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.quad .quad-cell span {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-top: 2px;
+}
+
+.quad .quad-cell em {
+  display: block;
+  font-size: 14.5px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
 /* ---------- prev / next nav ---------- */
 
 .stepnav {
@@ -714,4 +832,9 @@ details.smallprint .smallprint-body ol li { margin-bottom: 6px; }
   .callout-red { padding: 20px 22px; }
   .stepnav a { max-width: 48%; }
   .tab { padding: 7px 16px; }
+  .donna-says .donna-says-body { padding: 14px 16px 16px; }
+  .donna-says .mock-h { font-size: 20px; }
+  .quad { padding: 12px 10px 12px; }
+  .quad .quad-cell { padding: 10px 10px; }
+  .quad .quad-cell em { font-size: 13.5px; }
 }

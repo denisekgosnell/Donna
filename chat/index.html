@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>01 · Chat: First Impressions · Build Your Own Donna</title>
-<meta name="description" content="Step 1 of Build Your Own Donna: connect your email and get your first Claude-drafted reply.">
+<title>01 · First Impressions · Build Your Own Donna</title>
+<meta name="description" content="Step 1 of Build Your Own Donna: create her project, connect your email and calendar, and get your first Claude-drafted reply waiting in your drafts folder.">
 <meta name="theme-color" content="#14213D">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314213D'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-style='italic' fill='%23C9A227' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,17 +28,17 @@
       </svg>
       <span class="wordmark">Build Your Own Donna</span>
     </a>
-    <a class="backlink" href="../">All case files</a>
+    <a class="backlink" href="../">All steps</a>
   </header>
   <hr class="hairline">
 
   <main>
 
     <header class="case-header">
-      <p class="file-meta">Case file 01 &middot; ~10 min</p>
+      <p class="file-meta">Step 01 &middot; ~15 min</p>
       <div class="file-line">
         <span class="file-no" aria-hidden="true">01</span>
-        <h1>Chat: First&nbsp;Impressions</h1>
+        <h1>First&nbsp;Impressions</h1>
       </div>
       <blockquote class="epigraph">
         <p>&ldquo;Today&rsquo;s your lucky day. &hellip; Because it&rsquo;s the day you get to meet Donna.&rdquo;</p>
@@ -48,7 +48,7 @@
 
     <div class="goal">
       <span class="eyebrow">Goal</span>
-      <p>Connect your email; get your first drafted reply.</p>
+      <p>Give her a desk, connect your inbox, and watch her read it. You leave this step with a draft you didn&rsquo;t write.</p>
     </div>
 
     <section class="section">
@@ -56,23 +56,14 @@
       <ol class="steps">
 
         <li>
-          <h3>Open the connectors panel</h3>
-          <p>In the Claude desktop app, click your initials in the <kbd class="ui">bottom-left corner</kbd>, then <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Connectors</kbd>.</p>
-          <p class="fine">Denise has already switched these on for the whole workspace. The connectors are sitting there waiting. All you do is click Connect.</p>
+          <h3>Create her project. The desk before the mail.</h3>
+          <p>In Claude&rsquo;s sidebar: <kbd class="ui">Projects</kbd> &rarr; <kbd class="ui">New project</kbd>. Name it <kbd class="ui">Donna</kbd>.</p>
+          <p class="fine">Everything you do today happens inside this project. It&rsquo;s where she keeps what she learns about you.</p>
         </li>
 
         <li>
-          <h3>Connect your email</h3>
-          <p>Start a new chat and paste this. Claude checks the current help docs and walks you through connecting, step by step, matched to your exact setup:</p>
-          <div class="prompt">
-            <div class="prompt-bar">
-              <span class="prompt-label">Prompt 1: The Setup</span>
-              <button class="copy-btn" type="button">Copy</button>
-            </div>
-            <pre>Walk me through connecting my work email and calendar to Claude &mdash; first ask whether I&rsquo;m on Gmail or Outlook, Mac or Windows, and whether IT manages my account, and check Anthropic&rsquo;s current help docs before answering so the steps match what&rsquo;s actually on my screen today.
-Then give me numbered steps naming the exact buttons to click, a way to verify it worked, and what to do if the connector isn&rsquo;t listed or I hit an &ldquo;administrator hasn&rsquo;t approved this&rdquo; error.</pre>
-          </div>
-          <p class="fine">Prefer the steps written out? Here&rsquo;s the same trip by hand:</p>
+          <h3>Connect your email, calendar, and files</h3>
+          <p>Click your initials in the <kbd class="ui">bottom-left corner</kbd>, then <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Connectors</kbd>. Denise switched these on for the whole workspace; all you do is click <kbd class="ui">Connect</kbd>.</p>
           <div class="tabs">
             <div class="tab-list" role="tablist" aria-label="Email provider">
               <button class="tab" role="tab" id="tab-gmail-connect" aria-controls="panel-gmail-connect" data-tab="gmail" aria-selected="true">Gmail</button>
@@ -81,10 +72,10 @@ Then give me numbered steps naming the exact buttons to click, a way to verify i
             <div class="tab-panel" role="tabpanel" id="panel-gmail-connect" aria-labelledby="tab-gmail-connect" data-panel="gmail">
               <ul>
                 <li>In the connectors list, find <kbd class="ui">Gmail</kbd> and click <kbd class="ui">Connect</kbd>.</li>
-                <li>Your browser opens a Google sign-in page. Choose your <strong>work account</strong> (or type the address and sign in as usual).</li>
-                <li>Google lists what Claude will be able to see. Click <kbd class="ui">Continue</kbd> (on some screens it says <kbd class="ui">Allow</kbd>).</li>
-                <li>While you&rsquo;re in the list, do the exact same for <kbd class="ui">Google Calendar</kbd> and <kbd class="ui">Google Drive</kbd>. Donna needs both this afternoon in Step&nbsp;4.</li>
-                <li>Back in Claude, each one now reads <kbd class="ui">Connected</kbd>. That&rsquo;s it.</li>
+                <li>Your browser opens a Google sign-in page. Choose your <strong>work account</strong>.</li>
+                <li>Google lists what Claude will be able to see. Click <kbd class="ui">Continue</kbd> (some screens say <kbd class="ui">Allow</kbd>).</li>
+                <li>Do the exact same for <kbd class="ui">Google Calendar</kbd> and <kbd class="ui">Google Drive</kbd>. All three, now: Donna needs the calendar for Step&nbsp;3&rsquo;s finale.</li>
+                <li>Back in Claude, each one reads <kbd class="ui">Connected</kbd>. That&rsquo;s it.</li>
               </ul>
             </div>
             <div class="tab-panel" role="tabpanel" id="panel-outlook-connect" aria-labelledby="tab-outlook-connect" data-panel="outlook" hidden>
@@ -92,37 +83,53 @@ Then give me numbered steps naming the exact buttons to click, a way to verify i
                 <li>In the connectors list, find <kbd class="ui">Microsoft 365</kbd> and click <kbd class="ui">Connect</kbd>.</li>
                 <li>Your browser opens a Microsoft sign-in page. Enter your <strong>work email</strong>, then your password (and the usual MFA tap, if your company uses one).</li>
                 <li>Microsoft lists the permissions. Click <kbd class="ui">Accept</kbd>.</li>
-                <li>Good news: one connection covers Outlook mail, your calendar, <em>and</em> OneDrive: everything Donna needs today, including Step&nbsp;4.</li>
-                <li>Back in Claude, it now reads <kbd class="ui">Connected</kbd>. That&rsquo;s it.</li>
+                <li>Good news: one connection covers Outlook mail, your calendar, <em>and</em> OneDrive. Everything Donna needs today, including Step&nbsp;3&rsquo;s finale.</li>
+                <li>Back in Claude, it reads <kbd class="ui">Connected</kbd>. That&rsquo;s it.</li>
               </ul>
             </div>
           </div>
+          <details class="smallprint">
+            <summary>Stuck connecting? Paste this</summary>
+            <div class="smallprint-body">
+              <div class="prompt">
+                <div class="prompt-bar">
+                  <span class="prompt-label">The rescue prompt</span>
+                  <button class="copy-btn" type="button">Copy</button>
+                </div>
+                <pre>Walk me through connecting my work email and calendar to Claude. First ask whether I&rsquo;m on Gmail or Outlook, Mac or Windows, and whether IT manages my account, and check Anthropic&rsquo;s current help docs before answering so the steps match what&rsquo;s actually on my screen today.
+Then give me numbered steps naming the exact buttons to click, a way to verify it worked, and what to do if the connector isn&rsquo;t listed or I hit an &ldquo;administrator hasn&rsquo;t approved this&rdquo; error.</pre>
+              </div>
+            </div>
+          </details>
         </li>
 
         <li>
-          <h3>Ask the question you ask your assistant</h3>
-          <p>Start a new chat and paste:</p>
+          <h3>Ask the question you&rsquo;d ask an assistant</h3>
+          <p>Open your <kbd class="ui">Donna</kbd> project, start a new chat, and paste:</p>
           <div class="prompt">
             <div class="prompt-bar">
-              <span class="prompt-label">Prompt 2: The Question</span>
+              <span class="prompt-label">Prompt 1 &middot; the question</span>
               <button class="copy-btn" type="button">Copy</button>
             </div>
             <pre>What landed in my inbox in the last 24 hours that actually needs ME?
 Top 5, one line each.</pre>
           </div>
-          <p class="fine">Watch it read your actual inbox and come back with five lines. This is the moment most people go quiet.</p>
+          <p class="fine">You&rsquo;re on track when she answers with five lines <em>from your actual inbox</em>. This is the moment most rooms go quiet.</p>
         </li>
 
         <li>
           <h3>Get your first draft</h3>
+          <p>Same chat, one more paste:</p>
           <div class="prompt">
             <div class="prompt-bar">
-              <span class="prompt-label">Prompt 3: The First Draft</span>
+              <span class="prompt-label">Prompt 2 &middot; the first draft</span>
               <button class="copy-btn" type="button">Copy</button>
             </div>
             <pre>Draft a reply to #1. Under 100 words, warm but decisive.
-Don&rsquo;t send it &mdash; just show me.</pre>
+Save it as a draft in my email so I can review it there.
+Do not send it.</pre>
           </div>
+          <p class="fine">Now switch to your email and open your Drafts folder. Go on.</p>
         </li>
 
       </ol>
@@ -130,19 +137,19 @@ Don&rsquo;t send it &mdash; just show me.</pre>
 
     <div class="checkpoint">
       <span class="eyebrow">You did it when&hellip;</span>
-      <p>Claude shows a draft you&rsquo;d actually send.</p>
+      <p>A draft you didn&rsquo;t write is waiting in your drafts folder.</p>
     </div>
 
-    <p class="why"><span class="why-label">Why this matters</span>Chat is the job interview. Donna&rsquo;s hired. Now we train her.</p>
+    <p class="why"><span class="why-label">Why this matters</span>The interview is over. She&rsquo;s hired. Now we train her.</p>
 
-    <nav class="stepnav" aria-label="Case file navigation">
+    <nav class="stepnav" aria-label="Step navigation">
       <a class="prev" href="../">
         <span class="stepnav-dir">&larr; Back</span>
         <span class="stepnav-title">The agenda</span>
       </a>
       <a class="next" href="../project/">
         <span class="stepnav-dir">Next &rarr;</span>
-        <span class="stepnav-title">02 &middot; Project: The Triage Desk</span>
+        <span class="stepnav-title">02 &middot; The Triage Desk</span>
       </a>
     </nav>
 

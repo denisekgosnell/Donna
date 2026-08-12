@@ -452,7 +452,7 @@ const EXEC = [
 
   const steps = [
     ["01", "FIRST IMPRESSIONS", "One desk for everything. Connect your email and calendar, and she drafts her first reply.", "DOCUMENT  ·  TEST"],
-    ["02", "THE TRIAGE DESK", "You brief her once. Red, yellow, gray. Your people, your priorities, your voice.", "REVISE"],
+    ["02", "THE TRIAGE DESK", "She asks five questions, learns which executive you are, and writes your rules herself.", "REVISE"],
     ["03", "DONNA, FULL TIME", "Her playbook becomes a skill she keeps, and she takes the 4:30 evening shift.", "OPERATE"],
   ];
   const cy = y + 0.16;
@@ -611,7 +611,7 @@ const PIP2 = ["REVISE"];
     "[TIMING] 1 min.\n" +
       "[SAY] Step two is the document. Everything else today is plumbing.\n" +
       "[DO] Pip moves to REVISE.\n" +
-      "[NEXT] Four blanks, and they are the only editing anyone does all day."
+      "[NEXT] Five questions, and she does the writing."
   );
 }
 {
@@ -621,45 +621,41 @@ const PIP2 = ["REVISE"];
   const y = B.title(s, "This is the document.", "light");
 
   const pw = 7.3;
-  B.promptBlock(s, {
+  const tb = B.promptBlock(s, {
     x: G.ML, y: y + 0.02, w: pw, mode: "light",
-    label: "Project instructions · fill 4 blanks",
+    label: "Paste into a new chat in your Donna project",
     lines: [
-      'You are Donna, my inbox triage assistant.',
-      'When I say "triage my inbox":',
-      "1. Review my inbox (default: the last 24 hours).",
-      "2. Sort every thread into three buckets:",
-      "   RED, NEEDS ME - my VIPs, plus my #1 project:",
-      "   [ADD 3-5 NAMES + EMAILS] . [ADD YOUR #1 DEAL]",
-      "   YELLOW, DELEGATE - work my team owns:",
-      '   [ADD 1-3 DELEGATES + LANES, e.g. "Sam: billing"]',
-      "   GRAY, IGNORE - newsletters, cold outreach, noise.",
-      "3. Show me ONE table: sender, subject, bucket, why,",
-      "   next move.",
-      "4. Draft replies for REDs (my voice: [ADD 3 WORDS])",
-      "   and handoff notes for YELLOWs. Save to Drafts.",
-      "Never send anything. Never delete. Drafts only.",
-    ],
-    highlights: [
-      "[ADD 3-5 NAMES + EMAILS] . [ADD YOUR #1 DEAL]",
-      '[ADD 1-3 DELEGATES + LANES, e.g. "Sam: billing"]',
-      "[ADD 3 WORDS]",
+      "Here is my triage playbook template. Read it,",
+      "then run its Setup Interview on me exactly as",
+      "written: five questions, about six minutes, one",
+      "question at a time. Start now with your greeting",
+      "and Question 1 of 5.",
+      "",
+      "[the full template rides along in the same paste.",
+      " One copy button on the site, step two.]",
     ],
     tag: "s15 prompt",
+  });
+  B.promptBlock(s, {
+    x: G.ML, y: tb + 0.24, w: pw, mode: "light",
+    label: "If time is called · she jumps to the end",
+    lines: ["final question"],
+    tag: "s15 force",
   });
 
   const rx = G.ML + pw + 0.4;
   const rw = G.ML + G.W - rx;
-  B.label(s, "The four blanks", "light", {
+  B.label(s, "The five questions", "light", {
     x: rx, w: rw, y: y + 0.06, size: 13, color: C.GOLD_D, charSpacing: 1.6,
   });
   const blanks = [
-    ["Your always-red list", "the people who jump every queue"],
-    ["Your #1 deal", "the one project that is always urgent"],
-    ["Your delegates and lanes", "one to three people, and what each owns"],
-    ["Your voice, in 3 words", "warm, brief, decisive is a fine start"],
+    ["1 · Which executive are you?", "closed or open, tell first or ask first"],
+    ["2 · Reply Now", "the 3 to 5 people who never wait"],
+    ["3 · By End of Day", "your leadership team"],
+    ["4 · Your voice, in 3 words", "warm, brief, decisive is a fine start"],
+    ["5 · THE FINAL QUESTION", "your blind spot, made a standing rule"],
   ];
-  let by = y + 0.5;
+  let by = y + 0.42;
   blanks.forEach(([name, hint]) => {
     B.diamond(s, rx, by + 0.06, 0.11, C.GOLD);
     const nh = B.boxH(name, rw - 0.34, 14, "arialBold");
@@ -673,13 +669,13 @@ const PIP2 = ["REVISE"];
       fontFace: F.BODY, fontSize: 12, italic: true, color: C.MUTE, valign: "top",
     });
     B.assertFits("s15 blank", rx, by, rw, nh + hh, G.BODY_BOT);
-    by += nh + hh + 0.2;
+    by += nh + hh + 0.1;
   });
   s.addNotes(
     "[TIMING] 10 min.\n" +
-      "[SAY] Four blanks, and they are the only editing you do all day. The delegates blank is the one the pilot group left empty, so call it out: yellow only works if she knows who owns what.\n" +
-      "[DO] Give them six to eight quiet minutes to fill blanks. Circulate. Then everyone runs: Triage my inbox.\n" +
-      "[WATCH] Someone will triage from OUTSIDE the project and get generic results. Make sure they are inside the Donna project.\n" +
+      "[SAY] You do not write the document any more. You answer five questions and she writes it. Question 1 is the quadrant from earlier: closed or open, tell or ask. Answer it out loud, together; it is the confirmation everyone is in the right place.\n" +
+      "[DO] Everyone pastes the template from the site. Watch every screen show QUESTION 1 OF 5, then let them run. She adapts to their corner: fast for TIME, confirmed-back for ACCURACY, people-first for TRUST, loop-closing for VISION.\n" +
+      "[WATCH] She reaches THE FINAL QUESTION by minute six on her own. When I call time, anyone not there types: final question. Someone will paste OUTSIDE the Donna project and get generic results; get them inside the project.\n" +
       "[NEXT] The checkpoint, and the ritual."
   );
 }
@@ -704,8 +700,8 @@ const PIP2 = ["REVISE"];
   s.addNotes(
     "[TIMING] 4 min.\n" +
       "[SAY] You will never re-explain your rules again. That is the difference between a chat and a project.\n" +
-      "[DO] Everyone runs the one-sentence ritual inside the project. Hold until every screen shows a table.\n" +
-      "[WATCH] Then the green light: yes, draft the reds and the yellow handoffs.\n" +
+      "[DO] Gate first: is THE FINAL QUESTION on your screen? Anyone who is not there types: final question. After the OPEN FOR BUSINESS banner, everyone runs the one-sentence ritual inside the project. Hold until every screen shows a table.\n" +
+      "[WATCH] Reply-Now drafts are already sitting in their email Drafts folder. Have them check; that is the gasp.\n" +
       "[NEXT] Step three. The document leaves your hands."
   );
 }
@@ -741,14 +737,15 @@ const PIP3 = ["OPERATE"];
   const pw = 7.3;
   B.promptBlock(s, {
     x: G.ML, y: y + 0.02, w: pw, mode: "light",
-    label: "Paste inside your Donna project",
+    label: "Paste into the same chat, after your first table",
     lines:
-      "Turn this project's triage instructions into a reusable " +
-      "skill file called donna-replies. Use everything you " +
-      "already know from this project: my VIPs, my delegates, " +
-      'my voice, my rules. Include the line "Never send. ' +
-      'Never delete. No exceptions." Then give me the finished ' +
-      "SKILL.md as a file I can download.",
+      "Turn this conversation's triage setup into a reusable " +
+      "skill file named donna-triage. Fill in the template with " +
+      "everything you learned: my executive type, my tiers, my " +
+      "voice, my final-question guardrail. Keep the Setup " +
+      "Interview and scheduled-task sections. Include the line " +
+      '"Never send. Never delete. No exceptions." Then give me ' +
+      "the finished SKILL.md as a file I can download.",
     tag: "s18 prompt",
   });
 
@@ -779,15 +776,15 @@ const PIP3 = ["OPERATE"];
   B.panelList(s, {
     x: G.ML, y: 4.86, w: pw, mode: "light", size: 13, gap: 0.12, pad: 0.26,
     items: [
-      { text: "You should see donna-replies in your Cowork skills list before anyone touches scheduled tasks.", bold: true, color: C.GOLD_D },
+      { text: "You should see donna-triage in your Cowork skills list before anyone touches scheduled tasks.", bold: true, color: C.GOLD_D },
     ],
     tag: "s18 panel",
   });
   s.addNotes(
     "[TIMING] 6 min.\n" +
       "[SAY] A skill written in chat does not exist in Cowork until you upload it. This is the step the pilot group missed, so go slow and demo it on screen.\n" +
-      "[DO] Three beats. She writes it. You DOWNLOAD it. You UPLOAD it into Cowork skills. Wait until every screen shows donna-replies in the list.\n" +
-      "[WATCH] No external URL is needed any more: the project already knows the VIPs, the delegates, the voice and the rules, so she writes the file from what she has.\n" +
+      "[DO] Three beats. She writes it. You DOWNLOAD it. You UPLOAD it into Cowork skills. Wait until every screen shows donna-triage in the list.\n" +
+      "[WATCH] Stay in the SAME chat as step two; a fresh chat has not met them yet and writes a blank template. The interview answers live in that conversation.\n" +
       "[NEXT] Before we schedule it, the promise."
   );
 }
@@ -828,20 +825,18 @@ const PIP3 = ["OPERATE"];
     x: G.ML, y: y + 0.02, w: pw, mode: "light",
     label: "Cowork · scheduled tasks · new task",
     lines: [
-      "Every weekday at 4:30 PM, use my donna-replies skill:",
-      "1. Triage today's inbox; save red replies and yellow",
-      "   handoffs to my Drafts.",
-      '2. Write my Daily Briefing doc, "Daily Briefing:',
-      '   [today’s date]":',
-      "   . the 5 things that need ME",
-      "   . the replies you drafted",
-      "   . what you ignored and why",
-      "   . my first meeting tomorrow",
-      '3. Save it to my Drive in a folder "Donna Briefings".',
-      '4. Create a calendar event today 4:55-5:00 PM,',
-      '   "Briefing with Donna", doc link in the description,',
-      "   reminder 1 minute before.",
-      "Also: do a dry run for today RIGHT NOW.",
+      "Every weekday at 4:30 PM, use my donna-triage skill:",
+      "1. Triage today's inbox. Save the Reply-Now drafts",
+      "   to my email Drafts.",
+      '2. Create a calendar event today, 4:55-5:00 PM,',
+      '   titled "Inbox Triage: Donna".',
+      "3. Write the whole triage report INTO the event",
+      "   description. Short lines, one per thread:",
+      "   sender, subject, next move. No tables.",
+      "4. Set an EMAIL reminder on the event, 1 minute",
+      "   before.",
+      "Also: dry run RIGHT NOW. Make today's event start",
+      "10 minutes from now, so I watch the email arrive.",
     ],
     tag: "s20 prompt",
   });
@@ -850,8 +845,8 @@ const PIP3 = ["OPERATE"];
   const rw = G.ML + G.W - rx;
   const ladder = [
     ["4:30", "she works"],
-    ["4:54", "you are notified"],
-    ["4:55", "a five-minute read"],
+    ["4:54", "the email lands"],
+    ["4:55", "one read, whole inbox"],
   ];
   let ly = y + 0.1;
   ladder.forEach(([t, d]) => {
@@ -877,7 +872,7 @@ const PIP3 = ["OPERATE"];
   });
   s.addNotes(
     "[TIMING] 4 min.\n" +
-      "[SAY] The last line of that prompt is the finale: a dry run, right now.\n" +
+      "[SAY] The last line of that prompt is the finale: a dry run, right now, with today's event ten minutes out so the email lands while we are all still in the room.\n" +
       "[DO] Grab the prompt from the site rather than retyping. If someone cannot find scheduled tasks, ask Claude where they are; the area moved in a recent update.\n" +
       "[WATCH] Gmail attaches a true EMAIL reminder. Outlook gets a calendar notification instead, because Microsoft Graph cannot set email reminders on events. Verified. Say it plainly rather than promising something Outlook cannot do.\n" +
       "[NEXT] Everybody watch their screen."
@@ -892,11 +887,11 @@ const PIP3 = ["OPERATE"];
     fontFace: F.DISPLAY, fontSize: 72, bold: true, color: C.GOLD_L,
     align: "center", valign: "middle",
   });
-  const dry = B.statement(s, "Her first briefing arrives before you leave the room.", "dark", {
+  const dry = B.statement(s, "Her first triage arrives before you leave the room.", "dark", {
     size: 32, w: 10.4, y: 3.1,
   });
   s.addText(
-    "The trick: Claude never emails you. Your calendar does. The briefing lands from a sender you already trust.",
+    "The trick: Claude never emails you. Your calendar does. The triage lands from a sender you already trust.",
     {
       x: 1.9, y: dry + 0.16, w: 9.53, h: 0.5, margin: 0,
       fontFace: F.BODY, fontSize: 15, color: C.WARM,
@@ -909,7 +904,7 @@ const PIP3 = ["OPERATE"];
   s.addNotes(
     "[TIMING] 3 min.\n" +
       "[SAY] Nothing. Let the laptops ping.\n" +
-      "[DO] The closing moment of the build: everyone watches the dry run land. Doc in the Donna Briefings folder, event on today's calendar, drafts waiting. Hold the silence.\n" +
+      "[DO] The closing moment of the build: everyone watches the dry run land. Event on today's calendar with the whole triage in its description, drafts waiting, the email minutes out. Hold the silence.\n" +
       "[WATCH] Point at the pip: all four stations are lit for the first time. They just ran the Amazon execution flywheel on their own inbox. That is the payoff of the whole device.\n" +
       "[NEXT] Then the reframe: this was never about email."
   );
@@ -1096,9 +1091,9 @@ const PIP3 = ["OPERATE"];
   B.skyline(s, 7.1);
   s.addNotes(
     "[TIMING] 2 min.\n" +
-      "[SAY] Tomorrow at 4:54 the briefing arrives on its own for the first time. When it does, that is Donna saying she has got it from here.\n" +
+      "[SAY] Tomorrow at 4:54 the triage arrives on its own for the first time. When it does, that is Donna saying she has got it from here.\n" +
       "[DO] Questions any time: denise@denisegosnell.ai.\n" +
-      "[WATCH] The workshop resources are NOT on a public link right now. Do not promise a URL from the stage. If someone asks for the prompts, offer to email them.\n" +
+      "[WATCH] The workshop site is public: denisekgosnell.github.io/Donna. Every prompt on it has a copy button; point people there instead of retyping anything.\n" +
       "[NEXT] Done. You're weird. We'll be friends."
   );
 }
