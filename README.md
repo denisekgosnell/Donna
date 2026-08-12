@@ -1,79 +1,113 @@
 # Build Your Own Donna
 
 The complete workshop asset for **Build Your Own Donna**: a 90-minute, hands-on workshop
-(Thursday, August 13 · 2:30 to 4:00 PM ET · hosted by Denise Gosnell) where executives leave with a
-working AI executive assistant: inbox triage, replies drafted in their voice (never sent without
-them), and a daily briefing delivered through their calendar.
+(Thursday, August 13 · 2:30 to 4:00 PM ET · Signature's Board Offsite · hosted by
+Denise Gosnell) where executives leave with a working AI executive assistant: an inbox
+triaged around **which executive they are**, replies drafted in their voice (never sent
+without them), and the day's triage delivered as a calendar invite that emails them one
+minute before.
 
 **Live site:** https://denisekgosnell.github.io/Donna/
+
+## Go live (do this before the demo; ~60 seconds)
+
+The repo is currently **private**, which keeps GitHub Pages off. One switch in the
+GitHub UI, then the deploy workflow does the rest:
+
+1. **Make the repo public (the only manual step):** Settings → General → scroll to
+   **Danger Zone** → **Change visibility** → **Make public** → type the repo name
+   to confirm.
+2. **Deploy:** the `Deploy site to GitHub Pages` workflow runs on every push to
+   `main` and creates the Pages site on its first successful run. After flipping
+   visibility, go to **Actions** → **Deploy site to GitHub Pages** → **Run
+   workflow** (or just ask Claude to trigger it, or push anything to `main`).
+3. Give it a minute, then confirm https://denisekgosnell.github.io/Donna/ loads.
+   Every later merge to `main` redeploys automatically.
+
+Fallback if the workflow's enablement step ever fails: Settings → **Pages** →
+set **Source** to **GitHub Actions**, then re-run the workflow.
 
 ## What's in here
 
 ```
-index.html                         # front page; doubles as the prep-email link
-project/index.html                 # 01 · Project: First Impressions
-triage/index.html                  # 02 · Instructions: The Triage Desk
-skill/index.html                   # 03 · Skill + Schedule: Donna, Full Time
-assets/donna.css                   # single shared stylesheet
-assets/donna.js                    # copy buttons + tab toggle
-assets/build-your-own-donna.pptx   # the workshop deck (speaker notes included)
-skills/donna-replies/SKILL.md      # fill-in-the-blanks skill template
-skills/donna-replies.zip           # ready-made fallback for the Cowork skill upload
-.nojekyll                          # disable Jekyll so Pages serves files as-is
+index.html                       # front page: runsheet, quadrant, the three-step agenda
+chat/index.html                  # 01 · First Impressions (project + connectors + first draft)
+project/index.html               # 02 · The Triage Desk (five questions, the playbook paste)
+agent/index.html                 # 03 · Donna, Full Time (skill file + the 4:30 shift)
+skill/index.html                 # redirect → agent/  (old URLs stay alive)
+triage/index.html                # redirect → project/ (old URLs stay alive)
+assets/donna.css                 # single shared stylesheet
+assets/donna.js                  # copy buttons + Gmail/Outlook tab toggle
+assets/build-your-own-donna.pptx # the 28-slide deck (older step 2/3 content; see decks/)
+skills/donna-triage/SKILL.md     # the triage playbook template (interview + tiers + guardrails)
+skills/donna-triage.zip          # zip fallback for Settings → Capabilities upload
+build/deck-b-donna.js            # deck source (pptxgenjs); node build/deck-b-donna.js
+build/deck-a-sigcompass.js       # companion deck source
+build/sync-triage-template.py    # re-injects SKILL.md into project/index.html's paste block
+decks/                           # built decks (pptx + pdf), current with this flow
+.nojekyll                        # disable Jekyll so Pages serves files as-is
 ```
 
-The workshop runs in three steps with a 20/45/25 arc. The first twenty minutes are
-framing: how executive judgment actually scales (Amazon's PR/FAQ, six-pager and Weekly
-Business Review flywheel), why the skill file is the same artifact with a new reader,
-why AI only scales the process you already have, and a four-quadrant read on what kind
-of executive is holding the pen. Then three ~15-minute case files, each mapped to nodes
-of that flywheel, each code block carrying a "you should see" confirmation box, each
-ending at a red stop sign so the room regroups together. Then an open discussion on
-where else these workflows apply.
+The 90 minutes run 2:30 framing → 2:50 build (the three steps) → 3:30 discussion →
+4:00 done.
 
-Static HTML only: no build step, no frameworks, relative links throughout, so the site
+Static HTML only: no build step for the site itself, relative links throughout, so it
 works as-is under the `/Donna/` path.
 
-## Enable GitHub Pages (one-time, after merging)
+**One source of truth for the playbook:** edit `skills/donna-triage/SKILL.md`, then run
+`python3 build/sync-triage-template.py` to refresh the Step 2 paste block, and rebuild
+the zip: `cd skills && rm donna-triage.zip && zip -r donna-triage.zip donna-triage`.
 
-1. Go to **Settings → Pages** in this repository.
-2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
-3. Choose branch **`main`** and folder **`/ (root)`**, then **Save**.
-4. Give it a minute, then confirm https://denisekgosnell.github.io/Donna/ loads.
+## How Step 2 runs in the room (the moderator's script)
 
-Until Pages is live, files are reachable at
-`https://raw.githubusercontent.com/denisekgosnell/Donna/main/...` for dry-run testing of the
-skill-template fetch in Case File 03.
+1. Everyone pastes the playbook template from the Step 2 page into a new chat in their
+   Donna project.
+2. **Confirmation the room is in the right place:** every screen shows
+   "Five questions. About six minutes." and **QUESTION 1 OF 5: Which executive are you?**
+   The room answers Question 1 together (closed/open × tell/ask, from the deck's quadrant).
+3. Donna personalizes the rest: fast for TIME, confirmed-back for ACCURACY, people-first
+   for TRUST, loop-closing for VISION.
+4. She reaches **🏁 THE FINAL QUESTION** (the blind-spot question) by minute six on her
+   own. If anyone isn't there when time is called, they type **`final question`** and she
+   jumps straight to it. Call it from the front: "Is 🏁 THE FINAL QUESTION on your screen?"
+5. After the ✅ TRIAGE DESK: OPEN FOR BUSINESS banner, the very last act of Step 2:
+   everyone types **Triage my inbox.**
+
+Blind-spot map (diagonals of the deck's quadrant): TIME → trust (who's always CC'd),
+ACCURACY → closing loops (stall rule), TRUST → time (send-by hour), VISION → accuracy
+(details she verifies in every draft).
 
 ## Denise's pre-workshop checklist
 
-- [ ] Merge the PR, then enable GitHub Pages (steps above) and confirm the live URL loads.
+- [ ] Merge to `main`, flip the repo public, enable Pages (steps above), confirm the
+      live URL loads on a phone and a laptop.
 - [ ] Enterprise admin: enable connectors **Gmail, Google Calendar, Google Drive,
-      Microsoft 365**; confirm **skills/capabilities** and **scheduled tasks** are on for
-      all members.
+      Microsoft 365**; confirm **skills/capabilities** and **scheduled tasks** are on
+      for all members (Cowork).
 - [ ] Email each attendee: personal workspace key + the site link + **the venue details**
       (they are deliberately not on the public site).
 - [ ] Full dry run with a fresh test account, in workshop order: create the Donna project,
-      connect Gmail + Calendar + Drive, paste the triage instructions and run them, have
-      Claude write SKILL.md and download it, upload it in Cowork → Skills, create the
-      scheduled task, watch the dry run, receive the 4:54 email. **Capture screenshots of
+      connect Gmail + Calendar + Drive, run Step 2 end to end (paste template → five
+      questions → 🏁 final question → ✅ banner → "Triage my inbox."), then Step 3 end to
+      end (skill file download → Cowork upload → scheduled task dry run → calendar event
+      with the triage in its description → the reminder email). **Capture screenshots of
       every step as you go**, especially the Cowork Skills and Scheduled tasks screens
-      (those menus move, and the site tells attendees to ask Claude if they do). The deck's
-      dead-network fallback slide promises "pre-made screenshots of every step"; this dry
-      run is where they come from. Keep them in your presenter folder.
-- [ ] Install **Playfair Display** and **Inter** (both free on Google Fonts) on the laptop
-      that will present the deck; the deck declares them, and PowerPoint silently
-      substitutes system fonts if they're missing.
-- [ ] Confirm the venue Wi-Fi network + password and put them on the deck's opening slide
-      (it ships with [VENUE WIFI] placeholders); phone hotspot backup; the dry-run
-      screenshots as demo fallback if the network dies.
+      (those menus move, and the site tells attendees to ask Claude if they do). Keep
+      them in your presenter folder as the dead-network fallback.
+- [ ] Present from `decks/build-your-own-donna-v2.pptx` (rebuilt to match this flow;
+      step 2/3 slides changed). Install **Playfair Display** and **Inter** (both free on
+      Google Fonts) on the presenting laptop; PowerPoint silently substitutes fonts if
+      they're missing.
+- [ ] Confirm the venue Wi-Fi network + password (read them out loud at the open; they
+      are deliberately not on a slide); phone hotspot backup; the dry-run screenshots as
+      demo fallback if the network dies.
 
 ## Build-time note on Outlook email reminders
 
-Google Calendar supports email reminders on events natively (and via API), so the Gmail path
-in Case File 03 works end to end. Outlook on the web / new Outlook **does** offer "+ Add email
-reminder" on events (own calendar, full event form only), but Microsoft Graph, which
-connectors use, only supports pop-up reminders, so Donna can't set an email reminder
-programmatically on Outlook. Case File 03's Outlook small print therefore uses the calendar
-notification as the 4:54 nudge and documents the manual per-event email reminder plus a
+Google Calendar supports email reminders on events natively (and via API), so the Gmail
+path in Step 3 works end to end. Outlook on the web / new Outlook **does** offer "+ Add
+email reminder" on events (own calendar, full event form only), but Microsoft Graph,
+which connectors use, only supports pop-up reminders, so Donna can't set an email
+reminder programmatically on Outlook. The Step 3 Outlook tab therefore uses the calendar
+notification as the nudge and documents the manual per-event email reminder plus a
 one-time Power Automate flow as upgrades.
