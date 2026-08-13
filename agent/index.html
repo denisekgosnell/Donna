@@ -52,8 +52,8 @@
     </div>
 
     <div class="callout-red">
-      <p class="callout-title">She never sends. Ever.</p>
-      <p>Scheduled or not, every reply she drafts waits in your <strong>drafts folder</strong> for your say-so. She never deletes anything either. It&rsquo;s written into the skill itself: &ldquo;Never send. Never delete. No exceptions.&rdquo;</p>
+      <p class="callout-title">She drafts. You send.</p>
+      <p>Scheduled or not, every reply she writes waits in your <strong>drafts folder</strong> for your say-so, and she never deletes a thing. The one send you grant her: the RSVP when she accepts a meeting invite onto a free calendar. It&rsquo;s written into the skill itself: never send a reply, never delete anything.</p>
     </div>
 
     <section class="section">
@@ -70,54 +70,68 @@
             </div>
             <pre>Turn this conversation&rsquo;s triage setup into a reusable skill file named donna-triage.
 Fill in the template we used with everything you learned about me: my executive type, my tiers and lists, my voice, and my final-question guardrail. Keep the Setup Interview and the scheduled-task sections so the skill still knows how to reconfigure and how to run on a schedule.
-Include the line &ldquo;Never send. Never delete. No exceptions.&rdquo;
+Keep the hard rules intact: never send a reply, never delete anything, meeting-invite RSVPs only on a free calendar.
 Then give me the finished SKILL.md as a file I can download.</pre>
           </div>
           <p class="fine">You&rsquo;re on track when a <strong>file card</strong> appears in the chat with a download arrow on it.</p>
         </li>
 
         <li>
-          <h3>Download it, then hand it to Cowork</h3>
-          <p>Three clicks, watch the screen share:</p>
+          <h3>Download it, then upload it to your skills</h3>
+          <p>Three moves, watch the screen share:</p>
           <ul>
-            <li>Click the file card&rsquo;s <kbd class="ui">download</kbd> arrow. It saves as <code>SKILL.md</code>.</li>
-            <li>Open <kbd class="ui">Cowork</kbd> &rarr; <kbd class="ui">Skills</kbd> &rarr; <kbd class="ui">Add skill</kbd> &rarr; upload the file.</li>
-            <li>Confirm it: <strong>donna-triage</strong> now shows in your Cowork skills list.</li>
+            <li>Click the file card&rsquo;s <kbd class="ui">Download</kbd> arrow. It saves as <code>SKILL.md</code>.</li>
+            <li>Click your initials in the <kbd class="ui">bottom-left corner</kbd>, then <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Skills</kbd> &rarr; <kbd class="ui">Upload skill</kbd>, and pick the file from your computer.</li>
+            <li>Confirm it: <strong>donna-triage</strong> now shows in your skills list.</li>
           </ul>
-          <p class="fine">That skills-list entry is the confirmation for this step. Nobody touches scheduled tasks until it&rsquo;s there.</p>
+          <div class="note">
+            <svg class="note-icon" viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="48" r="45" stroke="#C9A227" stroke-width="3"/><g stroke="#A31621" stroke-width="5" stroke-linecap="square"><path d="M37 30v36"/><path d="M31 30h12M31 66h12"/><path d="M43 30a18 18 0 0 1 0 36"/></g></svg>
+            <div class="note-body">
+              <span class="note-label">Donna&rsquo;s note</span>
+              The only thing anyone forgets here is where the file went. Unless you chose a spot, it&rsquo;s in your <strong>Downloads</strong> folder, and it&rsquo;s the newest file there, sitting right at the top.
+            </div>
+          </div>
+          <p class="fine">That skills-list entry is the confirmation for this step. Nobody touches the schedule until it&rsquo;s there.</p>
         </li>
 
         <li>
-          <h3>Give her the 4:30 shift (the automation)</h3>
-          <p>In Cowork: <kbd class="ui">Scheduled tasks</kbd> &rarr; <kbd class="ui">New task</kbd>. Paste the standing order:</p>
+          <h3>Give her the 3:42 shift (the automation)</h3>
+          <p>From <kbd class="ui"><svg class="kbd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.8V21h14V9.8"/></svg>Home</kbd>: <kbd class="ui">Scheduled tasks</kbd> &rarr; <kbd class="ui">New task</kbd>. Paste the standing order:</p>
           <div class="prompt">
             <div class="prompt-bar">
               <span class="prompt-label">The standing order</span>
               <button class="copy-btn" type="button">Copy</button>
             </div>
-            <pre>Every weekday at 4:30 PM, use my donna-triage skill:
-1. Triage today&rsquo;s inbox. Save the &#128308; Reply-Now drafts to my email Drafts.
-2. Create a Google Calendar event today, 4:55&ndash;5:00 PM, titled
-   &ldquo;&#128203; Inbox Triage: Donna&rdquo;.
+            <pre>Every weekday at 3:42 PM Eastern, use my donna-triage skill:
+1. Triage today&rsquo;s inbox. Save the Reply-Now drafts to my email Drafts.
+2. Create a Google Calendar event today, starting 10 minutes after this
+   task starts and 5 minutes long, titled &ldquo;Inbox Triage: Donna&rdquo;.
 3. Write the whole triage report INTO the event description.
-   Short lines, tier emoji headers, one line per thread:
+   Short lines, tier-name headers, one line per thread:
    sender, subject, next move. No tables. Easy to read on a phone.
 4. Set an EMAIL reminder on the event, 1 minute before.
-Also: dry run RIGHT NOW. Run today&rsquo;s triage and make today&rsquo;s event
-start 10 minutes from now, so I watch the email arrive in the room.</pre>
+If today&rsquo;s 3:42 run has already passed, also do a dry run right now
+so I can watch the first one land.</pre>
           </div>
-          <p class="fine">Google Calendar sends email reminders natively. At 4:54&nbsp;PM every weekday, the triage lands on top of the very inbox it triaged, from a sender you already trust: your own calendar.</p>
+          <div class="note">
+            <svg class="note-icon" viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="48" r="45" stroke="#C9A227" stroke-width="3"/><g stroke="#A31621" stroke-width="5" stroke-linecap="square"><path d="M37 30v36"/><path d="M31 30h12M31 66h12"/><path d="M43 30a18 18 0 0 1 0 36"/></g></svg>
+            <div class="note-body">
+              <span class="note-label">Donna&rsquo;s note</span>
+              Take yourself off the approval loop so the shift runs hands-free: in the chat&rsquo;s lower left, click <kbd class="ui">Accept edits</kbd>, choose <kbd class="ui">Bypass permissions</kbd>, then click <kbd class="ui">Bypass permissions</kbd> to confirm. That switch is Claude asking how much she may do without checking in first. Her hard rules still stand either way: drafts only, never delete.
+            </div>
+          </div>
+          <p class="fine">Google Calendar sends email reminders natively. Every weekday around 3:51&nbsp;PM, the triage lands on top of the very inbox it triaged, from a sender you already trust: your own calendar.</p>
         </li>
 
         <li>
-          <h3>Watch the dry run land</h3>
-          <p>The last line of the standing order makes her work <em>right now</em>. Within a few minutes, three confirmations:</p>
+          <h3>Watch the first shift land</h3>
+          <p>Set the task before 3:42 and it fires live in this room; land here later and the last line makes her work <em>right now</em>. Either way, three confirmations within a few minutes:</p>
           <ul>
-            <li>&#128203; <strong>Inbox Triage: Donna</strong> sits on today&rsquo;s calendar, about ten minutes out.</li>
+            <li><strong>Inbox Triage: Donna</strong> sits on today&rsquo;s calendar, about ten minutes out.</li>
             <li>Open the event: <strong>your whole triage is in the description</strong>, tier by tier.</li>
             <li>One minute before it starts, the <strong>email arrives</strong>. Read your inbox&rsquo;s summary, in your inbox, without opening a single thread.</li>
           </ul>
-          <p class="fine">While you wait: check your Drafts folder. The &#128308; replies from the dry run are already sitting there.</p>
+          <p class="fine">While you wait: check your Drafts folder. The Reply-Now drafts from this run are already sitting there.</p>
         </li>
 
         <li>
@@ -129,9 +143,9 @@ start 10 minutes from now, so I watch the email arrive in the room.</pre>
               <button class="copy-btn" type="button">Copy</button>
             </div>
             <pre>Every Friday at 3:00 PM, use my donna-triage skill on the past week:
-&#128065; On Watch movement, &#128197; Weekly Batch threads, and anything still
+On Watch movement, Weekly Batch threads, and anything still
 waiting on me. Create a calendar event Monday 8:00&ndash;8:05 AM titled
-&ldquo;&#128203; Week Ahead: Donna&rdquo; with the report in the event description
+&ldquo;Week Ahead: Donna&rdquo; with the report in the event description
 and an email reminder 1 minute before.</pre>
           </div>
           <p class="fine">If you skipped the optional tiers in Step&nbsp;2, set this up after the workshop: tell her &ldquo;set up my watch tier&rdquo; first.</p>
@@ -149,8 +163,8 @@ and an email reminder 1 minute before.</pre>
         <p>Your VIPs will change. Your #1 deal will close. When they do, update her in four moves; this loop is the whole game:</p>
         <p>1&nbsp;&middot;&nbsp;Come back to your <strong>Donna project chat</strong> any time and tell her what changed: &ldquo;Move Sam to Reply Now,&rdquo; or just &ldquo;reconfigure.&rdquo;<br>
         2&nbsp;&middot;&nbsp;Say &ldquo;<strong>write my skill file again</strong>&rdquo; and download the fresh <code>SKILL.md</code>.<br>
-        3&nbsp;&middot;&nbsp;In <kbd class="ui">Cowork</kbd> &rarr; <kbd class="ui">Skills</kbd>, replace <strong>donna-triage</strong> with the new file.<br>
-        4&nbsp;&middot;&nbsp;That&rsquo;s it. The 4:30 shift runs the new rules the same evening. Teach her once, update her in minutes, never re-explain.</p>
+        3&nbsp;&middot;&nbsp;Back in <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Skills</kbd>, replace <strong>donna-triage</strong> with the new file.<br>
+        4&nbsp;&middot;&nbsp;That&rsquo;s it. The 3:42 shift runs the new rules the same afternoon. Teach her once, update her in minutes, never re-explain.</p>
       </div>
     </section>
 

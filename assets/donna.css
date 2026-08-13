@@ -715,6 +715,80 @@ kbd.ui {
 .aside p { color: var(--text); }
 .aside p + p { margin-top: 8px; }
 
+/* ---------- Donna's note: the themed helper tip ---------- */
+
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 14px 0 6px;
+  border: 1px solid rgba(201, 162, 39, 0.28);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  padding: 14px 18px;
+  background: rgba(201, 162, 39, 0.06);
+}
+
+.note .note-icon { flex: none; width: 30px; height: 30px; margin-top: 2px; }
+
+.note .note-body { font-size: 15.5px; line-height: 1.6; color: var(--text); }
+
+.note .note-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 3px;
+}
+
+.note .note-body p + p { margin-top: 6px; }
+
+/* ---------- inline UI glyph inside kbd chips (e.g. the Home house) ---------- */
+
+kbd.ui .kbd-icon {
+  display: inline-block;
+  width: 0.95em;
+  height: 0.95em;
+  vertical-align: -0.12em;
+  margin-right: 5px;
+}
+
+/* ---------- follow-along QR (front page, top) ---------- */
+
+.qr-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 2px 0 12px;
+  padding: 14px 20px;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  background: rgba(247, 243, 233, 0.04);
+}
+
+.qr-strip .qr-tile {
+  flex: none;
+  width: 116px;
+  height: 116px;
+  background: var(--cream);
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.qr-strip .qr-tile svg { display: block; width: 100%; height: 100%; }
+
+.qr-strip .qr-text .eyebrow { display: block; margin-bottom: 5px; }
+
+.qr-strip .qr-url {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
 /* ---------- collapsible small print ---------- */
 
 details.smallprint {
@@ -965,6 +1039,10 @@ details.smallprint .smallprint-body ol li { margin-bottom: 6px; }
   .stepnav a { max-width: 48%; }
   .donna-says .donna-says-body { padding: 14px 16px 16px; }
   .donna-says .mock-h { font-size: 20px; }
+  .note { padding: 12px 14px; gap: 11px; }
+  .note .note-icon { width: 26px; height: 26px; }
+  .qr-strip { gap: 14px; padding: 12px 14px; }
+  .qr-strip .qr-tile { width: 88px; height: 88px; }
   .quad { padding: 12px 10px 12px; }
   .quad .quad-cell { padding: 10px 10px; }
   .quad .quad-cell em { font-size: 13.5px; }

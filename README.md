@@ -33,7 +33,7 @@ set **Source** to **GitHub Actions**, then re-run the workflow.
 index.html                       # front page: hero + the three-step agenda
 chat/index.html                  # 01 · First Impressions (project + connectors + first draft)
 project/index.html               # 02 · The Triage Desk (five questions, the playbook paste)
-agent/index.html                 # 03 · Donna, Full Time (skill file + the 4:30 shift)
+agent/index.html                 # 03 · Donna, Full Time (skill file + the 3:42 shift)
 skill/index.html                 # redirect → agent/  (old URLs stay alive)
 triage/index.html                # redirect → project/ (old URLs stay alive)
 assets/donna.css                 # single shared stylesheet
@@ -58,19 +58,21 @@ works as-is under the `/Donna/` path.
 `python3 build/sync-triage-template.py` to refresh the Step 2 paste block, and rebuild
 the zip: `cd skills && rm donna-triage.zip && zip -r donna-triage.zip donna-triage`.
 
-## How Step 2 runs in the room (the moderator's script)
+## How Step 2 runs in the room (the script from the front)
 
 1. Everyone pastes the playbook template from the Step 2 page into a new chat in their
    Donna project.
 2. **Confirmation the room is in the right place:** every screen shows
    "Five questions. About six minutes." and **QUESTION 1 OF 5: Which executive are you?**
-   The room answers Question 1 together (closed/open × tell/ask, from the deck's quadrant).
+   The room answers Question 1 together: everyone names their corner (TIME · ACCURACY ·
+   TRUST · VISION); the two picks (closed/open × tell/ask) also work.
 3. Donna personalizes the rest: fast for TIME, confirmed-back for ACCURACY, people-first
    for TRUST, loop-closing for VISION.
-4. She reaches **🏁 THE FINAL QUESTION** (the blind-spot question) by minute six on her
-   own. If anyone isn't there when time is called, they type **`final question`** and she
-   jumps straight to it. Call it from the front: "Is 🏁 THE FINAL QUESTION on your screen?"
-5. After the ✅ TRIAGE DESK: OPEN FOR BUSINESS banner, the very last act of Step 2:
+4. She reaches **THE FINAL QUESTION** (the blind-spot question) by minute six on her
+   own. If anyone isn't there when you start pulling the room back together, they type
+   **`final question`** (as its own message) and she jumps straight to it. Call it from
+   the front: "Is THE FINAL QUESTION on your screen?"
+5. After the TRIAGE DESK: OPEN FOR BUSINESS banner, the very last act of Step 2:
    everyone types **Triage my inbox.**
 
 Blind-spot map (diagonals of the deck's quadrant): TIME → trust (who's always CC'd),
@@ -88,12 +90,12 @@ ACCURACY → closing loops (stall rule), TRUST → time (send-by hour), VISION �
       (they are deliberately not on the public site).
 - [ ] Full dry run with a fresh test account, in workshop order: create the Donna project,
       connect Gmail + Calendar + Drive, run Step 2 end to end (paste template → five
-      questions → 🏁 final question → ✅ banner → "Triage my inbox."), then Step 3 end to
-      end (skill file download → Cowork upload → scheduled task dry run → calendar event
+      questions → the final question → banner → "Triage my inbox."), then Step 3 end to
+      end (skill file download → Settings → Skills upload → the 3:42 task → calendar event
       with the triage in its description → the reminder email). **Capture screenshots of
-      every step as you go**, especially the Cowork Skills and Scheduled tasks screens
-      (those menus move, and the site tells attendees to ask Claude if they do). Keep
-      them in your presenter folder as the dead-network fallback.
+      every step as you go**, especially the Settings → Skills and Home → Scheduled tasks
+      screens (those menus move, and the site tells attendees to ask Claude if they do).
+      Keep them in your presenter folder as the dead-network fallback.
 - [ ] Present from `decks/build-your-own-donna-v2.pptx` (rebuilt to match this flow;
       step 2/3 slides changed). Install **Playfair Display** and **Inter** (both free on
       Google Fonts) on the presenting laptop; PowerPoint silently substitutes fonts if
