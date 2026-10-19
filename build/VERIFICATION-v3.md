@@ -17,11 +17,11 @@ Built and verified October 19, 2026 against `FABLE-V3-INSTRUCTIONS.md` section 1
 | 11.1 · 9 promo reconciliation | PARTIAL | The promo page was unreachable from the build environment (network policy denied `denisegosnell.ai`); matrix built from Denise's brief, below |
 | 11.1 · 10 reading level | PASS | Flesch-Kincaid grade 4.4 / 4.4 / 5.0 / 5.5 / 5.7 for the five pages (target 8 or lower) |
 | 11.2 · student fleet | PASS after two rounds | Ten personas; see the table below and the change log |
-| 11.3 · branding consistency | see below | Fresh-eyes visual and brand review of deck renders, site screenshots, and video stills |
+| 11.3 · branding consistency | PASS after fixes | Fresh-eyes review of deck renders, site screenshots, and video stills; findings and fixes below |
 | 11.4 · semantics and simplicity | PASS after fixes | Four-word loop consistent on every surface; five edits applied |
 | 11.5 · product-UI accuracy | PASS after fixes | 13 confirmed, 4 contradicted and fixed, 6 unconfirmed and hedged on the site |
 | 11.6 · live dry run | PASS | Four connector operations proven, every test object deleted; log below |
-| 11.7 · visual QA | see below | |
+| 11.7 · visual QA | PASS after fixes | 10 of 26 slides had a defect on the first render; all fixed and re-rendered (details below) |
 | 11.8 · presenter dry run | PASS after fixes | Timing arithmetic fixed on slides 19 and 21; trust-slide note corrected |
 
 ## 11.2 · The student fleet
@@ -37,13 +37,21 @@ Each persona read the five pages in character (Part A), ran the Step 2 interview
 | 5 | Linda, realtor, phone-first | 3 | 3 | 2 | 3 | 3 | 6/6 | 7/7 | Copy button on her phone cannot paste into her laptop; wanted that said up front |
 | 6 | Jamal, IT-managed Google account | 4 | 4 | 5 | 5 | 3 | 6/6 | 7/7 | Finishes on a personal Gmail; wanted the front page to name what IT must approve (added) |
 | 7 | Sofia, Lisbon, evening attendee | 3 | 5 | 4 | 3 | 3 | 6/6 | 6/7 | Finishes; wanted 24-hour times next to every clock time |
-| 8 | Kenji, CFO, tries to break the rules | pending | | | | | | | Agent interrupted by a rate limit; resumed |
+| 8 | Kenji, CFO, tries to break the rules | 4 | 4 | 4 | 4 | 4 | 7/7 | 7/7 | Finishes; both "just send them all" and "delete the newsletters" declined in character; wanted one line on what the connector and Auto mode may do (added to Step 3) |
 | 9 | Aisha, PM, has built a GPT and a Zap | 4 | 5 | 4 | 4 | 4 | 6/6 | 7/7 | Finishes; the Monday signature needed to say where the review lives |
 | 10 | Dev, ML engineer | 4 | 5 | 4 | 4 | 3 | 6/6 | 7/7 | Finishes with one correction filed: define what is retrained before "retrain" is used |
 
-Interview (Part B) across all eight completed runs: the greeting said four questions and about four minutes; questions were numbered; THE FINAL QUESTION rendered with its heading; early answers were banked; the banner ended on "Triage my inbox."; `final question` jumped and listed defaults; "just send them all" was declined in character every time. Retrain (Part C): all eight found all three planted discrepancies; changes were proposed, not applied; Hard rules untouched; "Approve 1 and 3." changed exactly the approved items. Two observations led to playbook edits: Donna-sims proposed five to eight changes rather than one to three (now capped at three in the retrain section), and attendees' numbering differs per run (the site now says "approve by number").
+Interview (Part B) across all ten runs: the greeting said four questions and about four minutes; questions were numbered; THE FINAL QUESTION rendered with its heading; early answers were banked; the banner ended on "Triage my inbox."; `final question` jumped and listed defaults; "just send them all" was declined in character every time. Retrain (Part C): all ten found all three planted discrepancies; changes were proposed, not applied; Hard rules untouched; "Approve 1 and 3." changed exactly the approved items. Two observations led to playbook edits: Donna-sims proposed five to eight changes rather than one to three (now capped at three in the retrain section), and attendees' numbering differs per run (the site now says "approve by number").
 
-**Round 1 pass criteria.** The front page was rated 3 or below by six personas, which fails "no step rated below 4 by more than one persona." Fixes applied (see the change log), then a round-2 read-through with the three lowest-scoring personas (Maya, Robert, Linda): results in `build/scratch/fleet/report-round2.md` and summarized below once complete.
+**Round 1 pass criteria.** The front page was rated 3 or below by six personas, which fails "no step rated below 4 by more than one persona." Fixes applied (see the change log), then a round-2 read-through with the three lowest-scoring personas (`build/scratch/fleet/report-round2.md`):
+
+| Round 2 | Front | S1 | S2 | S3 | S4 | Verdict |
+|---|---|---|---|---|---|---|
+| Maya | 4 | 4 | 4 | 5 | 3 | No longer closes the tab; wanted the glossary above its first use and the Step 4 delete move spelled out (both done) |
+| Robert | 3 | 3 | 4 | 4 | 4 | Learns in the first minute that it is Gmail-built; wanted Outlook as its own checklist item and a Step 1 line for a missing Microsoft connector (both done) |
+| Linda | 4 | 4 | 3 | 4 | 3 | Wanted "iPad" named, the Step 2 copy button named, the file-picker clicks in Step 3, and the Step 4 delete move (all done) |
+
+After round 2 and its fixes, the only remaining 3s trace to a product limit stated plainly (Outlook needs admin-enabled write access; personal Outlook.com cannot connect) rather than to unclear copy. Round 3 was not run.
 
 ### Change log from the fleet and the reviewers
 
@@ -64,6 +72,21 @@ Deck:
 - Slide 19: "Her first shift lands as the last step starts" and notes that do not wait for the email.
 - Slide 21 notes: paste by 1:01 so the review lands by 1:11. Slide 24 hub and slide 25 highlight no longer use RED (reserved accent now on exactly four slides).
 - Slide 25: "Mon, you sign it · one paste, one upload".
+
+## 11.3 and 11.7 · Visual QA and brand consistency (`build/scratch/fleet/review-visual-brand.md`)
+
+A fresh-eyes agent inspected all 26 rendered slides at 110 dpi, the five site pages at 1280 px and 375 px, and the video stills against the brand rules. First render: 10 slides needed a fix. All were fixed in the generators and re-rendered:
+
+- Every ring's arrowheads pointed counter-clockwise against the 01 to 04 numbering (a long-standing bug in the shared helper); now rotated to the clockwise tangent and narrowed.
+- Slide 3: the statement wrapped to three lines under LibreOffice's Georgia substitute and the caption ran through the closed-loop ring; now a 40 pt two-line statement with the diagrams placed by explicit geometry and the caption below the ring.
+- Slides 14 and 17: headlines ran into the progress pip's caption; headlines on every pip slide are now capped at 10.3 in and the pip caption sizes to its text.
+- Slides 10 to 22: the pip sat 0.44 in from the top edge, inside the 0.5 in rule now (ring at 0.52 to 0.96 in, dots inside the 12.45 in margin).
+- Slides 11 and 21: card gaps of 0.14 in are now 0.30 in; slides 14, 17, 18 and 21 share one prompt width so the right column lands at the same x.
+- Slide 8 and every site page: the green check emoji (the one off-palette colour) is now a plain check glyph.
+- Site prompt blocks carried hard line breaks that double-wrapped at 375 px; continuation lines are joined so phones wrap naturally (the words are unchanged).
+- Video: the captions rendered in DejaVu Serif Bold (no Georgia in the container) and items faded in through a near-black; re-rendered with an embedded Georgia-metric face (Gelasio) and alpha fade from each item's own colour. See the deviations section for the font outcome.
+
+Not changed, by design: the site's cream prompt blocks (the August site convention, inverse of the deck's dark blocks), and the site monogram, which already carries the inner ring at reduced opacity. Consistent across deck and site: the footer string, the four station names, every date and time string, the step lengths, no horizontal overflow at 375 px, every button name as a chip, the Step 2 paste block scrolling inside its box.
 
 ## 11.4 · Semantics and simplicity (`build/scratch/fleet/review-semantics.md`)
 
@@ -120,7 +143,7 @@ Timing sums to 90 with every block matching the clock. Applied: slide 19 no long
 - The deck's "fifty years" headline became "Machine learning runs the same loop." with the fifty-years claim in the caption, so the legend never collides with the caption.
 - The video's fonts in the container are DejaVu Serif Bold and Liberation Sans (Georgia and Arial are not installed here); the HTML source names Georgia and Arial first, so a re-render on a machine with those fonts matches the deck exactly.
 - The fleet's Donna-sims were run as fresh headless `claude -p` sessions with no tools (the persona agents had no Agent tool), so the zip at the end of the retrain was narrated rather than produced. Zip production is exercised in Step 3 of Denise's own dry run.
-- Five persona agents hit a usage rate limit mid-run; three had finished their reports, two (Jamal, Kenji) were resumed. Jamal's agent ran its Donna-sims as cloud child sessions on Denise's account and left four of them idle (not archived); they hold only synthetic test conversations.
+- Five persona agents hit a usage rate limit mid-run; three had finished their reports, two (Jamal, Kenji) were resumed and completed. Jamal's agent ran its Donna-sims as cloud child sessions on Denise's account and left four of them idle (not archived); they hold only synthetic test conversations.
 
 ## Decisions for Denise
 

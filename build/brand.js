@@ -841,12 +841,14 @@ function flywheel(slide, opts) {
       });
     } else {
       const t = r < 1.3 ? 0.13 : 0.17;
+      // A pptxgenjs triangle points up; the clockwise tangent at the NE point
+      // is SE, i.e. the position angle plus 180.
       slide.addShape("triangle", {
-        x: px - t / 2,
-        y: py - t / 2,
-        w: t,
-        h: t,
-        rotate: -45 + i * 90 + 90,
+        x: px - (t * 0.8) / 2,
+        y: py - (t * 1.1) / 2,
+        w: t * 0.8,
+        h: t * 1.1,
+        rotate: -45 + i * 90 + 180,
         fill: { color: C.GOLD },
         line: { type: "none" },
       });
@@ -1179,8 +1181,8 @@ const PIP_STATIONS = ["DOCUMENT", "TEST", "REVISE", "OPERATE"];
 function progressPip(slide, active, mode, captionText, stations) {
   const p = palette(mode);
   const names = stations || PIP_STATIONS;
-  const cx = 12.2;
-  const cy = 0.66;
+  const cx = 12.14;
+  const cy = 0.74;
   const R = 0.22;
   const stroke = p.accent ? C.WHITE : C.GOLD;
   slide.addShape("ellipse", {
@@ -1208,10 +1210,10 @@ function progressPip(slide, active, mode, captionText, stations) {
   });
   const txt = captionText || active.join(" · ");
   // right edge must land on the grid (G.ML + G.W = 12.45), not run to 13.10
-  const capW = 2.4;
+  const capW = Math.min(2.6, 0.078 * txt.length + 0.12);
   slide.addText(txt.toUpperCase(), {
     x: G.ML + G.W - capW,
-    y: 0.92,
+    y: 1.02,
     w: capW,
     h: 0.18,
     margin: 0,
@@ -1223,7 +1225,7 @@ function progressPip(slide, active, mode, captionText, stations) {
     align: "right",
     valign: "middle",
   });
-  assertFits("pip caption", G.ML + G.W - capW, 0.92, capW, 0.18, G.SAFE_BOT);
+  assertFits("pip caption", G.ML + G.W - capW, 1.02, capW, 0.18, G.SAFE_BOT);
 }
 
 // ---------------------------------------------------------- timeline (6.5)

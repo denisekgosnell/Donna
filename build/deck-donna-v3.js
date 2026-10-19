@@ -175,35 +175,34 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
 // ===================================================  3. STATEMENT  (light)
 {
   const { s } = slide("light");
-  const y = B.statement(s, "Open loops make more work. Closed loops make better work.", "light", { size: 44, w: 10.6, y: 1.0 });
+  const y = B.statement(s, "Open loops make more work. Closed loops make better work.", "light", { size: 40, w: 10.6, y: 0.9 });
 
   // two small diagrams: open (a line that leaves) and closed (the ring)
   const colW = 5.2;
   const lx = G.ML + 0.3;
   const rx = G.SLIDE_W - 0.89 - 0.3 - colW;
-  const dy = y + 0.1;
-  const dh = 2.3;
+  const dy = y + 0.06;           // label row
+  const ringR = 0.72;
+  const cyo = dy + 0.4 + ringR;  // vertical centre of both diagrams
   // OPEN: a hub, then a row of arrows heading off the right edge of its column
   B.label(s, "OPEN", "light", { x: lx, w: colW, y: dy, size: 13, align: "center", charSpacing: 1.6 });
-  const hubD = 1.1;
-  const cyo = dy + 0.44 + dh / 2;
+  const hubD = 1.0;
   s.addShape("ellipse", {
     x: lx + 0.2, y: cyo - hubD / 2, w: hubD, h: hubD,
     fill: { type: "none" }, line: { color: C.GOLD, width: 1 },
   });
   s.addText("THE RULES", {
     x: lx + 0.2, y: cyo - hubD / 2, w: hubD, h: hubD, margin: 0,
-    fontFace: F.DISPLAY, fontSize: 11, bold: true, color: C.GOLD_D, align: "center", valign: "middle",
+    fontFace: F.DISPLAY, fontSize: 10, bold: true, color: C.GOLD_D, align: "center", valign: "middle",
   });
   s.addShape("line", {
     x: lx + 0.2 + hubD, y: cyo, w: colW - hubD - 0.2, h: 0,
     line: { color: C.GOLD, width: 1 },
   });
   for (let i = 0; i < 3; i++) {
-    const t = 0.17;
     const ax = lx + 0.2 + hubD + 0.6 + i * 1.1;
     s.addShape("triangle", {
-      x: ax - t / 2, y: cyo - t / 2, w: t, h: t, rotate: 90,
+      x: ax - 0.07, y: cyo - 0.095, w: 0.14, h: 0.19, rotate: 90,
       fill: { color: C.GOLD }, line: { type: "none" },
     });
   }
@@ -218,18 +217,19 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   // CLOSED: the ring with four numbered stations, hub THE RULES
   B.label(s, "CLOSED", "light", { x: rx, w: colW, y: dy, size: 13, align: "center", charSpacing: 1.6 });
   B.loopRing(s, {
-    cx: rx + colW / 2, band: { top: dy + 0.44, bottom: dy + 0.44 + dh }, mode: "light",
-    nodeD: 0.4, names: false,
+    cx: rx + colW / 2, cy: cyo, r: ringR, mode: "light",
+    nodeD: 0.36, names: false,
     hub: { label: ["THE", "RULES"], fill: null },
     stations: LOOP.work,
     legend: null,
     bottom: G.BODY_BOT,
   });
+  B.assertFits("s3 diagrams", lx, dy, G.W - 0.6, 0.4 + ringR * 2 + 0.2, G.BODY_BOT);
   B.caption(
     s,
     "A loop is open when work goes out and nothing comes back to tell you how it went. A loop is closed when the result comes back to the person who set the rules, and the rules get better. AI makes open loops cheap. That is the whole problem, and it is the whole opportunity.",
     "light",
-    { y: 5.1 }
+    { y: cyo + ringR + 0.42 }
   );
   notes(s, 1,
     "Read the two sentences at the top out loud, slowly. Then the last line of the caption: AI makes open loops cheap. That is the whole problem, and it is the whole opportunity.",
@@ -355,7 +355,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   const rules = [
     "She never sends. Drafts only. You are the send button.",
     "She never deletes. Nothing we do today is destructive.",
-    "We move together. Every step ends at a checkpoint: type ✅ in the chat.",
+    "We move together. Every step ends at a checkpoint: type ✓ in the chat.",
     "Copy buttons everywhere. Nobody types more than a sentence.",
     "No question is too small. Stuck for 60 seconds, type HELP in the chat.",
   ];
@@ -443,7 +443,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   const { s } = slide("light");
   pip(s, 1, "light");
   B.eyebrow(s, "Step one  ·  first impressions", "light", { narrow: true });
-  const y = B.title(s, "Create her project, then connect.", "light");
+  const y = B.title(s, "Create her project, then connect.", "light", { w: 10.3 });
 
   const setupBot = B.panelList(s, {
     x: G.COL_L.x, y: y + 0.02, w: G.COL_L.w, mode: "light", size: 13, gap: 0.14, pad: 0.26,
@@ -456,11 +456,10 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     tag: "s11 panel",
   });
   B.panelList(s, {
-    x: G.COL_L.x, y: setupBot + 0.12, w: G.COL_L.w, mode: "light", size: 12, gap: 0.1, pad: 0.2,
+    x: G.COL_L.x, y: setupBot + 0.3, w: G.COL_L.w, mode: "light", size: 12, gap: 0.1, pad: 0.2,
     label: "Stuck connecting?", labelSize: 12, labelColor: C.GOLD_D,
     items: [
-      "Quit Claude and reopen it. Fixes it nine times out of ten.",
-      "IT blocks it? Use a personal Gmail. Rescue prompt: site, Step 1.",
+      "Quit Claude and reopen it. IT blocks it? Use a personal Gmail. Still stuck: the rescue prompt is on the site, Step 1.",
     ],
     tag: "s11 rescue",
   });
@@ -521,9 +520,9 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   const { s } = slide("light");
   pip(s, 2, "light");
   B.eyebrow(s, "Step two  ·  the triage desk", "light", { narrow: true });
-  const y = B.title(s, "This is the document. She writes it.", "light");
+  const y = B.title(s, "This is the document. She writes it.", "light", { w: 10.3 });
 
-  const pw = 7.6;
+  const pw = 8.0;
   const tb = B.promptBlock(s, {
     x: G.ML, y: y + 0.02, w: pw, mode: "light",
     label: "Paste into a new chat in your Donna project",
@@ -617,9 +616,9 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   const { s } = slide("light");
   pip(s, 3, "light");
   B.eyebrow(s, "Step three  ·  her playbook", "light", { narrow: true });
-  const y = B.title(s, "She writes her own playbook file.", "light");
+  const y = B.title(s, "She writes her own playbook file.", "light", { w: 10.3 });
 
-  const pw = 7.6;
+  const pw = 8.0;
   const pb = B.promptBlock(s, {
     x: G.ML, y: y + 0.02, w: pw, mode: "light",
     label: "Paste in the same chat, after your first table",
@@ -678,9 +677,9 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   const { s } = slide("light");
   pip(s, 3, "light");
   B.eyebrow(s, "Step three  ·  the 4:30 shift", "light", { narrow: true });
-  const y = B.title(s, "Give her the 4:30 shift.", "light");
+  const y = B.title(s, "Give her the 4:30 shift.", "light", { w: 10.3 });
 
-  const pw = 7.8;
+  const pw = 8.0;
   B.promptBlock(s, {
     x: G.ML, y: y + 0.02, w: pw, mode: "light",
     label: "Scheduled · New task · Create with Claude",
@@ -770,7 +769,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   const { s } = slide("light");
   pip(s, 4, "light");
   B.eyebrow(s, "Step four  ·  the Friday retrain", "light", { narrow: true });
-  const y = B.title(s, "Fridays, she reads her week.", "light");
+  const y = B.title(s, "Fridays, she reads her week.", "light", { w: 10.3 });
 
   const pw = 8.0;
   B.promptBlock(s, {
@@ -799,13 +798,13 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   const rx = G.ML + pw + 0.4;
   const rw = G.ML + G.W - rx;
   const p1 = B.panelList(s, {
-    x: rx, y: y + 0.02, w: rw, mode: "light", size: 12, gap: 0.08, pad: 0.22,
+    x: rx, y: y + 0.02, w: rw, mode: "light", size: 12, gap: 0.08, pad: 0.2,
     label: "She looks at", labelSize: 12, labelColor: C.GOLD_D,
     items: ["the reports she wrote", "the drafts she saved", "the emails you sent"],
     tag: "s21 panel a",
   });
   B.panelList(s, {
-    x: rx, y: p1 + 0.16, w: rw, mode: "light", size: 12, gap: 0.08, pad: 0.22,
+    x: rx, y: p1 + 0.3, w: rw, mode: "light", size: 12, gap: 0.08, pad: 0.2,
     label: "What comes back", labelSize: 12, labelColor: C.GOLD_D,
     items: ["changes, with a because", "the week in numbers", "nothing until you approve"],
     tag: "s21 panel b",

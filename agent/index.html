@@ -69,14 +69,7 @@
               <span class="prompt-label">Paste in the same chat</span>
               <button class="copy-btn" type="button">Copy</button>
             </div>
-            <pre>Turn this conversation&rsquo;s triage setup into a reusable skill named
-donna-triage. Fill in the template we used with everything you learned
-about me: my people and tiers, my priorities, my voice. Keep the daily
-shift, the Friday retrain, and the Setup Interview sections so the skill
-knows how to run on a schedule, how to retrain, and how to reconfigure.
-Keep the hard rules exactly as written: never send, never delete.
-Then give me the finished skill as a downloadable zip named
-donna-triage.zip containing donna-triage/SKILL.md.</pre>
+            <pre>Turn this conversation&rsquo;s triage setup into a reusable skill named donna-triage. Fill in the template we used with everything you learned about me: my people and tiers, my priorities, my voice. Keep the daily shift, the Friday retrain, and the Setup Interview sections so the skill knows how to run on a schedule, how to retrain, and how to reconfigure. Keep the hard rules exactly as written: never send, never delete. Then give me the finished skill as a downloadable zip named donna-triage.zip containing donna-triage/SKILL.md.</pre>
           </div>
           <p class="fine">You&rsquo;re on track when a <strong>file card</strong> appears in the chat with a download arrow on it.</p>
         </li>
@@ -86,7 +79,7 @@ donna-triage.zip containing donna-triage/SKILL.md.</pre>
           <p>Three moves, watch the screen share:</p>
           <ul>
             <li>Click the file card&rsquo;s <kbd class="ui">Download</kbd> arrow. It saves as <code>donna-triage.zip</code>.</li>
-            <li>In the left sidebar, open <kbd class="ui">Customize</kbd>, then <kbd class="ui">Skills</kbd>. Click <kbd class="ui">+</kbd>, then <kbd class="ui">Create skill</kbd>, then <kbd class="ui">Upload a skill</kbd>. Pick the zip from your computer.</li>
+            <li>In the left sidebar, open <kbd class="ui">Customize</kbd>, then <kbd class="ui">Skills</kbd>. Click <kbd class="ui">+</kbd>, then <kbd class="ui">Create skill</kbd>, then <kbd class="ui">Upload a skill</kbd>. A file window opens: click <kbd class="ui">Downloads</kbd>, click <strong>donna-triage.zip</strong> (newest, at the top), then <kbd class="ui">Open</kbd>.</li>
             <li>Confirm it: <strong>donna-triage</strong> now shows in your skills list.</li>
           </ul>
           <div class="note">
@@ -104,13 +97,11 @@ donna-triage.zip containing donna-triage/SKILL.md.</pre>
                   <span class="prompt-label">The rescue prompt</span>
                   <button class="copy-btn" type="button">Copy</button>
                 </div>
-                <pre>In the version of the Claude desktop app I&rsquo;m running right now, where do
-I (1) upload a skill zip and (2) create a scheduled task? Name the exact
-menu items and buttons, in order, and tell me how to confirm each worked.</pre>
+                <pre>In the version of the Claude desktop app I&rsquo;m running right now, where do I (1) upload a skill zip and (2) create a scheduled task? Name the exact menu items and buttons, in order, and tell me how to confirm each worked.</pre>
               </div>
             </div>
           </details>
-          <p class="fine">That skills-list entry is the confirmation for this step. Nobody touches the schedule until it&rsquo;s there. Type &#9989; in the Zoom chat when you see it.</p>
+          <p class="fine">That skills-list entry is the confirmation for this step. Nobody touches the schedule until it&rsquo;s there. Type &#10003; in the Zoom chat when you see it.</p>
         </li>
 
         <li>
@@ -123,11 +114,8 @@ menu items and buttons, in order, and tell me how to confirm each worked.</pre>
             </div>
             <pre>Every weekday at 4:30 PM my local time, use my donna-triage skill:
 1. Triage today&rsquo;s inbox. Save the Reply-Now drafts to my email Drafts.
-2. Create a Google Calendar event today, starting 10 minutes after this
-   task starts and 5 minutes long, titled &ldquo;Inbox Triage: Donna&rdquo;.
-3. Write the whole triage report INTO the event description.
-   Short lines, tier-name headers, one line per thread:
-   sender, subject, next move. No tables. Easy to read on a phone.
+2. Create a Google Calendar event today, starting 10 minutes after this task starts and 5 minutes long, titled &ldquo;Inbox Triage: Donna&rdquo;.
+3. Write the whole triage report INTO the event description. Short lines, tier-name headers, one line per thread: sender, subject, next move. No tables. Easy to read on a phone.
 4. Set an EMAIL reminder on the event, 1 minute before.
 Also do a dry run right now so I can watch the first one land.</pre>
           </div>
@@ -136,10 +124,10 @@ Also do a dry run right now so I can watch the first one land.</pre>
             <div class="note-body">
               <span class="note-label">Donna&rsquo;s note</span>
               Scheduled tasks run on Claude&rsquo;s side, not on your laptop. Close the laptop; she still works at 4:30.
-              <p>If Claude asks which mode the task should run in, choose <kbd class="ui">Auto</kbd> so it runs hands-free. Her hard rules stand either way: drafts only, never delete.</p>
+              <p>If Claude asks which mode the task should run in, choose <kbd class="ui">Auto</kbd> so it runs hands-free. Auto means she will not stop to ask before saving a draft or creating an event. The connector could do more; her playbook, which you can read, is what stops her. Read her first few runs.</p>
             </div>
           </div>
-          <p class="fine">Google Calendar can email you a reminder. Every weekday around 4:39&nbsp;PM (16:39), the triage lands on top of the very inbox it triaged, from a sender you already trust: your own calendar. No Google calendar? Her playbook has a fallback: she saves the same report as a draft email titled &ldquo;Inbox Triage: Donna.&rdquo; Open Drafts at 4:40.</p>
+          <p class="fine">No Google calendar? Her playbook has a fallback: she saves the same report as a draft email titled &ldquo;Inbox Triage: Donna.&rdquo; Open Drafts at 4:40. With Google Calendar, every weekday around 4:39&nbsp;PM (16:39) the calendar emails you the triage, on top of the very inbox it triaged, from a sender you already trust.</p>
         </li>
 
         <li>
@@ -150,7 +138,7 @@ Also do a dry run right now so I can watch the first one land.</pre>
             <li>Open the event: <strong>your whole triage is in the description</strong>, tier by tier.</li>
             <li>One minute before it starts, the <strong>email arrives</strong>. Read your inbox&rsquo;s summary, in your inbox, without opening a single thread.</li>
           </ul>
-          <p class="fine">While you wait: check your Drafts folder. The Reply-Now drafts from this run are already sitting there. When the event appears on your calendar, type &#9989; in the Zoom chat.</p>
+          <p class="fine">While you wait: check your Drafts folder. The Reply-Now drafts from this run are already sitting there. When the event appears on your calendar, type &#10003; in the Zoom chat.</p>
         </li>
 
       </ol>

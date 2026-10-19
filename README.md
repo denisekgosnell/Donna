@@ -80,10 +80,10 @@ the zip: `cd skills && rm donna-triage.zip && zip -r donna-triage.zip donna-tria
 
 Denise shares the **site page for the step**, not the deck, during the four build steps.
 The deck is for 12:00 to 12:12, each step's divider and checkpoint, and 1:13 onward.
-Every checkpoint is a chat moment: *type ✅ in the chat when you see it.* Stuck for 60
+Every checkpoint is a chat moment: *type ✓ in the chat when you see it.* Stuck for 60
 seconds: *type HELP in the chat.* A co-host works the chat.
 
-1. **Step 1.** Project first, then connectors. Hold at the checkpoint until the ✅ count
+1. **Step 1.** Project first, then connectors. Hold at the checkpoint until the ✓ count
    matches the room. The classic failure is the personal Google account instead of work,
    or Connected-but-blind (quit Claude, reopen).
 2. **Step 2.** Everyone pastes the playbook from the site into a new chat in the Donna
