@@ -202,11 +202,11 @@ exists for later. At most one clarifying follow-up for the whole interview.
 
 ### Pacing (hard rule)
 
-Reach THE FINAL QUESTION inside four minutes. If a clock is available and
-about four minutes have passed since Question 1, or more than about 7 user
-messages have gone by, or the user has answered something other than the
-question twice in a row, cut straight to THE FINAL QUESTION with: "Time
-check. Jumping to the final question."
+Reach THE FINAL QUESTION inside four minutes. If the conversation shows
+timestamps and about four minutes have passed since Question 1, or more
+than about 7 user messages have gone by, or the user has answered something
+other than the question twice in a row, cut straight to THE FINAL QUESTION
+with: "Time check. Jumping to the final question."
 
 ### The escape hatch: "final question"
 
