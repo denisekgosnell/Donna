@@ -1,5 +1,5 @@
-// Atelier: the shared brand system for the Signature executive session decks.
-// Both deck generators import this module. No deck script may name a hex value
+// Atelier: the shared brand system for the Donna workshop decks.
+// Every deck generator imports this module. No deck script may name a hex value
 // or a font directly. See FABLE-DECK-INSTRUCTIONS.md sections 2, 6, 7.
 
 // ---------------------------------------------------------------- palette (2.3)
@@ -387,7 +387,7 @@ function citation(slide, text, mode, opts = {}) {
 }
 
 // -------------------------------------------------------------- chrome (2.7)
-function chrome(slide, mode, deckName, pageNum) {
+function chrome(slide, mode, deckName, pageNum, footerParts) {
   const p = palette(mode);
   slide.addShape("line", {
     x: G.ML,
@@ -396,7 +396,7 @@ function chrome(slide, mode, deckName, pageNum) {
     h: 0,
     line: { color: C.GOLD, width: 0.75 },
   });
-  const parts = ["SIGNATURE", deckName, "AUGUST 2026"];
+  const parts = footerParts || ["SIGNATURE", deckName, "AUGUST 2026"];
   // measure so the diamonds sit between the words
   const em = (0.72 * 9) / 72; // uppercase Arial runs ~0.72em per glyph
   const cs = 1.2 / 72;
@@ -1176,8 +1176,9 @@ function quadrant(slide, opts) {
 // ------------------------------------------------------- progress pip (6.4)
 const PIP_STATIONS = ["DOCUMENT", "TEST", "REVISE", "OPERATE"];
 
-function progressPip(slide, active, mode, captionText) {
+function progressPip(slide, active, mode, captionText, stations) {
   const p = palette(mode);
+  const names = stations || PIP_STATIONS;
   const cx = 12.2;
   const cy = 0.66;
   const R = 0.22;
@@ -1190,7 +1191,7 @@ function progressPip(slide, active, mode, captionText) {
     fill: { type: "none" },
     line: { color: stroke, width: 0.75 },
   });
-  PIP_STATIONS.forEach((name, i) => {
+  names.forEach((name, i) => {
     const th = (-90 + i * 90) * D2R;
     const d = 0.125;
     const px = cx + R * Math.cos(th);
@@ -1248,7 +1249,7 @@ function timeline(slide, milestones, band, mode, opts) {
       y: spineY - d / 2,
       w: d,
       h: d,
-      fill: { color: m.highlight ? C.TEAL : C.INK },
+      fill: { color: m.highlight ? (opts && opts.highlightColor) || C.TEAL : (opts && opts.dotColor) || C.INK },
       line: { type: "none" },
     });
     const above = i % 2 === 0;
@@ -1265,7 +1266,7 @@ function timeline(slide, milestones, band, mode, opts) {
       fontFace: F.BODY,
       fontSize: 13,
       bold: true,
-      color: m.highlight ? C.TEAL_D : p.fg,
+      color: m.highlight ? (opts && opts.highlightText) || C.TEAL_D : p.fg,
       align: "center",
       valign: "middle",
     });
@@ -1278,7 +1279,7 @@ function timeline(slide, milestones, band, mode, opts) {
       margin: 0,
       fontFace: F.BODY,
       fontSize: 11,
-      color: m.highlight ? C.TEAL_D : p.muted,
+      color: m.highlight ? (opts && opts.highlightText) || C.TEAL_D : p.muted,
       align: "center",
       valign: "top",
       lineSpacingMultiple: 1.1,
@@ -1515,6 +1516,6 @@ module.exports = {
   chrome, footerOnly,
   card, diamond, diamondList, panelList, statCallout,
   promptBlock, wrapMono, MONO_CAP,
-  flywheel, quadrant, progressPip, timeline,
+  flywheel, loopRing: flywheel, quadrant, progressPip, timeline,
   ring, skyline, horizonRule, quoteCard,
 };
