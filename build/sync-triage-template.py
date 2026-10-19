@@ -20,8 +20,8 @@ PAGE = ROOT / "project" / "index.html"
 
 KICKOFF = (
     "Here is my triage playbook template. Read it, then run its Setup\n"
-    "Interview on me exactly as written: five questions, about six minutes,\n"
-    "one question at a time. Start now with your greeting and Question 1 of 5.\n"
+    "Interview on me exactly as written: four questions, about four minutes,\n"
+    "one question at a time. Start now with your greeting and Question 1 of 4.\n"
     "\n"
 )
 

@@ -2,6 +2,7 @@
    BUILD YOUR OWN DONNA · shared stylesheet
    Palette: ink navy #14213D · charcoal #101820 · gold #C9A227
             cream #F7F3E9 · Donna Red #A31621 (her voice only)
+   v3, October 21, 2026: four steps, the loop strip, the Bottle video.
    Type:    Playfair Display (display serif) · Inter (body)
    ============================================================ */
 
@@ -253,9 +254,9 @@ h1, h2, h3 { font-family: var(--serif); color: var(--cream); font-weight: 600; }
 
 /* ---------- agenda case-file cards ---------- */
 
-/* Three equal columns so all three steps are the same size, side by side.
-   align-items: stretch (the grid default) keeps them the same height. */
-.cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 6px; }
+/* Four steps, two by two, all the same size. align-items: stretch (the grid
+   default) keeps them the same height. */
+.cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 6px; }
 
 .case-card {
   position: relative;
@@ -615,50 +616,6 @@ kbd.ui {
 .runsheet .rs-what { font-size: 16.5px; color: var(--text); }
 .runsheet .rs-what strong { color: var(--cream); font-weight: 600; }
 
-/* ---------- four-quadrant list (front page) ---------- */
-
-.quadlist { list-style: none; margin: 16px 0 4px; }
-
-.quadlist li {
-  position: relative;
-  padding: 12px 0 12px 104px;
-  border-bottom: 1px solid rgba(201, 162, 39, 0.18);
-  font-size: 16px;
-}
-.quadlist li:last-child { border-bottom: 0; }
-
-.quadlist strong {
-  position: absolute;
-  left: 0;
-  top: 12px;
-  font-family: var(--serif);
-  font-size: 19px;
-  font-weight: 600;
-  color: var(--gold-bright);
-}
-
-.quadlist .ql-do { display: block; color: var(--text); }
-.quadlist .ql-get { display: block; margin-top: 2px; color: var(--muted); font-style: italic; font-size: 15.5px; }
-
-.quadband {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 18px 0 14px;
-  padding-top: 10px;
-  border-top: 3px solid var(--gold);
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold-bright);
-}
-
-@media (max-width: 640px) {
-  .quadlist li { padding-left: 0; padding-top: 14px; }
-  .quadlist strong { position: static; display: block; margin-bottom: 3px; }
-}
-
 /* ---------- red callout: Donna's voice, loud ---------- */
 
 .callout-red {
@@ -866,74 +823,6 @@ details.smallprint .smallprint-body ol li { margin-bottom: 6px; }
   margin: 12px 0;
 }
 
-/* ---------- the executive quadrant (from the deck) ---------- */
-
-.quad {
-  margin: 16px 0 6px;
-  border: 1px solid var(--hairline);
-  border-radius: 4px;
-  background: rgba(247, 243, 233, 0.03);
-  padding: 14px 16px 16px;
-}
-
-.quad .quad-axis {
-  text-align: center;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gold-bright);
-  padding: 4px 0;
-}
-
-.quad .quad-cols {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 2px 6px 8px;
-}
-
-.quad .quad-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.quad .quad-cell {
-  border: 1px solid rgba(201, 162, 39, 0.25);
-  border-radius: 4px;
-  padding: 12px 14px;
-}
-
-.quad .quad-cell strong {
-  display: block;
-  font-family: var(--serif);
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--cream);
-}
-
-.quad .quad-cell span {
-  display: block;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold-bright);
-  margin-top: 2px;
-}
-
-.quad .quad-cell em {
-  display: block;
-  font-size: 14.5px;
-  color: var(--muted);
-  margin-top: 6px;
-}
-
 /* ---------- prev / next nav ---------- */
 
 .stepnav {
@@ -1043,7 +932,113 @@ details.smallprint .smallprint-body ol li { margin-bottom: 6px; }
   .note .note-icon { width: 26px; height: 26px; }
   .qr-strip { gap: 14px; padding: 12px 14px; }
   .qr-strip .qr-tile { width: 88px; height: 88px; }
-  .quad { padding: 12px 10px 12px; }
-  .quad .quad-cell { padding: 10px 10px; }
-  .quad .quad-cell em { font-size: 13.5px; }
 }
+
+/* ---------- v3: the hero's four-zone time line ---------- */
+
+.hero .zones {
+  margin-top: 14px;
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* ---------- v3: the Bottle video ---------- */
+
+.bottle-section { padding-top: 36px; }
+
+.bottle-wrap {
+  margin-top: 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--ink);
+  aspect-ratio: 16 / 9;
+}
+
+.bottle-wrap video, .bottle-wrap img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.bottle-wrap .bottle-poster { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bottle-wrap video { display: none; }
+  .bottle-wrap .bottle-poster { display: block; }
+}
+
+.bottle-section .fine { margin-top: 10px; font-size: 15.5px; font-style: italic; color: var(--muted); }
+
+/* ---------- v3: the loop strip (four stations) ---------- */
+
+.loop-strip {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.loop-strip li {
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  padding: 16px 16px 14px;
+  background: rgba(247, 243, 233, 0.03);
+}
+
+.loop-strip .ls-no {
+  display: block;
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(231, 199, 102, 0.3);
+  -webkit-text-stroke: 1px var(--gold-bright);
+}
+
+.loop-strip .ls-name {
+  display: block;
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.loop-strip .ls-line {
+  display: block;
+  margin-top: 6px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ---------- v3: the loop pip on step pages (mirrors the deck) ---------- */
+
+.loop-pip {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  vertical-align: -5px;
+  margin-right: 8px;
+}
+
+/* ---------- v3: phone width additions ---------- */
+
+@media (max-width: 640px) {
+  .loop-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .loop-strip li { padding: 14px 12px 12px; }
+  .hero .zones { font-size: 13.5px; letter-spacing: 0.03em; }
+}
+
+/* ---------- v3: the station line under each step's goal ---------- */
+
+.goal .station {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+.goal .station strong { color: var(--cream); }
