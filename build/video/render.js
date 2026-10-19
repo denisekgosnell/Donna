@@ -52,6 +52,7 @@ async function renderFrames() {
   page.on('pageerror', (e) => { console.error('page error:', e.message); process.exitCode = 1; });
   await page.goto('file://' + HTML + '?frame=0');
   await page.evaluate(() => document.fonts.ready);
+  await page.evaluate(() => window.ready);   // the embedded Gelasio face
   const total = await page.evaluate(() => window.TOTAL_FRAMES);
   if (total !== TOTAL) throw new Error('page reports ' + total + ' frames, expected ' + TOTAL);
 
