@@ -1030,6 +1030,13 @@ details.smallprint .smallprint-body ol li { margin-bottom: 6px; }
   .hero .zones { font-size: 13.5px; letter-spacing: 0.03em; }
 }
 
+/* ---------- v3: the four-word glossary on the front page ---------- */
+
+.glossary { list-style: none; margin-top: 22px; border-top: 1px solid rgba(201, 162, 39, 0.18); }
+.glossary li { padding: 10px 0; border-bottom: 1px solid rgba(201, 162, 39, 0.18); font-size: 15.5px; color: var(--muted); }
+.glossary li strong { display: inline-block; min-width: 150px; font-family: var(--sans); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12.5px; color: var(--cream); }
+@media (max-width: 640px) { .glossary li strong { display: block; min-width: 0; margin-bottom: 2px; } }
+
 /* ---------- v3: the station line under each step's goal ---------- */
 
 .goal .station {

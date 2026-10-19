@@ -107,9 +107,11 @@ seconds: *type HELP in the chat.* A co-host works the chat.
       project, connect Gmail + Calendar + Drive, Step 2 end to end (paste → four questions →
       THE FINAL QUESTION → banner → "Triage my inbox."), Step 3 (skill zip → Skills upload →
       the 4:30 task → calendar event → reminder email), Step 4 (the Friday task → the Week
-      in Review event → the Monday approval paste). **Screenshot every menu**: Connectors,
-      Settings → Capabilities → Skills (or Customize → Skills), Scheduled → New task. Those
-      menus move; the site tells attendees to ask Claude if they do.
+      in Review event → the Monday approval paste). **Screenshot every menu**: Customize →
+      Connectors, Customize → Skills → + → Create skill → Upload a skill, Scheduled → New
+      task → Create with Claude. Those menus move; the site tells attendees to ask Claude if
+      they do. Scheduled tasks run on Anthropic's side (help center article 13854387, read
+      October 19, 2026), so the laptop can be closed.
 - [ ] Confirm the four-zone times against the promo page (`denisegosnell.ai/donna`). Her
       "5 PM European" is London; Paris is 6 PM.
 - [ ] Zoom link sent; a chat co-host confirmed; the recording set to start at 12:00.

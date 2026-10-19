@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Bottle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  html, body { margin: 0; padding: 0; background: #14213D; height: 100%; }
+  body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  canvas { display: block; width: min(1920px, 100vw, calc(100vh * 16 / 9)); height: auto; }
+</style>
+</head>
+<body>
+<canvas id="stage" width="1920" height="1080"></canvas>
+<script>
+(function () {
+'use strict';
+
+// ---------------------------------------------------------------------------
+// The Bottle: a 58 second silent animation, 1920x1080 at 30 fps (1740 frames).
+// Everything here is a pure function of the frame index, so any frame can be
+// rendered by window.seek(n) or by loading ?frame=n. ?play=1 plays it live.
+// Scene A frames 0-449, Scene B 450-1049, Scene C 1050-1649, end card 1650-1739.
+// ---------------------------------------------------------------------------
+
+var FPS = 30, TOTAL = 1740, W = 1920, H = 1080;
+var SC = { A0: 0, B0: 450, C0: 1050, E0: 1650 };
+
+var C = {
+  INK: '#14213D', GOLD: '#C9A227', MUTE: '#5A6379', WARM: '#AFA893',
+  PANEL: '#2A3244', PAPER: '#F7F3EA', GOLD_L: '#E7C766', RED: '#A31621'
+};
+// Deck fonts first; metric-friendly system fallbacks after them.
+var SERIF = 'Georgia, "DejaVu Serif", "Liberation Serif", serif';
+var SANS = 'Arial, "Liberation Sans", "DejaVu Sans", sans-serif';
+
+// ----------------------------------------------------------------- geometry
+var FLOW_Y = 510;                       // the bottle's axis
+var BASE_X = 250, BODY_END_X = 1150, SHOULDER_END_X = 1330, LIP_X = 1520, MOUTH_X = 1545;
+var BODY_HALF = 180, NECK_HALF = 42, LIP_HALF = 52, CORNER_R = 50;
+var BIRTH_X = 300;                      // where items appear, just inside the base
+var NECK_CENTER_X = (SHOULDER_END_X + MOUTH_X) / 2;
+var TRAVEL_A = 240, TRAVEL_B = 120;     // frames from birth to the neck center
+var FLICK_DELAY = 18;                   // frames from neck center to the gate
+var V_A = (NECK_CENTER_X - BIRTH_X) / TRAVEL_A;
+var V_B = (NECK_CENTER_X - BIRTH_X) / TRAVEL_B;
+var GATE_X = Math.round(NECK_CENTER_X + V_B * FLICK_DELAY);
+var GATE_PIVOT_Y = FLOW_Y - 70, GATE_LEN = 100;
+var METER_X = GATE_X + 150, METER_TOP = 310, METER_H = 140, METER_W = 12;
+var ITEM_R = 13;
+var TEXT_RIGHT = W - 60, TEXT_LEFT = 60, TEXT_BOTTOM = H - 60;
+
+// Counting windows (neck-pass frames, half open). Each scene measures ten seconds.
+var WIN = { A: [0, 300], B: [SC.B0, SC.B0 + 300], C: [1350, 1650] };
+
+// Shoulder: cubic from the body corner to the neck, sampled for the lane limits.
+var shoulderTable = (function () {
+  var p0 = [BODY_END_X, BODY_HALF], p1 = [1245, BODY_HALF], p2 = [1245, NECK_HALF], p3 = [SHOULDER_END_X, NECK_HALF];
+  var t, pts = [];
+  for (var i = 0; i <= 200; i++) {
+    t = i / 200;
+    var mt = 1 - t;
+    var x = mt * mt * mt * p0[0] + 3 * mt * mt * t * p1[0] + 3 * mt * t * t * p2[0] + t * t * t * p3[0];
+    var h = mt * mt * mt * p0[1] + 3 * mt * mt * t * p1[1] + 3 * mt * t * t * p2[1] + t * t * t * p3[1];
+    pts.push([x, h]);
+  }
+  return pts;
+})();
+function shoulderHalf(x) {
+  var pts = shoulderTable;
+  for (var i = 1; i < pts.length; i++) {
+    if (pts[i][0] >= x) {
+      var a = pts[i - 1], b = pts[i];
+      var t = (x - a[0]) / Math.max(1e-6, b[0] - a[0]);
+      return a[1] + (b[1] - a[1]) * t;
+    }
+  }
+  return NECK_HALF;
+}
+// Largest lateral offset an item center may have at x (keeps it inside the glass).
+function laneLimit(x) {
+  var pad = 6 + ITEM_R + 4;
+  if (x <= BODY_END_X) return BODY_HALF - pad;
+  if (x < SHOULDER_END_X) return Math.max(0, shoulderHalf(x) - pad);
+  if (x < NECK_CENTER_X) {
+    var t = (x - SHOULDER_END_X) / (NECK_CENTER_X - SHOULDER_END_X);
+    return (NECK_HALF - pad) * (1 - t);
+  }
+  return 0;
+}
+
+// -------------------------------------------------------------------- items
+// Kinds: G gold circle (what you asked for), S slate square (almost right),
+// T sand triangle (busywork), D panel diamond (noise).
+var ITEMS = (function () {
+  var items = [], i, k;
+  function add(kind, birth, travel, v, sceneEnd) {
+    var idx = items.length;
+    var pass = birth + travel;
+    items.push({
+      idx: idx, kind: kind, birth: birth, travel: travel, v: v, pass: pass,
+      flick: (kind === 'G' || sceneEnd === SC.B0) ? null : pass + FLICK_DELAY,
+      sceneEnd: sceneEnd,
+      lane: ((idx * 0.6180339887498949) % 1) * 2 - 1,
+      phase: hash01(idx) * Math.PI * 2
+    });
+  }
+  // Scene A: gold only, one per second through the neck, bottle pre-filled.
+  for (k = 0; k < 15; k++) add('G', 15 + 30 * k - TRAVEL_A, TRAVEL_A, V_A, SC.B0);
+  // Scenes B and C share one birth schedule. It starts one travel time before
+  // the cut so the bottle is already full of the four kinds at frame 450.
+  var KINDS = ['G', 'S', 'T', 'D'];
+  var offs = [0, 7, 15, 22];
+  var p50 = 'GSGTGDGS', p75 = 'TGGGDGGG';
+  var n = 0;
+  for (var base = SC.B0 - TRAVEL_B; base < SC.C0 + 180; base += 30) {
+    for (i = 0; i < 4; i++) {
+      var b = base + offs[i];
+      if (b >= SC.C0 + 180) break;
+      var r = b - SC.C0, kind;
+      if (r < 60) kind = KINDS[n % 4];                                          // one in four
+      else if (r < 120) kind = p50.charAt(Math.floor((r - 60) / 30) * 4 + i);   // after turn one: half
+      else kind = p75.charAt(Math.floor((r - 120) / 30) * 4 + i);               // after turn two: three in four
+      add(kind, b, TRAVEL_B, V_B, SC.E0);
+      n++;
+    }
+  }
+  // After the third turn: about 3.3 per second, almost all gold. Births at
+  // 180 + 9k (k = 0..31) pass the neck inside the final ten second window;
+  // exactly two of those 32 are not gold. Later births keep the bottle full.
+  for (k = 0; ; k++) {
+    var rb = k < 32 ? 180 + 9 * k : 480 + 9 * (k - 32);
+    var bf = SC.C0 + rb;
+    if (bf >= SC.E0) break;
+    var kk = 'G';
+    if (k === 5) kk = 'S';
+    if (k === 21) kk = 'T';
+    if (k >= 32 && (k - 32) % 16 === 5) kk = 'D';
+    add(kk, bf, TRAVEL_B, V_B, SC.E0);
+  }
+  return items;
+})();
+
+function hash01(i) {
+  var x = (i + 1) * 2654435761 >>> 0;
+  x ^= x >>> 15; x = Math.imul(x, 2246822519) >>> 0;
+  x ^= x >>> 13; x = Math.imul(x, 3266489917) >>> 0;
+  x ^= x >>> 16;
+  return x / 4294967296;
+}
+function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+function smooth(t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+// Position of an item at frame f, or null when it is not on stage.
+function itemPos(it, f) {
+  if (f < it.birth || f >= it.sceneEnd) return null;
+  if (it.sceneEnd === SC.E0 && f < SC.B0) return null;
+  var alpha = clamp((f - it.birth + 1) / 6, 0, 1);
+  if (it.sceneEnd === SC.B0 && f >= SC.B0 - 10) alpha *= (SC.B0 - f) / 10;
+  if (it.flick !== null && f >= it.flick) {
+    var dt = f - it.flick;
+    var y = FLOW_Y + 1.0 * dt * dt + 2 * dt;
+    if (y > H + 40) return null;
+    return { x: GATE_X + 3 * dt, y: y, rot: dt * 0.22, alpha: alpha, falling: true };
+  }
+  var x = BIRTH_X + it.v * (f - it.birth);
+  if (x > W + 40) return null;
+  var lim = laneLimit(x);
+  var bob = 4 * Math.sin(f * 0.08 + it.phase) * (lim / 157);
+  return { x: x, y: FLOW_Y + it.lane * lim + bob, rot: 0, alpha: alpha, falling: false };
+}
+
+// ------------------------------------------------------------------- canvas
+var canvas = document.getElementById('stage');
+var ctx = canvas.getContext('2d');
+
+function drawShape(kind, x, y, rot, alpha) {
+  ctx.save();
+  ctx.translate(x, y);
+  if (rot) ctx.rotate(rot);
+  ctx.globalAlpha = alpha;
+  ctx.beginPath();
+  if (kind === 'G') {
+    ctx.fillStyle = C.GOLD;
+    ctx.arc(0, 0, ITEM_R, 0, Math.PI * 2);
+    ctx.fill();
+  } else if (kind === 'S') {
+    ctx.fillStyle = C.MUTE;
+    ctx.rect(-12, -12, 24, 24);
+    ctx.fill();
+  } else if (kind === 'T') {
+    ctx.fillStyle = C.WARM;
+    var s = 30, hh = s * 0.866;
+    ctx.moveTo(0, -hh * 0.6);
+    ctx.lineTo(s / 2, hh * 0.4);
+    ctx.lineTo(-s / 2, hh * 0.4);
+    ctx.closePath();
+    ctx.fill();
+  } else {
+    ctx.fillStyle = C.PANEL;
+    ctx.strokeStyle = C.WARM;
+    ctx.lineWidth = 1.6;
+    ctx.moveTo(0, -16);
+    ctx.lineTo(13, 0);
+    ctx.lineTo(0, 16);
+    ctx.lineTo(-13, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawGround() {
+  ctx.save();
+  ctx.globalAlpha = 0.18;
+  ctx.strokeStyle = C.WARM;
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(190, FLOW_Y + BODY_HALF + 24);
+  ctx.lineTo(1720, FLOW_Y + BODY_HALF + 24);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function bottlePath() {
+  var top = FLOW_Y - BODY_HALF, bot = FLOW_Y + BODY_HALF;
+  ctx.beginPath();
+  ctx.moveTo(BASE_X + CORNER_R, top);
+  ctx.lineTo(BODY_END_X, top);
+  ctx.bezierCurveTo(1245, top, 1245, FLOW_Y - NECK_HALF, SHOULDER_END_X, FLOW_Y - NECK_HALF);
+  ctx.lineTo(LIP_X, FLOW_Y - NECK_HALF);
+  ctx.lineTo(LIP_X, FLOW_Y - LIP_HALF);
+  ctx.lineTo(MOUTH_X, FLOW_Y - LIP_HALF);
+  ctx.lineTo(MOUTH_X, FLOW_Y + LIP_HALF);
+  ctx.lineTo(LIP_X, FLOW_Y + LIP_HALF);
+  ctx.lineTo(LIP_X, FLOW_Y + NECK_HALF);
+  ctx.lineTo(SHOULDER_END_X, FLOW_Y + NECK_HALF);
+  ctx.bezierCurveTo(1245, FLOW_Y + NECK_HALF, 1245, bot, BODY_END_X, bot);
+  ctx.lineTo(BASE_X + CORNER_R, bot);
+  ctx.arcTo(BASE_X, bot, BASE_X, bot - CORNER_R, CORNER_R);
+  ctx.lineTo(BASE_X, top + CORNER_R);
+  ctx.arcTo(BASE_X, top, BASE_X + CORNER_R, top, CORNER_R);
+  ctx.closePath();
+}
+
+function drawBottle() {
+  ctx.save();
+  bottlePath();
+  ctx.fillStyle = 'rgba(201, 162, 39, 0.035)';
+  ctx.fill();
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = C.GOLD;
+  ctx.globalAlpha = 0.9;
+  ctx.stroke();
+  // a faint sheen along the upper wall
+  ctx.globalAlpha = 0.22;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(BASE_X + CORNER_R + 30, FLOW_Y - BODY_HALF + 14);
+  ctx.lineTo(BODY_END_X - 40, FLOW_Y - BODY_HALF + 14);
+  ctx.stroke();
+  ctx.restore();
+}
+
+// ------------------------------------------------------------- gate + meter
+function gateEnv(d) {
+  if (d < -2) return 0;
+  if (d < 0) return (d + 2) / 2;
+  if (d <= 1) return 1;
+  if (d < 5) return 1 - (d - 1) / 4;
+  return 0;
+}
+function gateExtension(f) {
+  var e = 0;
+  for (var i = 0; i < ITEMS.length; i++) {
+    var it = ITEMS[i];
+    if (it.flick === null) continue;
+    if (f < it.flick - 2 || f > it.flick + 5) continue;
+    e = Math.max(e, gateEnv(f - it.flick));
+  }
+  return e;
+}
+function drawGate(f) {
+  var a = 1;
+  var ext = gateExtension(f);
+  var ang = lerp(-50, 70, ext) * Math.PI / 180;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = C.GOLD;
+  ctx.fillStyle = C.GOLD;
+  ctx.lineCap = 'round';
+  ctx.lineWidth = 7;
+  ctx.beginPath();
+  ctx.moveTo(GATE_X, GATE_PIVOT_Y);
+  ctx.lineTo(GATE_X + GATE_LEN * Math.cos(ang), GATE_PIVOT_Y + GATE_LEN * Math.sin(ang));
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(GATE_X, GATE_PIVOT_Y, 7, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = C.INK;
+  ctx.beginPath();
+  ctx.arc(GATE_X, GATE_PIVOT_Y, 3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+function meterLevel(f) {
+  if (f < SC.B0) return 1;
+  if (f < SC.C0) return 1 - 0.94 * smooth((f - SC.B0) / (SC.C0 - SC.B0));
+  var r = f - SC.C0;
+  var keys = [[0, 0.06], [60, 0.06], [120, 0.38], [180, 0.70], [330, 1.0], [600, 1.0]];
+  for (var i = 1; i < keys.length; i++) {
+    if (r <= keys[i][0]) {
+      var t = (r - keys[i - 1][0]) / (keys[i][0] - keys[i - 1][0]);
+      return lerp(keys[i - 1][1], keys[i][1], smooth(t));
+    }
+  }
+  return 1;
+}
+function drawMeter(f) {
+  var a = 1;
+  var lvl = meterLevel(f);
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = C.WARM;
+  ctx.lineWidth = 1.5;
+  ctx.globalAlpha = a * 0.85;
+  ctx.strokeRect(METER_X - METER_W / 2, METER_TOP, METER_W, METER_H);
+  ctx.globalAlpha = a;
+  ctx.fillStyle = C.GOLD;
+  var fh = METER_H * lvl;
+  ctx.fillRect(METER_X - METER_W / 2 + 2, METER_TOP + METER_H - fh + (fh > 2 ? 0 : 0), METER_W - 4, Math.max(0, fh - (fh > 4 ? 2 : 0)));
+  // small ticks at quarter marks
+  ctx.strokeStyle = C.WARM;
+  ctx.globalAlpha = a * 0.6;
+  for (var q = 1; q < 4; q++) {
+    var ty = METER_TOP + METER_H * q / 4;
+    ctx.beginPath();
+    ctx.moveTo(METER_X + METER_W / 2 + 2, ty);
+    ctx.lineTo(METER_X + METER_W / 2 + 7, ty);
+    ctx.stroke();
+  }
+  ctx.globalAlpha = a;
+  drawTracked('YOUR JUDGMENT', METER_X, METER_TOP - 22, '16px ' + SANS, C.WARM, 0.18 * 16, 'center');
+  ctx.restore();
+}
+
+// --------------------------------------------------------------------- loop
+var LOOP = (function () {
+  var pts = [], cum = [0];
+  var x1 = GATE_X + 55, yStart = FLOW_Y - 160, top = 235, R = 100, xL = 160, R2 = 60;
+  function push(x, y) {
+    if (pts.length) {
+      var p = pts[pts.length - 1];
+      cum.push(cum[cum.length - 1] + Math.hypot(x - p[0], y - p[1]));
+    }
+    pts.push([x, y]);
+  }
+  function line(ax, ay, bx, by) {
+    var n = Math.max(2, Math.ceil(Math.hypot(bx - ax, by - ay) / 4));
+    for (var i = 0; i <= n; i++) push(lerp(ax, bx, i / n), lerp(ay, by, i / n));
+  }
+  function arc(cx, cy, r, a0, a1) {
+    var n = 48;
+    for (var i = 0; i <= n; i++) {
+      var a = lerp(a0, a1, i / n);
+      push(cx + r * Math.cos(a), cy + r * Math.sin(a));
+    }
+  }
+  line(x1, yStart, x1, top + R);
+  arc(x1 - R, top + R, R, 0, -Math.PI / 2);
+  line(x1 - R, top, xL + R, top);
+  arc(xL + R, top + R, R, -Math.PI / 2, -Math.PI);
+  line(xL, top + R, xL, FLOW_Y - R2);
+  arc(xL + R2, FLOW_Y - R2, R2, Math.PI, Math.PI / 2);
+  line(xL + R2, FLOW_Y, BASE_X - 22, FLOW_Y);
+  return { pts: pts, cum: cum, len: cum[cum.length - 1], tip: [BASE_X - 6, FLOW_Y] };
+})();
+
+function loopPointAt(s) {
+  var cum = LOOP.cum, pts = LOOP.pts;
+  s = clamp(s, 0, LOOP.len);
+  var lo = 0, hi = cum.length - 1;
+  while (hi - lo > 1) { var mid = (lo + hi) >> 1; if (cum[mid] <= s) lo = mid; else hi = mid; }
+  var t = (s - cum[lo]) / Math.max(1e-6, cum[hi] - cum[lo]);
+  return [lerp(pts[lo][0], pts[hi][0], t), lerp(pts[lo][1], pts[hi][1], t)];
+}
+function strokeLoopRange(a, b) {
+  a = clamp(a, 0, LOOP.len); b = clamp(b, 0, LOOP.len);
+  if (b <= a) return;
+  var p = loopPointAt(a);
+  ctx.beginPath();
+  ctx.moveTo(p[0], p[1]);
+  for (var i = 0; i < LOOP.cum.length; i++) {
+    if (LOOP.cum[i] > a && LOOP.cum[i] < b) ctx.lineTo(LOOP.pts[i][0], LOOP.pts[i][1]);
+  }
+  p = loopPointAt(b);
+  ctx.lineTo(p[0], p[1]);
+  ctx.stroke();
+}
+function drawArrowhead(alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = C.GOLD;
+  ctx.beginPath();
+  ctx.moveTo(LOOP.tip[0], LOOP.tip[1]);
+  ctx.lineTo(LOOP.tip[0] - 28, LOOP.tip[1] - 14);
+  ctx.lineTo(LOOP.tip[0] - 28, LOOP.tip[1] + 14);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+var TURN = 60; // frames per turn; turns complete at r = 60, 120, 180
+function drawLoop(f) {
+  var r = f - SC.C0;
+  if (r < 0) return;
+  ctx.save();
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  if (r < TURN) {
+    // first turn: the loop draws itself in from the gate to the bottle
+    var head = LOOP.len * (r / TURN);
+    ctx.strokeStyle = C.GOLD;
+    ctx.globalAlpha = 0.55;
+    ctx.lineWidth = 2.5;
+    strokeLoopRange(0, head);
+    ctx.strokeStyle = C.GOLD_L;
+    ctx.globalAlpha = 1;
+    ctx.lineWidth = 4;
+    ctx.shadowColor = 'rgba(231, 199, 102, 0.9)';
+    ctx.shadowBlur = 14;
+    strokeLoopRange(head - 160, head);
+  } else {
+    ctx.strokeStyle = C.GOLD;
+    ctx.globalAlpha = 0.55;
+    ctx.lineWidth = 2.5;
+    strokeLoopRange(0, LOOP.len);
+    drawArrowhead(1);
+    if (r < 3 * TURN) {
+      // turns two and three: a bright pulse runs the loop
+      var head2 = LOOP.len * ((r % TURN) / TURN);
+      ctx.strokeStyle = C.GOLD_L;
+      ctx.globalAlpha = 1;
+      ctx.lineWidth = 4;
+      ctx.shadowColor = 'rgba(231, 199, 102, 0.9)';
+      ctx.shadowBlur = 14;
+      strokeLoopRange(head2 - 160, head2);
+    } else {
+      // the loop keeps running: a slow moving dash pattern
+      ctx.strokeStyle = C.GOLD_L;
+      ctx.globalAlpha = 0.9;
+      ctx.lineWidth = 3;
+      ctx.setLineDash([22, 16]);
+      ctx.lineDashOffset = -((r - 3 * TURN) * 3);
+      strokeLoopRange(0, LOOP.len);
+      ctx.setLineDash([]);
+    }
+  }
+  ctx.restore();
+  // a ripple at the bottle each time a turn completes
+  for (var k = 1; k <= 3; k++) {
+    var d = r - k * TURN;
+    if (d >= 0 && d < 24) {
+      ctx.save();
+      ctx.globalAlpha = 0.85 * (1 - d / 24);
+      ctx.strokeStyle = C.GOLD_L;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(LOOP.tip[0] + 8, LOOP.tip[1], 12 + d * 3, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+}
+
+// --------------------------------------------------------------------- text
+function drawTracked(text, x, y, font, color, spacing, align) {
+  ctx.save();
+  ctx.font = font;
+  ctx.fillStyle = color;
+  ctx.textBaseline = 'alphabetic';
+  ctx.textAlign = 'left';
+  var total = trackedWidth(text, font, spacing);
+  var cx = align === 'center' ? x - total / 2 : align === 'right' ? x - total : x;
+  for (var i = 0; i < text.length; i++) {
+    var ch = text.charAt(i);
+    ctx.fillText(ch, cx, y);
+    cx += ctx.measureText(ch).width + spacing;
+  }
+  ctx.restore();
+  return total;
+}
+function trackedWidth(text, font, spacing) {
+  ctx.save();
+  ctx.font = font;
+  var w = 0;
+  for (var i = 0; i < text.length; i++) w += ctx.measureText(text.charAt(i)).width + (i < text.length - 1 ? spacing : 0);
+  ctx.restore();
+  return w;
+}
+function wrapLines(text, font, maxW) {
+  ctx.save();
+  ctx.font = font;
+  var words = text.split(' '), lines = [], cur = '';
+  for (var i = 0; i < words.length; i++) {
+    var test = cur ? cur + ' ' + words[i] : words[i];
+    if (ctx.measureText(test).width > maxW && cur) { lines.push(cur); cur = words[i]; }
+    else cur = test;
+  }
+  if (cur) lines.push(cur);
+  ctx.restore();
+  return lines;
+}
+
+var CAPTIONS = {
+  A: ['BEFORE AI', 'Before AI. One task per second. All of them yours.'],
+  B: ['AI, OPEN LOOP', 'After AI. Four times the output. The same ten you wanted. And you sort the rest.'],
+  C: ['AI, CLOSED LOOP', 'Close the loop. Every sort you make teaches the rules. The rules make the next batch better.']
+};
+var CAP_FONT = 'bold 44px ' + SERIF, CAP_LH = 54, CAP_MAXW = 1320, EYE_FONT = '22px ' + SANS;
+
+function sceneOf(f) { return f < SC.B0 ? 'A' : f < SC.C0 ? 'B' : f < SC.E0 ? 'C' : 'E'; }
+function sceneStart(s) { return s === 'A' ? SC.A0 : s === 'B' ? SC.B0 : SC.C0; }
+
+// Returns the caption's rectangle; draws it unless measureOnly.
+function drawCaption(f, measureOnly) {
+  var s = sceneOf(f);
+  if (s === 'E') return null;
+  var cap = CAPTIONS[s];
+  var lines = wrapLines(cap[1], CAP_FONT, CAP_MAXW);
+  var lastBase = TEXT_BOTTOM - 12;
+  var firstBase = lastBase - (lines.length - 1) * CAP_LH;
+  var eyeBase = firstBase - CAP_LH + 4;
+  var alpha = 1;
+  var maxW = 0;
+  ctx.save();
+  ctx.font = CAP_FONT;
+  for (var i = 0; i < lines.length; i++) maxW = Math.max(maxW, ctx.measureText(lines[i]).width);
+  ctx.restore();
+  var eyeW = trackedWidth(cap[0], EYE_FONT, 0.22 * 22);
+  maxW = Math.max(maxW, eyeW);
+  var rect = { name: 'caption', x: TEXT_LEFT - 8, y: eyeBase - 24, w: maxW + 16, h: lastBase + 14 - (eyeBase - 24) };
+  if (measureOnly) return rect;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  drawTracked(cap[0], TEXT_LEFT, eyeBase, EYE_FONT, C.GOLD_L, 0.22 * 22, 'left');
+  ctx.font = CAP_FONT;
+  ctx.fillStyle = C.PAPER;
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  for (var j = 0; j < lines.length; j++) ctx.fillText(lines[j], TEXT_LEFT, firstBase + j * CAP_LH);
+  ctx.restore();
+  return rect;
+}
+
+// Counter state at frame f: the ten second measurement of each scene.
+function counterState(f) {
+  var s = sceneOf(f);
+  if (s === 'E') return null;
+  var win, wanted = 0, thrown = 0, alpha = 1, progress, i, it;
+  if (s === 'A') {
+    win = WIN.A;
+    for (i = 0; i < ITEMS.length; i++) {
+      it = ITEMS[i];
+      if (it.sceneEnd !== SC.B0) continue;
+      if (it.pass >= win[0] && it.pass < win[1] && it.pass <= f) wanted++;
+    }
+    progress = clamp((f - win[0]) / 300, 0, 1);
+    return { scene: s, wanted: wanted, thrown: null, progress: progress, alpha: 1 };
+  }
+  if (s === 'C' && f < WIN.C[0]) {
+    // the previous measurement, held dim, until the new window opens
+    return { scene: s, wanted: 10, thrown: 30, progress: 1, alpha: 0.45 };
+  }
+  win = s === 'B' ? WIN.B : WIN.C;
+  for (i = 0; i < ITEMS.length; i++) {
+    it = ITEMS[i];
+    if (it.sceneEnd !== SC.E0) continue;
+    if (it.pass < win[0] || it.pass >= win[1]) continue;
+    if (it.kind === 'G') { if (it.pass <= f) wanted++; }
+    else if (it.flick !== null && it.flick <= f) thrown++;
+  }
+  progress = clamp((f - win[0]) / 300, 0, 1);
+  return { scene: s, wanted: wanted, thrown: thrown, progress: progress, alpha: alpha };
+}
+var COUNTER_FONT = '32px ' + SANS;
+function drawCounter(f, measureOnly) {
+  var st = counterState(f);
+  if (!st) return null;
+  var segs = [
+    { t: 'Work you wanted: ', c: C.PAPER },
+    { t: String(st.wanted), c: C.GOLD_L },
+    { t: ' in 10 seconds', c: C.PAPER }
+  ];
+  if (st.thrown !== null) {
+    segs.push({ t: '   ·   ', c: C.WARM });
+    segs.push({ t: 'Work you threw away: ', c: C.PAPER });
+    segs.push({ t: String(st.thrown), c: C.WARM });
+  }
+  ctx.save();
+  ctx.font = COUNTER_FONT;
+  var total = 0, i;
+  for (i = 0; i < segs.length; i++) { segs[i].w = ctx.measureText(segs[i].t).width; total += segs[i].w; }
+  var base = 92, x = TEXT_RIGHT - total;
+  var rect = { name: 'counter', x: x - 10, y: base - 36, w: total + 20, h: 36 + 26 };
+  if (measureOnly) { ctx.restore(); return rect; }
+  ctx.globalAlpha = st.alpha;
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  for (i = 0; i < segs.length; i++) {
+    ctx.fillStyle = segs[i].c;
+    ctx.fillText(segs[i].t, x, base);
+    x += segs[i].w;
+  }
+  // the ten second window
+  var bx = TEXT_RIGHT - total, by = base + 14;
+  ctx.globalAlpha = st.alpha * 0.3;
+  ctx.fillStyle = C.WARM;
+  ctx.fillRect(bx, by, total, 3);
+  ctx.globalAlpha = st.alpha;
+  ctx.fillStyle = C.GOLD;
+  ctx.fillRect(bx, by, total * st.progress, 3);
+  ctx.restore();
+  return rect;
+}
+
+var LEGEND = [['G', 'what you asked for'], ['S', 'almost right'], ['T', 'busywork'], ['D', 'noise']];
+function drawLegend(f, measureOnly) {
+  if (f < SC.B0 || f >= SC.E0) return null;
+  var a = 1;
+  var font = '24px ' + SANS, rowH = 36, base0 = 84, maxW = 0, i;
+  ctx.save();
+  ctx.font = font;
+  for (i = 0; i < LEGEND.length; i++) maxW = Math.max(maxW, ctx.measureText(LEGEND[i][1]).width);
+  ctx.restore();
+  var rect = { name: 'legend', x: TEXT_LEFT - 8, y: base0 - 30, w: 44 + maxW + 16, h: rowH * 4 + 8 };
+  if (measureOnly) return rect;
+  ctx.save();
+  ctx.globalAlpha = a;
+  for (i = 0; i < LEGEND.length; i++) {
+    var y = base0 + i * rowH;
+    drawShape(LEGEND[i][0], TEXT_LEFT + 18, y - 9, 0, a);
+    ctx.globalAlpha = a;
+    ctx.font = font;
+    ctx.fillStyle = C.PAPER;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText(LEGEND[i][1], TEXT_LEFT + 44, y);
+  }
+  ctx.restore();
+  return rect;
+}
+
+// ----------------------------------------------------------------- end card
+function drawEndCard(f) {
+  var a = clamp((f - SC.E0) / 30, 0, 1);
+  var cx = 960, cy = 400, d = 300, inner = d * 0.852;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = C.GOLD;
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, cy, d / 2, 0, Math.PI * 2); ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx, cy, inner / 2, 0, Math.PI * 2); ctx.stroke();
+  var tick = d * 0.05;
+  var pts = [[cx, cy - d / 2, 1], [cx, cy + d / 2, 1], [cx - d / 2, cy, 0], [cx + d / 2, cy, 0]];
+  for (var i = 0; i < 4; i++) {
+    ctx.beginPath();
+    if (pts[i][2]) { ctx.moveTo(pts[i][0], pts[i][1] - tick / 2); ctx.lineTo(pts[i][0], pts[i][1] + tick / 2); }
+    else { ctx.moveTo(pts[i][0] - tick / 2, pts[i][1]); ctx.lineTo(pts[i][0] + tick / 2, pts[i][1]); }
+    ctx.stroke();
+  }
+  ctx.fillStyle = C.RED;
+  ctx.font = 'bold 150px ' + SERIF;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('D', cx, cy + 6);
+  ctx.fillStyle = C.PAPER;
+  ctx.font = 'bold 72px ' + SERIF;
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Build Your Own Donna', cx, 668);
+  drawTracked('CONNECT  ·  TEACH  ·  RUN  ·  RETRAIN', cx, 752, '28px ' + SANS, C.GOLD_L, 0.3 * 28, 'center');
+  ctx.restore();
+}
+
+// -------------------------------------------------------------------- frame
+function drawItems(f) {
+  for (var i = 0; i < ITEMS.length; i++) {
+    var p = itemPos(ITEMS[i], f);
+    if (!p) continue;
+    drawShape(ITEMS[i].kind, p.x, p.y, p.rot, p.alpha);
+  }
+}
+function drawFrame(f) {
+  f = clamp(Math.floor(f), 0, TOTAL - 1);
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.globalAlpha = 1;
+  ctx.fillStyle = C.INK;
+  ctx.fillRect(0, 0, W, H);
+  if (f >= SC.E0) { drawEndCard(f); return; }
+  var s = sceneOf(f);
+  drawGround();
+  if (s === 'C') drawLoop(f);
+  drawBottle();
+  if (s !== 'A') { drawLegend(f); drawMeter(f); }
+  drawItems(f);
+  if (s !== 'A') drawGate(f);
+  drawCounter(f);
+  drawCaption(f);
+}
+
+// ---------------------------------------------------------------- self test
+function intersects(a, b) { return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y; }
+function qa() {
+  var issues = [], f, i, p, bb, rects, r;
+  for (f = 0; f < SC.E0; f++) {
+    rects = [drawCounter(f, true), drawCaption(f, true), drawLegend(f, true)].filter(Boolean);
+    for (i = 0; i < ITEMS.length; i++) {
+      p = itemPos(ITEMS[i], f);
+      if (!p) continue;
+      bb = { x: p.x - 17, y: p.y - 17, w: 34, h: 34 };
+      for (r = 0; r < rects.length; r++) if (intersects(bb, rects[r])) issues.push({ frame: f, kind: ITEMS[i].kind, idx: ITEMS[i].idx, rect: rects[r].name });
+    }
+  }
+  var cA = counterState(SC.B0 - 1), cB = counterState(SC.C0 - 1), cC = counterState(SC.E0 - 1);
+  // when do the final numbers settle?
+  var settleC = null;
+  for (f = SC.E0 - 1; f >= WIN.C[0]; f--) { var c = counterState(f); if (c.wanted !== 30 || c.thrown !== 2) { settleC = f + 1; break; } }
+  return {
+    overlapCount: issues.length, overlaps: issues.slice(0, 12),
+    counts: { A: cA.wanted, B: [cB.wanted, cB.thrown], C: [cC.wanted, cC.thrown] },
+    cSettlesAtFrame: settleC, items: ITEMS.length, gateX: GATE_X, loopLen: Math.round(LOOP.len)
+  };
+}
+function fontProbe() {
+  // Which family actually renders: compare widths against explicit candidates.
+  var out = {};
+  function width(fam, bold) { ctx.save(); ctx.font = (bold ? 'bold ' : '') + '40px ' + fam; var w = ctx.measureText('The quick brown fox 0123456789').width; ctx.restore(); return w; }
+  var serifW = width(SERIF, true), sansW = width(SANS, false);
+  var serifC = ['Georgia', '"DejaVu Serif"', '"Liberation Serif"', 'serif'];
+  var sansC = ['Arial', '"Liberation Sans"', '"DejaVu Sans"', 'sans-serif'];
+  out.serifWidths = {}; out.sansWidths = {};
+  serifC.forEach(function (c) { out.serifWidths[c] = Math.round(width(c, true) * 100) / 100; });
+  sansC.forEach(function (c) { out.sansWidths[c] = Math.round(width(c, false) * 100) / 100; });
+  out.serifStackWidth = Math.round(serifW * 100) / 100;
+  out.sansStackWidth = Math.round(sansW * 100) / 100;
+  return out;
+}
+
+// ---------------------------------------------------------------------- api
+window.seek = function (n) { drawFrame(n); return clamp(Math.floor(n), 0, TOTAL - 1); };
+window.TOTAL_FRAMES = TOTAL;
+window.FPS = FPS;
+window.__qa = qa;
+window.__fontProbe = fontProbe;
+window.__items = ITEMS;
+
+var q = new URLSearchParams(window.location.search);
+if (q.get('play') === '1') {
+  var t0 = null;
+  var loopPlayback = q.get('loop') !== '0';
+  function tick(ts) {
+    if (t0 === null) t0 = ts;
+    var fr = Math.floor((ts - t0) / 1000 * FPS);
+    if (fr >= TOTAL) { if (!loopPlayback) { drawFrame(TOTAL - 1); return; } fr = fr % TOTAL; }
+    drawFrame(fr);
+    window.requestAnimationFrame(tick);
+  }
+  window.requestAnimationFrame(tick);
+} else {
+  var fr0 = parseInt(q.get('frame') || '0', 10);
+  drawFrame(isNaN(fr0) ? 0 : fr0);
+}
+})();
+</script>
+</body>
+</html>

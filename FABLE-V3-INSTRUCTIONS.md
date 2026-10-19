@@ -718,7 +718,8 @@ Works: within about ten minutes, an event `Donna's Week in Review` with one to t
 
 **P7 · The Monday signature** (Step 4, in the Donna project chat; Path A)
 ```
-Approve this week's review. Write my updated skill file as a
+Approve this week's review. It is the document "Donna's Week in Review"
+in my Google Drive folder "Donna". Write my updated skill file as a
 downloadable zip named donna-triage.zip.
 ```
 Also document `Approve 1 and 3.` and `Reject 2.` as the partial forms; the skill's retrain step 6 handles them.

@@ -342,7 +342,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   notes(s, 1,
     "Say it twice, verbatim: she never sends. Ever. And she never deletes.",
     "Slow down here. This is the trust slide, and it answers the fear nobody has typed in the chat yet: what if it emails a client?",
-    "It cannot. Drafting and sending are different permissions, and this playbook only ever drafts. You are the send button. If someone asks about privacy, the appendix has the plan-by-plan answer; do not go there now.",
+    "Her playbook forbids it in its first line, and nothing leaves until you press send on a draft you have read. You are the send button. If someone asks about privacy, the appendix has the plan-by-plan answer; do not go there now.",
     "Five house rules, then we build."
   );
 }
@@ -450,7 +450,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     label: "The setup", labelSize: 13, labelColor: C.GOLD_D,
     items: [
       "Projects, then New project. Name it Donna.",
-      "Your initials, then Settings, then Connectors.",
+      "Customize, then Connectors.",
       "Connect Gmail, Calendar, and Drive. All three, now.",
     ],
     tag: "s11 panel",
@@ -495,7 +495,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   B.eyebrow(s, "Step one  ·  checkpoint", "dark", { narrow: true });
   B.diamond(s, 6.612, 2.24, 0.14, C.GOLD);
   const chk = B.statement(s, "A draft you didn’t write is waiting in your drafts folder.", "dark", { size: 40, w: 10.4, y: 2.62 });
-  s.addText("The interview is over. She’s hired. Now we train her.", {
+  s.addText("The interview is over. She’s hired. Now we teach her.", {
     x: G.ML, y: chk + 0.24, w: G.W, h: 0.34, margin: 0,
     fontFace: F.BODY, fontSize: 17, bold: true, color: C.GOLD_L, align: "center", valign: "middle",
   });
@@ -591,12 +591,12 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     lines: ["Triage my inbox."],
     tag: "s15 prompt",
   });
-  s.addText("Chat is a conversation. A project is a standing arrangement.", {
+  s.addText("Chat is a conversation. A playbook is a standing arrangement.", {
     x: G.ML, y: pb + 0.42, w: G.W, h: 0.34, margin: 0,
     fontFace: F.BODY, fontSize: 17, bold: true, color: C.GOLD_L, align: "center", valign: "middle",
   });
   notes(s, 4,
-    "You will never re-explain your rules again. That is the difference between a chat and a project.",
+    "You will never re-explain your rules again. That is the difference between a chat and a playbook.",
     "Gate first: is THE FINAL QUESTION on your screen? Anyone who is not there types: final question. After the OPEN FOR BUSINESS banner, everyone runs the one-sentence ritual inside the project. Hold until the checkmarks say every screen shows a table.",
     "Reply-Now drafts are already sitting in their Drafts folder. Have them check; that is the gasp.",
     "Step three. The document leaves your hands."
@@ -651,7 +651,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   const beats = [
     "She writes the file.",
     "You download it. The file card has a download arrow.",
-    "Settings, then Capabilities, then Skills, then Upload skill. Pick the zip.",
+    "Customize, then Skills, then Create skill, then Upload a skill. Pick the zip.",
   ];
   let by = y + 0.56;
   beats.forEach((t, i) => {
@@ -719,16 +719,16 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   });
   B.panelList(s, {
     x: rx, y: ly + 0.14, w: rw, mode: "light", size: 12, gap: 0.12, pad: 0.24,
-    label: "While your laptop is open", labelSize: 12, labelColor: C.GOLD_D,
+    label: "Where she runs", labelSize: 12, labelColor: C.GOLD_D,
     items: [
-      "She works while your laptop is awake and Claude is open. Close it, she waits. Open it, she catches up.",
+      "Scheduled tasks run on Claude's side, not on your laptop. Close the laptop; she still works at 4:30.",
     ],
     tag: "s18 panel",
   });
   notes(s, 6,
     "The last line of that prompt is the finale of this step: a dry run, right now, with today's event ten minutes out so the email lands while we are still together.",
     "Grab the prompt from the site rather than retyping. Scheduled in the left sidebar, New task, Create with Claude. If Claude asks how much she may do without checking in, pick the hands-free option. If someone cannot find Scheduled, the rescue prompt on the page asks Claude where it is.",
-    "Scheduled tasks run while the laptop is awake and the app is open. Say that plainly rather than promising something the product does not do. 'My local time' matters: half this room is in Europe.",
+    "Scheduled tasks run on Anthropic's side now, so a closed laptop is fine; say that plainly. 'My local time' matters: half this room is in Europe. Paste by 12:51 at the latest so the event lands before step four.",
     "Everybody watch your calendar."
   );
 }
@@ -740,7 +740,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     x: G.ML, y: 1.82, w: G.W, h: 1.16, margin: 0,
     fontFace: F.DISPLAY, fontSize: 72, bold: true, color: C.GOLD_L, align: "center", valign: "middle",
   });
-  const dry = B.statement(s, "Her first shift lands before the last step starts.", "dark", { size: 32, w: 10.4, y: 3.1 });
+  const dry = B.statement(s, "Her first shift lands as the last step starts.", "dark", { size: 32, w: 10.4, y: 3.1 });
   s.addText("The trick: Claude never emails you. Your calendar does. The triage lands from a sender you already trust.", {
     x: 1.9, y: dry + 0.16, w: 9.53, h: 0.5, margin: 0,
     fontFace: F.BODY, fontSize: 15, color: C.WARM, align: "center", valign: "top", lineSpacingMultiple: 1.16,
@@ -749,9 +749,9 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     bold: true, color: C.GOLD_L, align: "center",
   });
   notes(s, 4,
-    "Nothing. Let the calendars ping.",
-    "Everyone watches the dry run land: event on today's calendar with the whole triage in its description, drafts waiting, the email a minute out. Hold the silence. Checkmarks in the chat.",
-    "If a few are still waiting when the clock says 12:58, move on. The event lands while step four starts and they will see it.",
+    "Open today's calendar. The checkmark is the event with the triage inside it. The email arrives a minute before it starts, right as step four begins.",
+    "Everyone opens the event: the whole triage in its description, drafts waiting. Hold the silence. Checkmarks in the chat.",
+    "The event appears when the dry run finishes, two to five minutes after the paste; the email follows ten minutes after the task started, so most land around 1:00. Do not wait for the email here. Move on at 12:58 and let it arrive during step four.",
     "Three stations lit. Now the one almost nobody builds."
   );
 }
@@ -812,8 +812,8 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   });
   notes(s, 10,
     "Your Sent folder is her report card. She reads the reports she wrote, the drafts she saved, and the emails you actually sent, and she proposes changes to her own playbook. Numbered, each with a because. Nothing changes until you say approve.",
-    "Same place as the daily shift: Scheduled, New task, paste. The last line runs it right now on this week so far, with today's event ten minutes out. Yes, on a Wednesday: the Sent folder since Monday gives her plenty to say.",
-    "Someone will ask whether she can just apply the changes herself. No, and that is the point: the human signature is what closes the loop. Monday, three moves, only when she proposes something.",
+    "Paste first, by 1:01, then talk. Same place as the daily shift: Scheduled, New task, paste. The last line runs it right now on this week so far, with today's event ten minutes out, which lands at 1:11 if the paste is at 1:01. Talk through the Sent-folder idea while she reads the week. Yes, on a Wednesday: the Sent folder since Monday gives her plenty to say.",
+    "Someone will ask whether she can just apply the changes herself. No, and that is the point: the human signature is what closes the loop. Monday, one paste and one upload, only when she proposes something.",
     "Watch for the review."
   );
 }
@@ -908,7 +908,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
       { label: "Thu 4:30", sub: "her first real shift" },
       { label: "Fri 3:00", sub: "her first real retrain" },
       { label: "Mon 8:00", sub: "her Week in Review, on your calendar", highlight: true },
-      { label: "Mon, 3 clicks", sub: "you sign it" },
+      { label: "Mon, you sign it", sub: "one paste, one upload" },
     ],
     null,
     "light",
@@ -927,7 +927,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     fontFace: F.BODY, fontSize: 13, color: C.MUTE, align: "center", valign: "middle",
   });
   notes(s, 3,
-    "Tomorrow at 4:30 she works her first real shift, and the email lands at 4:39. Friday at 3:00 she reads her week. Monday at 8:00 her Week in Review is on your calendar, and you sign it in three clicks. If she gets it wrong, you do not need a better prompt. You need a Friday.",
+    "Tomorrow at 4:30 she works her first real shift, and the email lands at 4:39. Friday at 3:00 she reads her week. Monday at 8:00 her Week in Review is on your calendar, and you sign it with one paste and one upload. If she gets it wrong, you do not need a better prompt. You need a Friday.",
     "Point at Monday. That is the loop closing for the first time without you in the room.",
     "The site stays up: every prompt, every rescue prompt, the Monday signature. Questions to the email address, any time.",
     "Send-off."

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>03 · Donna, Full Time · Build Your Own Donna</title>
-<meta name="description" content="Step 3 of Build Your Own Donna, RUN: her playbook becomes a skill, and a scheduled task runs your triage every weekday at 4:30 and delivers it as a calendar invite that emails you one minute before.">
+<meta name="description" content="Step 3 of Build Your Own Donna, RUN: her playbook becomes a skill, and a scheduled task runs your triage every weekday at 4:30 and delivers it as a calendar reminder that emails you one minute before.">
 <meta name="theme-color" content="#14213D">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314213D'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-style='italic' fill='%23C9A227' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +48,7 @@
 
     <div class="goal">
       <span class="eyebrow">Goal</span>
-      <p>Her playbook leaves the chat and goes on the clock: every weekday she triages your inbox, then a <strong>calendar invite lands in your email</strong> with the whole triage inside. No new app to check. Your calendar reports to you.</p>
+      <p>Her playbook leaves the chat and goes on the clock: every weekday she triages your inbox, then <strong>an email from your own calendar lands in your inbox</strong> with the whole triage inside. No new app to check. Your calendar reports to you.</p>
       <p class="station">Station 3 of 4: <strong>Run.</strong> The work gets done, on a schedule.</p>
     </div>
 
@@ -86,14 +86,14 @@ donna-triage.zip containing donna-triage/SKILL.md.</pre>
           <p>Three moves, watch the screen share:</p>
           <ul>
             <li>Click the file card&rsquo;s <kbd class="ui">Download</kbd> arrow. It saves as <code>donna-triage.zip</code>.</li>
-            <li>Click your initials in the <kbd class="ui">bottom-left corner</kbd>, then <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Capabilities</kbd>, find <kbd class="ui">Skills</kbd>, and click <kbd class="ui">Upload skill</kbd>. Pick the zip from your computer.</li>
+            <li>In the left sidebar, open <kbd class="ui">Customize</kbd>, then <kbd class="ui">Skills</kbd>. Click <kbd class="ui">+</kbd>, then <kbd class="ui">Create skill</kbd>, then <kbd class="ui">Upload a skill</kbd>. Pick the zip from your computer.</li>
             <li>Confirm it: <strong>donna-triage</strong> now shows in your skills list.</li>
           </ul>
           <div class="note">
             <svg class="note-icon" viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="48" r="45" stroke="#C9A227" stroke-width="3"/><g stroke="#A31621" stroke-width="5" stroke-linecap="square"><path d="M37 30v36"/><path d="M31 30h12M31 66h12"/><path d="M43 30a18 18 0 0 1 0 36"/></g></svg>
             <div class="note-body">
               <span class="note-label">Donna&rsquo;s note</span>
-              The only thing anyone forgets here is where the file went. Unless you chose a spot, it&rsquo;s in your <strong>Downloads</strong> folder, and it&rsquo;s the newest file there, sitting right at the top. And if your Skills screen is somewhere else in your version of the app (some builds call it <kbd class="ui">Customize</kbd> &rarr; <kbd class="ui">Skills</kbd>), the rescue prompt below finds it.
+              The only thing anyone forgets here is where the file went. Unless you chose a spot, it&rsquo;s in your <strong>Downloads</strong> folder, and it&rsquo;s the newest file there, sitting right at the top. If your version of the app keeps Skills somewhere else (older builds: your initials &rarr; <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Capabilities</kbd>), the rescue prompt below finds it.
             </div>
           </div>
           <details class="smallprint">
@@ -115,7 +115,7 @@ menu items and buttons, in order, and tell me how to confirm each worked.</pre>
 
         <li>
           <h3>Give her the 4:30 shift (the automation)</h3>
-          <p>In the left sidebar: <kbd class="ui">Scheduled</kbd> &rarr; <kbd class="ui">New task</kbd> &rarr; <kbd class="ui">Create with Claude</kbd>. Paste the standing order:</p>
+          <p>That is 4:30 PM (16:30) in your own time zone. In the left sidebar: <kbd class="ui">Scheduled</kbd> &rarr; <kbd class="ui">New task</kbd> &rarr; <kbd class="ui">Create with Claude</kbd>. Paste the standing order:</p>
           <div class="prompt">
             <div class="prompt-bar">
               <span class="prompt-label">The standing order</span>
@@ -135,11 +135,11 @@ Also do a dry run right now so I can watch the first one land.</pre>
             <svg class="note-icon" viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="48" r="45" stroke="#C9A227" stroke-width="3"/><g stroke="#A31621" stroke-width="5" stroke-linecap="square"><path d="M37 30v36"/><path d="M31 30h12M31 66h12"/><path d="M43 30a18 18 0 0 1 0 36"/></g></svg>
             <div class="note-body">
               <span class="note-label">Donna&rsquo;s note</span>
-              Scheduled tasks run while your laptop is awake with the Claude app open. Close the laptop, she waits. Open it, she catches up. That is honest, and it is fine: she works when you do.
-              <p>If Claude asks how much she may do without checking in, choose the option that lets the task run hands-free (the choices are at the bottom-left of the chat). Her hard rules stand either way: drafts only, never delete.</p>
+              Scheduled tasks run on Claude&rsquo;s side, not on your laptop. Close the laptop; she still works at 4:30.
+              <p>If Claude asks which mode the task should run in, choose <kbd class="ui">Auto</kbd> so it runs hands-free. Her hard rules stand either way: drafts only, never delete.</p>
             </div>
           </div>
-          <p class="fine">Google Calendar sends email reminders natively. Every weekday around 4:39&nbsp;PM, the triage lands on top of the very inbox it triaged, from a sender you already trust: your own calendar.</p>
+          <p class="fine">Google Calendar can email you a reminder. Every weekday around 4:39&nbsp;PM (16:39), the triage lands on top of the very inbox it triaged, from a sender you already trust: your own calendar.</p>
         </li>
 
         <li>
@@ -168,7 +168,7 @@ Also do a dry run right now so I can watch the first one land.</pre>
 
     <div class="checkpoint">
       <span class="eyebrow">You did it when&hellip;</span>
-      <p>A calendar invite from your own calendar lands in your inbox with the day&rsquo;s triage written inside it.</p>
+      <p>An email from your own calendar lands in your inbox with the day&rsquo;s triage written inside it.</p>
     </div>
 
     <p class="why"><span class="why-label">Why this matters</span>You didn&rsquo;t just use an assistant today. You hired one, wrote her playbook, and put her on payroll.</p>
