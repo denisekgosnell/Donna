@@ -17,7 +17,7 @@ pres.title = "Build Your Own Donna";
 const DECK = "BUILD YOUR OWN DONNA";
 const FOOTER = [DECK, "OCTOBER 21, 2026"];
 const SITE = "denisekgosnell.github.io/Donna";
-const PASSWORD = "suits"; // the same constant lives in assets/donna.js
+const PASSWORD = "donna2026"; // the same constant lives in assets/donna.js
 const MODES = [];
 const TIMING = [];
 
@@ -206,7 +206,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     tag: "s2 list",
   });
   notes(s, 1,
-    "Open the site now, on your phone or in a tab beside Claude. Type the password: suits, all lowercase. The TAs are putting the link and the password in the chat.",
+    "Open the site now, on your phone or in a tab beside Claude. Type the password: donna2026, all lowercase, no spaces. The TAs are putting the link and the password in the chat.",
     "Say the password out loud twice and paste the link and the password into the Zoom chat yourself. Wait for checkmarks.",
     "Someone will type the password with a capital letter or a space; the site ignores both. Someone else will be on the promo page instead of the instructions; the link in the chat fixes it.",
     "Fifty-five seconds of silence. Let the video do the talking."

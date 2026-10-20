@@ -29,7 +29,7 @@
 
   /* ---------- the velvet rope ---------- */
   /* The password lives here and on the "Open the instructions" slide. Change both. */
-  var KEY = "suits";
+  var KEY = "donna2026";
 
   function isUnlocked() {
     try { return localStorage.getItem("donna-unlocked") === "1"; } catch (e) { return window.__donnaUnlocked === true; }
