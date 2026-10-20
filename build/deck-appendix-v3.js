@@ -66,9 +66,9 @@ function matrix(s, opts) {
       margin: 0,
       isTextBox: true,
       fontFace: F.BODY,
-      fontSize: 10.5,
+      fontSize: 16,
       bold: true,
-      charSpacing: 1.0,
+      charSpacing: 0.8,
       color: col.hl ? C.GOLD_L : p.fg,
       align: "center",
       valign: "middle",
@@ -99,7 +99,7 @@ function matrix(s, opts) {
       margin: 0,
       isTextBox: true,
       fontFace: F.BODY,
-      fontSize: opts.labelSize || 14,
+      fontSize: opts.labelSize || 16,
       color: p.fg,
       align: "left",
       valign: "middle",
@@ -128,16 +128,16 @@ function matrix(s, opts) {
       } else if (cell === "x") {
         s.addText("✕", {
           ...common,
-          fontSize: 15,
+          fontSize: 18,
           bold: true,
           color: hl ? C.WARM : C.MUTE,
         });
       } else {
         s.addText(cell, {
           ...common,
-          fontSize: 9.5,
+          fontSize: 16,
           bold: true,
-          charSpacing: 1.2,
+          charSpacing: 0.8,
           color: hl ? C.WARM : C.MUTE,
         });
       }
@@ -157,18 +157,18 @@ function matrix(s, opts) {
   const bot = matrix(s, {
     mode: "light",
     y: 1.82,
-    labelW: 4.1,
-    headH: 0.62,
-    rowH: 0.62,
+    labelW: 5.2,
+    headH: 0.78,
+    rowH: 0.56,
     cols: [
       { head: "CLAUDE\nFREE" },
-      { head: "CLAUDE PRO,\nMAX & ENTERPRISE", hl: true },
+      { head: "CLAUDE\nPAID", hl: true },
       { head: "CHATGPT" },
-      { head: "MICROSOFT\nCOPILOT" },
+      { head: "COPILOT" },
     ],
     rows: [
       {
-        label: "AI terminology: chat, projects, context window, agents",
+        label: "AI vocabulary: chat, projects, agents",
         cells: ["check", "check", "check", "check"],
       },
       {
@@ -184,7 +184,7 @@ function matrix(s, opts) {
         cells: ["check", "check", "check", "check"],
       },
       {
-        label: "Leave with a scheduled agent, running on its own",
+        label: "A scheduled agent, running on its own",
         cells: ["x", "check", "x", "x"],
       },
     ],
@@ -192,9 +192,9 @@ function matrix(s, opts) {
 
   B.caption(
     s,
-    "Any platform covers the first four. Leaving with a scheduled agent running on its own takes a paid Claude plan.",
+    "Any platform covers the first four. A scheduled agent takes a paid Claude plan.",
     "light",
-    { y: bot + 0.2, bold: true }
+    { y: bot + 0.16, bold: true }
   );
 
   s.addNotes(
@@ -215,20 +215,20 @@ function matrix(s, opts) {
   const bot = matrix(s, {
     mode: "light",
     y: 1.82,
-    labelW: 6.9,
-    headH: 0.62,
-    rowH: 0.52,
+    labelW: 7.4,
+    headH: 0.78,
+    rowH: 0.46,
     cols: [
       { head: "CLAUDE\nFREE" },
-      { head: "CLAUDE PRO,\nMAX & ENTERPRISE", hl: true },
+      { head: "CLAUDE\nPAID", hl: true },
     ],
     rows: [
       {
-        label: "Your conversations are not used to train the model",
+        label: "Conversations not used for training",
         cells: ["OPTIONAL", "check"],
       },
       {
-        label: "GDPR-aligned data processing agreement (EU standard clauses)",
+        label: "GDPR data processing agreement",
         cells: ["x", "check"],
       },
       {
@@ -238,7 +238,7 @@ function matrix(s, opts) {
       { label: "Audit logs with 180-day export", cells: ["x", "check"] },
       { label: "Custom data retention controls", cells: ["x", "check"] },
       {
-        label: "Role-based permissions and a compliance API",
+        label: "Role-based permissions, compliance API",
         cells: ["x", "check"],
       },
     ],
@@ -246,22 +246,16 @@ function matrix(s, opts) {
 
   B.caption(
     s,
-    "Claude for Work is SOC 2 Type II and ISO 27001 certified. Every plan encrypts your data in transit and at rest.",
+    "SOC 2 Type II and ISO 27001 certified. Every plan encrypts data in transit and at rest.",
     "light",
     { y: bot + 0.12, bold: true }
-  );
-  B.citation(
-    s,
-    "SSO is Team and up. Audit logs, retention, role permissions and the DPA are Enterprise. Pro and Max set training exclusion in privacy settings. Source: privacy.claude.com.",
-    "light",
-    { y: 6.08, align: "left" }
   );
 
   s.addNotes(
     "[TIMING] 90 sec.\n" +
       "[SAY] On the free plan, keeping your conversations out of training is a setting you have to go find. On Claude for Work it is the default, in the contract. Everything below that row is the admin layer: the controls your IT and legal teams will ask about by name, and they only exist on the business plans.\n" +
       "[DO] None. Let the column speak.\n" +
-      "[WATCH] Be precise if pressed: Pro and Max carry the same training toggle as free; the contractual exclusion and every admin control on this list is Claude for Work, and most are Enterprise. The free plan is not insecure, it is unmanaged. Say it that way.\n" +
+      "[WATCH] Be precise if pressed: Pro and Max carry the same training toggle as free; the contractual exclusion and every admin control on this list is Claude for Work, and most are Enterprise. SSO is Team and up; audit logs, retention, role permissions and the DPA are Enterprise (source: privacy.claude.com). The free plan is not insecure, it is unmanaged. Say it that way.\n" +
       "[NEXT] That is the decision. Pick the plan, and we start building."
   );
 }

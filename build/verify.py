@@ -49,6 +49,7 @@ site_text = {}
 for p in PAGES:
     s = pathlib.Path(p).read_text()
     s2 = re.sub(r"<pre>.*?</pre>", "", s, flags=re.S)  # prompts and template are exempt
+    s2 = re.sub(r"<script>.*?</script>", "", s2, flags=re.S)  # the password gate's inline script is not copy
     s2 = re.sub(r"<[^>]+>", "", s2); s2 = html.unescape(s2)
     site_text[p] = s2
     excl = [m for m in re.findall(r"[^\n]{0,40}![^\n]{0,20}", s2)]
@@ -80,7 +81,7 @@ for f in (DECK, APPX):
     (ok if red_slides <= 5 else bad)(f"{f}: RED appears on {red_slides} slides (cap 4 visible + hidden fallback)")
     note(f"{f}: mode sequence {' '.join(modes)}")
     if f == DECK:
-        vis = [m for i, m in enumerate(modes) if i != 2]  # hidden fallback is slide index 2
+        vis = [m for i, m in enumerate(modes) if i != 3]  # hidden fallback is slide index 3
         run = 1; worst = 1
         for i in range(1, len(vis)):
             run = run + 1 if vis[i] == vis[i-1] else 1; worst = max(worst, run)
@@ -88,7 +89,7 @@ for f in (DECK, APPX):
 
 # ---- Pass 5: residue grep
 h("Pass 5 · residue grep")
-RES = re.compile(r"\bTIME\b|\bACCURACY\b|\bTRUST\b|\bVISION\b|closed.?(tell|ask)|open.?(tell|ask)|[Qq]uadrant|[Bb]lind.?spot|[Ww]hich executive|[Ff]our kinds|Merrill|Reid\b|Signature|SigCompass|\bDDI\b|S-Team|cooperative|Amazon|Bezos|Working Backwards|Nonaka|[Ff]lywheel|[Vv]enue|[Ww]i-?[Ff]i|September 9|AUGUST 2026|3:42|4:54|2:30|4:10|pilot group|DOCUMENT · TEST|\bREVISE\b|\bOPERATE\b")
+RES = re.compile(r"\bTIME\b|\bACCURACY\b|\bTRUST\b|\bVISION\b|closed.?(tell|ask)|open.?(tell|ask)|[Qq]uadrant|[Bb]lind.?spot|[Ww]hich executive|[Ff]our kinds|Merrill|Reid\b|Signature|SigCompass|\bDDI\b|S-Team|cooperative|Amazon|Bezos|Working Backwards|Nonaka|[Ff]lywheel|[Vv]enue|[Ww]i-?[Ff]i|September 9|AUGUST 2026|3:42|4:54|2:30|4:10|pilot group|DOCUMENT · TEST|\bREVISE\b|\bOPERATE\b|escape hatch|[Ff]inal question|about four minutes|need a Friday|12:58|12:51")
 hits = []
 files = PAGES + ["README.md", "skills/donna-triage/SKILL.md", "build/deck-donna-v3.js", "build/deck-appendix-v3.js", "build/sync-triage-template.py", "assets/donna.css", "assets/donna.js"]
 for p in files:
@@ -109,8 +110,10 @@ h("Pass 6 · timing")
 tim = [int(m) for m in re.findall(r"\[TIMING\] (\d+) min", dt)]
 tot = sum(tim)
 (ok if tot == 90 else bad)(f"[TIMING] sum = {tot} over {len(tim)} visible+hidden notes (hidden counts 0)")
-blocks = {"open": tim[0:2], "loop": tim[3:10], "step1": tim[10:13], "step2": tim[13:16], "step3": tim[16:20], "step4": tim[20:23], "disc": tim[23:25], "close": tim[25:27]}
-note("block subtotals (incl. hidden at index 2 = 0): " + ", ".join(f"{k}={sum(v)}" for k, v in blocks.items()))
+# v3.1 order: 1 title, 2 open the site, 3 video, [4 hidden stills = 0], then the loop block through the plan
+blocks = {"open": tim[0:3], "loop": tim[4:14], "step1": tim[14:17], "step2": tim[17:20], "step3": tim[20:24], "step4": tim[24:28], "disc": tim[28:29], "close": tim[29:31]}
+note("block subtotals (incl. hidden at index 3 = 0): " + ", ".join(f"{k}={sum(v)}" for k, v in blocks.items()))
+(ok if sum(tim[0:14]) == 17 and sum(tim[14:28]) == 56 else bad)(f"clock: opening {sum(tim[0:14])} min (12:00 to 12:17), the four steps {sum(tim[14:28])} min (12:17 to 1:13)")
 
 # ---- Pass 7: links and assets
 h("Pass 7 · links and assets")
@@ -154,6 +157,17 @@ for x in tz_issues[:10]: OUT.append(f"    {x}")
 deck_times = [l.strip()[:90] for l in dt.splitlines() if re.search(r"\b\d{1,2}:\d{2}\s?(AM|PM)\b", l) and "local time" not in l and "LONDON" not in l]
 note(f"deck lines with a clock time and no zone (reviewed by hand; in-workshop clock is Eastern per the eyebrow): {len(deck_times)}")
 for x in deck_times[:12]: OUT.append(f"    {x}")
+
+# ---- Pass 9: the 16pt floor (every run and every default run property in every slide, both decks)
+h("Pass 9 · minimum font size 16pt")
+for f in (DECK, APPX):
+    slides, z = slide_xml(f)
+    small = []
+    for n, x in slides:
+        for m in re.finditer(r'<a:(?:rPr|defRPr|endParaRPr)[^>]*\ssz="(\d+)"', x):
+            if int(m.group(1)) < 1600: small.append(f"{n}: {int(m.group(1))/100:g}pt")
+    (ok if not small else bad)(f"{f}: runs below 16pt: {len(small)}")
+    for x in sorted(set(small))[:20]: OUT.append(f"    {x}")
 
 # ---- Pass 10: reading level
 h("Pass 10 · reading level (Flesch-Kincaid grade, prompts and template excluded)")

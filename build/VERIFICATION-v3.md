@@ -155,3 +155,35 @@ Timing sums to 90 with every block matching the clock. Applied: slide 19 no long
 6. **The Bottle.** Built from the spec (no reference link arrived): gold circles for wanted work, slate squares, sand triangles, and panel diamonds for the rest; counts 10, 10 and 30, 30 and 2.
 7. **URL and QR on the closing slide.** URL as text, no QR, per the live-check rule.
 8. **Fonts.** Georgia, Arial, Courier New on the deck, as in August.
+
+---
+
+# v3.1 addendum · October 20, 2026 (Denise's sixteen-item change list)
+
+## What changed
+
+1. **Her deck edits, carried over.** Denise's Google Slides copy of the v3 deck (Drive, "workshops" folder) differed from the built deck in exactly three places: the open/closed statement split onto two lines, its caption cut to "AI makes open loops cheap. That is the whole problem." at 20pt, and the loop caption cut to "Email. Invoices. Hiring. Support tickets. Same four stops." All three are in the generator and the same cuts are on the front page and the Step 4 page. Every page also lost its repeated explanations (goal boxes, notes, fine print) so the site reads shorter.
+2. **The two rings on the open/closed slide are twice the size** (radius 0.72 in to 1.44 in; hub 1.0 in to 2.0 in). The three loop slides' rings grew about 20% because the 16pt captions take one line.
+3. **16pt floor, everywhere.** Eyebrows, captions, footer chrome, pip caption, legend, prompt blocks (Courier New 16), timeline, quote attributions, panel labels, appendix matrix. Where text no longer fit, words were cut (prompts on the build slides are abbreviated and say "Full prompt on the site"). New verify pass 9 scans every run property in both decks' XML and fails on anything under 1600.
+4. **New early slides.** 2 "Open the instructions" (URL + password), 8 "What my Donna does for me" (her five plus the 24-hour reply desk and the 4 PM next-day plan, from the Donna skill's scheduled tasks), 9 "What she gives back" (her two numbers plus 100+ meeting briefs since August 7 and 27 prep blocks in the last 30 days, counted from Drive and Calendar on October 20; the Microsoft Work Trend Index figure as a labelled benchmark), 10 "Pick your tool. Keep your playbook." (Copilot, Perplexity, ChatGPT, Claude, one phrase each; the playbook is plain text and portable).
+5. **Prompt 2** now reads the Sent folder and bans em dashes and AI speech patterns, on the site and the deck; the same house-style line is in SKILL.md under "My voice".
+6. **Password gate.** `assets/donna.js` holds one constant, `KEY = "suits"`, and shows a velvet-rope overlay until it is entered (or `?key=suits` is in the URL). A one-line inline script in each page's head hides the content before paint. Tested in Chromium at phone and desktop widths: locked on load, wrong password shows the message, right password unlocks and persists across pages, `?key=` unlocks and is stripped from the URL, `?key=wrong` stays locked, copy buttons still work.
+7. **"Still stuck?" TA line** on the Step 1 build slide, house rule 5, the Step 1 and Step 3 pages, and the README.
+8. **The site is the live source.** Every step opens with a divider that lists "In this step: 1/ 2/ 3/" and ends "Now go to the instructions: Step N on the site." The step pages carry the same list under the goal.
+9. **Escape hatch removed.** No "final question" jump anywhere: SKILL.md (pacing rewritten to "never rush and never stall"; the user decides when they are done), the Step 2 page, the deck, the README. The kickoff line now says "give me time to answer".
+10. **Skills section verified and extended.** Path: Customize → Skills → + → Create skill → Upload a skill (ZIP with folder `donna-triage` and `SKILL.md`). Gotchas on the Step 3 page: no Skills menu (capability switch off), refused upload (not a folder with SKILL.md), she ignores it (name the skill). The workaround for every plan and build: paste the playbook text into the scheduled task itself.
+11. **Free vs paid** on the front page checklist, the Step 3 page and the shift slide: connectors, projects and skills on every plan; scheduled tasks on Pro, Max, Team, Enterprise; on Free, run her by hand with "Triage my inbox."
+12. **Times.** Opening 17 min (12:00 to 12:17), Step 1 14, Step 2 14, Step 3 16, Step 4 12 (one more scheduled task; the "never about email" slide fills the wait), discussion 13, close 4. Donna live at 1:13 holds: the Step 4 paste is by 1:03 and the dry-run event lands ten minutes later.
+13. "You need a Friday" became "You need to retrain with better info, and more specific info." on the first-Friday slide, its notes and the Step 4 page.
+
+## Verification, v3.1
+
+- `build/verify.py`: 43 PASS, 0 FAIL (file validity, content, house style, brand, residue grep extended with "escape hatch", "final question", "about four minutes", "need a Friday", 12:58, 12:51; timing 90 with the opening at 17 and the four steps at 56; links and assets; time zones; **minimum font 16pt on both decks**; reading level 3.8 to 5.0).
+- Deck: 30 slides + 1 hidden, mode run ≤ 2, opens and closes dark, RED on 4 slides, fit assertions clean, preset geometry valid, `validate.py` PASSED on both decks.
+- Visual QA on the LibreOffice render (contact sheets of all 30 slides): two defects found and fixed (the ML title wrapped into the ring under the Georgia substitute; "RETRAIN" broke on the discussion ring), then re-rendered clean.
+- Not re-run in v3.1: the ten-persona fleet and the live connector dry run. The playbook change is the removal of one section and one sentence plus one voice rule; the daily shift and the retrain sections are untouched.
+
+## Still for Denise
+
+- The password is `suits`; change it in `assets/donna.js` (`KEY`) and `build/deck-donna-v3.js` (`PASSWORD`) together, then rebuild the deck.
+- Say the ROI numbers out loud once before Wednesday; the two from your note are yours, the other two were counted from your Drive and Calendar.

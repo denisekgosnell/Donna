@@ -1,4 +1,4 @@
-/* BUILD YOUR OWN DONNA · copy buttons */
+/* BUILD YOUR OWN DONNA · copy buttons and the velvet rope */
 (function () {
   "use strict";
 
@@ -26,6 +26,64 @@
       }
     });
   }
+
+  /* ---------- the velvet rope ---------- */
+  /* The password lives here and on the "Open the instructions" slide. Change both. */
+  var KEY = "suits";
+
+  function isUnlocked() {
+    try { return localStorage.getItem("donna-unlocked") === "1"; } catch (e) { return window.__donnaUnlocked === true; }
+  }
+  function unlock() {
+    try { localStorage.setItem("donna-unlocked", "1"); } catch (e) { /* private mode: this page view only */ }
+    window.__donnaUnlocked = true;
+    document.documentElement.classList.remove("locked");
+    var g = document.querySelector(".gate");
+    if (g && g.parentNode) g.parentNode.removeChild(g);
+  }
+  (function gate() {
+    var m = location.search.match(/[?&]key=([^&]+)/);
+    if (m) {
+      var given = "";
+      try { given = decodeURIComponent(m[1]); } catch (e) { given = m[1]; }
+      if (given.trim().toLowerCase() === KEY) {
+        unlock();
+        try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) { /* ignore */ }
+        return;
+      }
+    }
+    if (isUnlocked()) { document.documentElement.classList.remove("locked"); return; }
+    document.documentElement.classList.add("locked");
+    var div = document.createElement("div");
+    div.className = "gate";
+    div.setAttribute("role", "dialog");
+    div.setAttribute("aria-label", "Workshop password");
+    div.innerHTML =
+      '<div class="gate-card">' +
+      '<svg class="monogram" width="56" height="56" viewBox="0 0 96 96" fill="none" aria-hidden="true">' +
+      '<circle cx="48" cy="48" r="46" stroke="#C9A227" stroke-width="1.5"/>' +
+      '<circle cx="48" cy="48" r="40.5" stroke="#C9A227" stroke-width="0.75" opacity="0.55"/>' +
+      '<g stroke="#A31621" stroke-width="2.5" stroke-linecap="square"><path d="M37 30v36"/><path d="M31 30h12M31 66h12"/><path d="M43 30a18 18 0 0 1 0 36"/></g></svg>' +
+      '<h2>Build Your Own Donna</h2>' +
+      '<p>These instructions are for workshop attendees. The password is on the slide and in the Zoom chat.</p>' +
+      '<form><input type="password" name="key" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Password" aria-label="Password"><button type="submit">Open</button></form>' +
+      '<p class="gate-err" aria-live="polite"></p>' +
+      '<p class="gate-foot">Questions &rarr; <a href="mailto:denise@denisegosnell.ai">denise@denisegosnell.ai</a></p>' +
+      '</div>';
+    document.body.appendChild(div);
+    var form = div.querySelector("form");
+    var input = div.querySelector("input");
+    var err = div.querySelector(".gate-err");
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      if (input.value.trim().toLowerCase() === KEY) { unlock(); return; }
+      err.textContent = "Not it. The password is on the slide, and in the Zoom chat.";
+      input.select();
+    });
+    window.setTimeout(function () { try { input.focus(); } catch (e) { /* ignore */ } }, 50);
+  })();
+
+  /* ---------- copy buttons ---------- */
 
   document.querySelectorAll(".copy-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {

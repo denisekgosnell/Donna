@@ -32,13 +32,13 @@ const G = {
   ML: 0.89,
   MR: 0.89,
   W: 11.56,
-  EYEBROW_Y: 0.55,
+  EYEBROW_Y: 0.5,
   TITLE_Y: 0.92,
   BODY_Y: 2.05,
   BODY_Y1: 1.72,
   BODY_BOT: 6.12,
   RULE_Y: 6.32,
-  FOOT_Y: 6.5,
+  FOOT_Y: 6.46,
   SRC_Y: 6.95,
   SAFE_BOT: 7.18,
   SLIDE_W: 13.333,
@@ -90,7 +90,7 @@ function boxH(text, w, pt, font = "arial") {
 
 // Height a diamondList will occupy. Cards are sized from this, never from a
 // literal, so a list can never outgrow the panel behind it.
-function listH(items, w, size = 14, gap = 0.18, indent = 0.34) {
+function listH(items, w, size = 16, gap = 0.18, indent = 0.34) {
   const tw = w - indent;
   let h = 0;
   items.forEach((item, i) => {
@@ -218,17 +218,17 @@ function bg(slide, mode) {
 // ------------------------------------------------------------------- primitives
 function eyebrow(slide, text, mode, opts = {}) {
   const p = palette(mode);
-  const w = opts.narrow ? 10.8 : G.W;
+  const w = opts.narrow ? 10.6 : G.W;
   slide.addText(text.toUpperCase(), {
     x: G.ML,
     y: opts.y != null ? opts.y : G.EYEBROW_Y,
     w,
-    h: 0.28,
+    h: 0.34,
     margin: 0,
     fontFace: F.BODY,
-    fontSize: 12,
+    fontSize: 16,
     bold: true,
-    charSpacing: 2.2,
+    charSpacing: 1.8,
     color: opts.color || p.eyebrow,
     valign: "middle",
   });
@@ -294,7 +294,7 @@ function statement(slide, text, mode, opts = {}) {
 
 function body(slide, text, mode, opts = {}) {
   const p = palette(mode);
-  const size = opts.size || 15;
+  const size = opts.size || 16;
   const w = opts.w || G.W;
   const x = opts.x != null ? opts.x : G.ML;
   const font = opts.italic ? "arialItalic" : opts.bold ? "arialBold" : "arial";
@@ -320,7 +320,7 @@ function body(slide, text, mode, opts = {}) {
 
 function label(slide, text, mode, opts = {}) {
   const p = palette(mode);
-  const size = opts.size || 15;
+  const size = opts.size || 16;
   const w = opts.w || G.W;
   const x = opts.x != null ? opts.x : G.ML;
   const h = boxH(text, w, size, "arialBold");
@@ -343,7 +343,7 @@ function label(slide, text, mode, opts = {}) {
 
 function caption(slide, text, mode, opts = {}) {
   const p = palette(mode);
-  const size = opts.size || 13;
+  const size = opts.size || 16;
   const w = opts.w || G.W;
   const x = opts.x != null ? opts.x : G.ML;
   const font = opts.bold ? "arialBold" : "arialItalic";
@@ -373,12 +373,12 @@ function citation(slide, text, mode, opts = {}) {
   const p = palette(mode);
   slide.addText(text, {
     x: G.ML,
-    y: opts.y != null ? opts.y : 6.0,
+    y: opts.y != null ? opts.y : 5.9,
     w: G.W,
-    h: 0.18,
+    h: 0.3,
     margin: 0,
     fontFace: F.BODY,
-    fontSize: 9,
+    fontSize: 16,
     italic: true,
     color: p.muted,
     align: opts.align || "right",
@@ -398,7 +398,7 @@ function chrome(slide, mode, deckName, pageNum, footerParts) {
   });
   const parts = footerParts || ["SIGNATURE", deckName, "AUGUST 2026"];
   // measure so the diamonds sit between the words
-  const em = (0.72 * 9) / 72; // uppercase Arial runs ~0.72em per glyph
+  const em = (0.72 * 16) / 72; // uppercase Arial runs ~0.72em per glyph
   const cs = 1.2 / 72;
   const wOf = (s) => s.length * (em + cs) + 0.04;
   let x = G.ML;
@@ -407,10 +407,10 @@ function chrome(slide, mode, deckName, pageNum, footerParts) {
       x,
       y: G.FOOT_Y,
       w: wOf(part) + 0.1,
-      h: 0.2,
+      h: 0.3,
       margin: 0,
       fontFace: F.BODY,
-      fontSize: 9,
+      fontSize: 16,
       charSpacing: 1.2,
       color: p.muted,
       valign: "middle",
@@ -419,7 +419,7 @@ function chrome(slide, mode, deckName, pageNum, footerParts) {
     if (i < parts.length - 1) {
       slide.addShape("rect", {
         x: x + 0.06,
-        y: G.FOOT_Y + 0.065,
+        y: G.FOOT_Y + 0.115,
         w: 0.07,
         h: 0.07,
         rotate: 45,
@@ -434,10 +434,10 @@ function chrome(slide, mode, deckName, pageNum, footerParts) {
       x: G.ML + G.W - 0.8,
       y: G.FOOT_Y,
       w: 0.8,
-      h: 0.2,
+      h: 0.3,
       margin: 0,
       fontFace: F.BODY,
-      fontSize: 9,
+      fontSize: 16,
       charSpacing: 1.2,
       color: p.muted,
       align: "right",
@@ -452,10 +452,10 @@ function footerOnly(slide, mode, deckName) {
     x: G.ML,
     y: G.FOOT_Y + 0.4,
     w: G.W,
-    h: 0.2,
+    h: 0.3,
     margin: 0,
     fontFace: F.BODY,
-    fontSize: 9,
+    fontSize: 16,
     charSpacing: 1.2,
     color: p.muted,
     align: "center",
@@ -499,7 +499,7 @@ function diamond(slide, x, y, size, color) {
 // Rows are measured, never pitched.
 function diamondList(slide, opts) {
   const p = palette(opts.mode);
-  const size = opts.size || 14;
+  const size = opts.size || 16;
   const gap = opts.gap != null ? opts.gap : 0.18;
   const indent = opts.indent != null ? opts.indent : 0.34;
   const tw = opts.w - indent;
@@ -566,11 +566,11 @@ function diamondList(slide, opts) {
 // separately: it is impossible for the content to outgrow the panel.
 function panelList(slide, opts) {
   const p = palette(opts.mode);
-  const size = opts.size || 14;
+  const size = opts.size || 16;
   const gap = opts.gap != null ? opts.gap : 0.16;
   const pad = opts.pad != null ? opts.pad : 0.3;
   const iw = opts.w - pad * 2;
-  const labelH = opts.label ? boxH(opts.label, iw, opts.labelSize || 14, "arialBold") : 0;
+  const labelH = opts.label ? boxH(opts.label, iw, opts.labelSize || 16, "arialBold") : 0;
   const lh = listH(opts.items, iw, size, gap);
   const h = pad + labelH + (opts.label ? 0.12 : 0) + lh + pad;
   card(slide, {
@@ -582,7 +582,7 @@ function panelList(slide, opts) {
   if (opts.label) {
     slide.addText(opts.label.toUpperCase(), {
       x: opts.x + pad, y, w: iw, h: labelH, margin: 0,
-      fontFace: F.BODY, fontSize: opts.labelSize || 14, bold: true,
+      fontFace: F.BODY, fontSize: opts.labelSize || 16, bold: true,
       charSpacing: 1.6, color: opts.labelColor || p.gold, valign: "top",
     });
     y += labelH + 0.12;
@@ -614,7 +614,7 @@ function statCallout(slide, opts) {
     valign: "top",
   });
   let y = opts.y + vh + 0.04;
-  const lh = boxH(opts.label, opts.w, 13, "arial");
+  const lh = boxH(opts.label, opts.w, 16, "arial");
   slide.addText(opts.label, {
     x: opts.x,
     y,
@@ -622,7 +622,7 @@ function statCallout(slide, opts) {
     h: lh,
     margin: 0,
     fontFace: F.BODY,
-    fontSize: 13,
+    fontSize: 16,
     color: p.fg,
     valign: "top",
     lineSpacingMultiple: 1.16,
@@ -633,15 +633,15 @@ function statCallout(slide, opts) {
       x: opts.x,
       y,
       w: opts.w,
-      h: 0.18,
+      h: 0.3,
       margin: 0,
       fontFace: F.BODY,
-      fontSize: 9,
+      fontSize: 16,
       italic: true,
       color: p.muted,
       valign: "top",
     });
-    y += 0.18;
+    y += 0.3;
   }
   assertFits(opts.tag || "stat", opts.x, opts.y, opts.w, y - opts.y, opts.bottom || G.BODY_BOT);
   return y;
@@ -680,7 +680,7 @@ function promptBlock(slide, opts) {
   // length is arithmetic. Re-wrap whatever came in, and fail loudly if a
   // hand-formatted line is too long, rather than letting it spill out of the
   // dark block the way the source deck did.
-  const cap = Math.floor((opts.w - 0.56) / 0.1) - 1;
+  const cap = Math.floor((opts.w - 0.56) / 0.1334) - 1;
   const rows = Array.isArray(opts.lines)
     ? opts.lines.flatMap((l) => (l.length > cap ? wrapMono(l, cap) : [l]))
     : wrapMono(opts.lines, cap);
@@ -689,7 +689,7 @@ function promptBlock(slide, opts) {
       VIOLATIONS.push(`prompt line ${l.length} > ${cap} chars: "${l.slice(0, 30)}..."`);
     }
   });
-  const h = 0.52 + rows.length * 0.205 + 0.22;
+  const h = 0.6 + rows.length * 0.27 + 0.24;
   slide.addShape("rect", {
     x: opts.x,
     y: opts.y,
@@ -700,14 +700,14 @@ function promptBlock(slide, opts) {
   });
   slide.addText(opts.label.toUpperCase(), {
     x: opts.x + 0.28,
-    y: opts.y + 0.19,
+    y: opts.y + 0.17,
     w: opts.w - 0.56,
-    h: 0.22,
+    h: 0.3,
     margin: 0,
     fontFace: F.BODY,
-    fontSize: 11,
+    fontSize: 16,
     bold: true,
-    charSpacing: 1.6,
+    charSpacing: 1.4,
     color: C.GOLD_L,
     valign: "middle",
   });
@@ -723,18 +723,18 @@ function promptBlock(slide, opts) {
       if (pre) {
         runs.push({
           text: pre,
-          options: { fontFace: F.MONO, fontSize: 12, color: C.PAPER },
+          options: { fontFace: F.MONO, fontSize: 16, color: C.PAPER },
         });
       }
       runs.push({
         text: hit,
-        options: { fontFace: F.MONO, fontSize: 12, bold: true, color: C.GOLD_L },
+        options: { fontFace: F.MONO, fontSize: 16, bold: true, color: C.GOLD_L },
       });
       runs.push({
         text: post,
         options: {
           fontFace: F.MONO,
-          fontSize: 12,
+          fontSize: 16,
           color: C.PAPER,
           breakLine: !last,
         },
@@ -744,7 +744,7 @@ function promptBlock(slide, opts) {
         text: line,
         options: {
           fontFace: F.MONO,
-          fontSize: 12,
+          fontSize: 16,
           color: C.PAPER,
           breakLine: !last,
         },
@@ -753,12 +753,12 @@ function promptBlock(slide, opts) {
   });
   slide.addText(runs, {
     x: opts.x + 0.28,
-    y: opts.y + 0.5,
+    y: opts.y + 0.56,
     w: opts.w - 0.56,
-    h: rows.length * 0.205 + 0.14,
+    h: rows.length * 0.27 + 0.14,
     margin: 0,
     valign: "top",
-    lineSpacing: 14.8,
+    lineSpacing: 19.4,
   });
   assertFits(opts.tag || "prompt", opts.x, opts.y, opts.w, h, opts.bottom || G.BODY_BOT);
   return opts.y + h;
@@ -775,15 +775,15 @@ function flywheel(slide, opts) {
   if (opts.band) {
     // Reserve room for the top and bottom station names inside the band.
     const nd = opts.nodeD || 0.62;
-    const nameRoom = 0.34 + 0.08;
+    const nameRoom = 0.38 + 0.08;
     const half = (opts.band.bottom - opts.band.top) / 2;
     r = half - nd / 2 - nameRoom;
     cy = opts.band.top + half;
   }
   const nodeD = opts.nodeD || (r < 1.3 ? 0.44 : 0.62);
-  const numSize = r < 1.3 ? 12 : 17;
-  const nameSize = r < 1.3 ? 10 : 13;
-  const nameW = r < 1.3 ? 1.72 : 1.9;
+  const numSize = r < 1.3 ? 16 : 18;
+  const nameSize = 16;
+  const nameW = r < 1.3 ? 1.9 : 2.1;
 
   // the ring
   slide.addShape("ellipse", {
@@ -874,8 +874,9 @@ function flywheel(slide, opts) {
   const hubAvail = hubD - 0.1;
   const longest = Math.max(...hubLines.map((t) => t.length));
   const fitSize = Math.floor((hubAvail * 72) / (longest * 0.92));
-  const nominal = r < 1.3 ? 12 : hubLines.length > 1 ? 15 : 17;
-  const hubSize = Math.max(8, Math.min(nominal, fitSize));
+  const nominal = r < 1.3 ? 16 : hubLines.length > 1 ? 18 : 20;
+  const hubSize = Math.min(nominal, fitSize);
+  if (hubSize < 16) VIOLATIONS.push(`hub label "${hubLines.join(" ")}" needs ${hubSize}pt; floor is 16`);
   const hubColor = opts.hub.fill ? (opts.hub.textColor || C.WHITE) : p.gold;
   const hubH = hubLines.length * ((hubSize * 1.3) / 72);
   slide.addText(
@@ -991,18 +992,18 @@ function flywheel(slide, opts) {
     const lw = opts.legend.w;
     opts.stations.forEach((st) => {
       const head = `${st.n}  ${st.name}`;
-      const hh = boxH(head, lw, 13, "arialBold");
+      const hh = boxH(head, lw, 16, "arialBold");
       slide.addText(
         [
           {
             text: st.n + "  ",
-            options: { fontFace: F.BODY, fontSize: 13, bold: true, color: p.gold },
+            options: { fontFace: F.BODY, fontSize: 16, bold: true, color: p.gold },
           },
           {
             text: st.name,
             options: {
               fontFace: F.BODY,
-              fontSize: 13,
+              fontSize: 16,
               bold: true,
               charSpacing: 1.0,
               color: p.fg,
@@ -1012,7 +1013,7 @@ function flywheel(slide, opts) {
         { x: opts.legend.x, y, w: lw, h: hh, margin: 0, valign: "top" }
       );
       y += hh + 0.02;
-      const bh = boxH(st.legend, lw, 12, "arial");
+      const bh = boxH(st.legend, lw, 16, "arial");
       slide.addText(st.legend, {
         x: opts.legend.x,
         y,
@@ -1020,13 +1021,13 @@ function flywheel(slide, opts) {
         h: bh,
         margin: 0,
         fontFace: F.BODY,
-        fontSize: 12,
+        fontSize: 16,
         color: p.fg,
         valign: "top",
         lineSpacingMultiple: 1.16,
       });
       assertFits(`legend ${st.name}`, opts.legend.x, y, lw, bh, G.BODY_BOT);
-      y += bh + 0.16;
+      y += bh + 0.12;
     });
   }
 }
@@ -1181,9 +1182,9 @@ const PIP_STATIONS = ["DOCUMENT", "TEST", "REVISE", "OPERATE"];
 function progressPip(slide, active, mode, captionText, stations) {
   const p = palette(mode);
   const names = stations || PIP_STATIONS;
-  const cx = 12.14;
-  const cy = 0.74;
-  const R = 0.22;
+  const cx = 12.1;
+  const cy = 0.78;
+  const R = 0.3;
   const stroke = p.accent ? C.WHITE : C.GOLD;
   slide.addShape("ellipse", {
     x: cx - R,
@@ -1195,7 +1196,7 @@ function progressPip(slide, active, mode, captionText, stations) {
   });
   names.forEach((name, i) => {
     const th = (-90 + i * 90) * D2R;
-    const d = 0.125;
+    const d = 0.17;
     const px = cx + R * Math.cos(th);
     const py = cy + R * Math.sin(th);
     const on = active.includes(name);
@@ -1210,22 +1211,22 @@ function progressPip(slide, active, mode, captionText, stations) {
   });
   const txt = captionText || active.join(" · ");
   // right edge must land on the grid (G.ML + G.W = 12.45), not run to 13.10
-  const capW = Math.min(2.6, 0.078 * txt.length + 0.12);
+  const capW = Math.min(4.2, 0.165 * txt.length + 0.2);
   slide.addText(txt.toUpperCase(), {
     x: G.ML + G.W - capW,
-    y: 1.02,
+    y: 1.2,
     w: capW,
-    h: 0.18,
+    h: 0.3,
     margin: 0,
     fontFace: F.BODY,
-    fontSize: 7,
+    fontSize: 16,
     bold: true,
-    charSpacing: 0.9,
+    charSpacing: 1.2,
     color: p.accent ? C.WHITE : p.gold,
     align: "right",
     valign: "middle",
   });
-  assertFits("pip caption", G.ML + G.W - capW, 1.02, capW, 0.18, G.SAFE_BOT);
+  assertFits("pip caption", G.ML + G.W - capW, 1.2, capW, 0.3, G.SAFE_BOT);
 }
 
 // ---------------------------------------------------------- timeline (6.5)
@@ -1255,24 +1256,24 @@ function timeline(slide, milestones, band, mode, opts) {
       line: { type: "none" },
     });
     const above = i % 2 === 0;
-    const bw = 2.3;
-    const dateY = above ? spineY - 0.75 : spineY + 0.21;
-    const subY = above ? spineY - 0.53 : spineY + 0.43;
+    const bw = 2.7;
+    const sh = boxH(m.sub, bw, 16, "arial");
+    const subY = above ? spineY - 0.26 - sh : spineY + 0.26 + 0.36;
+    const dateY = above ? subY - 0.36 : spineY + 0.26;
     const bx = Math.max(0.55, Math.min(xs[i] - bw / 2, G.SLIDE_W - 0.55 - bw));
     slide.addText(m.label, {
       x: bx,
       y: dateY,
       w: bw,
-      h: 0.22,
+      h: 0.32,
       margin: 0,
       fontFace: F.BODY,
-      fontSize: 13,
+      fontSize: 18,
       bold: true,
       color: m.highlight ? (opts && opts.highlightText) || C.TEAL_D : p.fg,
       align: "center",
       valign: "middle",
     });
-    const sh = boxH(m.sub, bw, 11, "arial");
     slide.addText(m.sub, {
       x: bx,
       y: subY,
@@ -1280,7 +1281,7 @@ function timeline(slide, milestones, band, mode, opts) {
       h: sh,
       margin: 0,
       fontFace: F.BODY,
-      fontSize: 11,
+      fontSize: 16,
       color: m.highlight ? (opts && opts.highlightText) || C.TEAL_D : p.muted,
       align: "center",
       valign: "top",
@@ -1306,7 +1307,7 @@ function timeline(slide, milestones, band, mode, opts) {
       h: 0.44,
       margin: 0,
       fontFace: F.BODY,
-      fontSize: 11,
+      fontSize: 16,
       bold: true,
       charSpacing: 1.4,
       color: C.TEAL_D,
@@ -1470,7 +1471,7 @@ function quoteCard(slide, opts) {
   const w = opts.w || 8.14;
   const x = (G.SLIDE_W - w) / 2;
   const qh = boxH(opts.quote, w - 1.0, opts.size || 26, "georgiaBold");
-  const h = qh + 0.86;
+  const h = qh + 0.98;
   slide.addShape("rect", {
     x,
     y: opts.y,
@@ -1497,10 +1498,10 @@ function quoteCard(slide, opts) {
     x: x + 0.5,
     y: opts.y + 0.28 + qh + 0.14,
     w: w - 1.0,
-    h: 0.24,
+    h: 0.3,
     margin: 0,
     fontFace: F.BODY,
-    fontSize: 11,
+    fontSize: 16,
     bold: true,
     charSpacing: 1.6,
     color: C.INK,
