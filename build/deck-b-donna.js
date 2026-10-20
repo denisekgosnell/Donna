@@ -1093,7 +1093,7 @@ const PIP3 = ["OPERATE"];
     "[TIMING] 2 min.\n" +
       "[SAY] Tomorrow at 4:54 the triage arrives on its own for the first time. When it does, that is Donna saying she has got it from here.\n" +
       "[DO] Questions any time: denise@denisegosnell.ai.\n" +
-      "[WATCH] The workshop site is public: denisekgosnell.github.io/Donna. Every prompt on it has a copy button; point people there instead of retyping anything.\n" +
+      "[WATCH] The workshop site is public: donnainstructions.denisegosnell.ai. Every prompt on it has a copy button; point people there instead of retyping anything.\n" +
       "[NEXT] Done. You're weird. We'll be friends."
   );
 }

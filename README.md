@@ -8,7 +8,7 @@ priorities, replies drafted in their voice (never sent without them), the day's 
 delivered as a calendar invite that emails them one minute before, and a Friday
 retraining task that reviews her own week and proposes what to change.
 
-**Live site:** https://denisekgosnell.github.io/Donna/ (password-gated for attendees; the
+**Live site:** https://donnainstructions.denisegosnell.ai/ (password-gated for attendees; the
 password is on deck slide 2 and in one constant in `assets/donna.js`)
 
 **The site is the live source.** The deck follows it. When they disagree, fix the site first,
@@ -31,8 +31,13 @@ the whole problem. Step 4 is the one most people never build.
 ## Deploy
 
 The `Deploy site to GitHub Pages` workflow runs on every push to `main`. Merge, give it
-a minute, confirm https://denisekgosnell.github.io/Donna/ loads on a phone and a laptop.
+a minute, confirm https://donnainstructions.denisegosnell.ai/ loads on a phone and a laptop.
 Fallback: Settings → **Pages** → Source **GitHub Actions**, then re-run the workflow.
+
+**Custom domain.** The site lives at `donnainstructions.denisegosnell.ai`. The `CNAME` file at the repo root names it;
+the domain must also be entered once in Settings → **Pages** → **Custom domain**, with a DNS
+`CNAME` record for `donnainstructions` pointing at `denisekgosnell.github.io`, and **Enforce HTTPS**
+ticked once the certificate issues. The old `denisekgosnell.github.io/Donna/` address redirects there.
 
 ## What's in here
 
@@ -115,7 +120,7 @@ your hand, and a TA takes you into a Zoom room, 1:1.* TAs work the chat and the 
 - [ ] Merge to `main`; confirm the live URL loads on a phone and a laptop.
 - [ ] Decide the site password. It is `donna2026` in `assets/donna.js` (one constant, `KEY`) and
       on deck slide 2 (`PASSWORD` in `build/deck-donna-v3.js`). Change both, rebuild the deck.
-      Attendees can also open `denisekgosnell.github.io/Donna/?key=donna2026` from a chat link.
+      Attendees can also open `https://donnainstructions.denisegosnell.ai/?key=donna2026` from a chat link.
 - [ ] Open `decks/build-your-own-donna-v3.pptx` in PowerPoint and **play slide 3** (the
       Bottle). If it will not play on the presenting machine, unhide slide 4 (the stills).
 - [ ] Confirm the ROI slide's numbers are the ones you want to say out loud (3.5 hours saved

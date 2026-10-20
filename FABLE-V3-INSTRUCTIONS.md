@@ -49,7 +49,7 @@ Everything you build either sets that up, delivers it, or proves it.
 - Repository: `github.com/denisekgosnell/Donna`. Branch `feature/v3-october-21` from `main`. Never push `main`. Open the PR; Denise merges.
 - First commit on the branch: copy this file into the repo as `FABLE-V3-INSTRUCTIONS.md` so the spec travels with the build.
 - Commit in logical chunks (site, skill, deck, video, verification). The PR description is the handoff (section 12).
-- The site deploys to `https://denisekgosnell.github.io/Donna/` on every merge to `main` via `.github/workflows/pages.yml`. Confirm the live URL loads **before** you put it on a slide (section 9, slide 26).
+- The site deploys to `https://donnainstructions.denisegosnell.ai/` on every merge to `main` via `.github/workflows/pages.yml`. Confirm the live URL loads **before** you put it on a slide (section 9, slide 26).
 
 ### 1.2 Which deck is the base
 
