@@ -123,6 +123,7 @@ for p in PAGES:
     s = pathlib.Path(p).read_text()
     for ref in re.findall(r'(?:href|src)="([^"#]+)"', s):
         if ref.startswith(("http", "mailto:", "data:")): continue
+        ref = ref.split("?")[0]  # cache-busting query strings on the stylesheet and script
         target = (base / ref).resolve()
         if ref.endswith("/"): target = target / "index.html"
         if not target.exists(): missing.append(f"{p}: {ref}")
