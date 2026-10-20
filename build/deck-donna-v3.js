@@ -16,7 +16,7 @@ pres.title = "Build Your Own Donna";
 
 const DECK = "BUILD YOUR OWN DONNA";
 const FOOTER = [DECK, "OCTOBER 21, 2026"];
-const SITE = "denisekgosnell.github.io/Donna";
+const SITE = "donnainstructions.denisegosnell.ai"; // https://donnainstructions.denisegosnell.ai/
 const PASSWORD = "donna2026"; // the same constant lives in assets/donna.js
 const MODES = [];
 const TIMING = [];
@@ -181,7 +181,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   const y = B.title(s, "Open the instructions.", "light");
   s.addText(SITE, {
     x: G.ML, y: y + 0.1, w: G.W, h: 0.8, margin: 0,
-    fontFace: F.DISPLAY, fontSize: 40, bold: true, color: C.INK, align: "center", valign: "middle",
+    fontFace: F.DISPLAY, fontSize: 36, bold: true, color: C.INK, align: "center", valign: "middle",
   });
   const cw = 7.0;
   const cx = (G.SLIDE_W - cw) / 2;
