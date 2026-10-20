@@ -113,9 +113,9 @@ your hand, and a TA takes you into a Zoom room, 1:1.* TAs work the chat and the 
 ## Denise's pre-workshop checklist
 
 - [ ] Merge to `main`; confirm the live URL loads on a phone and a laptop.
-- [ ] Decide the site password. It is `suits` in `assets/donna.js` (one constant, `KEY`) and
+- [ ] Decide the site password. It is `donna2026` in `assets/donna.js` (one constant, `KEY`) and
       on deck slide 2 (`PASSWORD` in `build/deck-donna-v3.js`). Change both, rebuild the deck.
-      Attendees can also open `denisekgosnell.github.io/Donna/?key=suits` from a chat link.
+      Attendees can also open `denisekgosnell.github.io/Donna/?key=donna2026` from a chat link.
 - [ ] Open `decks/build-your-own-donna-v3.pptx` in PowerPoint and **play slide 3** (the
       Bottle). If it will not play on the presenting machine, unhide slide 4 (the stills).
 - [ ] Confirm the ROI slide's numbers are the ones you want to say out loud (3.5 hours saved
