@@ -1,55 +1,60 @@
 # Build Your Own Donna
 
-The complete workshop asset for **Build Your Own Donna**: a 90-minute, hands-on workshop
-(Thursday, August 13 · 2:30 to 4:00 PM ET · Signature's Board Offsite · hosted by
-Denise Gosnell) where executives leave with a working AI executive assistant: an inbox
-triaged around **which executive they are**, replies drafted in their voice (never sent
-without them), and the day's triage delivered as a calendar invite that emails them one
-minute before.
+The complete workshop asset for **Build Your Own Donna**: a 90-minute, hands-on, online
+workshop (Wednesday, October 21, 2026 · 12:00 PM ET · 9:00 AM PT · 5:00 PM London ·
+6:00 PM Paris · on Zoom · hosted by Denise Gosnell) where non-technical attendees copy,
+paste, and leave with a working AI assistant: an inbox triaged around their people and
+priorities, replies drafted in their voice (never sent without them), the day's triage
+delivered as a calendar invite that emails them one minute before, and a Friday
+retraining task that reviews her own week and proposes what to change.
 
 **Live site:** https://denisekgosnell.github.io/Donna/
 
-## Go live (do this before the demo; ~60 seconds)
+## The loop
 
-The repo is currently **private**, which keeps GitHub Pages off. One switch in the
-GitHub UI, then the deploy workflow does the rest:
+Four stations, said the same way everywhere (deck, site, playbook, notes):
 
-1. **Make the repo public (the only manual step):** Settings → General → scroll to
-   **Danger Zone** → **Change visibility** → **Make public** → type the repo name
-   to confirm.
-2. **Deploy:** the `Deploy site to GitHub Pages` workflow runs on every push to
-   `main` and creates the Pages site on its first successful run. After flipping
-   visibility, go to **Actions** → **Deploy site to GitHub Pages** → **Run
-   workflow** (or just ask Claude to trigger it, or push anything to `main`).
-3. Give it a minute, then confirm https://denisekgosnell.github.io/Donna/ loads.
-   Every later merge to `main` redeploys automatically.
+| # | Station | In any workflow | In machine learning | Today, with Donna |
+|---|---|---|---|---|
+| 01 | CONNECT | Work comes in. | Collect the data. | Connect her to your inbox and calendar. |
+| 02 | TEACH | Write the rules down once. | Train the model on it. | Four questions. She writes her own playbook. |
+| 03 | RUN | The work gets done, on a schedule. | Put it to work and watch what it does. | She takes the 4:30 shift, every weekday. |
+| 04 | RETRAIN | Look at what came back. Fix the rules. | Compare results to what you wanted. Retrain. | Fridays, she reviews her week. You sign it. |
 
-Fallback if the workflow's enablement step ever fails: Settings → **Pages** →
-set **Source** to **GitHub Actions**, then re-run the workflow.
+Open loops make more work. Closed loops make better work. Step 4 is the one most
+people never build.
+
+## Deploy
+
+The `Deploy site to GitHub Pages` workflow runs on every push to `main`. Merge, give it
+a minute, confirm https://denisekgosnell.github.io/Donna/ loads on a phone and a laptop.
+Fallback: Settings → **Pages** → Source **GitHub Actions**, then re-run the workflow.
 
 ## What's in here
 
 ```
-index.html                       # front page: hero + the three-step agenda
-chat/index.html                  # 01 · First Impressions (project + connectors + first draft)
-project/index.html               # 02 · The Triage Desk (five questions, the playbook paste)
-agent/index.html                 # 03 · Donna, Full Time (skill file + the 3:42 shift)
-skill/index.html                 # redirect → agent/  (old URLs stay alive)
+index.html                       # front page: hero, the Bottle, the loop, before-Wednesday, four steps
+chat/index.html                  # 01 · CONNECT · First Impressions
+project/index.html               # 02 · TEACH · The Triage Desk (four questions, the playbook paste)
+agent/index.html                 # 03 · RUN · Donna, Full Time (skill zip + the 4:30 shift)
+retrain/index.html               # 04 · RETRAIN · Her Performance Review (the Friday retrain)
+skill/index.html                 # redirect → agent/   (old URLs stay alive)
 triage/index.html                # redirect → project/ (old URLs stay alive)
 assets/donna.css                 # single shared stylesheet
 assets/donna.js                  # copy buttons
-assets/build-your-own-donna.pptx # the 28-slide deck (older step 2/3 content; see decks/)
-skills/donna-triage/SKILL.md     # the triage playbook template (interview + tiers + guardrails)
-skills/donna-triage.zip          # zip fallback for Settings → Capabilities upload
-build/deck-b-donna.js            # deck source (pptxgenjs); node build/deck-b-donna.js
-build/deck-a-sigcompass.js       # companion deck source
+assets/video/                    # the Bottle: mp4, webm, poster, three stills
+skills/donna-triage/SKILL.md     # the playbook template (interview + tiers + daily shift + retrain)
+skills/donna-triage.zip          # the upload format the Skills screen expects
+build/deck-donna-v3.js           # deck source (pptxgenjs); node build/deck-donna-v3.js
+build/deck-appendix-v3.js        # the two Q&A slides (learning outcomes, data security)
+build/brand.js                   # the Atelier brand system both deck scripts import
+build/video/the-bottle.html      # the video, deterministic by frame; render.js renders it
 build/sync-triage-template.py    # re-injects SKILL.md into project/index.html's paste block
-decks/                           # built decks (pptx + pdf), current with this flow
+build/VERIFICATION-v3.md         # the verification report for this build
+decks/                           # built decks (pptx + pdf)
+FABLE-V3-INSTRUCTIONS.md         # the spec this build was made from
 .nojekyll                        # disable Jekyll so Pages serves files as-is
 ```
-
-The 90 minutes run 2:30 framing → 2:50 build (the three steps) → 3:30 discussion →
-4:00 done.
 
 Static HTML only: no build step for the site itself, relative links throughout, so it
 works as-is under the `/Donna/` path.
@@ -58,48 +63,58 @@ works as-is under the `/Donna/` path.
 `python3 build/sync-triage-template.py` to refresh the Step 2 paste block, and rebuild
 the zip: `cd skills && rm donna-triage.zip && zip -r donna-triage.zip donna-triage`.
 
-## How Step 2 runs in the room (the script from the front)
+## The run of show (all times Eastern)
 
-1. Everyone pastes the playbook template from the Step 2 page into a new chat in their
-   Donna project.
-2. **Confirmation the room is in the right place:** every screen shows
-   "Five questions. About six minutes." and **QUESTION 1 OF 5: Which executive are you?**
-   The room answers Question 1 together: everyone names their corner (TIME · ACCURACY ·
-   TRUST · VISION); the two picks (closed/open × tell/ask) also work.
-3. Donna personalizes the rest: fast for TIME, confirmed-back for ACCURACY, people-first
-   for TRUST, loop-closing for VISION.
-4. She reaches **THE FINAL QUESTION** (the blind-spot question) by minute six on her
-   own. If anyone isn't there when you start pulling the room back together, they type
-   **`final question`** (as its own message) and she jumps straight to it. Call it from
-   the front: "Is THE FINAL QUESTION on your screen?"
-5. After the TRIAGE DESK: OPEN FOR BUSINESS banner, the very last act of Step 2:
-   everyone types **Triage my inbox.**
+| Clock | Block | Min | What happens |
+|---|---|---|---|
+| 12:00 | Open | 3 | Title. The Bottle plays. |
+| 12:03 | The loop | 9 | Open vs. closed loops. The loop, three ways. She never sends. House rules. The plan. |
+| 12:12 | Step 1 · CONNECT | 14 | Project, connectors, two prompts. Checkpoint: a draft you did not write. |
+| 12:26 | Step 2 · TEACH | 14 | Paste the playbook. Four questions. `Triage my inbox.` Checkpoint: one table. |
+| 12:40 | Step 3 · RUN | 18 | Skill zip, upload, the daily shift with a dry run. Checkpoint: the first shift lands (about 12:58). |
+| 12:58 | Step 4 · RETRAIN | 15 | The Friday retrain with a dry run. Checkpoint at **1:13**: her Week in Review lands. |
+| 1:13 | Discussion | 13 | This was never about email. Where does the loop turn next? |
+| 1:26 | Close | 4 | Your first Friday. Send-off. |
 
-Blind-spot map (diagonals of the deck's quadrant): TIME → trust (who's always CC'd),
-ACCURACY → closing loops (stall rule), TRUST → time (send-by hour), VISION → accuracy
-(details she verifies in every draft).
+## How each step runs on Zoom (the script from the front)
+
+Denise shares the **site page for the step**, not the deck, during the four build steps.
+The deck is for 12:00 to 12:12, each step's divider and checkpoint, and 1:13 onward.
+Every checkpoint is a chat moment: *type ✓ in the chat when you see it.* Stuck for 60
+seconds: *type HELP in the chat.* A co-host works the chat.
+
+1. **Step 1.** Project first, then connectors. Hold at the checkpoint until the ✓ count
+   matches the room. The classic failure is the personal Google account instead of work,
+   or Connected-but-blind (quit Claude, reopen).
+2. **Step 2.** Everyone pastes the playbook from the site into a new chat in the Donna
+   project. Confirmation: every screen shows **"Four questions. About four minutes."** and
+   **QUESTION 1 OF 4: REPLY NOW.** She reaches **THE FINAL QUESTION** (your voice) by
+   minute four on her own; anyone not there types **`final question`** as its own message.
+   After the **TRIAGE DESK: OPEN FOR BUSINESS** banner, everyone types **Triage my inbox.**
+3. **Step 3.** Same chat. She writes the skill as a zip; download; upload under Skills;
+   confirm it is in the list before anyone touches Scheduled. Then the standing order,
+   whose last line makes her work right now. The event lands about ten minutes out.
+4. **Step 4.** Scheduled → New task → the weekly order, whose last line runs a dry run on
+   this week so far with today's event ten minutes out. At 1:13, her Week in Review is on
+   every calendar. Four stations lit.
 
 ## Denise's pre-workshop checklist
 
-- [ ] Merge to `main`, flip the repo public, enable Pages (steps above), confirm the
-      live URL loads on a phone and a laptop.
-- [ ] Enterprise admin: enable connectors **Gmail, Google Calendar, Google Drive**;
-      confirm **skills/capabilities** and **scheduled tasks** are on for all members
-      (Cowork). The workshop is Google-only; there is no Outlook path anywhere.
-- [ ] Email each attendee: personal workspace key + the site link + **the venue details**
-      (they are deliberately not on the public site).
-- [ ] Full dry run with a fresh test account, in workshop order: create the Donna project,
-      connect Gmail + Calendar + Drive, run Step 2 end to end (paste template → five
-      questions → the final question → banner → "Triage my inbox."), then Step 3 end to
-      end (skill file download → Settings → Skills upload → the 3:42 task → calendar event
-      with the triage in its description → the reminder email). **Capture screenshots of
-      every step as you go**, especially the Settings → Skills and Home → Scheduled tasks
-      screens (those menus move, and the site tells attendees to ask Claude if they do).
-      Keep them in your presenter folder as the dead-network fallback.
-- [ ] Present from `decks/build-your-own-donna-v2.pptx` (rebuilt to match this flow;
-      step 2/3 slides changed). Install **Playfair Display** and **Inter** (both free on
-      Google Fonts) on the presenting laptop; PowerPoint silently substitutes fonts if
-      they're missing.
-- [ ] Confirm the venue Wi-Fi network + password (read them out loud at the open; they
-      are deliberately not on a slide); phone hotspot backup; the dry-run screenshots as
-      demo fallback if the network dies.
+- [ ] Merge to `main`; confirm the live URL loads on a phone and a laptop.
+- [ ] Open `decks/build-your-own-donna-v3.pptx` in PowerPoint and **play slide 2** (the
+      Bottle). If it will not play on the presenting machine, unhide slide 3 (the stills).
+- [ ] Full dry run on a fresh **paid** Claude account in workshop order: create the Donna
+      project, connect Gmail + Calendar + Drive, Step 2 end to end (paste → four questions →
+      THE FINAL QUESTION → banner → "Triage my inbox."), Step 3 (skill zip → Skills upload →
+      the 4:30 task → calendar event → reminder email), Step 4 (the Friday task → the Week
+      in Review event → the Monday approval paste). **Screenshot every menu**: Customize →
+      Connectors, Customize → Skills → + → Create skill → Upload a skill, Scheduled → New
+      task → Create with Claude. Those menus move; the site tells attendees to ask Claude if
+      they do. Scheduled tasks run on Anthropic's side (help center article 13854387, read
+      October 19, 2026), so the laptop can be closed.
+- [ ] Confirm the four-zone times against the promo page (`denisegosnell.ai/donna`). Her
+      "5 PM European" is London; Paris is 6 PM.
+- [ ] Zoom link sent; a chat co-host confirmed; the recording set to start at 12:00.
+- [ ] Fonts: the deck ships on Georgia, Arial, and Courier New (installed everywhere).
+      Install Playfair Display and Inter on the presenting laptop **only** if you switch
+      the two font constants in `build/brand.js` first.
