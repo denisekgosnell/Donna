@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/donna.css">
+<script>(function(){try{if(localStorage.getItem("donna-unlocked")!=="1"&&!/[?&]key=/.test(location.search)){document.documentElement.classList.add("locked");}}catch(e){document.documentElement.classList.add("locked");}})();</script>
 </head>
 <body>
 <div class="wrap">
@@ -35,7 +36,7 @@
   <main>
 
     <header class="case-header">
-      <p class="file-meta"><svg class="loop-pip" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C9A227" stroke-width="1"/><circle cx="12" cy="3" r="2.2" fill="#C9A227"/><circle cx="21" cy="12" r="2.2" fill="#C9A227"/><circle cx="12" cy="21" r="2.2" fill="#C9A227"/><circle cx="3" cy="12" r="2.2" fill="#C9A227"/></svg>Step 04 &middot; Retrain &middot; ~15 min &middot; the finale</p>
+      <p class="file-meta"><svg class="loop-pip" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C9A227" stroke-width="1"/><circle cx="12" cy="3" r="2.2" fill="#C9A227"/><circle cx="21" cy="12" r="2.2" fill="#C9A227"/><circle cx="12" cy="21" r="2.2" fill="#C9A227"/><circle cx="3" cy="12" r="2.2" fill="#C9A227"/></svg>Step 04 &middot; Retrain &middot; ~12 min &middot; one more scheduled task</p>
       <div class="file-line">
         <span class="file-no" aria-hidden="true">04</span>
         <h1>Her&nbsp;Performance Review</h1>
@@ -48,13 +49,18 @@
 
     <div class="goal">
       <span class="eyebrow">Goal</span>
-      <p>Every Friday she reads her own week against yours, proposes what to change about her playbook, and puts the review on your calendar for Monday. <strong>You approve.</strong> That is the loop, closed.</p>
+      <p>Every Friday she reads her week against yours, proposes changes to her playbook, and puts the review on your calendar for Monday. <strong>You approve.</strong> That is the loop, closed.</p>
+      <span class="in-step-label">In this step</span>
+      <ol class="in-step">
+        <li>Schedule the Friday retrain.</li>
+        <li>Watch her first review land.</li>
+        <li>Monday: sign it.</li>
+      </ol>
       <p class="station">Station 4 of 4: <strong>Retrain.</strong> The one most people never build.</p>
     </div>
 
     <div class="aside">
       <span class="eyebrow">Why a Friday</span>
-      <p>A loop is open when work goes out and nothing comes back to tell you how it went. A loop is closed when the result comes back to the person who set the rules, and the rules get better.</p>
       <p>Donna Paulsen would never sit through a performance review. So she gives herself one, every Friday, and you sign it. Your Sent folder is her report card.</p>
     </div>
 
@@ -70,12 +76,12 @@
             <li><strong>The drafts she saved</strong> for you.</li>
             <li><strong>The emails you actually sent.</strong> Who you answered fast, what you spent your week on, how you really write.</li>
           </ul>
-          <p class="fine">She compares what she did with what you did, and writes down only what the evidence shows: a person who should be on your Reply-Now list, a priority that changed, a draft that did not sound like you.</p>
+          <p class="fine">She writes down only what the evidence shows: a person who belongs on Reply Now, a priority that changed, a draft that did not sound like you.</p>
         </li>
 
         <li>
           <h3>Give her the Friday shift</h3>
-          <p>In the left sidebar: <kbd class="ui">Scheduled</kbd> &rarr; <kbd class="ui">New task</kbd> &rarr; <kbd class="ui">Create with Claude</kbd>. Paste the weekly order. The last line makes her do it right now, on this week so far:</p>
+          <p>Same place as the 4:30 shift: <kbd class="ui">Scheduled</kbd> &rarr; <kbd class="ui">New task</kbd> &rarr; <kbd class="ui">Create with Claude</kbd>. Paste the weekly order. The last line runs it right now, on this week so far:</p>
           <div class="prompt">
             <div class="prompt-bar">
               <span class="prompt-label">The weekly order</span>
@@ -114,15 +120,16 @@ the event on today&rsquo;s calendar 10 minutes from now instead of Monday.</pre>
             </div>
             <pre>Approve this week&rsquo;s review. It is the document &ldquo;Donna&rsquo;s Week in Review&rdquo; in my Google Drive folder &ldquo;Donna&rdquo;. Write my updated skill file as a downloadable zip named donna-triage.zip.</pre>
           </div>
-          <p>Download the zip, then <kbd class="ui">Customize</kbd> &rarr; <kbd class="ui">Skills</kbd>. Find <strong>donna-triage</strong> in the list, open its menu, and delete it. Then <kbd class="ui">+</kbd> &rarr; <kbd class="ui">Create skill</kbd> &rarr; <kbd class="ui">Upload a skill</kbd> with the new zip. One paste, one upload, once a week, only when she proposes a change.</p>
-          <p class="fine">Approve by number: &ldquo;Approve 1 and 3.&rdquo; or &ldquo;Reject 2.&rdquo; work too. Nothing changes until you say so, and her hard rules never change at all.</p>
+          <p>Download the zip. <kbd class="ui">Customize</kbd> &rarr; <kbd class="ui">Skills</kbd>: delete the old <strong>donna-triage</strong>, then <kbd class="ui">+</kbd> &rarr; <kbd class="ui">Create skill</kbd> &rarr; <kbd class="ui">Upload a skill</kbd> with the new zip. One paste, one upload, only when she proposes a change.</p>
+          <p class="fine">&ldquo;Approve 1 and 3.&rdquo; or &ldquo;Reject 2.&rdquo; work too. Nothing changes until you say so. Her hard rules never change at all.</p>
         </li>
 
       </ol>
 
       <div class="aside">
         <span class="eyebrow">What just happened</span>
-        <p>Connect, teach, run, retrain. For over fifty years, anything that learns from data has run some version of this: collect the data, train, put it to work, look at what it got wrong, retrain. (Textbooks add &ldquo;evaluate&rdquo; and &ldquo;monitor&rdquo;; we fold them into Run and Retrain.) You are not retraining Claude. You are retraining Donna, and Donna is a document you own.</p>
+        <p>Connect, teach, run, retrain. Anything that learns from data has run this loop for over fifty years. You are not retraining Claude. You are retraining Donna, and Donna is a document you own.</p>
+        <p>If she gets it wrong, you do not need a better prompt. You need to retrain with better info, and more specific info.</p>
       </div>
     </section>
 

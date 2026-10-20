@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/donna.css">
+<script>(function(){try{if(localStorage.getItem("donna-unlocked")!=="1"&&!/[?&]key=/.test(location.search)){document.documentElement.classList.add("locked");}}catch(e){document.documentElement.classList.add("locked");}})();</script>
 </head>
 <body>
 <div class="wrap">
@@ -35,7 +36,7 @@
   <main>
 
     <header class="case-header">
-      <p class="file-meta"><svg class="loop-pip" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C9A227" stroke-width="1"/><circle cx="12" cy="3" r="2.2" fill="#C9A227"/><circle cx="21" cy="12" r="2.2" fill="#C9A227"/><circle cx="12" cy="21" r="2.2" fill="#C9A227"/><circle cx="3" cy="12" r="2.2" fill="#14213D" stroke="#C9A227" stroke-width="1"/></svg>Step 03 &middot; Run &middot; ~18 min</p>
+      <p class="file-meta"><svg class="loop-pip" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C9A227" stroke-width="1"/><circle cx="12" cy="3" r="2.2" fill="#C9A227"/><circle cx="21" cy="12" r="2.2" fill="#C9A227"/><circle cx="12" cy="21" r="2.2" fill="#C9A227"/><circle cx="3" cy="12" r="2.2" fill="#14213D" stroke="#C9A227" stroke-width="1"/></svg>Step 03 &middot; Run &middot; ~16 min</p>
       <div class="file-line">
         <span class="file-no" aria-hidden="true">03</span>
         <h1>Donna,&nbsp;Full&nbsp;Time</h1>
@@ -48,13 +49,19 @@
 
     <div class="goal">
       <span class="eyebrow">Goal</span>
-      <p>Her playbook leaves the chat and goes on the clock: every weekday she triages your inbox, then <strong>an email from your own calendar lands in your inbox</strong> with the whole triage inside. No new app to check. Your calendar reports to you.</p>
+      <p>Her playbook leaves the chat and goes on the clock. Every weekday she triages your inbox, and <strong>an email from your own calendar</strong> brings you the result.</p>
+      <span class="in-step-label">In this step</span>
+      <ol class="in-step">
+        <li>She writes her playbook file.</li>
+        <li>You upload it as a skill.</li>
+        <li>Schedule the 4:30 shift.</li>
+      </ol>
       <p class="station">Station 3 of 4: <strong>Run.</strong> The work gets done, on a schedule.</p>
     </div>
 
     <div class="callout-red">
       <p class="callout-title">She drafts. You send.</p>
-      <p>Scheduled or not, every reply she writes waits in your <strong>drafts folder</strong> for your say-so, and she never deletes a thing. It&rsquo;s written into the skill itself: never send anything, never delete anything.</p>
+      <p>Every reply she writes waits in your <strong>drafts folder</strong> for your say-so, and she never deletes a thing. It is written into the skill itself.</p>
     </div>
 
     <section class="section">
@@ -63,7 +70,7 @@
 
         <li>
           <h3>She writes her own playbook file</h3>
-          <p><strong>Stay in your Step&nbsp;2 chat</strong> (the one with your first triage table; it holds everything she learned about you) and paste:</p>
+          <p><strong>Stay in your Step&nbsp;2 chat</strong> (it holds everything she learned about you) and paste:</p>
           <div class="prompt">
             <div class="prompt-bar">
               <span class="prompt-label">Paste in the same chat</span>
@@ -71,22 +78,25 @@
             </div>
             <pre>Turn this conversation&rsquo;s triage setup into a reusable skill named donna-triage. Fill in the template we used with everything you learned about me: my people and tiers, my priorities, my voice. Keep the daily shift, the Friday retrain, and the Setup Interview sections so the skill knows how to run on a schedule, how to retrain, and how to reconfigure. Keep the hard rules exactly as written: never send, never delete. Then give me the finished skill as a downloadable zip named donna-triage.zip containing donna-triage/SKILL.md.</pre>
           </div>
-          <p class="fine">You&rsquo;re on track when a <strong>file card</strong> appears in the chat with a download arrow on it.</p>
+          <p class="fine">You&rsquo;re on track when a <strong>file card</strong> with a download arrow appears in the chat.</p>
         </li>
 
         <li>
           <h3>Download it, then upload it to your skills</h3>
           <p>Three moves, watch the screen share:</p>
           <ul>
-            <li>Click the file card&rsquo;s <kbd class="ui">Download</kbd> arrow. It saves as <code>donna-triage.zip</code>.</li>
-            <li>In the left sidebar, open <kbd class="ui">Customize</kbd>, then <kbd class="ui">Skills</kbd>. Click <kbd class="ui">+</kbd>, then <kbd class="ui">Create skill</kbd>, then <kbd class="ui">Upload a skill</kbd>. A file window opens: click <kbd class="ui">Downloads</kbd>, click <strong>donna-triage.zip</strong> (newest, at the top), then <kbd class="ui">Open</kbd>.</li>
-            <li>Confirm it: <strong>donna-triage</strong> now shows in your skills list.</li>
+            <li>Click the file card&rsquo;s <kbd class="ui">Download</kbd> arrow. It saves as <code>donna-triage.zip</code>, in your Downloads folder.</li>
+            <li>Left sidebar: <kbd class="ui">Customize</kbd> &rarr; <kbd class="ui">Skills</kbd> &rarr; <kbd class="ui">+</kbd> &rarr; <kbd class="ui">Create skill</kbd> &rarr; <kbd class="ui">Upload a skill</kbd>. In the file window, open <kbd class="ui">Downloads</kbd>, pick <strong>donna-triage.zip</strong> (newest, at the top), then <kbd class="ui">Open</kbd>.</li>
+            <li>Confirm: <strong>donna-triage</strong> now shows in your skills list.</li>
           </ul>
           <div class="note">
             <svg class="note-icon" viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="48" r="45" stroke="#C9A227" stroke-width="3"/><g stroke="#A31621" stroke-width="5" stroke-linecap="square"><path d="M37 30v36"/><path d="M31 30h12M31 66h12"/><path d="M43 30a18 18 0 0 1 0 36"/></g></svg>
             <div class="note-body">
-              <span class="note-label">Donna&rsquo;s note</span>
-              The only thing anyone forgets here is where the file went. Unless you chose a spot, it&rsquo;s in your <strong>Downloads</strong> folder, and it&rsquo;s the newest file there, sitting right at the top. If your version of the app keeps Skills somewhere else (older builds: your initials &rarr; <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Capabilities</kbd>), the rescue prompt below finds it.
+              <span class="note-label">Donna&rsquo;s note &middot; the gotchas</span>
+              <p><strong>No Skills under Customize?</strong> The switch is off. Your initials &rarr; <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Capabilities</kbd> &rarr; turn on <kbd class="ui">Code execution and file creation</kbd>, then look again.</p>
+              <p><strong>Upload refused?</strong> The zip must hold a folder named <strong>donna-triage</strong> with <strong>SKILL.md</strong> inside. If she gave you a loose file, ask her: &ldquo;Give me that as donna-triage.zip containing donna-triage/SKILL.md.&rdquo;</p>
+              <p><strong>Uploaded, but she ignores it?</strong> Name it. Say &ldquo;use my donna-triage skill.&rdquo; The standing order below already does.</p>
+              <p><strong>The workaround, on every plan and every build:</strong> skip the upload. Ask her &ldquo;Print the finished playbook as plain text,&rdquo; copy it, and paste it at the top of the standing order in the next step, above the line that starts &ldquo;Every weekday at 4:30 PM my local time.&rdquo; The task carries her playbook inside it.</p>
             </div>
           </div>
           <details class="smallprint">
@@ -101,12 +111,12 @@
               </div>
             </div>
           </details>
-          <p class="fine">That skills-list entry is the confirmation for this step. Nobody touches the schedule until it&rsquo;s there. Type &#10003; in the Zoom chat when you see it.</p>
+          <p class="fine">The skills-list entry is the confirmation. Type &#10003; in the Zoom chat when you see it. Still stuck? Say so in the chat or raise your hand, and a TA takes you into a Zoom room, 1:1.</p>
         </li>
 
         <li>
           <h3>Give her the 4:30 shift (the automation)</h3>
-          <p>That is 4:30 PM (16:30) in your own time zone. In the left sidebar: <kbd class="ui">Scheduled</kbd> &rarr; <kbd class="ui">New task</kbd> &rarr; <kbd class="ui">Create with Claude</kbd>. Paste the standing order:</p>
+          <p>That is 4:30 PM (16:30) in your own time zone. Left sidebar: <kbd class="ui">Scheduled</kbd> &rarr; <kbd class="ui">New task</kbd> &rarr; <kbd class="ui">Create with Claude</kbd>. Paste the standing order:</p>
           <div class="prompt">
             <div class="prompt-bar">
               <span class="prompt-label">The standing order</span>
@@ -124,10 +134,11 @@ Also do a dry run right now so I can watch the first one land.</pre>
             <div class="note-body">
               <span class="note-label">Donna&rsquo;s note</span>
               Scheduled tasks run on Claude&rsquo;s side, not on your laptop. Close the laptop; she still works at 4:30.
-              <p>If Claude asks which mode the task should run in, choose <kbd class="ui">Auto</kbd> so it runs hands-free. Auto means she will not stop to ask before saving a draft or creating an event. The connector could do more; her playbook, which you can read, is what stops her. Read her first few runs.</p>
+              <p>If Claude asks which mode the task runs in, choose <kbd class="ui">Auto</kbd> so it runs hands-free. Her playbook, which you can read, is what stops her from doing more. Read her first few runs.</p>
+              <p><strong>Free plan?</strong> There is no <kbd class="ui">Scheduled</kbd> in the sidebar: scheduled tasks are Pro, Max, Team, and Enterprise. You still have her as a skill. Each afternoon, open the Donna project and say &ldquo;Triage my inbox.&rdquo; Same result, by hand.</p>
             </div>
           </div>
-          <p class="fine">No Google calendar? Her playbook has a fallback: she saves the same report as a draft email titled &ldquo;Inbox Triage: Donna.&rdquo; Open Drafts at 4:40. With Google Calendar, every weekday around 4:39&nbsp;PM (16:39) the calendar emails you the triage, on top of the very inbox it triaged, from a sender you already trust.</p>
+          <p class="fine">No Google calendar? She saves the same report as a draft email titled &ldquo;Inbox Triage: Donna.&rdquo; With Google Calendar, every weekday around 4:39&nbsp;PM (16:39) the calendar emails you the triage, from a sender you already trust.</p>
         </li>
 
         <li>
@@ -135,22 +146,22 @@ Also do a dry run right now so I can watch the first one land.</pre>
           <p>The last line of the standing order makes her work <em>right now</em>. Three confirmations within a few minutes:</p>
           <ul>
             <li><strong>Inbox Triage: Donna</strong> sits on today&rsquo;s calendar, about ten minutes out.</li>
-            <li>Open the event: <strong>your whole triage is in the description</strong>, tier by tier.</li>
-            <li>One minute before it starts, the <strong>email arrives</strong>. Read your inbox&rsquo;s summary, in your inbox, without opening a single thread.</li>
+            <li>Open the event: <strong>your whole triage is in the description</strong>.</li>
+            <li>One minute before it starts, the <strong>email arrives</strong>.</li>
           </ul>
-          <p class="fine">While you wait: check your Drafts folder. The Reply-Now drafts from this run are already sitting there. When the event appears on your calendar, type &#10003; in the Zoom chat.</p>
+          <p class="fine">While you wait, check Drafts: the Reply-Now drafts are already there. When the event appears, type &#10003; in the Zoom chat.</p>
         </li>
 
       </ol>
 
       <div class="aside">
         <span class="eyebrow">The trick</span>
-        <p>Claude never emails you. <strong>Your calendar does.</strong> The triage arrives one minute before its slot, from the one sender that never lands in spam: you. No new tool, no new noise. One appointment a day with everything that matters inside it.</p>
+        <p>Claude never emails you. <strong>Your calendar does.</strong> The triage arrives from the one sender that never lands in spam: you.</p>
       </div>
 
       <div class="aside">
         <span class="eyebrow">Next</span>
-        <p>Three stations lit. Step&nbsp;4 is where she starts getting better at this.</p>
+        <p>Three stations lit. Step&nbsp;4 is one more scheduled task.</p>
       </div>
     </section>
 
