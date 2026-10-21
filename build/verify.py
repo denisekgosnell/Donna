@@ -109,11 +109,11 @@ for x in hits[:40]: OUT.append(f"    {x}")
 h("Pass 6 · timing")
 tim = [int(m) for m in re.findall(r"\[TIMING\] (\d+) min", dt)]
 tot = sum(tim)
-(ok if tot == 90 else bad)(f"[TIMING] sum = {tot} over {len(tim)} visible+hidden notes (hidden counts 0)")
+(ok if tot == 82 else bad)(f"[TIMING] sum = {tot} over {len(tim)} visible+hidden notes (hidden counts 0); 82 minutes of deck after the preamble")
 # v3.3 order: 1 title, 2 run of show, 3 video, [4 hidden stills = 0], the loop block through the plan, then "open the instructions"
 blocks = {"open": tim[0:3], "loop": tim[4:16], "step1": tim[16:19], "step2": tim[19:22], "step3": tim[22:26], "step4": tim[26:30], "wrap": tim[30:32], "close": tim[32:34]}
 note("block subtotals (incl. hidden at index 3 = 0): " + ", ".join(f"{k}={sum(v)}" for k, v in blocks.items()))
-(ok if sum(tim[0:16]) == 17 and sum(tim[16:30]) == 56 else bad)(f"clock: deck opens at 12:10 after the preamble; opening {sum(tim[0:16])} min (12:10 to 12:27), the four steps {sum(tim[16:30])} min (12:27 to 1:23)")
+(ok if sum(tim[0:16]) == 17 and sum(tim[16:19]) == 13 and sum(tim[19:22]) == 17 and sum(tim[22:26]) == 13 and sum(tim[26:30]) == 12 else bad)(f"clock: deck opens 12:08; Step 1 at 12:25 ({sum(tim[16:19])} min), Step 2 at 12:38 ({sum(tim[19:22])}), Step 3 at 12:55 ({sum(tim[22:26])}), Step 4 at 1:08 ({sum(tim[26:30])}), Donna live 1:20, end 1:30")
 
 # ---- Pass 7: links and assets
 h("Pass 7 · links and assets")
