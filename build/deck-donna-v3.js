@@ -888,7 +888,8 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     lines:
       "Create a skill named donna-triage from this conversation's triage " +
       "setup. Fill in the template with everything you learned about me. " +
-      "Keep the daily shift, the Friday retrain, and the Setup Interview. " +
+      "Keep every section of the template, including the daily shift and " +
+      "the Setup Interview. " +
       "Keep the hard rules: never send, never delete. Create it as a skill " +
       "right here in this chat so I can save it with one click. Do not " +
       "give me a zip to download.",
