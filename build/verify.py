@@ -81,7 +81,7 @@ for f in (DECK, APPX):
     (ok if red_slides <= 5 else bad)(f"{f}: RED appears on {red_slides} slides (cap 4 visible + hidden fallback)")
     note(f"{f}: mode sequence {' '.join(modes)}")
     if f == DECK:
-        vis = [m for i, m in enumerate(modes) if i != 3]  # hidden fallback is slide index 3
+        vis = [m for i, m in enumerate(modes) if i != 4]  # hidden fallback is slide index 4
         run = 1; worst = 1
         for i in range(1, len(vis)):
             run = run + 1 if vis[i] == vis[i-1] else 1; worst = max(worst, run)
@@ -110,10 +110,10 @@ h("Pass 6 · timing")
 tim = [int(m) for m in re.findall(r"\[TIMING\] (\d+) min", dt)]
 tot = sum(tim)
 (ok if tot == 90 else bad)(f"[TIMING] sum = {tot} over {len(tim)} visible+hidden notes (hidden counts 0)")
-# v3.1 order: 1 title, 2 open the site, 3 video, [4 hidden stills = 0], then the loop block through the plan
-blocks = {"open": tim[0:3], "loop": tim[4:14], "step1": tim[14:17], "step2": tim[17:20], "step3": tim[20:24], "step4": tim[24:28], "disc": tim[28:29], "close": tim[29:31]}
-note("block subtotals (incl. hidden at index 3 = 0): " + ", ".join(f"{k}={sum(v)}" for k, v in blocks.items()))
-(ok if sum(tim[0:14]) == 17 and sum(tim[14:28]) == 56 else bad)(f"clock: opening {sum(tim[0:14])} min (12:00 to 12:17), the four steps {sum(tim[14:28])} min (12:17 to 1:13)")
+# v3.2 order: 1 title, 2 open the site, 3 run of show, 4 video, [5 hidden stills = 0], then the loop block through the plan
+blocks = {"open": tim[0:4], "loop": tim[5:16], "step1": tim[16:19], "step2": tim[19:22], "step3": tim[22:26], "step4": tim[26:30], "wrap": tim[30:32], "close": tim[32:34]}
+note("block subtotals (incl. hidden at index 4 = 0): " + ", ".join(f"{k}={sum(v)}" for k, v in blocks.items()))
+(ok if sum(tim[0:16]) == 17 and sum(tim[16:30]) == 56 else bad)(f"clock: opening {sum(tim[0:16])} min (12:00 to 12:17), the four steps {sum(tim[16:30])} min (12:17 to 1:13)")
 
 # ---- Pass 7: links and assets
 h("Pass 7 · links and assets")

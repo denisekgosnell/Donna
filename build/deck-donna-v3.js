@@ -1,5 +1,5 @@
 // Build Your Own Donna, v3.1: the October 21, 2026 online workshop.
-// 30 slides plus one hidden fallback, 90 minutes (12:00 to 1:30 PM ET).
+// 33 slides plus one hidden fallback, 90 minutes (12:00 to 1:30 PM ET).
 // Every run of type is 16pt or larger. Reserved accent: RED. Full Suits.
 // Spec: FABLE-V3-INSTRUCTIONS.md sections 9 and 10, plus the October 20 change list.
 
@@ -130,6 +130,38 @@ function numbered(s, x, y, w, num, text, mode, size = 18, numSize = 26) {
   return Math.max(h, 0.46);
 }
 
+// Three acts: tell them what we will do, do it, then show them what we did.
+function threeActs(s, acts, mode) {
+  const p = B.palette(mode);
+  const y = 1.96;
+  const h = 3.5;
+  acts.forEach(([num, name, when, text], i) => {
+    const x = G.CARD3[i];
+    const w = G.CARD3_W;
+    B.card(s, { x, y, w, h, mode, tag: "act card" });
+    s.addShape("line", { x: x + 0.3, y: y + 0.3, w: 0.5, h: 0, line: { color: C.GOLD, width: 1.5 } });
+    s.addText(num, {
+      x: x + 0.3, y: y + 0.42, w: w - 0.6, h: 0.7, margin: 0,
+      fontFace: F.DISPLAY, fontSize: 44, bold: true, color: p.gold, valign: "middle",
+    });
+    s.addText(name, {
+      x: x + 0.3, y: y + 1.18, w: w - 0.6, h: 0.36, margin: 0,
+      fontFace: F.BODY, fontSize: 20, bold: true, color: p.fg, valign: "middle",
+    });
+    s.addText(when, {
+      x: x + 0.3, y: y + 1.54, w: w - 0.6, h: 0.3, margin: 0,
+      fontFace: F.BODY, fontSize: 16, charSpacing: 1.2, color: p.muted, valign: "middle",
+    });
+    const th = B.boxH(text, w - 0.6, 16, "arial");
+    s.addText(text, {
+      x: x + 0.3, y: y + 1.96, w: w - 0.6, h: th, margin: 0,
+      fontFace: F.BODY, fontSize: 16, color: p.fg, valign: "top", lineSpacingMultiple: 1.16,
+    });
+    B.assertFits("act text", x, y + 1.96, w, th, y + h - 0.2);
+  });
+  return y + h;
+}
+
 const VIDEO = "assets/video/the-bottle.mp4";
 const POSTER = "assets/video/the-bottle-poster.png";
 const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
@@ -209,11 +241,32 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     "Open the site now, on your phone or in a tab beside Claude. Type the password: donna2026, all lowercase, no spaces. The TAs are putting the link and the password in the chat.",
     "Say the password out loud twice and paste the link and the password into the Zoom chat yourself. Wait for checkmarks.",
     "Someone will type the password with a capital letter or a space; the site ignores both. Someone else will be on the promo page instead of the instructions; the link in the chat fixes it.",
+    "Here is how the ninety minutes go."
+  );
+}
+
+// ================================================  3. RUN OF THE SHOW  (dark)
+{
+  const { s } = slide("dark");
+  B.eyebrow(s, "Run of the show", "dark");
+  B.title(s, "Three acts, ninety minutes.", "dark");
+  const bot = threeActs(s, [
+    ["I", "The idea", "12:00 TO 12:17", "Open loops, closed loops, and the only trick in the room: an agent is just a document."],
+    ["II", "The build", "12:17 TO 1:13", "Four steps: connect, teach, run, retrain. By 1:13, Donna is working your inbox."],
+    ["III", "The wrap", "1:13 TO 1:30", "What you built, where the loop turns next, and your first Friday."],
+  ], "dark");
+  B.caption(s, "First the idea, then the build, then what you walk out with.", "dark", {
+    bold: true, color: C.GOLD_L, y: bot + 0.26,
+  });
+  notes(s, 1,
+    "Three acts. First the idea: open loops and closed loops, and why an agent is just a document. Then we build, four steps, and by 1:13 she is working your inbox. Then the wrap: what you built, where it turns next, and your first Friday.",
+    "Point at the middle card. That is most of the ninety minutes, and most of it is you pasting.",
+    "Do not read the card text. Say the three act names and the clock on the middle one.",
     "Fifty-five seconds of silence. Let the video do the talking."
   );
 }
 
-// ====================================================  3. THE BOTTLE  (dark)
+// ====================================================  4. THE BOTTLE  (dark)
 {
   const { s } = slide("dark", { chrome: false });
   B.eyebrow(s, "Where we are with AI at work", "dark", { y: 0.28 });
@@ -228,7 +281,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     }
     s.addMedia(opts);
   } else {
-    console.warn("   !! video missing, slide 3 built with a placeholder frame");
+    console.warn("   !! video missing, slide 4 built with a placeholder frame");
     s.addShape("rect", { x: vx, y: vy, w: vw, h: vh, fill: { type: "none" }, line: { color: C.GOLD, width: 0.75, transparency: 40 } });
     s.addText("The Bottle · assets/video/the-bottle.mp4", {
       x: vx, y: vy + vh / 2 - 0.2, w: vw, h: 0.4, margin: 0,
@@ -378,7 +431,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   B.caption(s, "Over fifty years of this loop. The prompt was never the hard part. Step four was the job.", "light", {
     bold: true, color: C.GOLD_D, y: LOOP_CAP,
   });
-  notes(s, 2,
+  notes(s, 1,
     "Same four stops. This is how computer scientists have built anything that learns for over fifty years: collect the data, train the model, put it to work, then look at what it got wrong and retrain. Silicon Valley spent two years telling you the magic was in the prompt. It was not. You can ask the AI to write the prompt. The part that matters is step four, and you already know how to do it. It is called looking at how the week went.",
     "Point at the hub: the model. Then at station four. Hold there.",
     "Say 'over fifty years', not 'invented'. Engineers had feedback loops before computer scientists did. If anyone technical pushes: the textbook version adds evaluate and monitor; we fold them into RUN and RETRAIN.",
@@ -432,7 +485,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   B.caption(s, "All of it from one playbook, written in plain English. Today you write yours.", "light", {
     bold: true, color: C.GOLD_D, y: LOOP_CAP,
   });
-  notes(s, 2,
+  notes(s, 1,
     "This is not a demo account. Mine holds calendar time the moment a thread converges, checks every invite for the people who matter, preps me before I meet a stranger, watches the eggs versus the balls, reads every Slack channel, runs a 24-hour reply desk, and plans tomorrow before I log off.",
     "Pick two and tell the story in one breath each: the calendar hold that appeared before you finished reading, and the egg she caught. Keep it fun; the numbers are on the next slide.",
     "Eggs versus balls: the goals that break if dropped are eggs; everything else bounces. She knows which is which because I wrote it down once.",
@@ -509,11 +562,47 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     "One phrase each, no religion. Copilot is the AI inside Microsoft 365. Perplexity is research with sources. ChatGPT is the everyday all-rounder. Claude is careful writing plus agents that do the work, which is why today runs on it: projects, connectors, skills, and scheduled tasks.",
     "Point at the dark card, then at the caption. The skill you build today is a file. It is portable.",
     "Do not get pulled into a feature war. The honest answer to 'which is best' is: the playbook is yours either way; the tool is the one your company allows.",
+    "And one honest slide about free versus paid."
+  );
+}
+
+// ===================================================  FREE OR PAID  (dark)
+{
+  const { s } = slide("dark");
+  B.eyebrow(s, "Free or paid Claude?", "dark");
+  const y = B.title(s, "Free works. You press start.", "dark");
+  B.panelList(s, {
+    x: G.COL_L.x, y: y + 0.04, w: G.COL_L.w, mode: "dark", size: 16, gap: 0.14, pad: 0.26,
+    label: "On every plan, Free included", labelSize: 16,
+    items: [
+      "Steps 1 and 2, exactly as written.",
+      "Her playbook as a skill you own (Step 3).",
+      "Say \"Triage my inbox\" at 4:30: her shift, started by you.",
+      "Say \"Retrain\" on Friday: her review, started by you.",
+    ],
+    tag: "free panel",
+  });
+  B.panelList(s, {
+    x: G.COL_R.x, y: y + 0.04, w: G.COL_R.w, mode: "dark", size: 16, gap: 0.14, pad: 0.26,
+    label: "Paid plans add", labelSize: 16,
+    items: [
+      "Scheduled tasks: she starts the 4:30 shift and the Friday retrain without you.",
+      "That is the whole difference: who presses start.",
+    ],
+    tag: "paid panel",
+  });
+  B.caption(s, "An agent you start by hand is still an agent. Two phone reminders replace the scheduler: 4:30 weekdays, 3:00 Fridays.", "dark", {
+    bold: true, color: C.GOLD_L,
+  });
+  notes(s, 1,
+    "If you are on the free plan, nothing today is closed to you except one button. Steps 1 and 2 are identical. In step 3 you still build the skill. The paid plans add scheduled tasks, so she starts her own shift. On Free, you start it: open the Donna project at 4:30 and say Triage my inbox. Friday, say Retrain. Same agent, same playbook. Only the start button moves.",
+    "Point at the left column, then the one line on the right. Do not apologize for the free plan; it is a complete build.",
+    "The site has a free-plan box in Step 3 and Step 4 with the exact sentences to paste. Phone reminders at 4:30 and Friday 3:00 replace the scheduler.",
     "One promise before anyone connects an inbox."
   );
 }
 
-// ==============================  11. SHE NEVER SENDS  (accent RED)
+// ==============================  SHE NEVER SENDS  (accent RED)
 {
   const { s } = slide(C.RED, { chrome: false });
   B.diamond(s, 6.617, 2.1, 0.12, C.WHITE);
@@ -1018,12 +1107,33 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   notes(s, 3,
     "Nothing. Let it land. Then: four stations. Connect, teach, run, retrain. That is a learning system, and it is yours.",
     "Everyone opens the event: proposed changes at the top, numbered, each with a because. Checkmarks in the chat. Point at the pip: all four lit, and the caption says the loop is closed.",
-    "A few reviews will land a minute or two late. Keep talking; they will arrive during the discussion.",
+    "A few reviews will land a minute or two late. Keep talking; they will arrive during the next slide.",
+    "What did we just build?"
+  );
+}
+
+// ===============================  WHAT YOU JUST BUILT  (dark)
+{
+  const { s } = slide("dark");
+  B.eyebrow(s, "Three acts, revisited", "dark");
+  B.title(s, "What you just built.", "dark");
+  const bot = threeActs(s, [
+    ["I", "The idea", "DONE", "Every workflow is a loop. Closed loops get better. You can name all four stations."],
+    ["II", "The build", "DONE, 1:13", "A project, a playbook she wrote, a skill you own, two standing orders. She is live."],
+    ["III", "The wrap", "NOW", "Where your loop turns next, and the Friday she tells you what she got wrong."],
+  ], "dark");
+  B.caption(s, "You did not learn a tool today. You built a loop, and closed it.", "dark", {
+    bold: true, color: C.GOLD_L, y: bot + 0.26,
+  });
+  notes(s, 1,
+    "Same three cards from the top of the hour. The idea: every workflow is a loop, and closed loops get better. The build: a project, a playbook she wrote, a skill you own, two standing orders, and she is live. The wrap starts now.",
+    "Point at each card in turn. This is the slide you promised them at 12:02.",
+    "Free-plan people built the same thing; their standing orders are two phone reminders. Say so if you see the question in the chat.",
     "Where does the loop turn next?"
   );
 }
 
-// ==============================  28. THE DISCUSSION  (light)
+// ==============================  THE DISCUSSION  (light)
 {
   const { s } = slide("light");
   B.eyebrow(s, "The discussion", "light");
@@ -1050,7 +1160,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   B.caption(s, "Answer any one of these out loud and you have just specified your next agent.", "light", {
     bold: true, color: C.GOLD_D,
   });
-  notes(s, 13,
+  notes(s, 12,
     "Same four stations, pointed at the rest of your work. Every one of these questions is a workflow somebody on this call is doing by hand.",
     "Facilitate from the chat; read answers aloud and map each one onto the ring so people hear their own use case become buildable. Three or four answers per station.",
     "Give one personal story: the two-calendar morning shift is your own daily driver, so say so. The RETRAIN answers are your pipeline for the next workshop. Write them down.",

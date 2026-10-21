@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/donna.css?v=3.1.2">
+<link rel="stylesheet" href="../assets/donna.css?v=3.2.0">
 <script>(function(){try{if(localStorage.getItem("donna-unlocked")!=="1"&&!/[?&]key=/.test(location.search)){document.documentElement.classList.add("locked");}}catch(e){document.documentElement.classList.add("locked");}})();</script>
 </head>
 <body>
@@ -135,9 +135,21 @@ Also do a dry run right now so I can watch the first one land.</pre>
               <span class="note-label">Donna&rsquo;s note</span>
               Scheduled tasks run on Claude&rsquo;s side, not on your laptop. Close the laptop; she still works at 4:30.
               <p>If Claude asks which mode the task runs in, choose <kbd class="ui">Auto</kbd> so it runs hands-free. Her playbook, which you can read, is what stops her from doing more. Read her first few runs.</p>
-              <p><strong>Free plan?</strong> There is no <kbd class="ui">Scheduled</kbd> in the sidebar: scheduled tasks are Pro, Max, Team, and Enterprise. You still have her as a skill. Each afternoon, open the Donna project and say &ldquo;Triage my inbox.&rdquo; Same result, by hand.</p>
             </div>
           </div>
+          <div class="aside callout-free">
+            <span class="eyebrow">Free plan? You press start.</span>
+            <p>No <kbd class="ui">Scheduled</kbd> in your sidebar? Scheduled tasks are Pro, Max, Team, and Enterprise. Everything else in this step is yours: the skill is built and uploaded. The only difference is who starts her shift. On Free, you do: at 4:30, open your <kbd class="ui">Donna</kbd> project, start a new chat, and paste this. Set a phone reminder for 4:30 on weekdays. That reminder is your scheduler.</p>
+            <div class="prompt">
+              <div class="prompt-bar">
+                <span class="prompt-label">The 4:30 shift, started by you</span>
+                <button class="copy-btn" type="button">Copy</button>
+              </div>
+              <pre>Use my donna-triage skill. Triage today&rsquo;s inbox and save the Reply-Now drafts to my email Drafts. Then create a Google Calendar event today, 10 minutes from now, 5 minutes long, titled &ldquo;Inbox Triage: Donna&rdquo;, with the whole report in the description and an EMAIL reminder 1 minute before.</pre>
+            </div>
+            <p class="fine">Paste it now for your dry run, and the checkpoint below is yours too. An agent you start by hand is still an agent.</p>
+          </div>
+
           <p class="fine">No Google calendar? She saves the same report as a draft email titled &ldquo;Inbox Triage: Donna.&rdquo; With Google Calendar, every weekday around 4:39&nbsp;PM (16:39) the calendar emails you the triage, from a sender you already trust.</p>
         </li>
 
@@ -194,6 +206,6 @@ Also do a dry run right now so I can watch the first one land.</pre>
   </footer>
 
 </div>
-<script src="../assets/donna.js?v=3.1.2"></script>
+<script src="../assets/donna.js?v=3.2.0"></script>
 </body>
 </html>
