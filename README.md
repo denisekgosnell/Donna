@@ -76,13 +76,13 @@ the zip: `cd skills && rm donna-triage.zip && zip -r donna-triage.zip donna-tria
 
 | Clock | Block | Min | What happens |
 |---|---|---|---|
-| 12:00 | Open | 4 | Title. Open the instructions (URL + password). The Bottle plays. |
-| 12:04 | The loop | 13 | Open vs. closed loops. The loop, three ways. How my Donna works for me. The receipts (ROI). Pick your tool. She never sends. House rules. The plan. |
+| 12:00 | Open | 5 | Title. Open the instructions (URL + password). Run of the show (three acts). The Bottle plays. |
+| 12:05 | The loop | 12 | Open vs. closed loops. The loop, three ways. How my Donna works for me. The receipts (ROI). Pick your tool. Free works, you press start. She never sends. House rules. The plan. |
 | 12:17 | Step 1 · CONNECT | 14 | Divider ("in this step: 1/ 2/ 3/"), then the site. Project, connectors, two prompts. Checkpoint: a draft you did not write. |
 | 12:31 | Step 2 · TEACH | 14 | Paste the playbook. Four questions, no shortcut. `Triage my inbox.` Checkpoint: one table. |
 | 12:45 | Step 3 · RUN | 16 | Skill zip, upload (gotchas and the workaround on the site), the daily shift with a dry run, pasted by 12:56. Checkpoint at 1:01: the first shift lands. |
 | 1:01 | Step 4 · RETRAIN | 12 | One more scheduled task, pasted by 1:03. While it runs: this was never about email. Checkpoint at **1:13**: her Week in Review lands. |
-| 1:13 | Discussion | 13 | Where does the loop turn next? |
+| 1:13 | The wrap | 13 | What you just built (the three acts, revisited). Where does the loop turn next? |
 | 1:26 | Close | 4 | Your first Friday. Send-off. |
 
 ## How each step runs on Zoom (the script from the front)
@@ -114,6 +114,11 @@ your hand, and a TA takes you into a Zoom room, 1:1.* TAs work the chat and the 
    1:03; its last line runs a dry run on this week so far with today's event ten minutes
    out. The "never about email" slide fills the wait. At 1:13, her Week in Review is on
    every calendar. Four stations lit.
+5. **Free plan.** Steps 1 and 2 are identical and the skill still gets built. Scheduled tasks
+   are paid, so Free attendees press start themselves: the Step 3 and Step 4 pages each have a
+   gold "Free plan? You press start." box with the exact sentence to paste (the dry runs work
+   from it too) and the advice to set phone reminders for 4:30 weekdays and Friday 3:00. The
+   deck says the same on the "Free works. You press start." slide.
 
 ## Denise's pre-workshop checklist
 

@@ -1072,3 +1072,8 @@ html.locked .wrap{visibility:hidden}
 .gate .gate-err{color:#E7C766;font-size:14px;margin:10px 0 0;min-height:1.3em}
 .gate .gate-foot{margin:22px 0 0;font-size:13px;color:#AFA893}
 .gate .gate-foot a{color:#E7C766}
+
+/* ---------- v3.2 · the free-plan box ---------- */
+.callout-free{border-left:3px solid #C9A227;margin-top:18px}
+.callout-free .eyebrow{color:#E7C766}
+.callout-free .prompt{margin-top:12px}
