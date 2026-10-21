@@ -32,14 +32,33 @@
   var KEY = "donna2026";
 
   function isUnlocked() {
-    try { return localStorage.getItem("donna-unlocked") === "1"; } catch (e) { return window.__donnaUnlocked === true; }
+    var ok = false;
+    try { ok = localStorage.getItem("donna-unlocked") === "1"; } catch (e) { /* ignore */ }
+    try { ok = ok || /(^|; )donna-unlocked=1/.test(document.cookie); } catch (e) { /* ignore */ }
+    return ok || window.__donnaUnlocked === true;
+  }
+  /* Carry the key on every link inside the site, so the password is typed once even in a
+     private window, on a phone that drops storage, or when a link switches between the
+     custom domain and the github.io address. */
+  function carryKey() {
+    document.querySelectorAll("a[href]").forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      if (/^(https?:|mailto:|#|\/\/)/i.test(href)) return;
+      if (/[?&]key=/.test(href)) return;
+      var hash = "";
+      var i = href.indexOf("#");
+      if (i >= 0) { hash = href.slice(i); href = href.slice(0, i); }
+      a.setAttribute("href", href + (href.indexOf("?") >= 0 ? "&" : "?") + "key=" + KEY + hash);
+    });
   }
   function unlock() {
-    try { localStorage.setItem("donna-unlocked", "1"); } catch (e) { /* private mode: this page view only */ }
+    try { localStorage.setItem("donna-unlocked", "1"); } catch (e) { /* private mode */ }
+    try { document.cookie = "donna-unlocked=1; max-age=31536000; path=/; SameSite=Lax"; } catch (e) { /* ignore */ }
     window.__donnaUnlocked = true;
     document.documentElement.classList.remove("locked");
     var g = document.querySelector(".gate");
     if (g && g.parentNode) g.parentNode.removeChild(g);
+    carryKey();
   }
   (function gate() {
     var m = location.search.match(/[?&]key=([^&]+)/);
@@ -52,7 +71,7 @@
         return;
       }
     }
-    if (isUnlocked()) { document.documentElement.classList.remove("locked"); return; }
+    if (isUnlocked()) { document.documentElement.classList.remove("locked"); carryKey(); return; }
     document.documentElement.classList.add("locked");
     var div = document.createElement("div");
     div.className = "gate";
