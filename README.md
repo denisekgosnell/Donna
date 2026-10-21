@@ -78,8 +78,7 @@ the zip: `cd skills && rm donna-triage.zip && zip -r donna-triage.zip donna-tria
 |---|---|---|---|
 | 12:00 | Preamble | 10 | A supporting member opens: welcome, Zoom housekeeping. Not in the deck. |
 | 12:10 | Open | 4 | Title. Run of the show (three acts). The Bottle plays. |
-| 12:14 | The loop | 13 | Open vs. closed loops ... ending with the plan, then **Open the instructions** (URL + password), the last slide before the build. |
-| 12:14 | The loop, detail | - | Open vs. closed loops. The loop, three ways. How my Donna works for me. The receipts (ROI). Pick your tool. Free works, you press start. She never sends. House rules. The plan. |
+| 12:14 | The loop | 13 | Open vs. closed loops. The loop, three ways. How my Donna works for me. The receipts (ROI). Pick your tool. Free works, you press start. She never sends. House rules. The plan. Then **Open the instructions** (URL + password), the last slide before the build. |
 | 12:27 | Step 1 · CONNECT | 14 | Divider ("in this step: 1/ 2/ 3/"), then the site. Project, connectors, two prompts. Checkpoint: a draft you did not write. |
 | 12:41 | Step 2 · TEACH | 14 | Paste the playbook. Four questions, no shortcut. `Triage my inbox.` Checkpoint: one table. |
 | 12:55 | Step 3 · RUN | 16 | Skill zip, upload (gotchas and the workaround on the site), the daily shift with a dry run, pasted by 1:06. Checkpoint at 1:11: the first shift lands. |

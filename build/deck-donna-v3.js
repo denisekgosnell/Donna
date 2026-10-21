@@ -668,7 +668,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
 // =======================================  OPEN THE INSTRUCTIONS, the last slide before the build  (light)
 {
   const { s } = slide("light");
-  B.eyebrow(s, "Before anything else", "light");
+  B.eyebrow(s, "Before we build", "light");
   const y = B.title(s, "Open the instructions.", "light");
   s.addText(SITE, {
     x: G.ML, y: y + 0.1, w: G.W, h: 0.8, margin: 0,
