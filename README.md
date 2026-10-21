@@ -45,7 +45,7 @@ ticked once the certificate issues. The old `denisekgosnell.github.io/Donna/` ad
 index.html                       # front page: hero, the Bottle, the loop, before-Wednesday, four steps
 chat/index.html                  # 01 · CONNECT · First Impressions
 project/index.html               # 02 · TEACH · The Triage Desk (four questions, the playbook paste)
-agent/index.html                 # 03 · RUN · Donna, Full Time (skill zip + the 4:30 shift)
+agent/index.html                 # 03 · RUN · Donna, Full Time (she writes the skill, you click Save, the 4:30 shift)
 retrain/index.html               # 04 · RETRAIN · Her Performance Review (the Friday retrain)
 skill/index.html                 # redirect → agent/   (old URLs stay alive)
 triage/index.html                # redirect → project/ (old URLs stay alive)
@@ -53,7 +53,7 @@ assets/donna.css                 # single shared stylesheet
 assets/donna.js                  # copy buttons and the password gate (one constant: KEY)
 assets/video/                    # the Bottle: mp4, webm, poster, three stills
 skills/donna-triage/SKILL.md     # the playbook template (interview + tiers + daily shift + retrain)
-skills/donna-triage.zip          # the upload format the Skills screen expects
+skills/donna-triage.zip          # the long-way upload format, if the in-chat Save is not available
 build/deck-donna-v3.js           # deck source (pptxgenjs); node build/deck-donna-v3.js
 build/deck-appendix-v3.js        # the two Q&A slides (learning outcomes, data security)
 build/brand.js                   # the Atelier brand system both deck scripts import
@@ -81,7 +81,7 @@ the zip: `cd skills && rm donna-triage.zip && zip -r donna-triage.zip donna-tria
 | 12:12 | The loop | 13 | Open vs. closed loops. The loop, three ways. How my Donna works for me. The receipts. Pick your tool. Free works, you press start. She never sends. House rules. The plan. Open the instructions (URL + password). |
 | 12:25 | Step 1 · CONNECT | 13 | Divider, then the site. Project, connectors, two prompts. Checkpoint: a draft you did not write. |
 | 12:38 | Step 2 · TEACH | 17 | Paste the playbook. Four questions, with time to answer them well. `Triage my inbox.` Checkpoint: one table. |
-| 12:55 | Step 3 · RUN | 13 | Skill zip, upload, the daily shift with a dry run, pasted by 1:04. Checkpoint at 1:08: the first shift lands. |
+| 12:55 | Step 3 · RUN | 13 | She writes the skill in the chat, you click Save, the daily shift with a dry run, pasted by 1:04. Checkpoint at 1:08: the first shift lands. |
 | 1:08 | Step 4 · RETRAIN | 12 | One more scheduled task, pasted by 1:10. While it runs: this was never about email. Checkpoint at **1:20**: her Week in Review lands. |
 | 1:20 | The wrap | 6 | What you just built. Where does the loop turn next (five minutes). |
 | 1:26 | Close | 4 | Your first Friday. Send-off. Done at 1:30. |
@@ -104,10 +104,11 @@ your hand, and a TA takes you into a Zoom room, 1:1.* TAs work the chat and the 
    **QUESTION 1 OF 4: REPLY NOW.** There is no shortcut phrase any more; people get the
    time to teach her well. After the **TRIAGE DESK: OPEN FOR BUSINESS** banner, everyone
    types **Triage my inbox.**
-3. **Step 3.** Same chat. She writes the skill as a zip; download; upload under Customize →
-   Skills → + → Create skill → Upload a skill; confirm it is in the list before anyone
-   touches Scheduled. The site lists the gotchas (no Skills menu = capability switch off;
-   refused upload = not a folder with SKILL.md; she ignores it = name the skill) and the
+3. **Step 3.** Same chat. She creates the skill right in the chat; everyone clicks **Save**
+   on the skill card and confirms it under Customize → Skills before anyone touches
+   Scheduled. The site lists the gotchas (no Skills menu = capability switch off; a file
+   instead of a skill card = take the long way, zip → Customize → Skills → + → Create
+   skill → Upload a skill; she ignores it = name the skill) and the
    workaround for any plan or build (paste the playbook text into the scheduled task
    itself). Then the standing order, pasted by 1:04; its last line makes her work right
    now. Free plan: no Scheduled menu; they run her by hand with "Triage my inbox."
@@ -136,10 +137,10 @@ your hand, and a TA takes you into a Zoom room, 1:1.* TAs work the chat and the 
 - [ ] TAs briefed: watch the chat, pull anyone stuck into a Zoom breakout room 1:1.
 - [ ] Full dry run on a fresh **paid** Claude account in workshop order: create the Donna
       project, connect Gmail + Calendar + Drive, Step 2 end to end (paste → four questions →
-      THE FINAL QUESTION → banner → "Triage my inbox."; no shortcut phrase), Step 3 (skill zip → Skills upload →
+      THE FINAL QUESTION → banner → "Triage my inbox."; no shortcut phrase), Step 3 (skill card → Save →
       the 4:30 task → calendar event → reminder email), Step 4 (the Friday task → the Week
       in Review event → the Monday approval paste). **Screenshot every menu**: Customize →
-      Connectors, Customize → Skills → + → Create skill → Upload a skill, Scheduled → New
+      Connectors, the skill card's Save button, Customize → Skills, Scheduled → New
       task → Create with Claude. Those menus move; the site tells attendees to ask Claude if
       they do. Scheduled tasks run on Anthropic's side (help center article 13854387, read
       October 19, 2026), so the laptop can be closed.

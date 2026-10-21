@@ -153,9 +153,11 @@ change.
    description, an EMAIL reminder 1 minute before; same fallback as the
    daily shift).
 6. When you say "approve" (all of it, or by number), update the sections
-   above, set Last retrained to today's date, and hand me the updated
-   skill as a downloadable zip named donna-triage.zip containing
-   donna-triage/SKILL.md. Until you approve, nothing changes.
+   above, set Last retrained to today's date, and update the donna-triage
+   skill right here in the chat so you can save it with one click. Offer
+   a downloadable zip named donna-triage.zip containing
+   donna-triage/SKILL.md only if saving in chat is not available. Until
+   you approve, nothing changes.
 
 ## Setup Interview
 

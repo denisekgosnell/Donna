@@ -868,9 +868,9 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
 // ================================  20 to 23. STEP 3 · RUN  (pip: 3 lit)
 {
   const s = divider("dark", "STEP THREE  ·  RUN", "Donna, full time.", "The document leaves your hands and goes on the clock.", 3,
-    ["She writes her playbook file.", "You upload it as a skill.", "Schedule the 4:30 shift."], 3);
+    ["She writes her playbook as a skill.", "You click Save.", "Schedule the 4:30 shift."], 3);
   notes(s, 1,
-    "Step three is where it stops being a conversation and becomes an employee. Three things: she writes her playbook file, you upload it as a skill, then you schedule the 4:30 shift.",
+    "Step three is where it stops being a conversation and becomes an employee. Three things: she writes her playbook as a skill, you click Save, then you schedule the 4:30 shift.",
     "Pip moves to RUN. Read the three lines, then share the site, Step 3.",
     "Free-plan people: the first two work for them; the schedule needs a paid plan, and the site says what they do instead.",
     "The site, Step 3."
@@ -886,18 +886,18 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     x: G.ML, y: y + 0.02, w: pw, mode: "light",
     label: "Paste in the same chat, after your first table",
     lines:
-      "Turn this conversation's triage setup into a reusable skill named " +
-      "donna-triage. Fill in the template with everything you learned " +
-      "about me. Keep the daily shift, the Friday retrain, and the Setup " +
-      "Interview. Keep the hard rules: never send, never delete. Give me " +
-      "the skill as a downloadable zip named donna-triage.zip containing " +
-      "donna-triage/SKILL.md.",
+      "Create a skill named donna-triage from this conversation's triage " +
+      "setup. Fill in the template with everything you learned about me. " +
+      "Keep the daily shift, the Friday retrain, and the Setup Interview. " +
+      "Keep the hard rules: never send, never delete. Create it as a skill " +
+      "right here in this chat so I can save it with one click. Do not " +
+      "give me a zip to download.",
     tag: "s21 prompt",
   });
   B.panelList(s, {
     x: G.ML, y: pb + 0.2, w: pw, mode: "light", size: 16, pad: 0.2,
     items: [
-      { text: "Full prompt on the site, Step 3. See donna-triage in your skills list before anyone touches Scheduled.", bold: true, color: C.GOLD_D },
+      { text: "Full prompt on the site, Step 3. Click Save on her skill card, then see donna-triage under Customize, Skills.", bold: true, color: C.GOLD_D },
     ],
     tag: "s21 panel",
   });
@@ -907,9 +907,9 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     x: rx, w: rw, y: y + 0.06, size: 16, color: C.GOLD_D, charSpacing: 1.6,
   });
   const beats = [
-    "She writes the file.",
-    "Download it: the file card's arrow.",
-    "Customize, Skills, +, Create skill, Upload a skill. Pick the zip.",
+    "She writes the skill, in the chat.",
+    "Click Save on the skill card.",
+    "Customize, Skills: donna-triage is on.",
   ];
   let by = y + 0.56;
   beats.forEach((t, i) => {
@@ -918,9 +918,9 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     by += h + 0.22;
   });
   notes(s, 5,
-    "A skill written in chat does not exist until you upload it. The file is a zip; the Skills screen wants a zip. Go slow and demo it on screen.",
-    "Three beats. She writes it. You DOWNLOAD it. You UPLOAD it under Customize, Skills, plus, Create skill, Upload a skill. Wait until the chat says every screen shows donna-triage in the list.",
-    "Stay in the SAME chat as step two; a fresh chat has not met them yet and writes a blank template. The gotchas are on the site: no Skills menu means the capability switch is off; a refused upload means the zip is not a folder with SKILL.md inside. The workaround for anyone: paste the playbook text into the scheduled task itself.",
+    "A skill written in chat does not exist until you save it. She writes it as a skill card; you click Save; it is in your skills list. Go slow and demo it on screen.",
+    "Three beats. She writes it. You click SAVE on the card. You check Customize, Skills, and donna-triage is there and on. Wait until the chat says every screen shows it.",
+    "Stay in the SAME chat as step two; a fresh chat has not met them yet and writes a blank template. If someone gets a file instead of a skill card, the long way is on the site: ask for the zip, download, Customize, Skills, Create skill, Upload a skill. No Skills menu means the capability switch is off. The workaround for anyone: paste the playbook text into the scheduled task itself.",
     "Now give her the 4:30 shift."
   );
 }
@@ -1063,7 +1063,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   notes(s, 5,
     "Your Sent folder is her report card. She reads the reports she wrote, the drafts she saved, and the emails you actually sent, and she proposes changes to her own playbook. Numbered, each with a because. Nothing changes until you say approve.",
     "Paste first, by 1:10, then talk. Same place as the daily shift: Scheduled, New task, paste. The last line runs it right now on this week so far, with today's event ten minutes out, which lands at 1:20 if the paste is at 1:10. Talk through the Sent-folder idea while she reads the week. Yes, on a Wednesday: the Sent folder since Monday gives her plenty to say.",
-    "Someone will ask whether she can just apply the changes herself. No, and that is the point: the human signature is what closes the loop. Monday, one paste and one upload, only when she proposes something.",
+    "Someone will ask whether she can just apply the changes herself. No, and that is the point: the human signature is what closes the loop. Monday, one paste and one Save, only when she proposes something.",
     "While she reads: the reframe."
   );
 }
@@ -1179,7 +1179,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
       { label: "Thu 4:30", sub: "her first real shift" },
       { label: "Fri 3:00", sub: "her first real retrain" },
       { label: "Mon 8:00", sub: "her Week in Review, on your calendar", highlight: true },
-      { label: "Mon, you sign it", sub: "one paste, one upload" },
+      { label: "Mon, you sign it", sub: "one paste, one Save" },
     ],
     null,
     "light",
@@ -1198,7 +1198,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     fontFace: F.BODY, fontSize: 16, color: C.MUTE, align: "center", valign: "middle",
   });
   notes(s, 3,
-    "Tomorrow at 4:30 she works her first real shift, and the email lands at 4:39. Friday at 3:00 she reads her week. Monday at 8:00 her Week in Review is on your calendar, and you sign it with one paste and one upload. If she gets it wrong, you do not need a better prompt. You need to retrain with better info, and more specific info.",
+    "Tomorrow at 4:30 she works her first real shift, and the email lands at 4:39. Friday at 3:00 she reads her week. Monday at 8:00 her Week in Review is on your calendar, and you sign it with one paste and one Save. If she gets it wrong, you do not need a better prompt. You need to retrain with better info, and more specific info.",
     "Point at Monday. That is the loop closing for the first time without you in the room.",
     "The site stays up: every prompt, every rescue prompt, the Monday signature. Questions to the email address, any time.",
     "Send-off."
