@@ -1,5 +1,5 @@
 // Build Your Own Donna, v3.1: the October 21, 2026 online workshop.
-// 33 slides plus one hidden fallback, 90 minutes (12:00 to 1:30 PM ET).
+// 33 slides plus one hidden fallback, 90 minutes of deck after a ten-minute preamble (12:10 to 1:40 PM ET).
 // Every run of type is 16pt or larger. Reserved accent: RED. Full Suits.
 // Spec: FABLE-V3-INSTRUCTIONS.md sections 9 and 10, plus the October 20 change list.
 
@@ -199,48 +199,9 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   B.assertFits("title meta", G.ML, cardBot + 1.72, G.W, 0.3, 6.4);
   B.skyline(s, 7.1);
   notes(s, 1,
-    "She ran the best closer in New York City. Today she comes to work for you. By 1:13 Eastern every one of you owns a working Donna. Not a demo. Yours, on your own inbox, and she gets better every Friday.",
-    "Zoom housekeeping in one breath: Claude open on your laptop, the chat is for two things, a checkmark when you have it and a word when you are stuck. Name the TAs working the chat and the breakout rooms.",
+    "She ran the best closer in New York City. Today she comes to work for you. By 1:23 Eastern every one of you owns a working Donna. Not a demo. Yours, on your own inbox, and she gets better every Friday.",
+    "The preamble before this slide ran 12:00 to 12:10. Zoom housekeeping in one breath: Claude open on your laptop, the chat is for two things, a checkmark when you have it and a word when you are stuck. Name the TAs working the chat and the breakout rooms.",
     "Do not start until the chat shows checkmarks from most of the room. The people who fall behind fall behind here, not later.",
-    "First, everyone opens the instructions."
-  );
-}
-
-// =======================================  2. OPEN THE INSTRUCTIONS  (light)
-{
-  const { s } = slide("light");
-  B.eyebrow(s, "Before anything else", "light");
-  const y = B.title(s, "Open the instructions.", "light");
-  s.addText(SITE, {
-    x: G.ML, y: y + 0.1, w: G.W, h: 0.8, margin: 0,
-    fontFace: F.DISPLAY, fontSize: 36, bold: true, color: C.INK, align: "center", valign: "middle",
-  });
-  const cw = 7.0;
-  const cx = (G.SLIDE_W - cw) / 2;
-  const cy = y + 1.1;
-  const ch = 1.5;
-  B.card(s, { x: cx, y: cy, w: cw, h: ch, mode: "light", tag: "s2 card" });
-  s.addText("PASSWORD", {
-    x: cx, y: cy + 0.2, w: cw, h: 0.3, margin: 0,
-    fontFace: F.BODY, fontSize: 16, bold: true, charSpacing: 2.0, color: C.GOLD_D,
-    align: "center", valign: "middle",
-  });
-  s.addText(PASSWORD, {
-    x: cx, y: cy + 0.52, w: cw, h: 0.8, margin: 0,
-    fontFace: F.DISPLAY, fontSize: 48, bold: true, color: C.INK, align: "center", valign: "middle",
-  });
-  B.diamondList(s, {
-    x: 2.2, y: cy + ch + 0.34, w: 9.0, mode: "light", size: 18, gap: 0.14,
-    items: [
-      "Phone or laptop. Keep it open: every prompt has a copy button.",
-      "The site is the live version. If they disagree, the site wins.",
-    ],
-    tag: "s2 list",
-  });
-  notes(s, 1,
-    "Open the site now, on your phone or in a tab beside Claude. Type the password: donna2026, all lowercase, no spaces. The TAs are putting the link and the password in the chat.",
-    "Say the password out loud twice and paste the link and the password into the Zoom chat yourself. Wait for checkmarks.",
-    "Someone will type the password with a capital letter or a space; the site ignores both. Someone else will be on the promo page instead of the instructions; the link in the chat fixes it.",
     "Here is how the ninety minutes go."
   );
 }
@@ -251,15 +212,15 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   B.eyebrow(s, "Run of the show", "dark");
   B.title(s, "Three acts, ninety minutes.", "dark");
   const bot = threeActs(s, [
-    ["I", "The idea", "12:00 TO 12:17", "Open loops, closed loops, and the only trick in the room: an agent is just a document."],
-    ["II", "The build", "12:17 TO 1:13", "Four steps: connect, teach, run, retrain. By 1:13, Donna is working your inbox."],
-    ["III", "The wrap", "1:13 TO 1:30", "What you built, where the loop turns next, and your first Friday."],
+    ["I", "The idea", "12:10 TO 12:27", "Open loops, closed loops, and the only trick in the room: an agent is just a document."],
+    ["II", "The build", "12:27 TO 1:23", "Four steps: connect, teach, run, retrain. By 1:23, Donna is working your inbox."],
+    ["III", "The wrap", "1:23 TO 1:40", "What you built, where the loop turns next, and your first Friday."],
   ], "dark");
   B.caption(s, "First the idea, then the build, then what you walk out with.", "dark", {
     bold: true, color: C.GOLD_L, y: bot + 0.26,
   });
   notes(s, 1,
-    "Three acts. First the idea: open loops and closed loops, and why an agent is just a document. Then we build, four steps, and by 1:13 she is working your inbox. Then the wrap: what you built, where it turns next, and your first Friday.",
+    "Three acts. First the idea: open loops and closed loops, and why an agent is just a document. Then we build, four steps, and by 1:23 she is working your inbox. Then the wrap: what you built, where it turns next, and your first Friday.",
     "Point at the middle card. That is most of the ninety minutes, and most of it is you pasting.",
     "Do not read the card text. Say the three act names and the clock on the middle one.",
     "Fifty-five seconds of silence. Let the video do the talking."
@@ -655,7 +616,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     "Read all five slowly. This slide buys calm for the next hour.",
     "Rules 1 and 2 kill the unspoken fear. Rule 3 is how we move on Zoom: a checkmark in the chat at every checkpoint, and nobody moves until the count matches. Rule 5: say so in the chat or raise your hand, and a TA takes you into a Zoom room one to one.",
     "After rule 5, say the last line out loud. It is the one that keeps people from hiding.",
-    "Four steps. By 1:13 she is working for you."
+    "Four steps. By 1:23 she is working for you."
   );
 }
 
@@ -663,12 +624,12 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
 {
   const { s } = slide("light");
   B.eyebrow(s, "The plan, Eastern", "light");
-  const y = B.title(s, "Four steps. By 1:13 she’s working for you.", "light");
+  const y = B.title(s, "Four steps. By 1:23 she’s working for you.", "light");
   const steps = [
-    ["01", "CONNECT", "A desk, your inbox, her first draft.", "12:17"],
-    ["02", "TEACH", "Four questions. She writes her playbook.", "12:31"],
-    ["03", "RUN", "Her playbook becomes a skill on a schedule.", "12:45"],
-    ["04", "RETRAIN", "One more task: Fridays she reviews her week.", "1:01"],
+    ["01", "CONNECT", "A desk, your inbox, her first draft.", "12:27"],
+    ["02", "TEACH", "Four questions. She writes her playbook.", "12:41"],
+    ["03", "RUN", "Her playbook becomes a skill on a schedule.", "12:55"],
+    ["04", "RETRAIN", "One more task: Fridays she reviews her week.", "1:11"],
   ];
   const cy = y + 0.1;
   const ch = 2.9;
@@ -697,9 +658,48 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   });
   B.caption(s, "Nobody types anything longer than one sentence today. Every prompt has a copy button on the site.", "light", { y: cy + ch + 0.24 });
   notes(s, 1,
-    "Four steps, one per station of the loop you just saw. Connect at 12:17, teach at 12:31, run at 12:45, retrain at 1:01. At 1:13 she is working for you, and she has already given herself her first performance review.",
+    "Four steps, one per station of the loop you just saw. Connect at 12:27, teach at 12:41, run at 12:55, retrain at 1:11. At 1:23 she is working for you, and she has already given herself her first performance review.",
     "Say the arc out loud, then point at the clock on each card. From here, each step opens with one slide that says what we are doing, then we switch to the site.",
     "Nobody types anything longer than one sentence today. Say that; it lowers the temperature.",
+    "Last thing before we build: everyone opens the instructions."
+  );
+}
+
+// =======================================  OPEN THE INSTRUCTIONS, the last slide before the build  (light)
+{
+  const { s } = slide("light");
+  B.eyebrow(s, "Before anything else", "light");
+  const y = B.title(s, "Open the instructions.", "light");
+  s.addText(SITE, {
+    x: G.ML, y: y + 0.1, w: G.W, h: 0.8, margin: 0,
+    fontFace: F.DISPLAY, fontSize: 36, bold: true, color: C.INK, align: "center", valign: "middle",
+  });
+  const cw = 7.0;
+  const cx = (G.SLIDE_W - cw) / 2;
+  const cy = y + 1.1;
+  const ch = 1.5;
+  B.card(s, { x: cx, y: cy, w: cw, h: ch, mode: "light", tag: "s2 card" });
+  s.addText("PASSWORD", {
+    x: cx, y: cy + 0.2, w: cw, h: 0.3, margin: 0,
+    fontFace: F.BODY, fontSize: 16, bold: true, charSpacing: 2.0, color: C.GOLD_D,
+    align: "center", valign: "middle",
+  });
+  s.addText(PASSWORD, {
+    x: cx, y: cy + 0.52, w: cw, h: 0.8, margin: 0,
+    fontFace: F.DISPLAY, fontSize: 48, bold: true, color: C.INK, align: "center", valign: "middle",
+  });
+  B.diamondList(s, {
+    x: 2.2, y: cy + ch + 0.34, w: 9.0, mode: "light", size: 18, gap: 0.14,
+    items: [
+      "Phone or laptop. Keep it open: every prompt has a copy button.",
+      "The site is the live version. If they disagree, the site wins.",
+    ],
+    tag: "s2 list",
+  });
+  notes(s, 1,
+    "Open the site now, on your phone or in a tab beside Claude. Type the password: donna2026, all lowercase, no spaces. The TAs are putting the link and the password in the chat.",
+    "Say the password out loud twice and paste the link and the password into the Zoom chat yourself. Wait for checkmarks.",
+    "Someone will type the password with a capital letter or a space; the site ignores both. Someone else will be on the promo page instead of the instructions; the link in the chat fixes it.",
     "Step one."
   );
 }
@@ -711,7 +711,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   notes(s, 1,
     "Step one, three things: create her project, connect the three Google accounts, then two prompts. The desk before the mail.",
     "Read the three lines. Then switch the screen share to the site, Step 1, and stay there until the checkpoint.",
-    "Watch the pip in the top right. One of four stations lit. By 1:13 all four are.",
+    "Watch the pip in the top right. One of four stations lit. By 1:23 all four are.",
     "The site, Step 1."
   );
 }
@@ -946,7 +946,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   B.panelList(s, {
     x: G.ML, y: pb + 0.2, w: pw, mode: "light", size: 16, pad: 0.2,
     items: [
-      { text: "Full prompt on the site, Step 3. Paste by 12:56.", bold: true, color: C.GOLD_D },
+      { text: "Full prompt on the site, Step 3. Paste by 1:06.", bold: true, color: C.GOLD_D },
     ],
     tag: "s22 panel",
   });
@@ -981,7 +981,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   notes(s, 5,
     "The last line of that prompt is the finale of this step: a dry run, right now, with today's event ten minutes out so the email lands while we are still together.",
     "Grab the prompt from the site rather than retyping. Scheduled in the left sidebar, New task, Create with Claude. If Claude asks how much she may do without checking in, pick the hands-free option. Free-plan people: no Scheduled menu; they run her by hand with Triage my inbox, and the site says so.",
-    "Scheduled tasks run on Anthropic's side now, so a closed laptop is fine; say that plainly. 'My local time' matters: half this room is in Europe. Paste by 12:56 at the latest so the event lands before step four.",
+    "Scheduled tasks run on Anthropic's side now, so a closed laptop is fine; say that plainly. 'My local time' matters: half this room is in Europe. Paste by 1:06 at the latest so the event lands before step four.",
     "Everybody watch your calendar."
   );
 }
@@ -989,7 +989,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   const { s } = slide("dark");
   pip(s, 3, "dark");
   B.eyebrow(s, "Step three  ·  checkpoint  ·  Eastern", "dark", { narrow: true });
-  s.addText("1:01", {
+  s.addText("1:11", {
     x: G.ML, y: 1.82, w: G.W, h: 1.16, margin: 0,
     fontFace: F.DISPLAY, fontSize: 72, bold: true, color: C.GOLD_L, align: "center", valign: "middle",
   });
@@ -1004,7 +1004,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   notes(s, 4,
     "Open today's calendar. The checkmark is the event with the triage inside it. The email arrives a minute before it starts, right as step four begins.",
     "Everyone opens the event: the whole triage in its description, drafts waiting. Hold the silence. Checkmarks in the chat.",
-    "The event appears when the dry run finishes, two to five minutes after the paste; the email follows ten minutes after the task started, so most land around 1:05. Do not wait for the email here. Move on at 1:01 and let it arrive during step four.",
+    "The event appears when the dry run finishes, two to five minutes after the paste; the email follows ten minutes after the task started, so most land around 1:15. Do not wait for the email here. Move on at 1:11 and let it arrive during step four.",
     "Three stations lit. Now the one almost nobody builds."
   );
 }
@@ -1012,7 +1012,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
 // ============================  24 to 27. STEP 4 · RETRAIN  (pip: 4 lit)
 {
   const s = divider("dark", "STEP FOUR  ·  RETRAIN", "Her performance review.", "One more scheduled task. Every Friday she reviews her week. You sign it.", 4,
-    ["Schedule the Friday retrain.", "Watch her first review land at 1:13.", "Monday: sign it."], 4);
+    ["Schedule the Friday retrain.", "Watch her first review land at 1:23.", "Monday: sign it."], 4);
   notes(s, 1,
     "Step four. Donna Paulsen would never sit through a performance review. So she gives herself one, every Friday, and you sign it. It is one more scheduled task, same place as the 4:30 shift.",
     "Pip: all four stations lit. Read the three lines, then share the site, Step 4.",
@@ -1042,7 +1042,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   B.panelList(s, {
     x: G.ML, y: pb + 0.16, w: pw, mode: "light", size: 16, pad: 0.16,
     items: [
-      { text: "Full prompt on the site, Step 4. Paste by 1:03.", bold: true, color: C.GOLD_D },
+      { text: "Full prompt on the site, Step 4. Paste by 1:13.", bold: true, color: C.GOLD_D },
     ],
     tag: "s25 panel",
   });
@@ -1062,7 +1062,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   });
   notes(s, 6,
     "Your Sent folder is her report card. She reads the reports she wrote, the drafts she saved, and the emails you actually sent, and she proposes changes to her own playbook. Numbered, each with a because. Nothing changes until you say approve.",
-    "Paste first, by 1:03, then talk. Same place as the daily shift: Scheduled, New task, paste. The last line runs it right now on this week so far, with today's event ten minutes out, which lands at 1:13 if the paste is at 1:03. Talk through the Sent-folder idea while she reads the week. Yes, on a Wednesday: the Sent folder since Monday gives her plenty to say.",
+    "Paste first, by 1:13, then talk. Same place as the daily shift: Scheduled, New task, paste. The last line runs it right now on this week so far, with today's event ten minutes out, which lands at 1:23 if the paste is at 1:13. Talk through the Sent-folder idea while she reads the week. Yes, on a Wednesday: the Sent folder since Monday gives her plenty to say.",
     "Someone will ask whether she can just apply the changes herself. No, and that is the point: the human signature is what closes the loop. Monday, one paste and one upload, only when she proposes something.",
     "While she reads: the reframe."
   );
@@ -1087,14 +1087,14 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
     "While her review is landing: recap the loop with THEIR artifacts. The playbook she wrote, the skill file they own, the schedule it runs on, the Friday it learns on. They did not learn a tool today. They built a loop, and closed it.",
     "Two minutes, no more. Then the calendar.",
     "Nothing.",
-    "1:13. Open your calendar."
+    "1:23. Open your calendar."
   );
 }
 {
   const { s } = slide("dark");
   pip(s, 4, "dark", "THE LOOP IS CLOSED");
   B.eyebrow(s, "Step four  ·  checkpoint  ·  Eastern", "dark", { narrow: true });
-  s.addText("1:13", {
+  s.addText("1:23", {
     x: G.ML, y: 1.82, w: G.W, h: 1.16, margin: 0,
     fontFace: F.DISPLAY, fontSize: 72, bold: true, color: C.GOLD_L, align: "center", valign: "middle",
   });
@@ -1119,7 +1119,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   B.title(s, "What you just built.", "dark");
   const bot = threeActs(s, [
     ["I", "The idea", "DONE", "Every workflow is a loop. Closed loops get better. You can name all four stations."],
-    ["II", "The build", "DONE, 1:13", "A project, a playbook she wrote, a skill you own, two standing orders. She is live."],
+    ["II", "The build", "DONE, 1:23", "A project, a playbook she wrote, a skill you own, two standing orders. She is live."],
     ["III", "The wrap", "NOW", "Where your loop turns next, and the Friday she tells you what she got wrong."],
   ], "dark");
   B.caption(s, "You did not learn a tool today. You built a loop, and closed it.", "dark", {
@@ -1127,7 +1127,7 @@ const STILLS = [1, 2, 3].map((i) => `assets/video/the-bottle-${i}.png`);
   });
   notes(s, 1,
     "Same three cards from the top of the hour. The idea: every workflow is a loop, and closed loops get better. The build: a project, a playbook she wrote, a skill you own, two standing orders, and she is live. The wrap starts now.",
-    "Point at each card in turn. This is the slide you promised them at 12:02.",
+    "Point at each card in turn. This is the slide you promised them at 12:12.",
     "Free-plan people built the same thing; their standing orders are two phone reminders. Say so if you see the question in the chat.",
     "Where does the loop turn next?"
   );
