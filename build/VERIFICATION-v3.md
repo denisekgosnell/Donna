@@ -187,3 +187,11 @@ Timing sums to 90 with every block matching the clock. Applied: slide 19 no long
 
 - The password is `donna2026`; change it in `assets/donna.js` (`KEY`) and `build/deck-donna-v3.js` (`PASSWORD`) together, then rebuild the deck.
 - Say the ROI numbers out loud once before Wednesday; the two from your note are yours, the other two were counted from your Drive and Calendar.
+
+---
+
+# v3.4 addendum · October 21, 2026
+
+- **Pacing to a 1:30 finish.** An eight-minute preamble, the deck opens 12:08, Step 1 at 12:25 (13 min), Step 2 at 12:38 (17), Step 3 at 12:55 (13), Step 4 at 1:08 (12), Donna live at 1:20, the wrap 1:20 to 1:26, done 1:30. The deck carries 82 minutes of timing; `verify.py` checks the per-step sums and the total.
+- **Step clock on every step page**, top and centre: the minutes for the step, then the start time in four zones.
+- **Simplification pass** on the four step pages for adult beginners: one action per numbered step, the exact buttons in order, the prompt, one line that says how you know it worked. Every troubleshooting note moved into one collapsed "If something goes wrong" list per page, with the rescue prompt inside it. Reading level after the pass: 3.7 / 3.4 / 4.2 / 4.8. The playbook paste, every prompt and the password gate are unchanged; copy buttons counted on each page in Chromium (3 / 2 / 4 / 3).

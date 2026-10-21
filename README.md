@@ -76,22 +76,22 @@ the zip: `cd skills && rm donna-triage.zip && zip -r donna-triage.zip donna-tria
 
 | Clock | Block | Min | What happens |
 |---|---|---|---|
-| 12:00 | Preamble | 10 | A supporting member opens: welcome, Zoom housekeeping. Not in the deck. |
-| 12:10 | Open | 4 | Title. Run of the show (three acts). The Bottle plays. |
-| 12:14 | The loop | 13 | Open vs. closed loops. The loop, three ways. How my Donna works for me. The receipts (ROI). Pick your tool. Free works, you press start. She never sends. House rules. The plan. Then **Open the instructions** (URL + password), the last slide before the build. |
-| 12:27 | Step 1 · CONNECT | 14 | Divider ("in this step: 1/ 2/ 3/"), then the site. Project, connectors, two prompts. Checkpoint: a draft you did not write. |
-| 12:41 | Step 2 · TEACH | 14 | Paste the playbook. Four questions, no shortcut. `Triage my inbox.` Checkpoint: one table. |
-| 12:55 | Step 3 · RUN | 16 | Skill zip, upload (gotchas and the workaround on the site), the daily shift with a dry run, pasted by 1:06. Checkpoint at 1:11: the first shift lands. |
-| 1:11 | Step 4 · RETRAIN | 12 | One more scheduled task, pasted by 1:13. While it runs: this was never about email. Checkpoint at **1:23**: her Week in Review lands. |
-| 1:23 | The wrap | 13 | What you just built (the three acts, revisited). Where does the loop turn next? |
-| 1:36 | Close | 4 | Your first Friday. Send-off. |
+| 12:00 | Preamble | 8 | A supporting member opens: welcome, Zoom housekeeping. Not in the deck. |
+| 12:08 | Open | 4 | Title. Run of the show (three acts). The Bottle plays. |
+| 12:12 | The loop | 13 | Open vs. closed loops. The loop, three ways. How my Donna works for me. The receipts. Pick your tool. Free works, you press start. She never sends. House rules. The plan. Open the instructions (URL + password). |
+| 12:25 | Step 1 · CONNECT | 13 | Divider, then the site. Project, connectors, two prompts. Checkpoint: a draft you did not write. |
+| 12:38 | Step 2 · TEACH | 17 | Paste the playbook. Four questions, with time to answer them well. `Triage my inbox.` Checkpoint: one table. |
+| 12:55 | Step 3 · RUN | 13 | Skill zip, upload, the daily shift with a dry run, pasted by 1:04. Checkpoint at 1:08: the first shift lands. |
+| 1:08 | Step 4 · RETRAIN | 12 | One more scheduled task, pasted by 1:10. While it runs: this was never about email. Checkpoint at **1:20**: her Week in Review lands. |
+| 1:20 | The wrap | 6 | What you just built. Where does the loop turn next (five minutes). |
+| 1:26 | Close | 4 | Your first Friday. Send-off. Done at 1:30. |
 
 ## How each step runs on Zoom (the script from the front)
 
 Each step opens with one deck slide that says, in plain words, what we are doing ("In this
 step: 1/ 2/ 3/") and ends with "Now go to the instructions: Step N on the site." Denise
-then shares the **site page for the step**, not the deck. The deck is for 12:10 to 12:27,
-each step's divider and checkpoint, and 1:23 onward. Every checkpoint is a chat moment:
+then shares the **site page for the step**, not the deck. The deck is for 12:08 to 12:25,
+each step's divider and checkpoint, and 1:20 onward. Every checkpoint is a chat moment:
 *type ✓ in the chat when you see it.* Stuck for 60 seconds: *say so in the chat or raise
 your hand, and a TA takes you into a Zoom room, 1:1.* TAs work the chat and the rooms.
 
@@ -109,11 +109,11 @@ your hand, and a TA takes you into a Zoom room, 1:1.* TAs work the chat and the 
    touches Scheduled. The site lists the gotchas (no Skills menu = capability switch off;
    refused upload = not a folder with SKILL.md; she ignores it = name the skill) and the
    workaround for any plan or build (paste the playbook text into the scheduled task
-   itself). Then the standing order, pasted by 1:06; its last line makes her work right
+   itself). Then the standing order, pasted by 1:04; its last line makes her work right
    now. Free plan: no Scheduled menu; they run her by hand with "Triage my inbox."
 4. **Step 4.** One more scheduled task: Scheduled → New task → the weekly order, pasted by
-   1:13; its last line runs a dry run on this week so far with today's event ten minutes
-   out. The "never about email" slide fills the wait. At 1:23, her Week in Review is on
+   1:10; its last line runs a dry run on this week so far with today's event ten minutes
+   out. The "never about email" slide fills the wait. At 1:20, her Week in Review is on
    every calendar. Four stations lit.
 5. **Free plan.** Steps 1 and 2 are identical and the skill still gets built. Scheduled tasks
    are paid, so Free attendees press start themselves: the Step 3 and Step 4 pages each have a

@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>04 · Her Performance Review · Build Your Own Donna</title>
-<meta name="description" content="Step 4 of Build Your Own Donna, RETRAIN: every Friday she reads her own week against yours, proposes what to change about her playbook, and puts the review on your calendar for Monday. You approve. That is the loop, closed.">
+<meta name="description" content="Step 4 of Build Your Own Donna, RETRAIN: every Friday she reviews her week and proposes changes. You approve on Monday. 12 minutes.">
 <meta name="theme-color" content="#14213D">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314213D'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-style='italic' fill='%23C9A227' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/donna.css?v=3.3.0">
+<link rel="stylesheet" href="../assets/donna.css?v=3.4.0">
 <script>(function(){try{if(localStorage.getItem("donna-unlocked")!=="1"&&!/[?&]key=/.test(location.search)){document.documentElement.classList.add("locked");}}catch(e){document.documentElement.classList.add("locked");}})();</script>
 </head>
 <body>
@@ -36,7 +36,11 @@
   <main>
 
     <header class="case-header">
-      <p class="file-meta"><svg class="loop-pip" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C9A227" stroke-width="1"/><circle cx="12" cy="3" r="2.2" fill="#C9A227"/><circle cx="21" cy="12" r="2.2" fill="#C9A227"/><circle cx="12" cy="21" r="2.2" fill="#C9A227"/><circle cx="3" cy="12" r="2.2" fill="#C9A227"/></svg>Step 04 &middot; Retrain &middot; ~12 min &middot; one more scheduled task</p>
+      <div class="step-clock" role="note" aria-label="Time for this step">
+        <span class="sc-min">12 minutes</span>
+        <span class="sc-when">starts 1:08 ET &middot; 10:08 PT &middot; 6:08 London &middot; 7:08 Paris</span>
+      </div>
+      <p class="file-meta"><svg class="loop-pip" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C9A227" stroke-width="1"/><circle cx="12" cy="3" r="2.2" fill="#C9A227"/><circle cx="21" cy="12" r="2.2" fill="#C9A227"/><circle cx="12" cy="21" r="2.2" fill="#C9A227"/><circle cx="3" cy="12" r="2.2" fill="#C9A227"/></svg>Step 04 &middot; Retrain</p>
       <div class="file-line">
         <span class="file-no" aria-hidden="true">04</span>
         <h1>Her&nbsp;Performance Review</h1>
@@ -49,19 +53,13 @@
 
     <div class="goal">
       <span class="eyebrow">Goal</span>
-      <p>Every Friday she reads her week against yours, proposes changes to her playbook, and puts the review on your calendar for Monday. <strong>You approve.</strong> That is the loop, closed.</p>
+      <p>Every Friday she reads her week against yours and proposes changes to her playbook. Monday, you approve. That is the loop, closed.</p>
       <span class="in-step-label">In this step</span>
       <ol class="in-step">
         <li>Schedule the Friday retrain.</li>
         <li>Watch her first review land.</li>
         <li>Monday: sign it.</li>
       </ol>
-      <p class="station">Station 4 of 4: <strong>Retrain.</strong> The one most people never build.</p>
-    </div>
-
-    <div class="aside">
-      <span class="eyebrow">Why a Friday</span>
-      <p>Donna Paulsen would never sit through a performance review. So she gives herself one, every Friday, and you sign it. Your Sent folder is her report card.</p>
     </div>
 
     <section class="section">
@@ -69,19 +67,8 @@
       <ol class="steps">
 
         <li>
-          <h3>What she will look at</h3>
-          <p>Three sources, every Friday:</p>
-          <ul>
-            <li><strong>The triage reports she wrote</strong> this week.</li>
-            <li><strong>The drafts she saved</strong> for you.</li>
-            <li><strong>The emails you actually sent.</strong> Who you answered fast, what you spent your week on, how you really write.</li>
-          </ul>
-          <p class="fine">She writes down only what the evidence shows: a person who belongs on Reply Now, a priority that changed, a draft that did not sound like you.</p>
-        </li>
-
-        <li>
           <h3>Give her the Friday shift</h3>
-          <p>Same place as the 4:30 shift: <kbd class="ui">Scheduled</kbd> &rarr; <kbd class="ui">New task</kbd> &rarr; <kbd class="ui">Create with Claude</kbd>. Paste the weekly order. The last line runs it right now, on this week so far:</p>
+          <p>Same place as the 4:30 shift: <kbd class="ui">Scheduled</kbd> &rarr; <kbd class="ui">New task</kbd> &rarr; <kbd class="ui">Create with Claude</kbd>. Paste:</p>
           <div class="prompt">
             <div class="prompt-bar">
               <span class="prompt-label">The weekly order</span>
@@ -93,38 +80,35 @@
 3. Propose changes to my playbook: people, priorities, voice. Keep the hard rules exactly as they are: never send, never delete.
 4. Write &ldquo;Donna&rsquo;s Week in Review&rdquo; into a Google Calendar event, Monday 8:00 to 8:05 AM, proposed changes at the top, with an EMAIL reminder 1 minute before.
 5. Save the proposed changes as a document called &ldquo;Donna&rsquo;s Week in Review&rdquo; in a Google Drive folder called &ldquo;Donna&rdquo;.
-Also do a dry run right now on this week so far, and for the dry run put
-the event on today&rsquo;s calendar 10 minutes from now instead of Monday.</pre>
+Also do a dry run right now on this week so far, and for the dry run put the event on today&rsquo;s calendar 10 minutes from now instead of Monday.</pre>
           </div>
-          <p class="fine">Yes, even on a Wednesday. Your Sent folder since Monday gives her plenty to say.</p>
+          <p class="fine">The last line runs it right now, on this week so far. Your Sent folder since Monday gives her plenty to say.</p>
           <div class="aside callout-free">
             <span class="eyebrow">Free plan? You press start.</span>
-            <p>Same step, started by you. Every Friday at 3:00, open your <kbd class="ui">Donna</kbd> project, start a new chat, and paste this. Set a phone reminder for Friday 3:00. Paste it now for today&rsquo;s dry run.</p>
-            <div class="prompt">
-              <div class="prompt-bar">
-                <span class="prompt-label">The Friday retrain, started by you</span>
-                <button class="copy-btn" type="button">Copy</button>
-              </div>
-              <pre>Use my donna-triage skill to retrain on this week so far. Read the triage reports you wrote, the drafts you saved, and the emails I actually sent. Compare them and propose changes to my playbook: people, priorities, voice. Keep the hard rules exactly as they are. Write &ldquo;Donna&rsquo;s Week in Review&rdquo; into a Google Calendar event today, 10 minutes from now, with the proposed changes at the top and an EMAIL reminder 1 minute before, and save it as a document called &ldquo;Donna&rsquo;s Week in Review&rdquo; in a Google Drive folder called &ldquo;Donna&rdquo;.</pre>
+            <p>Every Friday at 3:00, open your <kbd class="ui">Donna</kbd> project, start a new chat, and paste this. Set a phone reminder. Paste it now for today&rsquo;s dry run.</p>
+          <div class="prompt">
+            <div class="prompt-bar">
+              <span class="prompt-label">The Friday retrain, started by you</span>
+              <button class="copy-btn" type="button">Copy</button>
             </div>
-            <p class="fine">Monday&rsquo;s signature below is identical on every plan.</p>
+            <pre>Use my donna-triage skill to retrain on this week so far. Read the triage reports you wrote, the drafts you saved, and the emails I actually sent. Compare them and propose changes to my playbook: people, priorities, voice. Keep the hard rules exactly as they are. Write &ldquo;Donna&rsquo;s Week in Review&rdquo; into a Google Calendar event today, 10 minutes from now, with the proposed changes at the top and an EMAIL reminder 1 minute before, and save it as a document called &ldquo;Donna&rsquo;s Week in Review&rdquo; in a Google Drive folder called &ldquo;Donna&rdquo;.</pre>
+          </div>
           </div>
         </li>
 
         <li>
           <h3>Watch her first review land</h3>
-          <p>About ten minutes, three confirmations:</p>
           <ul>
-            <li><strong>Donna&rsquo;s Week in Review</strong> sits on today&rsquo;s calendar.</li>
-            <li>Open the event: <strong>her proposed changes are at the top</strong>, numbered, each with a because.</li>
-            <li>One minute before it starts, the email arrives. A performance review, in your inbox, that you didn&rsquo;t write.</li>
+            <li><strong>Donna&rsquo;s Week in Review</strong> appears on today&rsquo;s calendar, about ten minutes out.</li>
+            <li>Open it. Her proposed changes are at the top, numbered, each with a because.</li>
+            <li>One minute before it starts, the email arrives. Type &#10003; in the Zoom chat.</li>
           </ul>
-          <p class="fine">This is 1:23&nbsp;PM ET (10:23&nbsp;AM PT &middot; 6:23&nbsp;PM London &middot; 7:23&nbsp;PM Paris). Four stations lit. Type &#10003; in the Zoom chat.</p>
+          <p class="fine">This is 1:20&nbsp;PM ET (10:20&nbsp;AM PT &middot; 6:20&nbsp;PM London &middot; 7:20&nbsp;PM Paris). Four stations lit.</p>
         </li>
 
         <li>
           <h3>Monday: sign it</h3>
-          <p>Read the review in the email. If you agree, open your <kbd class="ui">Donna</kbd> project chat and paste:</p>
+          <p>Read the review. If you agree, open your <kbd class="ui">Donna</kbd> project and paste:</p>
           <div class="prompt">
             <div class="prompt-bar">
               <span class="prompt-label">The signature</span>
@@ -132,16 +116,15 @@ the event on today&rsquo;s calendar 10 minutes from now instead of Monday.</pre>
             </div>
             <pre>Approve this week&rsquo;s review. It is the document &ldquo;Donna&rsquo;s Week in Review&rdquo; in my Google Drive folder &ldquo;Donna&rdquo;. Write my updated skill file as a downloadable zip named donna-triage.zip.</pre>
           </div>
-          <p>Download the zip. <kbd class="ui">Customize</kbd> &rarr; <kbd class="ui">Skills</kbd>: delete the old <strong>donna-triage</strong>, then <kbd class="ui">+</kbd> &rarr; <kbd class="ui">Create skill</kbd> &rarr; <kbd class="ui">Upload a skill</kbd> with the new zip. One paste, one upload, only when she proposes a change.</p>
-          <p class="fine">&ldquo;Approve 1 and 3.&rdquo; or &ldquo;Reject 2.&rdquo; work too. Nothing changes until you say so. Her hard rules never change at all.</p>
+          <p>Download the zip. Then <kbd class="ui">Customize</kbd> &rarr; <kbd class="ui">Skills</kbd>: delete the old <strong>donna-triage</strong>, and upload the new zip the same way as Step&nbsp;3.</p>
+          <p class="fine">&ldquo;Approve 1 and 3&rdquo; or &ldquo;Reject 2&rdquo; work too. Nothing changes until you say so. Her hard rules never change at all.</p>
         </li>
 
       </ol>
 
       <div class="aside">
         <span class="eyebrow">What just happened</span>
-        <p>Connect, teach, run, retrain. Anything that learns from data has run this loop for over fifty years. You are not retraining Claude. You are retraining Donna, and Donna is a document you own.</p>
-        <p>If she gets it wrong, you do not need a better prompt. You need to retrain with better info, and more specific info.</p>
+        <p>Connect, teach, run, retrain. Anything that learns from data has run this loop for over fifty years. You are not retraining Claude. You are retraining Donna, and Donna is a document you own. If she gets it wrong, you do not need a better prompt. You need to retrain with better info, and more specific info.</p>
       </div>
     </section>
 
@@ -174,6 +157,6 @@ the event on today&rsquo;s calendar 10 minutes from now instead of Monday.</pre>
   </footer>
 
 </div>
-<script src="../assets/donna.js?v=3.3.0"></script>
+<script src="../assets/donna.js?v=3.4.0"></script>
 </body>
 </html>

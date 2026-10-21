@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>01 · First Impressions · Build Your Own Donna</title>
-<meta name="description" content="Step 1 of Build Your Own Donna, CONNECT: create her project, connect your email and calendar, and get your first Claude-drafted reply waiting in your drafts folder.">
+<meta name="description" content="Step 1 of Build Your Own Donna, CONNECT: create her project, connect Gmail, Calendar and Drive, and get your first draft. 13 minutes.">
 <meta name="theme-color" content="#14213D">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314213D'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-style='italic' fill='%23C9A227' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/donna.css?v=3.3.0">
+<link rel="stylesheet" href="../assets/donna.css?v=3.4.0">
 <script>(function(){try{if(localStorage.getItem("donna-unlocked")!=="1"&&!/[?&]key=/.test(location.search)){document.documentElement.classList.add("locked");}}catch(e){document.documentElement.classList.add("locked");}})();</script>
 </head>
 <body>
@@ -36,7 +36,11 @@
   <main>
 
     <header class="case-header">
-      <p class="file-meta"><svg class="loop-pip" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C9A227" stroke-width="1"/><circle cx="12" cy="3" r="2.2" fill="#C9A227"/><circle cx="21" cy="12" r="2.2" fill="#14213D" stroke="#C9A227" stroke-width="1"/><circle cx="12" cy="21" r="2.2" fill="#14213D" stroke="#C9A227" stroke-width="1"/><circle cx="3" cy="12" r="2.2" fill="#14213D" stroke="#C9A227" stroke-width="1"/></svg>Step 01 &middot; Connect &middot; ~14 min</p>
+      <div class="step-clock" role="note" aria-label="Time for this step">
+        <span class="sc-min">13 minutes</span>
+        <span class="sc-when">starts 12:25 ET &middot; 9:25 PT &middot; 5:25 London &middot; 6:25 Paris</span>
+      </div>
+      <p class="file-meta"><svg class="loop-pip" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C9A227" stroke-width="1"/><circle cx="12" cy="3" r="2.2" fill="#C9A227"/><circle cx="21" cy="12" r="2.2" fill="#14213D" stroke="#C9A227" stroke-width="1"/><circle cx="12" cy="21" r="2.2" fill="#14213D" stroke="#C9A227" stroke-width="1"/><circle cx="3" cy="12" r="2.2" fill="#14213D" stroke="#C9A227" stroke-width="1"/></svg>Step 01 &middot; Connect</p>
       <div class="file-line">
         <span class="file-no" aria-hidden="true">01</span>
         <h1>First&nbsp;Impressions</h1>
@@ -49,14 +53,13 @@
 
     <div class="goal">
       <span class="eyebrow">Goal</span>
-      <p>Give her a desk, connect your inbox, and watch her read it. You leave with a draft you didn&rsquo;t write.</p>
+      <p>Give her a desk, connect your inbox, and get your first draft.</p>
       <span class="in-step-label">In this step</span>
       <ol class="in-step">
         <li>Create her project.</li>
         <li>Connect Gmail, Calendar, and Drive.</li>
         <li>Two prompts: the question, then the first draft.</li>
       </ol>
-      <p class="station">Station 1 of 4: <strong>Connect.</strong> Work comes in.</p>
     </div>
 
     <section class="section">
@@ -64,47 +67,24 @@
       <ol class="steps">
 
         <li>
-          <h3>Create her project. The desk before the mail.</h3>
-          <p>In Claude&rsquo;s sidebar, click <kbd class="ui">Projects</kbd>, then <kbd class="ui">New project</kbd>. Name it <strong>Donna</strong>.</p>
-          <p class="fine">Everything today happens inside this project.</p>
+          <h3>Create her project</h3>
+          <p>In Claude&rsquo;s left sidebar: <kbd class="ui">Projects</kbd> &rarr; <kbd class="ui">New project</kbd>. Name it <strong>Donna</strong>.</p>
         </li>
 
         <li>
-          <h3>Connect your email, calendar, and files</h3>
-          <p>Left sidebar: <kbd class="ui">Customize</kbd>, then <kbd class="ui">Connectors</kbd>. (Older builds: your initials &rarr; <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Connectors</kbd>.) Already done? Skip to step 3.</p>
+          <h3>Connect Gmail, Calendar, and Drive</h3>
+          <p>Left sidebar: <kbd class="ui">Customize</kbd> &rarr; <kbd class="ui">Connectors</kbd>.</p>
           <ul>
-            <li>Find <kbd class="ui">Gmail</kbd> and click <kbd class="ui">Connect</kbd>.</li>
-            <li>Google opens a sign-in page. Choose your <strong>busiest inbox</strong>.</li>
-            <li>Google lists what the connector could do, maybe including send or delete. That is the connector&rsquo;s scope, not Donna&rsquo;s: her playbook forbids both. Click <kbd class="ui">Continue</kbd> (or <kbd class="ui">Allow</kbd>).</li>
-            <li>Same again for <kbd class="ui">Google Calendar</kbd> and <kbd class="ui">Google Drive</kbd>. All three, now.</li>
-            <li>Back in Claude, each one reads <kbd class="ui">Connected</kbd>.</li>
+            <li>Next to <kbd class="ui">Gmail</kbd>, click <kbd class="ui">Connect</kbd>. Sign in with your busiest inbox. Click <kbd class="ui">Continue</kbd>.</li>
+            <li>Do the same for <kbd class="ui">Google Calendar</kbd> and <kbd class="ui">Google Drive</kbd>.</li>
+            <li>All three say <kbd class="ui">Connected</kbd>. Done.</li>
           </ul>
-          <div class="note">
-            <svg class="note-icon" viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="48" r="45" stroke="#C9A227" stroke-width="3"/><g stroke="#A31621" stroke-width="5" stroke-linecap="square"><path d="M37 30v36"/><path d="M31 30h12M31 66h12"/><path d="M43 30a18 18 0 0 1 0 36"/></g></svg>
-            <div class="note-body">
-              <span class="note-label">Donna&rsquo;s note</span>
-              Connected, but she still can&rsquo;t see your inbox? Quit Claude completely (Mac: the Claude menu, then Quit) and reopen it. That clears it nine times out of ten.
-              <p>&ldquo;Administrator hasn&rsquo;t approved this&rdquo; on a work account? Connect a personal Gmail and keep going. Her playbook is a file you keep, so you can move her later.</p>
-              <p><strong>Still stuck?</strong> Say so in the Zoom chat or raise your hand. A TA takes you into a Zoom room, 1:1.</p>
-            </div>
-          </div>
-          <details class="smallprint">
-            <summary>Stuck connecting? Paste this</summary>
-            <div class="smallprint-body">
-              <div class="prompt">
-                <div class="prompt-bar">
-                  <span class="prompt-label">The rescue prompt</span>
-                  <button class="copy-btn" type="button">Copy</button>
-                </div>
-                <pre>Walk me through connecting my Gmail, Google Calendar, and Google Drive to Claude. First ask whether I&rsquo;m on Mac or Windows and whether IT manages my Google account, and check Anthropic&rsquo;s current help docs before answering so the steps match what&rsquo;s actually on my screen today. Then give me numbered steps naming the exact buttons to click, a way to verify it worked, and what to do if the connector isn&rsquo;t listed or I hit an &ldquo;administrator hasn&rsquo;t approved this&rdquo; error.</pre>
-              </div>
-            </div>
-          </details>
+          <p class="fine">Google&rsquo;s screen may say the connector can send or delete. Her playbook forbids both.</p>
         </li>
 
         <li>
-          <h3>Ask the question you&rsquo;d ask an assistant</h3>
-          <p>Sidebar &rarr; <kbd class="ui">Projects</kbd> &rarr; <kbd class="ui">Donna</kbd> &rarr; <kbd class="ui">New chat</kbd>. <kbd class="ui">Donna</kbd> shows at the top of the chat. Paste:</p>
+          <h3>Ask the question</h3>
+          <p><kbd class="ui">Projects</kbd> &rarr; <kbd class="ui">Donna</kbd> &rarr; <kbd class="ui">New chat</kbd>. Paste:</p>
           <div class="prompt">
             <div class="prompt-bar">
               <span class="prompt-label">Prompt 1 &middot; the question</span>
@@ -112,12 +92,12 @@
             </div>
             <pre>What landed in my inbox in the last 24 hours that actually needs ME? Top 5, one line each.</pre>
           </div>
-          <p class="fine">You&rsquo;re on track when she answers with five lines <em>from your actual inbox</em>.</p>
+          <p class="fine">It worked when she answers with five lines from your real inbox.</p>
         </li>
 
         <li>
           <h3>Get your first draft</h3>
-          <p>Same chat, one more paste:</p>
+          <p>Same chat. Paste:</p>
           <div class="prompt">
             <div class="prompt-bar">
               <span class="prompt-label">Prompt 2 &middot; the first draft</span>
@@ -125,10 +105,28 @@
             </div>
             <pre>Draft a reply to #1. Under 100 words, warm but decisive. Read my sent emails and learn how I write. Never use em dashes. Never use AI speech patterns. Save it as a draft in my email so I can review it there. Do not send it.</pre>
           </div>
-          <p class="fine">Now open Gmail and click <kbd class="ui">Drafts</kbd>. When you see it, type &#10003; in the Zoom chat.</p>
+          <p class="fine">Open Gmail &rarr; <kbd class="ui">Drafts</kbd>. There it is. Type &#10003; in the Zoom chat.</p>
         </li>
 
       </ol>
+
+      <details class="smallprint">
+        <summary>If something goes wrong</summary>
+        <div class="smallprint-body">
+          <ul>
+            <li><strong>Connected, but she can&rsquo;t see your mail?</strong> Quit Claude completely and open it again.</li>
+            <li><strong>&ldquo;Administrator hasn&rsquo;t approved this&rdquo;?</strong> Your work account is locked down. Use a personal Gmail today.</li>
+            <li><strong>Still stuck?</strong> Say so in the Zoom chat or raise your hand. A TA takes you into a Zoom room, 1:1.</li>
+          </ul>
+          <div class="prompt">
+            <div class="prompt-bar">
+              <span class="prompt-label">Or paste this into Claude</span>
+              <button class="copy-btn" type="button">Copy</button>
+            </div>
+            <pre>Walk me through connecting my Gmail, Google Calendar, and Google Drive to Claude. Check Anthropic&rsquo;s current help docs first so the steps match my screen today. Give me numbered steps with the exact buttons, and what to do if a connector is missing or says the administrator hasn&rsquo;t approved it.</pre>
+          </div>
+        </div>
+      </details>
     </section>
 
     <div class="checkpoint">
@@ -160,6 +158,6 @@
   </footer>
 
 </div>
-<script src="../assets/donna.js?v=3.3.0"></script>
+<script src="../assets/donna.js?v=3.4.0"></script>
 </body>
 </html>
