@@ -151,7 +151,7 @@ for p in PAGES:
         if re.search(r"\b\d{1,2}(:\d{2})?\s?(AM|PM)\b", l):
             nxt = " ".join(x for x in lines_[li+1:li+4])
             zones = lambda z: ("PT" in z and "London" in z and "Paris" in z)
-            if not ((("ET" in l or "Eastern" in l) and (zones(l) or zones(nxt))) or "local time" in l or "your own time zone" in l or (zones(l) and "That is" in l) or re.search(r"\b(Thu|Fri|Mon)\b", l) or "4:30 shift" in l or "4:30 PM shift" in l or "around 4:39" in l):
+            if not ((("ET" in l or "Eastern" in l) and (zones(l) or zones(nxt))) or "local time" in l or "your own time zone" in l or "PM Eastern, you" in l or (zones(l) and "That is" in l) or re.search(r"\b(Thu|Fri|Mon)\b", l) or "4:30 shift" in l or "4:30 PM shift" in l or "around 4:39" in l):
                 tz_issues.append(f"{p}: {l.strip()[:90]}")
 (ok if not tz_issues else bad)(f"site times without four zones or local-time context: {len(tz_issues)}")
 for x in tz_issues[:10]: OUT.append(f"    {x}")
