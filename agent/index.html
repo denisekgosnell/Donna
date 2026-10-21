@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>03 · Donna, Full Time · Build Your Own Donna</title>
-<meta name="description" content="Step 3 of Build Your Own Donna, RUN: she writes her playbook file, you upload it as a skill, and she takes the 4:30 shift. 13 minutes.">
+<meta name="description" content="Step 3 of Build Your Own Donna, RUN: she writes her playbook as a skill, you click Save, and she takes the 4:30 shift. 13 minutes.">
 <meta name="theme-color" content="#14213D">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314213D'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-style='italic' fill='%23C9A227' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/donna.css?v=3.5.0">
+<link rel="stylesheet" href="../assets/donna.css?v=3.6.0">
 <script>(function(){var ok=false;try{ok=localStorage.getItem("donna-unlocked")==="1";}catch(e){}try{ok=ok||/(^|; )donna-unlocked=1/.test(document.cookie);}catch(e){}if(!ok&&!/[?&]key=/.test(location.search)){document.documentElement.classList.add("locked");}})();</script>
 </head>
 <body>
@@ -57,7 +57,7 @@
       <span class="in-step-label">In this step</span>
       <ol class="in-step">
         <li>She writes her playbook file.</li>
-        <li>You upload it as a skill.</li>
+        <li>You click Save.</li>
         <li>Schedule the 4:30 shift.</li>
       </ol>
     </div>
@@ -72,24 +72,24 @@
       <ol class="steps">
 
         <li>
-          <h3>She writes her playbook file</h3>
+          <h3>She writes her playbook as a skill</h3>
           <p>In your <strong>Step&nbsp;2 chat</strong>, paste:</p>
           <div class="prompt">
             <div class="prompt-bar">
               <span class="prompt-label">Paste in the same chat</span>
               <button class="copy-btn" type="button">Copy</button>
             </div>
-            <pre>Turn this conversation&rsquo;s triage setup into a reusable skill named donna-triage. Fill in the template we used with everything you learned about me: my people and tiers, my priorities, my voice. Keep the daily shift, the Friday retrain, and the Setup Interview sections so the skill knows how to run on a schedule, how to retrain, and how to reconfigure. Keep the hard rules exactly as written: never send, never delete. Then give me the finished skill as a downloadable zip named donna-triage.zip containing donna-triage/SKILL.md.</pre>
+            <pre>Create a skill named donna-triage from this conversation&rsquo;s triage setup. Fill in the template we used with everything you learned about me: my people and tiers, my priorities, my voice. Keep the daily shift, the Friday retrain, and the Setup Interview sections so the skill knows how to run on a schedule, how to retrain, and how to reconfigure. Keep the hard rules exactly as written: never send, never delete. Create it as a skill right here in this chat so I can save it with one click. Do not give me a zip to download.</pre>
           </div>
-          <p class="fine">It worked when a file card with a download arrow appears.</p>
+          <p class="fine">It worked when a skill card named <strong>donna-triage</strong> appears in the chat.</p>
         </li>
 
         <li>
-          <h3>Download it, then upload it as a skill</h3>
+          <h3>Click Save</h3>
           <ul>
-            <li>Click the file card&rsquo;s <kbd class="ui">Download</kbd> arrow. It lands in Downloads as <code>donna-triage.zip</code>.</li>
-            <li>Left sidebar: <kbd class="ui">Customize</kbd> &rarr; <kbd class="ui">Skills</kbd> &rarr; <kbd class="ui">+</kbd> &rarr; <kbd class="ui">Create skill</kbd> &rarr; <kbd class="ui">Upload a skill</kbd>. Pick <strong>donna-triage.zip</strong> from Downloads.</li>
-            <li><strong>donna-triage</strong> now shows in your skills list. Type &#10003; in the Zoom chat.</li>
+            <li>On the skill card, click <kbd class="ui">Save</kbd>. That is the whole upload.</li>
+            <li>Check it: left sidebar, <kbd class="ui">Customize</kbd> &rarr; <kbd class="ui">Skills</kbd>. <strong>donna-triage</strong> is in the list and switched on.</li>
+            <li>Type &#10003; in the Zoom chat.</li>
           </ul>
         </li>
 
@@ -140,18 +140,18 @@ Also do a dry run right now so I can watch the first one land.</pre>
         <div class="smallprint-body">
           <ul>
             <li><strong>No Skills under Customize?</strong> Click your initials &rarr; <kbd class="ui">Settings</kbd> &rarr; <kbd class="ui">Capabilities</kbd> and turn on <kbd class="ui">Code execution and file creation</kbd>.</li>
-            <li><strong>Upload refused?</strong> The zip must hold a folder named <strong>donna-triage</strong> with <strong>SKILL.md</strong> inside. Ask her: &ldquo;Give me that as donna-triage.zip containing donna-triage/SKILL.md.&rdquo;</li>
+            <li><strong>No Save button, or she gave you a file instead of a skill card?</strong> Take the long way: ask her &ldquo;Give me the skill as a downloadable zip named donna-triage.zip containing donna-triage/SKILL.md.&rdquo; Click the file card&rsquo;s download arrow, then <kbd class="ui">Customize</kbd> &rarr; <kbd class="ui">Skills</kbd> &rarr; <kbd class="ui">+</kbd> &rarr; <kbd class="ui">Create skill</kbd> &rarr; <kbd class="ui">Upload a skill</kbd> and pick the zip from Downloads.</li>
             <li><strong>She ignores the skill?</strong> Name it: &ldquo;use my donna-triage skill.&rdquo;</li>
-            <li><strong>Nothing uploads at all?</strong> Skip the skill. Ask her &ldquo;Print the finished playbook as plain text,&rdquo; copy it, and paste it at the top of the standing order above the line that starts &ldquo;Every weekday at 4:30 PM my local time.&rdquo;</li>
+            <li><strong>Nothing saves at all?</strong> Skip the skill. Ask her &ldquo;Print the finished playbook as plain text,&rdquo; copy it, and paste it at the top of the standing order above the line that starts &ldquo;Every weekday at 4:30 PM my local time.&rdquo;</li>
             <li><strong>No Google Calendar?</strong> She saves the same report as a draft email titled &ldquo;Inbox Triage: Donna.&rdquo;</li>
             <li><strong>Still stuck?</strong> Say so in the Zoom chat or raise your hand. A TA takes you into a Zoom room, 1:1.</li>
           </ul>
           <div class="prompt">
             <div class="prompt-bar">
-              <span class="prompt-label">Can&rsquo;t find Skills or Scheduled? Paste this</span>
+              <span class="prompt-label">Can&rsquo;t find Save, Skills, or Scheduled? Paste this</span>
               <button class="copy-btn" type="button">Copy</button>
             </div>
-            <pre>In the version of the Claude desktop app I&rsquo;m running right now, where do I (1) upload a skill zip and (2) create a scheduled task? Name the exact menu items and buttons, in order.</pre>
+            <pre>In the version of the Claude desktop app I&rsquo;m running right now, (1) how do I save a skill you create in this chat, (2) where do I upload a skill zip if I have to, and (3) how do I create a scheduled task? Name the exact menu items and buttons, in order.</pre>
           </div>
         </div>
       </details>
@@ -186,6 +186,6 @@ Also do a dry run right now so I can watch the first one land.</pre>
   </footer>
 
 </div>
-<script src="../assets/donna.js?v=3.5.0"></script>
+<script src="../assets/donna.js?v=3.6.0"></script>
 </body>
 </html>
